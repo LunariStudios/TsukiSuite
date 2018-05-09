@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 namespace UnityUtilities {
-    public static class RandomUtil {
+    public static class RandomUtility {
         public static bool NextBool() {
             return Random.value > 0.5;
         }
