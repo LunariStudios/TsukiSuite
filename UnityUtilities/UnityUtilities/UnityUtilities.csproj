@@ -43,14 +43,21 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AnimationUtility.cs" />
     <Compile Include="BehaviourUtility.cs" />
     <Compile Include="CollectionUtility.cs" />
     <Compile Include="ColorUtility.cs" />
+    <Compile Include="DebugUtility.cs" />
     <Compile Include="EnumUtility.cs" />
+    <Compile Include="Misc\Bounds2D.cs" />
+    <Compile Include="Misc\SerializableInterface.cs" />
+    <Compile Include="Misc\Tracker.cs" />
+    <Compile Include="Misc\UnitValue.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RandomUtility.cs" />
     <Compile Include="Singletons\ScriptableSingleton.cs" />
     <Compile Include="Singletons\Singleton.cs" />
+    <Compile Include="TextureUtility.cs" />
     <Compile Include="VectorUtility.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

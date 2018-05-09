@@ -118,8 +118,12 @@ namespace UnityUtilities {
             }
         }
 
+        public static IEnumerable<T> EmptyEnumerable<T>() {
+            return Enumerable.Empty<T>();
+        }
+
         public static List<T> EmptyList<T>() {
-            return Enumerable.Empty<T>().ToList();
+            return EmptyEnumerable<T>().ToList();
         }
 
         public static E RandomElement<E>(this IList<E> list) {
