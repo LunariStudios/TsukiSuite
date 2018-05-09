@@ -44,6 +44,7 @@
     <Compile Include="BehaviourUtility.cs" />
     <Compile Include="CollectionUtility.cs" />
     <Compile Include="ColorUtility.cs" />
+    <Compile Include="CoroutineUtility.cs" />
     <Compile Include="DebugUtility.cs" />
     <Compile Include="EnumUtility.cs" />
     <Compile Include="Misc\Bounds2D.cs" />
