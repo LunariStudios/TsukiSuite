@@ -2,6 +2,12 @@
 using UnityUtilities.Misc;
 
 namespace UnityUtilities {
+    public delegate void GizmosAction();
+
+    public interface IGizmosSchedulable {
+        void ScheduleGizmos(GizmosAction action, bool nextFrameOnly = true);
+    }
+
     public static class DebugUtil {
         public static void DrawWireBox2D(Vector2 center, Vector2 size) {
             var halfWidth = size.x / 2;
@@ -36,7 +42,8 @@ namespace UnityUtilities {
 
         public const uint DefaultWireCircleVertices = 24;
 
-        public static void DrawWireCircle2D(Vector2 entityPos, float radius, Color color, uint vertices = DefaultWireCircleVertices) {
+        public static void DrawWireCircle2D(Vector2 entityPos, float radius, Color color,
+            uint vertices = DefaultWireCircleVertices) {
             var verts = new Vector2[DefaultWireCircleVertices];
             for (uint i = 0; i < DefaultWireCircleVertices; i++) {
                 var pos = (float) i / DefaultWireCircleVertices * 6.283185F;
@@ -93,7 +100,8 @@ namespace UnityUtilities {
 
         public const uint DefaultWireCircleVertices = 24;
 
-        public static void DrawWireCircle2D(Vector2 entityPos, float radius, Color color, uint vertices = DefaultWireCircleVertices) {
+        public static void DrawWireCircle2D(Vector2 entityPos, float radius, Color color,
+            uint vertices = DefaultWireCircleVertices) {
             var verts = new Vector2[DefaultWireCircleVertices];
             for (uint i = 0; i < DefaultWireCircleVertices; i++) {
                 var pos = (float) i / DefaultWireCircleVertices * 6.283185F;
