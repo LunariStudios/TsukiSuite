@@ -38,6 +38,9 @@
     <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
       <HintPath>..\Libraries\UnityEngine.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEngine.UI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\Libraries\UnityEngine.UI.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AnimationUtility.cs" />
@@ -56,6 +59,7 @@
     <Compile Include="Singletons\ScriptableSingleton.cs" />
     <Compile Include="Singletons\Singleton.cs" />
     <Compile Include="TextureUtility.cs" />
+    <Compile Include="UIUtility.cs" />
     <Compile Include="VectorUtility.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
