@@ -20,7 +20,7 @@ namespace UnityUtilities {
 
         public static T GetOrAddComponent<T>(this GameObject obj) where T : Component {
             var f = obj.GetComponent<T>();
-            return f ?? (f = obj.AddComponent<T>());
+            return f ? f : obj.AddComponent<T>();
         }
     }
 }

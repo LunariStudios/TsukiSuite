@@ -9,15 +9,11 @@ using Random = System.Random;
 namespace UnityUtilities {
     public class ComparableComparer<T> : Comparer<T> where T : IComparable<T> {
         public override int Compare(T x, T y) {
-            if (x != null) {
-                if (y != null) {
-                    return x.CompareTo(y);
-                }
-
-                return 1;
+            if (x == null) {
+                return (object) y != null ? -1 : 0;
             }
 
-            return (object) y != null ? -1 : 0;
+            return y != null ? x.CompareTo(y) : 1;
         }
 
         public override bool Equals(object obj) {
@@ -176,7 +172,8 @@ namespace UnityUtilities {
             return e;
         }
 
-        public static E FirstOrDefaultComparable<E, T>(this IEnumerable<E> list, T comparable) where E : IComparable<T> {
+        public static E FirstOrDefaultComparable<E, T>(this IEnumerable<E> list, T comparable)
+            where E : IComparable<T> {
             return list.FirstOrDefault(e => e.CompareTo(comparable) == 0);
         }
 

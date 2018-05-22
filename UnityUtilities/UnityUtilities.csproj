@@ -46,6 +46,7 @@
     <Compile Include="AnimationUtility.cs" />
     <Compile Include="BehaviourUtility.cs" />
     <Compile Include="CollectionUtility.cs" />
+    <Compile Include="ColorHSV.cs" />
     <Compile Include="ColorUtility.cs" />
     <Compile Include="CoroutineUtility.cs" />
     <Compile Include="DebugUtility.cs" />
