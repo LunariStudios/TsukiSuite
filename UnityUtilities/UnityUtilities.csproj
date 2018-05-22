@@ -43,6 +43,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AbstractGizmosSchedulable.cs" />
     <Compile Include="AnimationUtility.cs" />
     <Compile Include="BehaviourUtility.cs" />
     <Compile Include="CollectionUtility.cs" />
@@ -52,6 +53,7 @@
     <Compile Include="DebugUtility.cs" />
     <Compile Include="EnumUtility.cs" />
     <Compile Include="Misc\Bounds2D.cs" />
+    <Compile Include="Misc\Direction.cs" />
     <Compile Include="Misc\SerializableInterface.cs" />
     <Compile Include="Misc\Tracker.cs" />
     <Compile Include="Misc\UnitValue.cs" />

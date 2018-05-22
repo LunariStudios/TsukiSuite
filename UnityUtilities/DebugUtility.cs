@@ -5,7 +5,8 @@ namespace UnityUtilities {
     public delegate void GizmosAction();
 
     public interface IGizmosSchedulable {
-        void ScheduleGizmos(GizmosAction action, bool nextFrameOnly = true);
+        void ScheduleGizmos(GizmosAction action);
+        void DescheduleGizmos(GizmosAction action);
     }
 
     public static class DebugUtil {
