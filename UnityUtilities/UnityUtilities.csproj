@@ -62,6 +62,7 @@
     <Compile Include="Singletons\ScriptableSingleton.cs" />
     <Compile Include="Singletons\Singleton.cs" />
     <Compile Include="TextureUtility.cs" />
+    <Compile Include="TypeUtility.cs" />
     <Compile Include="UIUtility.cs" />
     <Compile Include="VectorUtility.cs" />
   </ItemGroup>
