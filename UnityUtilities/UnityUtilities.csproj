@@ -52,6 +52,7 @@
     <Compile Include="CoroutineUtility.cs" />
     <Compile Include="DebugUtility.cs" />
     <Compile Include="EnumUtility.cs" />
+    <Compile Include="Logging\UnityLogger.cs" />
     <Compile Include="Misc\Bounds2D.cs" />
     <Compile Include="Misc\Direction.cs" />
     <Compile Include="Misc\SerializableInterface.cs" />
