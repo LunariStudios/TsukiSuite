@@ -31,6 +31,14 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <PackageId>UnityEditorUtilities</PackageId>
+    <Version>0.0.1</Version>
+    <Author>Bruno Silva Freire</Author>
+    <Company>LAJE Studio</Company>
+    <Description>A set of libraries created for improving workflow on the Unity Engine's Editor</Description>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -48,6 +56,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssetsUtility.cs" />
+    <Compile Include="GUISkinProperties.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

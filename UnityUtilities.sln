@@ -4,6 +4,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnityUtilities", "UnityUtil
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnityEditorUtilities", "UnityEditorUtilities\UnityEditorUtilities.csproj", "{514403C5-C91E-441F-9B99-8732947A6238}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{993B59BB-9737-4452-8471-581F198B3148}"
+ProjectSection(SolutionItems) = preProject
+	Scripts\load.bat = Scripts\load.bat
+	Scripts\pack.bat = Scripts\pack.bat
+	Scripts\packandpublish.bat = Scripts\packandpublish.bat
+EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
