@@ -34,6 +34,14 @@ namespace UnityUtilities {
             return collection.Count > 0;
         }
 
+        public static bool IsNullOrEmpty(this IEnumerable enumerable) {
+            return enumerable == null || !enumerable.Cast<object>().Any();
+        }
+
+        public static bool IsNullOrEmpty(this ICollection collection) {
+            return collection == null || collection.Count > 0;
+        }
+
         public static T GetOrPut<T>(this ICollection<T> collection, Func<T, bool> predicate, Func<T> instantiator) {
             foreach (var obj in collection) {
                 if (predicate(obj)) {
@@ -103,6 +111,48 @@ namespace UnityUtilities {
                     var candidate = sourceIterator.Current;
                     var candidateProjected = selector(candidate);
                     if (comparer.Compare(candidateProjected, minKey) >= 0) {
+                        continue;
+                    }
+
+                    min = candidate;
+                    minKey = candidateProjected;
+                }
+
+                return min;
+            }
+        }
+
+        public static TSource MaxBy<TSource, TKey>(
+            this IEnumerable<TSource> source,
+            Func<TSource, TKey> selector) where TKey : IComparable<TKey> {
+            return source.MaxBy(selector, Comparer<TKey>.Default);
+        }
+
+        public static T MaxBy<T, K>(
+            this IEnumerable<T> source,
+            Func<T, K> selector,
+            IComparer<K> comparer) {
+            if (source == null) {
+                throw new ArgumentNullException("source");
+            }
+
+            if (selector == null) {
+                throw new ArgumentNullException("selector");
+            }
+
+            comparer = comparer ?? Comparer<K>.Default;
+
+            using (var sourceIterator = source.GetEnumerator()) {
+                if (!sourceIterator.MoveNext()) {
+                    throw new InvalidOperationException("Sequence contains no elements");
+                }
+
+                var min = sourceIterator.Current;
+                var minKey = selector(min);
+                while (sourceIterator.MoveNext()) {
+                    var candidate = sourceIterator.Current;
+                    var candidateProjected = selector(candidate);
+                    if (comparer.Compare(candidateProjected, minKey) <= 0) {
                         continue;
                     }
 

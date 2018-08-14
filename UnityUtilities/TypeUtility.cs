@@ -4,47 +4,22 @@ using System.Reflection;
 
 namespace UnityUtilities {
     public static class TypeUtility {
-        private static bool loaded = false;
-        private static readonly List<Assembly> knownAssemblies = new List<Assembly>();
+        private static readonly List<Assembly> KnownAssemblies = new List<Assembly>();
 
-        public static IEnumerable<Type> GetAllTypes() {
-            if (loaded) {
-                LoadAssemblies();
-            }
-
-            foreach (var assembly in knownAssemblies) {
-                foreach (var type in assembly.GetExportedTypes()) {
-                    yield return type;
-                }
-            }
+        private static void Reload() {
+            KnownAssemblies.Clear();
         }
 
-        public static IEnumerable<Type> GetAllSubtypesOf<T>() {
-            if (loaded) {
-                LoadAssemblies();
-            }
-
-            var superClass = typeof(T);
-            foreach (var type in GetAllTypes()) {
-                if (type.IsSubclassOf(superClass)) {
-                    yield return type;
-                }
-            }
-        }
-
-        public static IEnumerable<Assembly> KnownAssemblies {
-            get {
-                return knownAssemblies;
-            }
+        static TypeUtility() {
+            LoadAssemblies();
+            AppDomain.CurrentDomain.AssemblyLoad += OnAssemblyLoaded;
         }
 
         private static void LoadAssemblies() {
-            loaded = true;
+            Reload();
             foreach (var assembly in AppDomain.CurrentDomain.GetAssemblies()) {
                 RegisterAssembly(assembly);
             }
-
-            AppDomain.CurrentDomain.AssemblyLoad += OnAssemblyLoaded;
         }
 
         private static void OnAssemblyLoaded(object sender, AssemblyLoadEventArgs args) {
@@ -52,7 +27,18 @@ namespace UnityUtilities {
         }
 
         private static void RegisterAssembly(Assembly assembly) {
-            knownAssemblies.Add(assembly);
+            KnownAssemblies.Add(assembly);
+        }
+
+        public static IEnumerable<Type> GetAllTypesOf<T>() {
+            var target = typeof(T);
+            foreach (var assembly in KnownAssemblies) {
+                foreach (var type in assembly.GetTypes()) {
+                    if (target.IsAssignableFrom(type)) {
+                        yield return type;
+                    }
+                }
+            }
         }
     }
 }

@@ -11,39 +11,39 @@ namespace UnityUtilities.Misc {
         public Vector2 Size;
 
         private Bounds2D(Vector2 center, Vector2 size) {
-            this.Center = center;
-            this.Size = size;
+            Center = center;
+            Size = size;
         }
 
         public void Expand(float amount) {
-            this.Expand(new Vector2(amount, amount));
+            Expand(new Vector2(amount, amount));
         }
 
         public void Expand(Vector2 amount) {
-            this.Size += amount;
+            Size += amount;
         }
 
         public Vector2 Min {
             get {
-                return this.Center - this.Size / 2f;
+                return Center - Size / 2f;
             }
             set {
-                this.SetMinMax(value, this.Max);
+                SetMinMax(value, Max);
             }
         }
 
         public Vector2 Max {
             get {
-                return this.Center + this.Size / 2f;
+                return Center + Size / 2f;
             }
             set {
-                this.SetMinMax(this.Min, value);
+                SetMinMax(Min, value);
             }
         }
 
         public void SetMinMax(Vector2 min, Vector2 max) {
-            this.Size = max - min;
-            this.Center = min + this.Size / 2f;
+            Size = max - min;
+            Center = min + Size / 2f;
         }
 
         public static implicit operator Bounds2D(Bounds bounds) {
@@ -55,30 +55,30 @@ namespace UnityUtilities.Misc {
         }
 
         public override string ToString() {
-            return string.Format("Bounds2D(Center: {0}, Size: {1}, Min: {2}, Max: {3})", (object) this.Center, (object) this.Size, (object) this.Min, (object) this.Max);
+            return string.Format("Bounds2D(Center: {0}, Size: {1}, Min: {2}, Max: {3})", (object) Center, (object) Size, (object) Min, (object) Max);
         }
 
         public Vector2 BottomLeft {
             get {
-                return this.Min;
+                return Min;
             }
         }
 
         public Vector2 TopRight {
             get {
-                return new Vector2(this.Min.x, this.Max.y);
+                return new Vector2(Min.x, Max.y);
             }
         }
 
         public Vector2 TopLeft {
             get {
-                return this.Max;
+                return Max;
             }
         }
 
         public Vector2 BottomRight {
             get {
-                return new Vector2(this.Max.x, this.Min.y);
+                return new Vector2(Max.x, Min.y);
             }
         }
     }
