@@ -31,15 +31,15 @@ namespace UnityUtilities {
         }
 
         public static bool IsEmpty(this ICollection collection) {
-            return collection.Count > 0;
+            return collection.Count <= 0;
         }
 
         public static bool IsNullOrEmpty(this IEnumerable enumerable) {
-            return enumerable == null || !enumerable.Cast<object>().Any();
+            return enumerable == null || !enumerable.IsEmpty();
         }
 
         public static bool IsNullOrEmpty(this ICollection collection) {
-            return collection == null || collection.Count > 0;
+            return collection == null || collection.IsEmpty();
         }
 
         public static T GetOrPut<T>(this ICollection<T> collection, Func<T, bool> predicate, Func<T> instantiator) {
