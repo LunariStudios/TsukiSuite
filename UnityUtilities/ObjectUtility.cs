@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 namespace UnityUtilities {
-    public static class BehaviourUtility {
+    public static class ObjectUtility {
         public static T Clone<T>(this T obj, Vector3 transform) where T : Object {
             return Clone(obj, transform, Quaternion.identity);
         }
