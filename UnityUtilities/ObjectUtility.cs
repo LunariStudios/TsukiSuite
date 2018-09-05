@@ -22,5 +22,24 @@ namespace UnityUtilities {
             var f = obj.GetComponent<T>();
             return f ? f : obj.AddComponent<T>();
         }
+
+        public static bool IsNotNull(this object obj) {
+            return !obj.IsNull();
+        }
+
+        public static bool IsNull(this object obj) {
+            if (obj == null) {
+                return true;
+            }
+
+            var o = obj as Object;
+            if (o != null) {
+                // Because Unity
+                // ReSharper disable once ConditionIsAlwaysTrueOrFalse
+                return o == null;
+            }
+
+            return false;
+        }
     }
 }

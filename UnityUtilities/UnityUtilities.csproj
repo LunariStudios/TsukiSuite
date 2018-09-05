@@ -3,7 +3,7 @@
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <PackageId>UnityUtilities</PackageId>
-    <Version>0.0.1</Version>
+    <Version>0.0.2</Version>
     <Author>Bruno Silva Freire</Author>
     <Company>LAJE Studio</Company>
     <Description>A set of libraries created for improving workflow on the Unity Engine</Description>

@@ -6,7 +6,7 @@ namespace UnityUtilities {
     public static class GameObjectUtility {
         public static Tuple<GameObject, T> CreateGameObjectWith<T>(UnityAction<T> initializer = null)
             where T : Component {
-            return CreateGameObjectWith<T>("GameObject (" + typeof(T).Name + ")", initializer);
+            return CreateGameObjectWith("GameObject (" + typeof(T).Name + ")", initializer);
         }
 
         public static Tuple<GameObject, T> CreateGameObjectWith<T>(string name, UnityAction<T> initializer = null)
@@ -22,8 +22,7 @@ namespace UnityUtilities {
 
         public static Triple<GameObject, A, B> CreateGameObjectWith<A, B>(UnityAction<A, B> initializer = null)
             where A : Component where B : Component {
-            return CreateGameObjectWith<A, B>("GameObject (" + typeof(A).Name + ", " + typeof(B).Namespace + ")",
-                initializer);
+            return CreateGameObjectWith("GameObject (" + typeof(A).Name + ", " + typeof(B).Namespace + ")", initializer);
         }
 
         public static Triple<GameObject, A, B> CreateGameObjectWith
