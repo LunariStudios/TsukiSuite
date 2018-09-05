@@ -173,13 +173,7 @@ namespace UnityUtilities {
         }
 
         public static E RandomElement<E>(this IList<E> list) {
-            var max = list.Count;
-            var index = (int) UnityEngine.Random.value * max;
-            if (index == max) {
-                index--;
-            }
-
-            return list[index];
+            return list[UnityEngine.Random.Range(0, list.Count)];
         }
 
         public static E RandomElement<E>(this IList<E> list, Random random) {
