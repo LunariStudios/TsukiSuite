@@ -1,9 +1,31 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using UnityEngine;
 
 namespace UnityUtilities {
     [Serializable]
     public struct ColorHSV {
+        public bool Equals(ColorHSV other) {
+            return Mathf.Approximately(h, other.h) && Mathf.Approximately(s, other.s) &&
+                   Mathf.Approximately(v, other.v) && Mathf.Approximately(a, other.a);
+        }
+
+        public override bool Equals(object obj) {
+            if (ReferenceEquals(null, obj)) return false;
+            return obj is ColorHSV && Equals((ColorHSV) obj);
+        }
+
+        [SuppressMessage("ReSharper", "NonReadonlyMemberInGetHashCode")]
+        public override int GetHashCode() {
+            unchecked {
+                var hashCode = h.GetHashCode();
+                hashCode = (hashCode * 397) ^ s.GetHashCode();
+                hashCode = (hashCode * 397) ^ v.GetHashCode();
+                hashCode = (hashCode * 397) ^ a.GetHashCode();
+                return hashCode;
+            }
+        }
+    
         public static readonly ColorHSV Red = Color.red;
         public static readonly ColorHSV Green = Color.green;
         public static readonly ColorHSV Blue = Color.blue;
