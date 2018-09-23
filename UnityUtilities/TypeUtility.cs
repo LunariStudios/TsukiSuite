@@ -30,10 +30,14 @@ namespace UnityUtilities {
             KnownAssemblies.Add(assembly);
         }
 
-        public static IEnumerable<Type> GetAllTypesOf<T>() {
+        public static IEnumerable<Type> GetAllTypesOf<T>(bool excludeSelf = true) {
             var target = typeof(T);
             foreach (var assembly in KnownAssemblies) {
                 foreach (var type in assembly.GetTypes()) {
+                    if (excludeSelf && type == target) {
+                        continue;
+                    }
+
                     if (target.IsAssignableFrom(type)) {
                         yield return type;
                     }
