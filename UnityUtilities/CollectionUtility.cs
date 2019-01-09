@@ -35,7 +35,7 @@ namespace UnityUtilities {
         }
 
         public static bool IsNullOrEmpty(this IEnumerable enumerable) {
-            return enumerable == null || !enumerable.IsEmpty();
+            return enumerable == null || enumerable.IsEmpty();
         }
 
         public static bool IsNullOrEmpty(this ICollection collection) {
