@@ -3,9 +3,9 @@ using System.Runtime.InteropServices;
 
 [assembly: AssemblyTitle("Tsuki-Runtime")]
 [assembly: AssemblyDescription("A set of libraries created for improving workflow on the Unity Engine")]
-[assembly: AssemblyCompany("LAJE Studio")]
+[assembly: AssemblyCompany("Lunari Studios")]
 [assembly: AssemblyProduct("Tsuki-Runtime")]
-[assembly: AssemblyCopyright("Copyright © 2018")]
+[assembly: AssemblyCopyright("Copyright © 2019")]
+[assembly: AssemblyVersion("1.0.0.0")]
 [assembly: ComVisible(false)]
 [assembly: Guid("CD6BFA86-1DAE-4E6D-99EA-7EED02389F2B")]
-[assembly: AssemblyVersion("1.0.0.0")]
