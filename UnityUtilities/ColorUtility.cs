@@ -2,6 +2,15 @@
 
 namespace UnityUtilities {
     public static class ColorUtility {
+        public static Color Random(float alpha = 1) {
+            return new Color(
+                UnityEngine.Random.value,
+                UnityEngine.Random.value,
+                UnityEngine.Random.value,
+                alpha
+            );
+        }
+
         /// <summary>
         /// Copies this color, and return a new color with the modified brightness set to <see cref="brightness"/>
         /// </summary>
