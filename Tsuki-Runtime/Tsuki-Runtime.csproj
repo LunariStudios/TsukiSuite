@@ -1,7 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
     <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')"/>
-    <Import Project="$(SolutionDir)\Lunari.Tsuki.Suite.props"/>
+    <Import Project="..\Lunari.Tsuki.Suite.props"/>
+    <Target Name="BeforeBuild">
+        <Message Text="Project File Name = $(MSBuildProjectFile)" />
+        <Message Text="Solution Dir= $(SolutionDir)" />
+        <Message Text="Project Extension = $(MSBuildProjectExtension)" />
+    </Target>
+
     <PropertyGroup>
         <AssemblyName>Tsuki-Runtime</AssemblyName>
         <Description>A set of libraries created for improving workflow on the Unity Engine</Description>
