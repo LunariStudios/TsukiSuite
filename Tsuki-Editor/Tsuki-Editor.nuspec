@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package>
+    <metadata>
+        <id>Lunari.Tsuki.Editor</id>
+        <version>$version$</version>
+        <title>Tsuki</title>
+        <authors>Bruno Silva Freire</authors>
+        <owners>Lunari Studios</owners>
+        <description>$description$</description>
+        <licenseUrl>https://github.com/LunariStudios/TsukiSuite/blob/master/LICENSE.md</licenseUrl>
+        <projectUrl>https://github.com/LunariStudios/TsukiSuite</projectUrl>
+        <iconUrl>
+            https://github.com/LunariStudios/TsukiSuite/blob/master/Tsuki-Assets/128w/TsukiLogo_White_128px.png?raw=true
+        </iconUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <copyright>$copyright$</copyright>
+        <tags>Unity C#</tags>
+    </metadata>
+</package>

@@ -14,6 +14,18 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Root", "Root", "{2359B599-F
 ProjectSection(SolutionItems) = preProject
 	README.md = README.md
 	LICENSE.md = LICENSE.md
+	Lunari.Tsuki.Suite.props = Lunari.Tsuki.Suite.props
+EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Assets", "Assets", "{2A82C834-4836-426C-A41E-A3AB6FC399E5}"
+ProjectSection(SolutionItems) = preProject
+	Tsuki-Assets\128w\TsukiLogo_Black_128px.png = Tsuki-Assets\128w\TsukiLogo_Black_128px.png
+	Tsuki-Assets\128w\TsukiLogo_White_128px.png = Tsuki-Assets\128w\TsukiLogo_White_128px.png
+	Tsuki-Assets\1x\TsukiLogo_Black_Original.png = Tsuki-Assets\1x\TsukiLogo_Black_Original.png
+	Tsuki-Assets\1x\TsukiLogo_White_Original.png = Tsuki-Assets\1x\TsukiLogo_White_Original.png
+	Tsuki-Assets\SVG\TsukiLogo_Black_SVG.svg = Tsuki-Assets\SVG\TsukiLogo_Black_SVG.svg
+	Tsuki-Assets\SVG\TsukiLogo_White_SVG.svg = Tsuki-Assets\SVG\TsukiLogo_White_SVG.svg
+	Tsuki-Assets\Logo.ai = Tsuki-Assets\Logo.ai
 EndProjectSection
 EndProject
 Global

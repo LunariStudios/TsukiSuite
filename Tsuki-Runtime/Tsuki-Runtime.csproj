@@ -1,80 +1,74 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
-  <PropertyGroup>
-    <PackageId>Lunari.Tsuki</PackageId>
-    <Version>1.0.0</Version>
-    <Author>Bruno Silva Freire</Author>
-    <Company>Lunari Studios</Company>
-    <Description>A set of libraries created for improving workflow on the Unity Engine</Description>
-    <RepositoryUrl>https://github.com/LunariStudios/TsukiSuite</RepositoryUrl>
-    <PackageTags>Unity;C#</PackageTags>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
-    <OutputType>Library</OutputType>
-    <RootNamespace>Lunari.Tsuki</RootNamespace>
-    <AssemblyName>Tsuki-Runtime</AssemblyName>
-    <FileAlignment>512</FileAlignment>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\Libraries\UnityEngine.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\Libraries\UnityEngine.UI.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="AbstractGizmosSchedulable.cs" />
-    <Compile Include="AnimationUtility.cs" />
-    <Compile Include="Exceptions\WTFException.cs" />
-    <Compile Include="GameObjectUtility.cs" />
-    <Compile Include="Misc\GroupTypes.cs" />
-    <Compile Include="ObjectUtility.cs" />
-    <Compile Include="CollectionUtility.cs" />
-    <Compile Include="ColorHSV.cs" />
-    <Compile Include="ColorUtility.cs" />
-    <Compile Include="CoroutineUtility.cs" />
-    <Compile Include="DebugUtility.cs" />
-    <Compile Include="EnumUtility.cs" />
-    <Compile Include="Logging\UnityLogger.cs" />
-    <Compile Include="Misc\Bounds2D.cs" />
-    <Compile Include="Misc\Direction.cs" />
-    <Compile Include="Misc\SerializableInterface.cs" />
-    <Compile Include="Misc\Tracker.cs" />
-    <Compile Include="Misc\UnitValue.cs" />
-    <Compile Include="NumberUtility.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RandomUtility.cs" />
-    <Compile Include="RectUtility.cs" />
-    <Compile Include="Singletons\ScriptableSingleton.cs" />
-    <Compile Include="Singletons\Singleton.cs" />
-    <Compile Include="TextureUtility.cs" />
-    <Compile Include="TypeUtility.cs" />
-    <Compile Include="UIUtility.cs" />
-    <Compile Include="VectorUtility.cs" />
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+    <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')"/>
+    <Import Project="$(SolutionDir)\Lunari.Tsuki.Suite.props"/>
+    <PropertyGroup>
+        <AssemblyName>Tsuki-Runtime</AssemblyName>
+        <Description>A set of libraries created for improving workflow on the Unity Engine</Description>
+        <RootNamespace>Lunari.Tsuki</RootNamespace>
+        <ProjectGuid>{514403C5-C91E-441F-9B99-8732947A6238}</ProjectGuid>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+        <PlatformTarget>AnyCPU</PlatformTarget>
+        <DebugSymbols>true</DebugSymbols>
+        <DebugType>full</DebugType>
+        <Optimize>false</Optimize>
+        <OutputPath>bin\Debug\</OutputPath>
+        <DefineConstants>DEBUG;TRACE</DefineConstants>
+        <ErrorReport>prompt</ErrorReport>
+        <WarningLevel>4</WarningLevel>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+        <PlatformTarget>AnyCPU</PlatformTarget>
+        <DebugType>pdbonly</DebugType>
+        <Optimize>true</Optimize>
+        <OutputPath>bin\Release\</OutputPath>
+        <DefineConstants>TRACE</DefineConstants>
+        <ErrorReport>prompt</ErrorReport>
+        <WarningLevel>4</WarningLevel>
+    </PropertyGroup>
+    <ItemGroup>
+        <Reference Include="System"/>
+        <Reference Include="System.Core"/>
+        <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+            <HintPath>..\Libraries\UnityEngine.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.UI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+            <HintPath>..\Libraries\UnityEngine.UI.dll</HintPath>
+        </Reference>
+    </ItemGroup>
+    <ItemGroup>
+        <Compile Include="AbstractGizmosSchedulable.cs"/>
+        <Compile Include="AnimationUtility.cs"/>
+        <Compile Include="Exceptions\WTFException.cs"/>
+        <Compile Include="GameObjectUtility.cs"/>
+        <Compile Include="Misc\GroupTypes.cs"/>
+        <Compile Include="ObjectUtility.cs"/>
+        <Compile Include="CollectionUtility.cs"/>
+        <Compile Include="ColorHSV.cs"/>
+        <Compile Include="ColorUtility.cs"/>
+        <Compile Include="CoroutineUtility.cs"/>
+        <Compile Include="DebugUtility.cs"/>
+        <Compile Include="EnumUtility.cs"/>
+        <Compile Include="Logging\UnityLogger.cs"/>
+        <Compile Include="Misc\Bounds2D.cs"/>
+        <Compile Include="Misc\Direction.cs"/>
+        <Compile Include="Misc\SerializableInterface.cs"/>
+        <Compile Include="Misc\Tracker.cs"/>
+        <Compile Include="Misc\UnitValue.cs"/>
+        <Compile Include="NumberUtility.cs"/>
+        <Compile Include="Properties\AssemblyInfo.cs"/>
+        <Compile Include="RandomUtility.cs"/>
+        <Compile Include="RectUtility.cs"/>
+        <Compile Include="Singletons\ScriptableSingleton.cs"/>
+        <Compile Include="Singletons\Singleton.cs"/>
+        <Compile Include="TextureUtility.cs"/>
+        <Compile Include="TypeUtility.cs"/>
+        <Compile Include="UIUtility.cs"/>
+        <Compile Include="VectorUtility.cs"/>
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="Tsuki-Runtime.nuspec"/>
+    </ItemGroup>
+    <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>
 </Project>
