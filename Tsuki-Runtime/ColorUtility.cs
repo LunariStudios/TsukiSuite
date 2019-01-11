@@ -2,6 +2,11 @@
 
 namespace Lunari.Tsuki {
     public static class ColorUtility {
+        /// <summary>
+        /// Creates a random color with the provided <see cref="alpha"/> value
+        /// </summary>
+        /// <param name="alpha">The alpha value of the random color</param>
+        /// <returns>A randomly generated color</returns>
         public static Color Random(float alpha = 1) {
             return new Color(
                 UnityEngine.Random.value,
