@@ -23,19 +23,17 @@ namespace Lunari.Tsuki {
             return f ? f : obj.AddComponent<T>();
         }
 
-        public static bool IsNotNull(this object obj) {
-            return !obj.IsNull();
+        public static bool IsNotNullUnityWise(this object obj) {
+            return !obj.IsNullUnityWise();
         }
 
-        public static bool IsNull(this object obj) {
+        public static bool IsNullUnityWise(this object obj) {
             if (obj == null) {
                 return true;
             }
 
-            var o = obj as Object;
-            if (o != null) {
-                // Because Unity
-                // ReSharper disable once ConditionIsAlwaysTrueOrFalse
+            if (obj is Object o) {
+                // Check if native object is alive
                 return o == null;
             }
 

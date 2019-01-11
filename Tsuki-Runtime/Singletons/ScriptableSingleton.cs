@@ -5,10 +5,6 @@ namespace Lunari.Tsuki.Singletons {
         private static readonly string Path = typeof(T).Name;
         private static T instance;
 
-        public static T Instance {
-            get {
-                return instance ? instance : (instance = Resources.Load<T>(Path));
-            }
-        }
+        public static T Instance => instance ? instance : instance = Resources.Load<T>(Path);
     }
 }
