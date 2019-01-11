@@ -2,9 +2,15 @@
 using System.Diagnostics.CodeAnalysis;
 using UnityEngine;
 
+
 namespace Lunari.Tsuki {
     [Serializable]
     public struct ColorHSV {
+        public static void Main(string[] args) {
+ColorHSV colorHSV = new ColorHSV(0, 1, 1, 1);
+Color c = colorHSV;
+        }
+
         public bool Equals(ColorHSV other) {
             return Mathf.Approximately(h, other.h) && Mathf.Approximately(s, other.s) &&
                    Mathf.Approximately(v, other.v) && Mathf.Approximately(a, other.a);
@@ -12,7 +18,7 @@ namespace Lunari.Tsuki {
 
         public override bool Equals(object obj) {
             if (ReferenceEquals(null, obj)) return false;
-            return obj is ColorHSV && Equals((ColorHSV) obj);
+            return obj is ColorHSV hsv && Equals(hsv);
         }
 
         [SuppressMessage("ReSharper", "NonReadonlyMemberInGetHashCode")]
@@ -25,7 +31,7 @@ namespace Lunari.Tsuki {
                 return hashCode;
             }
         }
-    
+
         public static readonly ColorHSV Red = Color.red;
         public static readonly ColorHSV Green = Color.green;
         public static readonly ColorHSV Blue = Color.blue;
@@ -60,39 +66,23 @@ namespace Lunari.Tsuki {
         }
 
         public float H {
-            get {
-                return h;
-            }
-            set {
-                h = value;
-            }
+            get => h;
+            set => h = value;
         }
 
         public float S {
-            get {
-                return s;
-            }
-            set {
-                s = value;
-            }
+            get => s;
+            set => s = value;
         }
 
         public float V {
-            get {
-                return v;
-            }
-            set {
-                v = value;
-            }
+            get => v;
+            set => v = value;
         }
 
         public float A {
-            get {
-                return a;
-            }
-            set {
-                a = value;
-            }
+            get => a;
+            set => a = value;
         }
 
         public static ColorHSV operator +(ColorHSV a, ColorHSV v) {
@@ -137,9 +127,7 @@ namespace Lunari.Tsuki {
                 a.a + (v.a - a.a) * t);
         }
 
-        public string ToString(string format) {
-            return string.Format("HSVA({0}, {1}, {2}, {3})", h, s, v, a);
-        }
+        public string ToString(string format) => $"HSVA({h}, {s}, {v}, {a})";
 
         public static implicit operator Vector4(ColorHSV c) {
             return new Vector4(c.h, c.s, c.v, c.a);

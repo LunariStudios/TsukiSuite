@@ -3,7 +3,7 @@
 namespace Lunari.Tsuki {
     public static class VectorUtility {
         public static string ToPrecisionString(this Vector2 vector) {
-            return string.Format("({0}, {1})", vector.x, vector.y);
+            return $"({vector.x}, {vector.y})";
         }
 
         public static Vector2 Multiply(this Vector2 a, Vector2 b) {
