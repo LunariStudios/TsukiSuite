@@ -12,10 +12,22 @@ namespace Lunari.Tsuki {
         public static readonly Texture2D YellowTexture = PixelTexture(Color.yellow);
         public static readonly Texture2D GreyTexture = PixelTexture(Color.grey);
 
+        /// <summary>
+        /// Create a 1x1 texture of the provided color
+        /// </summary>
+        /// <param name="color">The color of the texture</param>
+        /// <returns>A 1x1 texture of the provided color</returns>
         public static Texture2D PixelTexture(Color32 color) {
             return ColorTexture(color, 1, 1);
         }
 
+        /// <summary>
+        /// Creates a texture of the provided size and fills it with the provided color
+        /// </summary>
+        /// <param name="color">The color of the texture</param>
+        /// <param name="width">The width of the texture</param>
+        /// <param name="height">The height of the texture</param>
+        /// <returns>A 1x1 texture of the provided color</returns>
         public static Texture2D ColorTexture(Color32 color, int width, int height) {
             var texture2D = new Texture2D(width, height);
             var pixels = new Color32[width * height];

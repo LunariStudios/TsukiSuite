@@ -13,9 +13,7 @@ namespace Lunari.Tsuki {
             where T : Component {
             var obj = new GameObject();
             var comp = obj.AddComponent<T>();
-            if (initializer != null) {
-                initializer(comp);
-            }
+            initializer?.Invoke(comp);
 
             return new Tuple<GameObject, T>(obj, comp);
         }
