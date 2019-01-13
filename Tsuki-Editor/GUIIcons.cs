@@ -1,5 +1,12 @@
+using UnityEditor;
+using UnityEngine;
+
 namespace Lunari.Tsuki.Editor {
     public static class GUIIcons {
+        public static Texture GetIcon(string key) {
+            return EditorGUIUtility.IconContent(key).image;
+        }
+
         public const string ScriptableObject_Icon = "ScriptableObject Icon";
         public const string Clipboard = "Clipboard";
         public const string SocialNetworks_UDNOpen = "SocialNetworks.UDNOpen";
