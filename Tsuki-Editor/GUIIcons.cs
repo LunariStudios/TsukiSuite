@@ -1,3 +1,4 @@
+using System;
 using UnityEditor;
 using UnityEngine;
 
@@ -5,6 +6,15 @@ namespace Lunari.Tsuki.Editor {
     public static class GUIIcons {
         public static Texture GetIcon(string key) {
             return EditorGUIUtility.IconContent(key).image;
+        }
+
+        public static Texture FindUnityIcon(this Type type, string defaultIcon = dll_Script_Icon) {
+            var tex = EditorGUIUtility.ObjectContent(null, type).image;
+            if (tex == null) {
+                tex = EditorGUIUtility.IconContent(defaultIcon).image;
+            }
+
+            return tex;
         }
 
         public const string ScriptableObject_Icon = "ScriptableObject Icon";
@@ -42,6 +52,7 @@ namespace Lunari.Tsuki.Editor {
         public const string TextAsset_Icon = "TextAsset Icon";
         public const string Shader_Icon = "Shader Icon";
         public const string boo_Script_Icon = "boo Script Icon";
+        public const string dll_Script_Icon = "dll Script Icon";
         public const string cs_Script_Icon = "cs Script Icon";
         public const string js_Script_Icon = "js Script Icon";
         public const string Prefab_Icon = "Prefab Icon";
