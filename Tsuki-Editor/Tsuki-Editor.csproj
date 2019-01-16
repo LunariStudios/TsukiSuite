@@ -46,6 +46,7 @@
     <Compile Include="GUISkinProperties.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TypeSelectorContent.cs" />
+    <Compile Include="Utilities\ModularContent.cs" />
     <Compile Include="Utilities\SerializedUtility.cs" />
   </ItemGroup>
   <ItemGroup>
