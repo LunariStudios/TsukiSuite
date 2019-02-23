@@ -1,5 +1,8 @@
-﻿namespace Lunari.Tsuki.Editor {
-    public static class GUISkinProperties {
+﻿using UnityEditor;
+using UnityEngine;
+
+namespace Lunari.Tsuki.Editor {
+    public static class GUIStyles {
         public const string box = "box";
         public const string button = "button";
         public const string toggle = "toggle";

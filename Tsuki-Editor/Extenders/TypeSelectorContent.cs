@@ -8,7 +8,7 @@ using UnityEditor;
 using UnityEditor.IMGUI.Controls;
 using UnityEngine;
 
-namespace Lunari.Tsuki.Editor {
+namespace Lunari.Tsuki.Editor.Extenders {
     public sealed class TypeSelectorButton {
         private Rect lastRect;
         private readonly TypeSelectorPopupContent selector;
@@ -183,7 +183,7 @@ namespace Lunari.Tsuki.Editor {
                     var height = groupStyle.CalcHeight(content, itemRect.width);
                     itemRect.height = height;
                     var fwdArrow = EditorGUIUtility.GetBuiltinSkin(EditorSkin.Inspector)
-                        .GetStyle(GUISkinProperties.ACRightArrow);
+                        .GetStyle(GUIStyles.ACRightArrow);
                     if (Event.current.type == EventType.Repaint) {
                         fwdArrow.Draw(itemRect.SetXMin(itemRect.xMax - itemRect.height), false, false, false, false);
                     }
@@ -333,7 +333,7 @@ namespace Lunari.Tsuki.Editor {
                 EditorGUI.LabelField(labelRect, pathContent, pStyle);
                 if (!IsAtRoot) {
                     var backArrow = EditorGUIUtility.GetBuiltinSkin(EditorSkin.Inspector)
-                        .GetStyle(GUISkinProperties.ACLeftArrow);
+                        .GetStyle(GUIStyles.ACLeftArrow);
                     var returnRect = labelRect.SetXMax(labelRect.x + labelRect.height);
                     if (GUI.Button(returnRect, GUIContent.none, backArrow)) {
                         Path.Pop();

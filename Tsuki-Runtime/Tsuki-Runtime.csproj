@@ -66,6 +66,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RandomUtility.cs" />
     <Compile Include="RectUtility.cs" />
+    <Compile Include="Scopes\GUIColorScope.cs" />
     <Compile Include="Singletons\ScriptableSingleton.cs" />
     <Compile Include="Singletons\Singleton.cs" />
     <Compile Include="TextureUtility.cs" />

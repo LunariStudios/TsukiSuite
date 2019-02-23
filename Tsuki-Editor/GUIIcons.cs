@@ -13,7 +13,6 @@ namespace Lunari.Tsuki.Editor {
             if (tex == null) {
                 tex = EditorGUIUtility.IconContent(defaultIcon).image;
             }
-
             return tex;
         }
 
