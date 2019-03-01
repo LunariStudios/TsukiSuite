@@ -6,10 +6,6 @@ using UnityEngine;
 namespace Lunari.Tsuki {
     [Serializable]
     public struct ColorHSV {
-        public static void Main(string[] args) {
-ColorHSV colorHSV = new ColorHSV(0, 1, 1, 1);
-Color c = colorHSV;
-        }
 
         public bool Equals(ColorHSV other) {
             return Mathf.Approximately(h, other.h) && Mathf.Approximately(s, other.s) &&
