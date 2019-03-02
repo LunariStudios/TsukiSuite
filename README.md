@@ -1,7 +1,7 @@
 # <img src="https://github.com/LunariStudios/TsukiSuite/blob/master/Tsuki-Assets/128w/TsukiLogo_Black_128px.png?raw=true"/> TsukiSuite
 <p>
-    <img src="https://img.shields.io/github/license/LAJE-Studio/UnityUtilities.svg">
-    <img src="https://img.shields.io/github/last-commit/LAJE-Studio/UnityUtilities.svg">
+    <img src="https://img.shields.io/github/license/LunariStudios/TsukiSuite.svg">
+    <img src="https://img.shields.io/github/last-commit/LunariStudios/TsukiSuite.svg">
 </p>
 
 TsukiSuit is an open source, free for commercial use group of libraries created for making Unity Development more pleasant.    
