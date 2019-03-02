@@ -1,6 +1,15 @@
 using System;
 
 namespace Lunari.Tsuki.Editor.Utilities {
+    /// <summary>
+    /// Represent a value that may be static or dynamic in relation to a context.
+    /// <br/>
+    /// The most clear use of this is for easily creating GUIContent on editors.
+    /// <example>
+    /// See <see cref="Lunari.Tsuki.Editor.Extenders.TypeSelectorButton"/>.
+    /// </example>
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public class ModularContent<T> {
         private readonly T staticContent;
         private readonly Func<T> dynamicContent;

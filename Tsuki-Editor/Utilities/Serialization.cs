@@ -4,7 +4,7 @@ using UnityEditor;
 using UnityEngine;
 
 namespace Lunari.Tsuki.Editor.Utilities {
-    public static class SerializedUtility {
+    public static class Serialization {
         /// <summary>
         /// Finds the instance of the serialized property inside the object that the <see cref="property"/> exists in.
         /// </summary>
