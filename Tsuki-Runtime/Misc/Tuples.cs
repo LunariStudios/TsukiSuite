@@ -14,8 +14,8 @@
         }
     }
 
-    public sealed class Triple<A, B, C> {
-        public Triple(A first, B second, C third) {
+    public sealed class Tuple<A, B, C> {
+        public Tuple(A first, B second, C third) {
             First = first;
             Second = second;
             Third = third;
