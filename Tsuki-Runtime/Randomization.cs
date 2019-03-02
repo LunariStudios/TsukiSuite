@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 namespace Lunari.Tsuki {
-    public static class RandomUtility {
+    public static class Randomization {
         public static bool NextBool() {
             return Random.value > 0.5;
         }

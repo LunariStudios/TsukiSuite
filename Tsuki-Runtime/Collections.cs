@@ -23,7 +23,7 @@ namespace Lunari.Tsuki {
         }
     }
 
-    public static class CollectionUtil {
+    public static class Collections {
         public static bool IsEmpty(this IEnumerable enumerable) {
             return !enumerable.Cast<object>().Any();
         }

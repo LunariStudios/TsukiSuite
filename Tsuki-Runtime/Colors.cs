@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 namespace Lunari.Tsuki {
-    public static class ColorUtility {
+    public static class Colors {
         /// <summary>
         /// Creates a random color with the provided <see cref="alpha"/> value
         /// </summary>

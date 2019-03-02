@@ -1,7 +1,7 @@
 using UnityEngine;
 
 namespace Lunari.Tsuki {
-    public static class RectUtility {
+    public static class Rectangles {
         public const float DefaultLineHeight = 16;
 
         public static Rect GetLine(this Rect rect, uint lineIndex, float lineHeight = DefaultLineHeight) {

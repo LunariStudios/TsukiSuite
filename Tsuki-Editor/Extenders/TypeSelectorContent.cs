@@ -113,15 +113,15 @@ namespace Lunari.Tsuki.Editor.Extenders {
             () => {
                 var style = new GUIStyle {
                     hover = {
-                        background = TextureUtility.PixelTexture(new Color32(62, 90, 230, 255)),
+                        background = Textures.Pixel(new Color32(62, 90, 230, 255)),
                         textColor = Color.white
                     },
                     active = {
-                        background = TextureUtility.PixelTexture(new Color32(71, 102, 255, 255)),
+                        background = Textures.Pixel(new Color32(71, 102, 255, 255)),
                         textColor = Color.white
                     },
                     focused = {
-                        background = TextureUtility.PixelTexture(new Color32(62, 90, 230, 255)),
+                        background = Textures.Pixel(new Color32(62, 90, 230, 255)),
                         textColor = Color.white
                     },
                     fontStyle = FontStyle.Bold,
@@ -135,15 +135,15 @@ namespace Lunari.Tsuki.Editor.Extenders {
             () => {
                 var style = new GUIStyle {
                     hover = {
-                        background = TextureUtility.PixelTexture(new Color32(62, 125, 231, 255)),
+                        background = Textures.Pixel(new Color32(62, 125, 231, 255)),
                         textColor = Color.white
                     },
                     active = {
-                        background = TextureUtility.PixelTexture(new Color32(69, 140, 255, 255)),
+                        background = Textures.Pixel(new Color32(69, 140, 255, 255)),
                         textColor = Color.white
                     },
                     focused = {
-                        background = TextureUtility.PixelTexture(new Color32(55, 112, 204, 255)),
+                        background = Textures.Pixel(new Color32(55, 112, 204, 255)),
                         textColor = Color.white
                     },
                     padding = new RectOffset(5, 5, 5, 5)
@@ -263,7 +263,7 @@ namespace Lunari.Tsuki.Editor.Extenders {
             rootGroup = new TypeSelectorGroup("Root");
             var types = new List<Type>();
             foreach (var validType in validTypes) {
-                types.AddRange(TypeUtility.GetAllTypesOf(validType));
+                types.AddRange(Types.GetAllTypesOf(validType));
             }
 
             foreach (var type in types) {

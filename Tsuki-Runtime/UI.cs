@@ -1,7 +1,7 @@
 ﻿using UnityEngine.UI;
 
 namespace Lunari.Tsuki {
-    public static class UIUtility {
+    public static class UI {
         public static void SetAlpha(this Graphic graphic, float alpha) {
             var c = graphic.color;
             c.a = alpha;
@@ -28,19 +28,19 @@ namespace Lunari.Tsuki {
 
         public static void SetHue(this Graphic graphic, float hue) {
             var c = graphic.color;
-            ColorUtility.SetHue(ref c, hue);
+            Colors.SetHue(ref c, hue);
             graphic.color = c;
         }
 
         public static void SetSaturation(this Graphic graphic, float saturation) {
             var c = graphic.color;
-            ColorUtility.SetSaturation(ref c, saturation);
+            Colors.SetSaturation(ref c, saturation);
             graphic.color = c;
         }
 
         public static void SetBrightness(this Graphic graphic, float brightness) {
             var c = graphic.color;
-            ColorUtility.SetBrightness(ref c, brightness);
+            Colors.SetBrightness(ref c, brightness);
             graphic.color = c;
         }
     }
