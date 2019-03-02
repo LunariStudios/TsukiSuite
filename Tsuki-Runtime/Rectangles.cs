@@ -4,6 +4,11 @@ namespace Lunari.Tsuki {
     public static class Rectangles {
         public const float DefaultLineHeight = 16;
 
+        /// <summary>
+        /// Returns a Rect that correspond to what would be an "editor line" on the specified <see cref="lineHeight"/>
+        /// on the specified <see cref="lineIndex"/>.
+        /// </summary>
+        /// <param name="rect">The original Rect.</param>
         public static Rect GetLine(this Rect rect, uint lineIndex, float lineHeight = DefaultLineHeight) {
             var r = rect;
             r.height = lineHeight;
@@ -11,6 +16,11 @@ namespace Lunari.Tsuki {
             return r;
         }
 
+        /// <summary>
+        /// Returns a Rect that correspond to what would be an "vertical editor line" on the specified <see cref="columnHeight"/>
+        /// on the specified <see cref="columnIndex"/>.
+        /// </summary>
+        /// <param name="rect">The original Rect.</param>
         public static Rect GetColumn(this Rect rect, uint columnIndex, float columnWidth) {
             var r = rect;
             r.width = columnWidth;
