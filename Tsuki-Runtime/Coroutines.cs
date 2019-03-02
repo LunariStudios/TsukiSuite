@@ -2,7 +2,7 @@
 using UnityEngine;
 
 namespace Lunari.Tsuki {
-    public static class CoroutineUtility {
+    public static class Coroutines {
         /// <summary>
         /// If the provided coroutine is not null, cancels that, and start a new coroutine, replacing the old one. 
         /// </summary>

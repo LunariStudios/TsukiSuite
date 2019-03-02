@@ -2,7 +2,7 @@
 using UnityEngine;
 
 namespace Lunari.Tsuki {
-    public static class AnimationUtility {
+    public static class Animations {
         public static bool HasParameter(this Animator animator, string parameter) {
             return animator.parameters.Any(p => p.name == parameter);
         }

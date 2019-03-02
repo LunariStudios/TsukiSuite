@@ -1,7 +1,7 @@
 ﻿using System;
 
 namespace Lunari.Tsuki {
-    public static class NumberUtility {
+    public static class Numbers {
         public static string ToHex(this int value) {
             return BitConverter.ToString(BitConverter.GetBytes(value));
         }

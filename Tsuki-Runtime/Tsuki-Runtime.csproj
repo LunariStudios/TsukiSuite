@@ -44,36 +44,36 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AbstractGizmosSchedulable.cs" />
-    <Compile Include="AnimationUtility.cs" />
+    <Compile Include="Animations.cs" />
     <Compile Include="Exceptions\WTFException.cs" />
-    <Compile Include="GameObjectUtility.cs" />
+    <Compile Include="GameObjects.cs" />
     <Compile Include="Misc\Axis.cs" />
     <Compile Include="Misc\Tuples.cs" />
     <Compile Include="Misc\Lazy.cs" />
-    <Compile Include="ObjectUtility.cs" />
-    <Compile Include="CollectionUtility.cs" />
+    <Compile Include="Objects.cs" />
+    <Compile Include="Collections.cs" />
     <Compile Include="ColorHSV.cs" />
-    <Compile Include="ColorUtility.cs" />
-    <Compile Include="CoroutineUtility.cs" />
-    <Compile Include="DebugUtility.cs" />
-    <Compile Include="EnumUtility.cs" />
+    <Compile Include="Colors.cs" />
+    <Compile Include="Coroutines.cs" />
+    <Compile Include="Debugging.cs" />
+    <Compile Include="Enums.cs" />
     <Compile Include="Logging\UnityLogger.cs" />
     <Compile Include="Misc\Bounds2D.cs" />
     <Compile Include="Misc\Direction.cs" />
     <Compile Include="Misc\SerializableInterface.cs" />
     <Compile Include="Misc\Tracker.cs" />
     <Compile Include="Misc\UnitValue.cs" />
-    <Compile Include="NumberUtility.cs" />
+    <Compile Include="Numbers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RandomUtility.cs" />
-    <Compile Include="RectUtility.cs" />
+    <Compile Include="Randomization.cs" />
+    <Compile Include="Rectangles.cs" />
     <Compile Include="Scopes\GUIColorScope.cs" />
     <Compile Include="Singletons\ScriptableSingleton.cs" />
     <Compile Include="Singletons\Singleton.cs" />
-    <Compile Include="TextureUtility.cs" />
-    <Compile Include="TypeUtility.cs" />
-    <Compile Include="UIUtility.cs" />
-    <Compile Include="VectorUtility.cs" />
+    <Compile Include="Textures.cs" />
+    <Compile Include="Types.cs" />
+    <Compile Include="UI.cs" />
+    <Compile Include="Vectors.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Tsuki-Runtime.nuspec" />

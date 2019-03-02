@@ -5,7 +5,7 @@ using System.Reflection;
 using System.Text;
 
 namespace Lunari.Tsuki {
-    public static class TypeUtility {
+    public static class Types {
         public static T GetCustomAttribute<T>(this Type type, bool inherit = false) where T : Attribute {
             var attr = type.GetCustomAttributes(inherit);
             foreach (var o in attr) {
@@ -148,7 +148,7 @@ namespace Lunari.Tsuki {
             KnownAssemblies.Clear();
         }
 
-        static TypeUtility() {
+        static Types() {
             LoadAssemblies();
             AppDomain.CurrentDomain.AssemblyLoad += OnAssemblyLoaded;
         }

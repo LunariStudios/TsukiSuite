@@ -3,7 +3,7 @@ using Lunari.Tsuki.Misc;
 using UnityEngine;
 
 namespace Lunari.Tsuki {
-    public static class VectorUtility {
+    public static class Vectors {
         /// <summary>
         /// Returns a string with all the decimal plates of this <see cref="vector"/> components. 
         /// </summary>

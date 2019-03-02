@@ -9,7 +9,7 @@ namespace Lunari.Tsuki {
         void DescheduleGizmos(GizmosAction action);
     }
 
-    public static class DebugUtil {
+    public static class Debugging {
         public static void DrawWireBox2D(Vector2 center, Vector2 size) {
             var halfWidth = size.x / 2;
             var halfHeight = size.y / 2;

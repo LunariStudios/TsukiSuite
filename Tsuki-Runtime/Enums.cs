@@ -1,5 +1,5 @@
 ﻿namespace Lunari.Tsuki {
-    public static class EnumUtility {
+    public static class Enums {
         public static bool IsSet(this int enumeration, int mask) {
             return (enumeration & mask) == mask;
         }
