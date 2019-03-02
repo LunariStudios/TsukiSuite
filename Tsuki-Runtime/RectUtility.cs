@@ -19,7 +19,7 @@ namespace Lunari.Tsuki {
         }
 
         /// <summary>
-        ///     Returns a Rect with the specified width.
+        /// Returns a Rect with the specified width.
         /// </summary>
         /// <param name="rect">The original Rect.</param>
         /// <param name="width">The desired width of the new Rect.</param>
@@ -29,7 +29,7 @@ namespace Lunari.Tsuki {
         }
 
         /// <summary>
-        ///     Returns a Rect with the specified height.
+        /// Returns a Rect with the specified height.
         /// </summary>
         /// <param name="rect">The original Rect.</param>
         /// <param name="height">The desired height of the new Rect.</param>
@@ -39,7 +39,7 @@ namespace Lunari.Tsuki {
         }
 
         /// <summary>
-        ///     Returns a Rect with the specified size.
+        /// Returns a Rect with the specified size.
         /// </summary>
         /// <param name="rect">The original Rect.</param>
         /// <param name="width">The desired width of the new Rect.</param>
@@ -51,7 +51,7 @@ namespace Lunari.Tsuki {
         }
 
         /// <summary>
-        ///     Returns a Rect with the specified size.
+        /// Returns a Rect with the specified size.
         /// </summary>
         /// <param name="rect">The original Rect.</param>
         /// <param name="size">The desired size of the new Rect.</param>
@@ -61,7 +61,7 @@ namespace Lunari.Tsuki {
         }
 
         /// <summary>
-        ///     Returns a Rect that has been inserted by the specified amount on the X-axis.
+        /// Returns a Rect that has been inserted by the specified amount on the X-axis.
         /// </summary>
         /// <param name="rect">The original Rect.</param>
         /// <param name="padding">The desired padding.</param>
@@ -72,7 +72,7 @@ namespace Lunari.Tsuki {
         }
 
         /// <summary>
-        ///     Returns a Rect that has been inserted by the specified amount on the X-axis.
+        /// Returns a Rect that has been inserted by the specified amount on the X-axis.
         /// </summary>
         /// <param name="rect">The original Rect.</param>
         /// <param name="left">Desired padding on the left side.</param>
@@ -84,7 +84,7 @@ namespace Lunari.Tsuki {
         }
 
         /// <summary>
-        ///     Returns a Rect that has been inserted by the specified amount on the Y-axis.
+        /// Returns a Rect that has been inserted by the specified amount on the Y-axis.
         /// </summary>
         /// <param name="rect">The original Rect.</param>
         /// <param name="padding">The desired padding.</param>
@@ -95,7 +95,7 @@ namespace Lunari.Tsuki {
         }
 
         /// <summary>
-        ///     Returns a Rect that has been inserted by the specified amount on the Y-axis.
+        /// Returns a Rect that has been inserted by the specified amount on the Y-axis.
         /// </summary>
         /// <param name="rect">The original Rect.</param>
         /// <param name="top">The desired padding on the top.</param>
@@ -107,7 +107,7 @@ namespace Lunari.Tsuki {
         }
 
         /// <summary>
-        ///     Returns a Rect that has been inserted by the specified amount.
+        /// Returns a Rect that has been inserted by the specified amount.
         /// </summary>
         /// <param name="rect">The original Rect.</param>
         /// <param name="padding">The desired padding.</param>
@@ -118,7 +118,7 @@ namespace Lunari.Tsuki {
         }
 
         /// <summary>
-        ///     Returns a Rect that has been inserted by the specified amount.
+        /// Returns a Rect that has been inserted by the specified amount.
         /// </summary>
         /// <param name="rect">The original Rect.</param>
         /// <param name="horizontal">The desired horizontal padding.</param>
@@ -130,7 +130,7 @@ namespace Lunari.Tsuki {
         }
 
         /// <summary>
-        ///     Returns a Rect that has been inserted by the specified amount.
+        /// Returns a Rect that has been inserted by the specified amount.
         /// </summary>
         /// <param name="rect">The original Rect.</param>
         /// <param name="left">The desired padding on the left.</param>
@@ -144,7 +144,7 @@ namespace Lunari.Tsuki {
         }
 
         /// <summary>
-        ///     Returns a Rect, with the specified width, that has been aligned to the left of the original Rect.
+        /// Returns a Rect, with the specified width, that has been aligned to the left of the original Rect.
         /// </summary>
         /// <param name="rect">The original Rect.</param>
         /// <param name="width">The desired width of the new Rect.</param>
@@ -154,7 +154,7 @@ namespace Lunari.Tsuki {
         }
 
         /// <summary>
-        ///     Returns a Rect, with the specified width, that has been aligned to horizontal center of the original Rect.
+        /// Returns a Rect, with the specified width, that has been aligned to horizontal center of the original Rect.
         /// </summary>
         /// <param name="rect">The original Rect.</param>
         /// <param name="width">The desired width of the new Rect.</param>
@@ -165,7 +165,7 @@ namespace Lunari.Tsuki {
         }
 
         /// <summary>
-        ///     Returns a Rect, with the specified width and height in the center of the provided rect.
+        /// Returns a Rect, with the specified width and height in the center of the provided rect.
         /// </summary>
         /// <param name="rect">The original Rect.</param>
         /// <param name="width">The desired width of the new Rect.</param>
@@ -179,7 +179,7 @@ namespace Lunari.Tsuki {
         }
 
         /// <summary>
-        ///     Returns a Rect, with the specified width, that has been aligned to the right of the original Rect.
+        /// Returns a Rect, with the specified width, that has been aligned to the right of the original Rect.
         /// </summary>
         /// <param name="rect">The original Rect.</param>
         /// <param name="width">The desired width of the new Rect.</param>
@@ -190,7 +190,7 @@ namespace Lunari.Tsuki {
         }
 
         /// <summary>
-        ///     Returns a Rect, with the specified width, that has been aligned to the right of the original Rect.
+        /// Returns a Rect, with the specified width, that has been aligned to the right of the original Rect.
         /// </summary>
         public static Rect AlignRight(this Rect rect, float width, bool clamp) {
             if (clamp) {
@@ -204,7 +204,7 @@ namespace Lunari.Tsuki {
         }
 
         /// <summary>
-        ///     Returns a Rect, with the specified height, that has been aligned to the top of the original Rect.
+        /// Returns a Rect, with the specified height, that has been aligned to the top of the original Rect.
         /// </summary>
         /// <param name="rect">The original Rect.</param>
         /// <param name="height">The desired height of the new Rect.</param>
@@ -214,7 +214,7 @@ namespace Lunari.Tsuki {
         }
 
         /// <summary>
-        ///     Returns a Rect, with the specified height, that has been aligned to the vertical middle of the original Rect.
+        /// Returns a Rect, with the specified height, that has been aligned to the vertical middle of the original Rect.
         /// </summary>
         /// <param name="rect">The original Rect.</param>
         /// <param name="height">The desired height of the new Rect.</param>
@@ -225,7 +225,7 @@ namespace Lunari.Tsuki {
         }
 
         /// <summary>
-        ///     Returns a Rect, with the specified height, that has been aligned to the bottom of the original Rect.
+        /// Returns a Rect, with the specified height, that has been aligned to the bottom of the original Rect.
         /// </summary>
         /// <param name="rect">The original Rect.</param>
         /// <param name="height">The desired height of the new Rect.</param>
@@ -236,7 +236,7 @@ namespace Lunari.Tsuki {
         }
 
         /// <summary>
-        ///     Returns a Rect, with the specified width, that has been aligned horizontally to the center of the original rect.
+        /// Returns a Rect, with the specified width, that has been aligned horizontally to the center of the original rect.
         /// </summary>
         /// <param name="rect">The original Rect.</param>
         /// <param name="width">The desired width of the new Rect.</param>
@@ -247,7 +247,7 @@ namespace Lunari.Tsuki {
         }
 
         /// <summary>
-        ///     Returns a Rect, with the specified height, that has been aligned vertically to the center of the original rect.
+        /// Returns a Rect, with the specified height, that has been aligned vertically to the center of the original rect.
         /// </summary>
         /// <param name="rect">The original Rect.</param>
         /// <param name="height">The desired height of the new Rect.</param>
@@ -258,8 +258,8 @@ namespace Lunari.Tsuki {
         }
 
         /// <summary>
-        ///     Returns a Rect, with the specified width and height, that has been aligned vertically to the center of the original
-        ///     rect.
+        /// Returns a Rect, with the specified width and height, that has been aligned vertically to the center of the original
+        /// rect.
         /// </summary>
         /// <param name="rect">The original Rect.</param>
         /// <param name="size">The desired width and height of the new Rect.</param>
@@ -272,7 +272,7 @@ namespace Lunari.Tsuki {
         }
 
         /// <summary>
-        ///     Returns a Rect that has been expanded by the specified amount.
+        /// Returns a Rect that has been expanded by the specified amount.
         /// </summary>
         /// <param name="rect">The original Rect.</param>
         /// <param name="expand">The desired expansion.</param>
@@ -285,7 +285,7 @@ namespace Lunari.Tsuki {
         }
 
         /// <summary>
-        ///     Returns a Rect that has been expanded by the specified amount.
+        /// Returns a Rect that has been expanded by the specified amount.
         /// </summary>
         /// <param name="rect">The original Rect.</param>
         /// <param name="horizontal">The desired expansion on the X-axis.</param>
@@ -297,7 +297,7 @@ namespace Lunari.Tsuki {
         }
 
         /// <summary>
-        ///     Returns a Rect that has been expanded by the specified amount.
+        /// Returns a Rect that has been expanded by the specified amount.
         /// </summary>
         /// <param name="rect">The original Rect.</param>
         /// <param name="left">The desired expansion on the left.</param>
@@ -311,7 +311,7 @@ namespace Lunari.Tsuki {
         }
 
         /// <summary>
-        ///     Splits a Rect horizontally into the specified number of sub-rects, and returns a sub-rect for the specified index.
+        /// Splits a Rect horizontally into the specified number of sub-rects, and returns a sub-rect for the specified index.
         /// </summary>
         /// <param name="rect">The original Rect.</param>
         /// <param name="index">The index for the subrect. Includes 0, and excludes count.</param>
@@ -324,7 +324,7 @@ namespace Lunari.Tsuki {
         }
 
         /// <summary>
-        ///     Splits a Rect vertically into the specified number of sub-rects, and returns a sub-rect for the specified index.
+        /// Splits a Rect vertically into the specified number of sub-rects, and returns a sub-rect for the specified index.
         /// </summary>
         /// <param name="rect">The original Rect.</param>
         /// <param name="index">The index for the subrect. Includes 0, and excludes count.</param>
@@ -337,7 +337,7 @@ namespace Lunari.Tsuki {
         }
 
         /// <summary>
-        ///     Splits a Rect into a grid from left to right and then down.
+        /// Splits a Rect into a grid from left to right and then down.
         /// </summary>
         /// <param name="rect">The original rect.</param>
         /// <param name="width">The width of a grid cell.</param>
@@ -357,7 +357,7 @@ namespace Lunari.Tsuki {
         }
 
         /// <summary>
-        ///     Splits a Rect into a grid from left to right and then down.
+        /// Splits a Rect into a grid from left to right and then down.
         /// </summary>
         /// <param name="rect">The original rect.</param>
         /// <param name="width">The width of a grid cell.</param>
@@ -377,7 +377,7 @@ namespace Lunari.Tsuki {
         }
 
         /// <summary>
-        ///     Moves a Rect to the specified center X position.
+        /// Moves a Rect to the specified center X position.
         /// </summary>
         /// <param name="rect">The original Rect.</param>
         /// <param name="x">The desired center x position.</param>
@@ -387,7 +387,7 @@ namespace Lunari.Tsuki {
         }
 
         /// <summary>
-        ///     Moves a Rect to the specified center Y position.
+        /// Moves a Rect to the specified center Y position.
         /// </summary>
         /// <param name="rect">The desired original Rect.</param>
         /// <param name="y">The desired desired center y position.</param>
@@ -397,7 +397,7 @@ namespace Lunari.Tsuki {
         }
 
         /// <summary>
-        ///     Moves a Rect to the specified center position.
+        /// Moves a Rect to the specified center position.
         /// </summary>
         /// <param name="rect">The original Rect.</param>
         /// <param name="x">The desired center X position.</param>
@@ -408,7 +408,7 @@ namespace Lunari.Tsuki {
         }
 
         /// <summary>
-        ///     Moves a Rect to the specified center position.
+        /// Moves a Rect to the specified center position.
         /// </summary>
         /// <param name="rect">The original Rect.</param>
         /// <param name="center">The desired center position.</param>
@@ -418,7 +418,7 @@ namespace Lunari.Tsuki {
         }
 
         /// <summary>
-        ///     Moves a Rect to the specified position.
+        /// Moves a Rect to the specified position.
         /// </summary>
         /// <param name="rect">The orignal Rect.</param>
         /// <param name="position">The desired position.</param>
@@ -428,7 +428,7 @@ namespace Lunari.Tsuki {
         }
 
         /// <summary>
-        ///     Resets a Rect's position to zero.
+        /// Resets a Rect's position to zero.
         /// </summary>
         /// <param name="rect">The original Rect.</param>
         public static Rect ResetPosition(this Rect rect) {
@@ -437,7 +437,7 @@ namespace Lunari.Tsuki {
         }
 
         /// <summary>
-        ///     Moves a Rect's position by the specified amount.
+        /// Moves a Rect's position by the specified amount.
         /// </summary>
         /// <param name="rect">The original Rect.</param>
         /// <param name="move">The change in position.</param>
@@ -447,7 +447,7 @@ namespace Lunari.Tsuki {
         }
 
         /// <summary>
-        ///     Moves a Rect's position by the specified amount.
+        /// Moves a Rect's position by the specified amount.
         /// </summary>
         /// <param name="rect">The original Rect.</param>
         /// <param name="x">The x.</param>
@@ -459,7 +459,7 @@ namespace Lunari.Tsuki {
         }
 
         /// <summary>
-        ///     Sets a Rect's X position.
+        /// Sets a Rect's X position.
         /// </summary>
         /// <param name="rect">The original Rect.</param>
         /// <param name="x">The desired X position.</param>
@@ -469,7 +469,7 @@ namespace Lunari.Tsuki {
         }
 
         /// <summary>
-        ///     Adds to a Rect's X position.
+        /// Adds to a Rect's X position.
         /// </summary>
         /// <param name="rect">The original Rect.</param>
         /// <param name="x">The value to add.</param>
@@ -479,7 +479,7 @@ namespace Lunari.Tsuki {
         }
 
         /// <summary>
-        ///     Subtracts from a Rect's X position.
+        /// Subtracts from a Rect's X position.
         /// </summary>
         /// <param name="rect">The original Rect.</param>
         /// <param name="x">The value to subtract.</param>
@@ -489,7 +489,7 @@ namespace Lunari.Tsuki {
         }
 
         /// <summary>
-        ///     Sets a Rect's Y position.
+        /// Sets a Rect's Y position.
         /// </summary>
         /// <param name="rect">The original Rect.</param>
         /// <param name="y">The desired Y position.</param>
@@ -499,7 +499,7 @@ namespace Lunari.Tsuki {
         }
 
         /// <summary>
-        ///     Adds to a Rect's Y position.
+        /// Adds to a Rect's Y position.
         /// </summary>
         /// <param name="rect">The original Rect.</param>
         /// <param name="y">The value to add.</param>
@@ -509,7 +509,7 @@ namespace Lunari.Tsuki {
         }
 
         /// <summary>
-        ///     Subtracts a Rect's Y position.
+        /// Subtracts a Rect's Y position.
         /// </summary>
         /// <param name="rect">The original Rect.</param>
         /// <param name="y">The value to subtract.</param>
@@ -519,7 +519,7 @@ namespace Lunari.Tsuki {
         }
 
         /// <summary>
-        ///     Sets the min position of a Rect.
+        /// Sets the min position of a Rect.
         /// </summary>
         /// <param name="rect">The original Rect.</param>
         /// <param name="min">The desired min position.</param>
@@ -529,7 +529,7 @@ namespace Lunari.Tsuki {
         }
 
         /// <summary>
-        ///     Adds to a Rect's min position.
+        /// Adds to a Rect's min position.
         /// </summary>
         /// <param name="rect">The original rect.</param>
         /// <param name="value">The value to add.</param>
@@ -539,7 +539,7 @@ namespace Lunari.Tsuki {
         }
 
         /// <summary>
-        ///     Subtracts a Rect's min position.
+        /// Subtracts a Rect's min position.
         /// </summary>
         /// <param name="rect">The original Rect.</param>
         /// <param name="value">The vlaue to subtract.</param>
@@ -549,7 +549,7 @@ namespace Lunari.Tsuki {
         }
 
         /// <summary>
-        ///     Sets a Rect's max position.
+        /// Sets a Rect's max position.
         /// </summary>
         /// <param name="rect">The original Rect.</param>
         /// <param name="max">The desired max position.</param>
@@ -559,7 +559,7 @@ namespace Lunari.Tsuki {
         }
 
         /// <summary>
-        ///     Adds to a Rect's max position.
+        /// Adds to a Rect's max position.
         /// </summary>
         /// <param name="rect">The original Rect.</param>
         /// <param name="value">The value to add.</param>
@@ -569,7 +569,7 @@ namespace Lunari.Tsuki {
         }
 
         /// <summary>
-        ///     Subtracts a Rect's max position.
+        /// Subtracts a Rect's max position.
         /// </summary>
         /// <param name="rect">The original Rect.</param>
         /// <param name="value">The value to add.</param>
@@ -579,7 +579,7 @@ namespace Lunari.Tsuki {
         }
 
         /// <summary>
-        ///     Sets a Rect's X min position.
+        /// Sets a Rect's X min position.
         /// </summary>
         /// <param name="rect">The original Rect.</param>
         /// <param name="xMin">The desired min X position.</param>
@@ -589,7 +589,7 @@ namespace Lunari.Tsuki {
         }
 
         /// <summary>
-        ///     Adds to a Rect's X min position.
+        /// Adds to a Rect's X min position.
         /// </summary>
         /// <param name="rect">The original Rect.</param>
         /// <param name="value">The value to add.</param>
@@ -599,7 +599,7 @@ namespace Lunari.Tsuki {
         }
 
         /// <summary>
-        ///     Subtracts from a Rect's X min position.
+        /// Subtracts from a Rect's X min position.
         /// </summary>
         /// <param name="rect">The original Rect.</param>
         /// <param name="value">The value to subtract.</param>
@@ -609,7 +609,7 @@ namespace Lunari.Tsuki {
         }
 
         /// <summary>
-        ///     Sets a Rect's X max position.
+        /// Sets a Rect's X max position.
         /// </summary>
         /// <param name="rect">The original Rect.</param>
         /// <param name="xMax">The desired X max position.</param>
@@ -619,7 +619,7 @@ namespace Lunari.Tsuki {
         }
 
         /// <summary>
-        ///     Adds to a Rect's X max position.
+        /// Adds to a Rect's X max position.
         /// </summary>
         /// <param name="rect">The original Rect.</param>
         /// <param name="value">The value to add.</param>
@@ -629,7 +629,7 @@ namespace Lunari.Tsuki {
         }
 
         /// <summary>
-        ///     Subtracts a Rect's X max position.
+        /// Subtracts a Rect's X max position.
         /// </summary>
         /// <param name="rect">The original Rect.</param>
         /// <param name="value">The value to subtract.</param>
@@ -639,7 +639,7 @@ namespace Lunari.Tsuki {
         }
 
         /// <summary>
-        ///     Sets a Rect's Y min position.
+        /// Sets a Rect's Y min position.
         /// </summary>
         /// <param name="rect">The original Rect.</param>
         /// <param name="yMin">The desired Y min.</param>
@@ -649,7 +649,7 @@ namespace Lunari.Tsuki {
         }
 
         /// <summary>
-        ///     Adds to a Rect's Y min position.
+        /// Adds to a Rect's Y min position.
         /// </summary>
         /// <param name="rect">The original Rect.</param>
         /// <param name="value">The value to add.</param>
@@ -659,7 +659,7 @@ namespace Lunari.Tsuki {
         }
 
         /// <summary>
-        ///     Subtracts a Rect's Y min position.
+        /// Subtracts a Rect's Y min position.
         /// </summary>
         /// <param name="rect">The original Rect.</param>
         /// <param name="value">The value to subtract.</param>
@@ -670,7 +670,7 @@ namespace Lunari.Tsuki {
         }
 
         /// <summary>
-        ///     Sets a Rect's Y max position.
+        /// Sets a Rect's Y max position.
         /// </summary>
         /// <param name="rect">The original Rect.</param>
         /// <param name="yMax">The desired Y max position.</param>
@@ -680,7 +680,7 @@ namespace Lunari.Tsuki {
         }
 
         /// <summary>
-        ///     Adds to a Rect's Y max position.
+        /// Adds to a Rect's Y max position.
         /// </summary>
         /// <param name="rect">The original Rect.</param>
         /// <param name="value">The value to add.</param>
@@ -690,7 +690,7 @@ namespace Lunari.Tsuki {
         }
 
         /// <summary>
-        ///     Subtracts from a Rect's Y max position.
+        /// Subtracts from a Rect's Y max position.
         /// </summary>
         /// <param name="rect">The original Rect.</param>
         /// <param name="value">The value to subtract.</param>
@@ -700,7 +700,7 @@ namespace Lunari.Tsuki {
         }
 
         /// <summary>
-        ///     Sets a Rect's width, if it is less than the specified value.
+        /// Sets a Rect's width, if it is less than the specified value.
         /// </summary>
         /// <param name="rect">The original Rect.</param>
         /// <param name="minWidth">The desired min width.</param>
@@ -710,7 +710,7 @@ namespace Lunari.Tsuki {
         }
 
         /// <summary>
-        ///     Sets a Rect's width, if it is greater than the specified value.
+        /// Sets a Rect's width, if it is greater than the specified value.
         /// </summary>
         /// <param name="rect">The original Rect.</param>
         /// <param name="maxWidth">The desired max width.</param>
@@ -720,7 +720,7 @@ namespace Lunari.Tsuki {
         }
 
         /// <summary>
-        ///     Sets a Rect's height, if it is less than the specified value.
+        /// Sets a Rect's height, if it is less than the specified value.
         /// </summary>
         /// <param name="rect">The original Rect.</param>
         /// <param name="minHeight">The desired min height.</param>
@@ -730,7 +730,7 @@ namespace Lunari.Tsuki {
         }
 
         /// <summary>
-        ///     Sets a Rect's height, if it is greater than the specified value.
+        /// Sets a Rect's height, if it is greater than the specified value.
         /// </summary>
         /// <param name="rect">The original Rect.</param>
         /// <param name="maxHeight">The desired max height.</param>
@@ -740,7 +740,7 @@ namespace Lunari.Tsuki {
         }
 
         /// <summary>
-        ///     Expands a rect to contain a given position.
+        /// Expands a rect to contain a given position.
         /// </summary>
         /// <param name="rect">The original Rect.</param>
         /// <param name="pos">The position to expand the rect towards.</param>

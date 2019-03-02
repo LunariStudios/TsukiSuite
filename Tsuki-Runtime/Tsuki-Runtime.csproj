@@ -47,7 +47,8 @@
     <Compile Include="AnimationUtility.cs" />
     <Compile Include="Exceptions\WTFException.cs" />
     <Compile Include="GameObjectUtility.cs" />
-    <Compile Include="Misc\GroupTypes.cs" />
+    <Compile Include="Misc\Axis.cs" />
+    <Compile Include="Misc\Tuples.cs" />
     <Compile Include="Misc\Lazy.cs" />
     <Compile Include="ObjectUtility.cs" />
     <Compile Include="CollectionUtility.cs" />
