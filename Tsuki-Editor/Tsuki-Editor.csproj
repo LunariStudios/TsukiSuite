@@ -49,7 +49,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TsukiStyles.cs" />
     <Compile Include="Utilities\ModularContent.cs" />
-    <Compile Include="Utilities\SerializedUtility.cs" />
+    <Compile Include="Utilities\Serialization.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Tsuki-Runtime\Tsuki-Runtime.csproj">
