@@ -3,6 +3,10 @@ using UnityEngine;
 
 namespace Lunari.Tsuki.Editor {
     public static class GUIStyles {
+        
+        public static GUIStyle Get(string key, EditorSkin skin = EditorSkin.Inspector) {
+            return EditorGUIUtility.GetBuiltinSkin(skin).FindStyle(key);
+        }
         public const string box = "box";
         public const string button = "button";
         public const string toggle = "toggle";
