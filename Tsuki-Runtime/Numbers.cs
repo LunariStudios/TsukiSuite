@@ -2,6 +2,14 @@
 
 namespace Lunari.Tsuki {
     public static class Numbers {
+        public static string ToHex(this float value) {
+            return BitConverter.ToString(BitConverter.GetBytes(value));
+        }
+        
+        public static string ToHex(this double value) {
+            return BitConverter.ToString(BitConverter.GetBytes(value));
+        }
+
         public static string ToHex(this int value) {
             return BitConverter.ToString(BitConverter.GetBytes(value));
         }

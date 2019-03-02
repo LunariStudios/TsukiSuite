@@ -6,12 +6,8 @@ namespace Lunari.Tsuki.Misc {
     [Serializable]
     public class SerializableInterface<T> where T : class {
         public T Value {
-            get {
-                return Object as T;
-            }
-            set {
-                Object = value as Object;
-            }
+            get => Object as T;
+            set => Object = value as Object;
         }
 
 
