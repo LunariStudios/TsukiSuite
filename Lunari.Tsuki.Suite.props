@@ -7,6 +7,7 @@
         <Company>Lunari Studios</Company>
         <!-- Compilation information -->
         <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+        <LangVersion>7.3</LangVersion>
         <OutputType>Library</OutputType>
         <AppDesignerFolder>Properties</AppDesignerFolder>
         <FileAlignment>512</FileAlignment>
