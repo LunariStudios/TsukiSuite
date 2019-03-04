@@ -54,7 +54,13 @@ and
     Text.SetHue(Mathf.Cos(Time.time));
     ```
 * And many more
-
+## Building
+This project is written with C# 7 and compiles to .NET 3.5, for backwards compatibility,
+so make sure your compiler is able to meet these two requirements.  
+Make sure you have these components installed via Visual Studio installer:
+* NET 4.+ SDK & Targeting Pack
+* NuGet package manager
+* C# and Visual Basic Roslyn compilers
 ## Planned features
 * Code Generation tool using T4 templates.
 * Best practices knowledge base and bad practice detection.

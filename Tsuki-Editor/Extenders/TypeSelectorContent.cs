@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using Lunari.Tsuki.Editor.Utilities;
 using Lunari.Tsuki.Misc;
@@ -9,6 +8,13 @@ using UnityEditor.IMGUI.Controls;
 using UnityEngine;
 
 namespace Lunari.Tsuki.Editor.Extenders {
+    public class CategoryAttribute : Attribute {
+        public string Category { get; }
+
+        public CategoryAttribute(string category) {
+            Category = category;
+        }
+    }
     public sealed class TypeSelectorButton {
         private Rect lastRect;
         private readonly TypeSelectorPopupContent selector;

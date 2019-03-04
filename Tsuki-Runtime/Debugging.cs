@@ -1,12 +1,30 @@
-﻿using Lunari.Tsuki.Misc;
+﻿using System.Collections.Generic;
+using Lunari.Tsuki.Misc;
+using Lunari.Tsuki.Singletons;
 using UnityEngine;
 
 namespace Lunari.Tsuki {
     public delegate void GizmosAction();
 
-    public interface IGizmosSchedulable {
-        void ScheduleGizmos(GizmosAction action);
-        void DescheduleGizmos(GizmosAction action);
+    public class GizmosScheduler : StaticSingleton<GizmosScheduler> {
+        public List<GizmosAction> Actions {
+            get;
+        } = new List<GizmosAction>();
+
+        public void Schedule(GizmosAction action) {
+            Actions.Add(action);
+        }
+
+        public void Deschedule(GizmosAction action) {
+            Actions.Remove(action);
+        }
+
+
+        private void OnDrawGizmos() {
+            foreach (var gizmosAction in Actions) {
+                gizmosAction();
+            }
+        }
     }
 
     public static class Debugging {

@@ -28,6 +28,7 @@ namespace Lunari.Tsuki.Singletons {
         /// If you want an instance to be returned anyways, see <see cref="EnsuredInstance"/>.
         /// </summary>
         public static T Instance => instance ? instance : instance = FindObjectOfType<T>();
+/*
 
         /// <summary>
         /// The currently active instance of this singleton.
@@ -39,7 +40,33 @@ namespace Lunari.Tsuki.Singletons {
         /// properties and placed on the scene), see <see cref="Instance"/>.
         /// </summary>
         public static T EnsuredInstance => Instance ? Instance : CreateSingleton();
+*/
 
+        private static T CreateSingleton() {
+            return new GameObject() {
+                name = $"Singleton ({typeof(T).Name})"
+            }.AddComponent<T>();
+        }
+    }
+
+    public class StaticSingleton<T> : MonoBehaviour where T : StaticSingleton<T> {
+        private static T instance;
+
+        /// <summary>
+        /// The currently active instance of this singleton.
+        /// <br/>
+        /// If none is found, returns null.
+        /// <br/>
+        /// If you want an instance to be returned anyways, see <see cref="EnsuredInstance"/>.
+        /// </summary>
+        public static T Instance {
+            get {
+                if (instance == null) {
+                    instance = FindObjectOfType<T>();
+                }
+                return instance ? instance : instance = CreateSingleton();
+            }
+        }
         private static T CreateSingleton() {
             return new GameObject() {
                 name = $"Singleton ({typeof(T).Name})"
