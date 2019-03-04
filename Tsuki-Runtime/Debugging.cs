@@ -122,7 +122,7 @@ namespace Lunari.Tsuki {
         public static void DrawWireCircle2D(Vector2 entityPos, float radius, Color color,
             uint vertices = DefaultWireCircleVertices) {
             var verts = new Vector2[DefaultWireCircleVertices];
-            for (uint i = 0; i < DefaultWireCircleVertices; i++) {
+            for (uint i = 0; i < vertices; i++) {
                 var pos = (float) i / DefaultWireCircleVertices * 6.283185F;
                 var x = Mathf.Sin(pos) * radius;
                 var y = Mathf.Cos(pos) * radius;

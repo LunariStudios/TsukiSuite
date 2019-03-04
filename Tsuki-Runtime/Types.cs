@@ -59,9 +59,8 @@ namespace Lunari.Tsuki {
 
         private static string CheckPrimitive(this Type type) {
             var typeName = type.Name;
-            var altTypeName = string.Empty;
 
-            if (Wrapped2Primitive.TryGetValue(typeName, out altTypeName)) {
+            if (Wrapped2Primitive.TryGetValue(typeName, out var altTypeName)) {
                 typeName = altTypeName;
             }
 
@@ -99,7 +98,7 @@ namespace Lunari.Tsuki {
 
         public static string GetLegibleName(this Type type) {
             if (type.IsArray) {
-                int rank = type.GetArrayRank();
+                var rank = type.GetArrayRank();
                 return type.GetElementType().GetLegibleName() + (rank == 1 ? "[]" : "[,]");
             }
 
@@ -117,18 +116,14 @@ namespace Lunari.Tsuki {
 
             var builder = new StringBuilder();
             var name = type.Name;
-            var index = name.IndexOf("`");
+            var index = name.IndexOf("`", StringComparison.Ordinal);
 
-            if (index != -1) {
-                builder.Append(name.Substring(0, index));
-            } else {
-                builder.Append(name);
-            }
+            builder.Append(index != -1 ? name.Substring(0, index) : name);
 
             builder.Append('<');
             var args = type.GetGenericArguments();
 
-            for (int i = 0; i < args.Length; i++) {
+            for (var i = 0; i < args.Length; i++) {
                 var arg = args[i];
 
                 if (i != 0) {

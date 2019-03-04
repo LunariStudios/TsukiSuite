@@ -58,8 +58,7 @@ namespace Lunari.Tsuki {
         /// <param name="color">The color instance to modify</param>
         /// <param name="brightness">The new brightness</param>
         public static void SetBrightness(ref Color color, float brightness) {
-            float h, s, v;
-            Color.RGBToHSV(color, out h, out s, out v);
+            Color.RGBToHSV(color, out var h, out var s, out _);
             color = Color.HSVToRGB(h, s, brightness);
         }
 
@@ -69,8 +68,7 @@ namespace Lunari.Tsuki {
         /// <param name="color">The color instance to modify</param>
         /// <param name="saturation">The new saturation</param>
         public static void SetSaturation(ref Color color, float saturation) {
-            float h, s, v;
-            Color.RGBToHSV(color, out h, out s, out v);
+            Color.RGBToHSV(color, out var h, out _, out var v);
             color = Color.HSVToRGB(h, saturation, v);
         }
 
@@ -80,8 +78,7 @@ namespace Lunari.Tsuki {
         /// <param name="color">The color instance to modify</param>
         /// <param name="hue">The new hue</param>
         public static void SetHue(ref Color color, float hue) {
-            float h, s, v;
-            Color.RGBToHSV(color, out h, out s, out v);
+            Color.RGBToHSV(color, out _, out var s, out var v);
             color = Color.HSVToRGB(hue, s, v);
         }
     }

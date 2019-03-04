@@ -89,11 +89,11 @@ namespace Lunari.Tsuki {
             Func<T, K> selector,
             IComparer<K> comparer) {
             if (source == null) {
-                throw new ArgumentNullException("source");
+                throw new ArgumentNullException(nameof(source));
             }
 
             if (selector == null) {
-                throw new ArgumentNullException("selector");
+                throw new ArgumentNullException(nameof(selector));
             }
 
             comparer = comparer ?? Comparer<K>.Default;
@@ -131,11 +131,11 @@ namespace Lunari.Tsuki {
             Func<T, K> selector,
             IComparer<K> comparer) {
             if (source == null) {
-                throw new ArgumentNullException("source");
+                throw new ArgumentNullException(nameof(source));
             }
 
             if (selector == null) {
-                throw new ArgumentNullException("selector");
+                throw new ArgumentNullException(nameof(selector));
             }
 
             comparer = comparer ?? Comparer<K>.Default;

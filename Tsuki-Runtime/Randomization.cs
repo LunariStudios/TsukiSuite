@@ -47,7 +47,7 @@ namespace Lunari.Tsuki {
         /// This exists because Unity doesn't like us accessing <see cref="Random"/>.<see cref="Random.value"/> outside
         /// of the main thread. So we use Mono's random. 
         /// </summary>
-        private static System.Random systemRandom = new System.Random();
+        private static readonly System.Random systemRandom = new System.Random();
 
         /// <summary>
         /// Returns either true or false. 50% chance each.

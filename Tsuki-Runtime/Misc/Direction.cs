@@ -14,6 +14,10 @@ namespace Lunari.Tsuki.Misc {
         public static readonly Direction DownLeft = new Direction(UnitValue.MinusOne, UnitValue.MinusOne);
         public static readonly Direction DownRight = new Direction(UnitValue.One, UnitValue.MinusOne);
 
+        public static Direction operator +(Direction lhs, Direction rhs) {
+            return new Direction(lhs.x + rhs.x, lhs.y + rhs.y);
+        }
+
         public static readonly Direction Zero = new Direction(UnitValue.Zero, UnitValue.Zero);
 
         public static readonly Direction[] AllNonZero = {
@@ -30,28 +34,18 @@ namespace Lunari.Tsuki.Misc {
             return a;
         }
 
-        [SerializeField]
-        private UnitValue x;
+        [SerializeField] private UnitValue x;
 
-        [SerializeField]
-        private UnitValue y;
+        [SerializeField] private UnitValue y;
 
         public UnitValue X {
-            get {
-                return x;
-            }
-            set {
-                x = value;
-            }
+            get => x;
+            set => x = value;
         }
 
         public UnitValue Y {
-            get {
-                return y;
-            }
-            set {
-                y = value;
-            }
+            get => y;
+            set => y = value;
         }
 
         public int CompareTo(Direction other) {
@@ -119,15 +113,11 @@ namespace Lunari.Tsuki.Misc {
         }
 
 
-        public float Angle {
-            get {
-                return Mathf.Acos(Mathf.Clamp(Vector2.Dot(Vector2.zero, this), -1f, 1f)) * 57.29578f;
-            }
-        }
+        public float Angle => Mathf.Acos(Mathf.Clamp(Vector2.Dot(Vector2.zero, this), -1f, 1f)) * 57.29578f;
 
 
         public override string ToString() {
-            return string.Format("({0}, {1})", (int) x, (int) y);
+            return $"({(int) x}, {(int) y})";
         }
 
 
