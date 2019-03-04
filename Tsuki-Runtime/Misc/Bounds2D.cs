@@ -4,10 +4,8 @@ using UnityEngine;
 namespace Lunari.Tsuki.Misc {
     [Serializable]
     public struct Bounds2D {
-        [SerializeField]
         public Vector2 Center;
 
-        [SerializeField]
         public Vector2 Size;
 
         private Bounds2D(Vector2 center, Vector2 size) {
@@ -24,21 +22,13 @@ namespace Lunari.Tsuki.Misc {
         }
 
         public Vector2 Min {
-            get {
-                return Center - Size / 2f;
-            }
-            set {
-                SetMinMax(value, Max);
-            }
+            get => Center - Size / 2f;
+            set => SetMinMax(value, Max);
         }
 
         public Vector2 Max {
-            get {
-                return Center + Size / 2f;
-            }
-            set {
-                SetMinMax(Min, value);
-            }
+            get => Center + Size / 2f;
+            set => SetMinMax(Min, value);
         }
 
         public void SetMinMax(Vector2 min, Vector2 max) {
@@ -47,39 +37,23 @@ namespace Lunari.Tsuki.Misc {
         }
 
         public static implicit operator Bounds2D(Bounds bounds) {
-            return new Bounds2D((Vector2) bounds.center, (Vector2) bounds.size);
+            return new Bounds2D(bounds.center, bounds.size);
         }
 
         public static implicit operator Bounds(Bounds2D b) {
-            return new Bounds((Vector3) b.Center, (Vector3) b.Size);
+            return new Bounds(b.Center, b.Size);
         }
 
         public override string ToString() {
-            return string.Format("Bounds2D(Center: {0}, Size: {1}, Min: {2}, Max: {3})", (object) Center, (object) Size, (object) Min, (object) Max);
+            return $"Bounds2D(Center: {Center}, Size: {Size}, Min: {Min}, Max: {Max})";
         }
 
-        public Vector2 BottomLeft {
-            get {
-                return Min;
-            }
-        }
+        public Vector2 BottomLeft => Min;
 
-        public Vector2 TopRight {
-            get {
-                return new Vector2(Min.x, Max.y);
-            }
-        }
+        public Vector2 TopRight => new Vector2(Min.x, Max.y);
 
-        public Vector2 TopLeft {
-            get {
-                return Max;
-            }
-        }
+        public Vector2 TopLeft => Max;
 
-        public Vector2 BottomRight {
-            get {
-                return new Vector2(Max.x, Min.y);
-            }
-        }
+        public Vector2 BottomRight => new Vector2(Max.x, Min.y);
     }
 }
