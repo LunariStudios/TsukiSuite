@@ -42,6 +42,7 @@
     <Compile Include="Exceptions\WTFException.cs" />
     <Compile Include="GameObjects.cs" />
     <Compile Include="Misc\Axis.cs" />
+    <Compile Include="Misc\CategoryAttribute.cs" />
     <Compile Include="Misc\Tuples.cs" />
     <Compile Include="Misc\Lazy.cs" />
     <Compile Include="Objects.cs" />
