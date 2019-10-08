@@ -63,6 +63,7 @@
     <Compile Include="Randomization.cs" />
     <Compile Include="Rectangles.cs" />
     <Compile Include="Scopes\GUIColorScope.cs" />
+    <Compile Include="Scopes\GUIEnabledScope.cs" />
     <Compile Include="Singletons\ScriptableSingleton.cs" />
     <Compile Include="Singletons\Singleton.cs" />
     <Compile Include="Textures.cs" />
