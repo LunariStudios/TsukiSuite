@@ -28,6 +28,8 @@ ProjectSection(SolutionItems) = preProject
 	Tsuki-Assets\Logo.ai = Tsuki-Assets\Logo.ai
 EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tsuki-Graphs", "Tsuki-Graphs\Tsuki-Graphs.csproj", "{A4191EE8-090B-4DFB-B836-660D9EC9EEA8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,5 +44,9 @@ Global
 		{514403C5-C91E-441F-9B99-8732947A6238}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{514403C5-C91E-441F-9B99-8732947A6238}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{514403C5-C91E-441F-9B99-8732947A6238}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4191EE8-090B-4DFB-B836-660D9EC9EEA8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4191EE8-090B-4DFB-B836-660D9EC9EEA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4191EE8-090B-4DFB-B836-660D9EC9EEA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4191EE8-090B-4DFB-B836-660D9EC9EEA8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
