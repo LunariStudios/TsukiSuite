@@ -8,10 +8,10 @@ TsukiSuit is an open source, free for commercial use group of libraries created 
 
 Each library can be compared as a version of Google's [Guava](https://github.com/google/guava), but created for Unity  
 
-Currently, only two of those exists, but more will be added as the need for them surface
-* Tsuki Runtime _(Core libraries, available everywhere)_  
-and
-* Tsuki Editor _(Editor specific libraries, available only on the Editor)_
+Currently, only three of those exists, but more will be added as the need for them surface
+* Tsuki Runtime _(Core libraries)_  
+* Tsuki Editor _(Editor specific libraries)_
+* Tsuki Graphs _([Graph Theory](https://en.wikipedia.org/wiki/Graph_theory) libraries)_
 ## Features and examples
 *  Collections
     ```csharp
