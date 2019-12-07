@@ -41,6 +41,7 @@
     <Compile Include="Animations.cs" />
     <Compile Include="Exceptions\WTFException.cs" />
     <Compile Include="GameObjects.cs" />
+    <Compile Include="Indexing.cs" />
     <Compile Include="Misc\Axis.cs" />
     <Compile Include="Misc\CategoryAttribute.cs" />
     <Compile Include="Misc\Tuples.cs" />

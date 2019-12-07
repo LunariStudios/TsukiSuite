@@ -42,5 +42,11 @@
     <Compile Include="MatrixGraph.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Tsuki-Runtime\Tsuki-Runtime.csproj">
+      <Project>{514403c5-c91e-441f-9b99-8732947a6238}</Project>
+      <Name>Tsuki-Runtime</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
