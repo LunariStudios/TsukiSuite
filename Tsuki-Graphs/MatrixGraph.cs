@@ -63,7 +63,7 @@ namespace Tsuki.Graphs {
             edges.Clear();
         }
 
-        public override void Connect(int @from, int to, E edge) {
+        public  void Connect(int @from, int to, E edge) {
             edges[Indexing.IndexOf(from, to, Size)] = edge;
         }
 
