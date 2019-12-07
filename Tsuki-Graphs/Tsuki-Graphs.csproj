@@ -41,6 +41,7 @@
     <Compile Include="Graph.cs" />
     <Compile Include="Graphs.cs" />
     <Compile Include="Graphs.Types.cs" />
+    <Compile Include="ListGraph.cs" />
     <Compile Include="MatrixGraph.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
