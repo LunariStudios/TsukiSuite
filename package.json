@@ -1,0 +1,17 @@
+{
+  "name": "com.lunari.tsuki",
+  "displayName": "Tsuki Suite",
+  "author": "Lunari Studios",
+  "version": "2.2.0",
+  "description": "A tool suite created to make Unity development easier",
+  "unity": "2018.1",
+  "repository": "https://github.com/LunariStudios/TsukiSuite",
+  "keywords": [
+    "Component",
+    "Utility",
+    "Graphs"
+  ],
+  "contributors": [
+    "Bruno \"DDevil\" Silva Freire"
+  ]
+}
