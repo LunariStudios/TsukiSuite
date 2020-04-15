@@ -1,4 +1,5 @@
-﻿using UnityEditor;
+﻿#if UNITY_EDITOR
+using UnityEditor;
 using UnityEngine;
 
 namespace Lunari.Tsuki.Editor {
@@ -571,3 +572,4 @@ namespace Lunari.Tsuki.Editor {
         public const string WrappedLabel = "WrappedLabel";
     }
 }
+#endif

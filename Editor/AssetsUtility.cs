@@ -1,4 +1,5 @@
-﻿using System;
+﻿#if UNITY_EDITOR
+using System;
 using UnityEditor;
 using UnityEngine;
 using Object = UnityEngine.Object;
@@ -40,3 +41,4 @@ namespace Lunari.Tsuki.Editor {
         }
     }
 }
+#endif
