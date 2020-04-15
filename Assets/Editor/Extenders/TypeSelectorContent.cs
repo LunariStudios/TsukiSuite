@@ -1,4 +1,5 @@
-﻿using System;
+﻿#if UNITY_EDITOR
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Lunari.Tsuki.Editor.Utilities;
@@ -359,3 +360,4 @@ namespace Lunari.Tsuki.Editor.Extenders {
         public bool IsAtRoot => Path.Count == 0;
     }
 }
+#endif
