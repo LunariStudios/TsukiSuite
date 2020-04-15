@@ -1,3 +1,4 @@
+#if UNITY_EDITOR
 using System.Collections.Generic;
 using Lunari.Tsuki.Runtime;
 using Lunari.Tsuki.Runtime.Scopes;
@@ -110,3 +111,4 @@ namespace Lunari.Tsuki.Editor.Extenders {
         }
     }
 }
+#endif
