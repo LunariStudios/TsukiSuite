@@ -39,8 +39,8 @@ namespace Lunari.Tsuki.Runtime.Misc {
             return val < -limit ? MinusOne : Zero;
         }
 
-        public static implicit operator sbyte(UnitValue val) {
-            return val.value;
-        }
+        public static implicit operator sbyte(UnitValue val) => val.value;
+
+        public static implicit operator int(UnitValue val) => val.value;
     }
 }
