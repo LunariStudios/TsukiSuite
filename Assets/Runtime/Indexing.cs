@@ -4,8 +4,4 @@ namespace Lunari.Tsuki.Runtime {
             return x + y * width;
         }
     }
-
-    public interface IIndexable {
-        
-    }
 }

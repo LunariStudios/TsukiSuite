@@ -1,4 +1,5 @@
-# <img src="https://github.com/LunariStudios/TsukiSuite/blob/master/Tsuki-Assets/128w/TsukiLogo_Black_128px.png?raw=true"/> TsukiSuite
+![Tsuki Logo](Assets/Content/128w/TsukiLogo_Black_128px.png)
+# TsukiSuite
 <p>
     <img src="https://img.shields.io/github/license/LunariStudios/TsukiSuite.svg">
     <img src="https://img.shields.io/github/last-commit/LunariStudios/TsukiSuite.svg">
