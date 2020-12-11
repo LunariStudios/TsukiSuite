@@ -187,7 +187,7 @@ namespace Lunari.Tsuki.Editor.Extenders {
                     var height = groupStyle.CalcHeight(content, itemRect.width);
                     itemRect.height = height;
                     var fwdArrow = EditorGUIUtility.GetBuiltinSkin(EditorSkin.Inspector)
-                        .GetStyle(GUIStyles.ACRightArrow);
+                        .GetStyle(GUIStyles.AC_RightArrow);
                     if (Event.current.type == EventType.Repaint) {
                         fwdArrow.Draw(itemRect.SetXMin(itemRect.xMax - itemRect.height), false, false, false, false);
                     }
@@ -337,7 +337,7 @@ namespace Lunari.Tsuki.Editor.Extenders {
                 EditorGUI.LabelField(labelRect, pathContent, pStyle);
                 if (!IsAtRoot) {
                     var backArrow = EditorGUIUtility.GetBuiltinSkin(EditorSkin.Inspector)
-                        .GetStyle(GUIStyles.ACLeftArrow);
+                        .GetStyle(GUIStyles.AC_LeftArrow);
                     var returnRect = labelRect.SetXMax(labelRect.x + labelRect.height);
                     if (GUI.Button(returnRect, GUIContent.none, backArrow)) {
                         Path.Pop();
