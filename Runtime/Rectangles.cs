@@ -1,20 +1,41 @@
+using System;
+using UnityEditor;
 using UnityEngine;
 
 namespace Lunari.Tsuki.Runtime {
     public static class Rectangles {
-        public const float DefaultLineHeight = 16;
+        public static float GetHeight(int nLines) {
+            var sum = nLines * EditorGUIUtility.singleLineHeight;
+            if (nLines > 1) {
+                sum += (nLines - 1) * EditorGUIUtility.standardVerticalSpacing;
+            }
+
+            return sum;
+        }
+
+        public static Rect GetLine(this Rect rect, uint lineIndex) {
+            return GetLine(rect, lineIndex, EditorGUIUtility.singleLineHeight);
+        }
+
+        public static Rect GetLine(this Rect rect, uint lineIndex, float lineHeight) {
+            return GetLine(rect, lineIndex, lineHeight, EditorGUIUtility.standardVerticalSpacing);
+        }
 
         /// <summary>
         /// Returns a Rect that correspond to what would be an "editor line" on the specified <see cref="lineHeight"/>
         /// on the specified <see cref="lineIndex"/>.
         /// </summary>
-        /// <param name="rect">The original Rect.</param>
-        public static Rect GetLine(this Rect rect, uint lineIndex, float lineHeight = DefaultLineHeight) {
+        public static Rect GetLine(this Rect rect, uint lineIndex, float lineHeight, float lineSpacing) {
             var r = rect;
             r.height = lineHeight;
             r.y += lineIndex * lineHeight;
+            if (lineIndex > 0) {
+                r.y += (lineIndex - 1) * lineSpacing;
+            }
+
             return r;
         }
+
 
         /// <summary>
         /// Returns a Rect that correspond to what would be an "vertical editor line" on the specified <see cref="columnHeight"/>
@@ -757,13 +778,15 @@ namespace Lunari.Tsuki.Runtime {
         public static Rect ExpandTo(this Rect rect, Vector2 pos) {
             if (pos.x < rect.xMin) {
                 rect.xMin = pos.x;
-            } else if (pos.x > rect.xMax) {
+            }
+            else if (pos.x > rect.xMax) {
                 rect.xMax = pos.x;
             }
 
             if (pos.y < rect.yMin) {
                 rect.yMin = pos.y;
-            } else if (pos.y > rect.yMax) {
+            }
+            else if (pos.y > rect.yMax) {
                 rect.yMax = pos.y;
             }
 
