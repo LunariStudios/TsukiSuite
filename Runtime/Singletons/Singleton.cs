@@ -68,7 +68,7 @@ namespace Lunari.Tsuki.Runtime.Singletons {
             }
         }
         private static T CreateSingleton() {
-            return new GameObject() {
+            return new GameObject {
                 name = $"Singleton ({typeof(T).Name})"
             }.AddComponent<T>();
         }

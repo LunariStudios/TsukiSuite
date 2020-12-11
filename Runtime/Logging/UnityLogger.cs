@@ -23,8 +23,6 @@ namespace Lunari.Tsuki.Runtime.Logging {
             Debug.LogWarning(FormatMessage(error));
         }
 
-        protected virtual string FormatMessage(string message) {
-            return string.Format("[{0}] {1}", Name, message);
-        }
+        protected virtual string FormatMessage(string message) => $"[{Name}] {message}";
     }
 }

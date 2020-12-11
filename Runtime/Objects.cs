@@ -58,44 +58,33 @@ namespace Lunari.Tsuki.Runtime {
             return obj.gameObject.GetOrAddComponent<T>();
         }
 
+
         /// <summary>
         /// Attempts to find an existing instance of a component of type <see cref="T"/> within this 
-        /// game object. If none is found, attaches a new component to the game object and returns it.
+        /// game object's children.
+        /// <br/>
+        /// If a valid component is found, this method returns true and sets the value of the <see cref="component"/>
+        /// parameter to it, otherwise, false is returned and component is set to null.
         /// </summary>
         /// <param name="obj">The game object to search for the component in.</param>
+        /// <param name="component">Where the found component will be written back to</param>
         /// <typeparam name="T">The type of the component to search for.</typeparam>
-        /// <returns>The already existing or a newly created instance of <see cref="T"/>.</returns>
-        public static T GetOrAddComponent<T>(this GameObject obj) where T : Component {
-            var f = obj.GetComponent<T>();
-            return f ? f : obj.AddComponent<T>();
+        public static bool TryGetComponentInChildren<T>(this Component obj, out T component) where T : Component {
+            return (component = obj.GetComponentInChildren<T>()) != null;
         }
-
+        
         /// <summary>
-        /// Tests is this <see cref="obj"/> is a Unity <see cref="Object"/>, in which case, it also tests whether
-        /// the corresponding native object is still active.
+        /// Attempts to find an existing instance of a component of type <see cref="T"/> within this 
+        /// game object's children.
+        /// <br/>
+        /// If a valid component is found, this method returns true and sets the value of the <see cref="component"/>
+        /// parameter to it, otherwise, false is returned and component is set to null.
         /// </summary>
-        /// <param name="obj">The object to test</param>
-        /// <returns>False if this object is null as both a Unity native object and managed object, otherwise false</returns>
-        public static bool IsNotNullUnityWise(this object obj) {
-            return !obj.IsNullUnityWise();
-        }
-
-        /// <summary>
-        /// Tests is this <see cref="obj"/> is a Unity <see cref="Object"/>, in which case, it also tests whether
-        /// the corresponding native object is still active.
-        /// </summary>
-        /// <param name="obj">The object to test</param>
-        /// <returns>True if this object is null as both a Unity native object and managed object, otherwise false</returns>
-        public static bool IsNullUnityWise(this object obj) {
-            switch (obj) {
-                case null:
-                    return true;
-                case Object o:
-                    // Check if native object is alive
-                    return o == null;
-                default:
-                    return false;
-            }
+        /// <param name="obj">The game object to search for the component in.</param>
+        /// <param name="component">Where the found component will be written back to</param>
+        /// <typeparam name="T">The type of the component to search for.</typeparam>
+        public static bool TryGetComponentInParent<T>(this Component obj, out T component) where T : Component {
+            return (component = obj.GetComponentInParent<T>()) != null;
         }
     }
 }
