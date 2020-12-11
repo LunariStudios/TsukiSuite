@@ -56,7 +56,7 @@ namespace Lunari.Tsuki.Runtime {
 
 
         public static void DrawBounds2D(Bounds2D bounds, Color color) {
-            DrawWireBox2D(bounds.Center, bounds.Size, color);
+            DrawWireBox2D(bounds.center, bounds.size, color);
         }
 
         public const uint DefaultWireCircleVertices = 24;
@@ -114,7 +114,7 @@ namespace Lunari.Tsuki.Runtime {
 
 
         public static void DrawBounds2D(Bounds2D bounds, Color color) {
-            DrawWireBox2D(bounds.Center, bounds.Size, color);
+            DrawWireBox2D(bounds.center, bounds.size, color);
         }
 
         public const uint DefaultWireCircleVertices = 24;
