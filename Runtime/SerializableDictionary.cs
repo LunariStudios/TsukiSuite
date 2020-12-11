@@ -23,8 +23,7 @@ namespace Lunari.Tsuki.Runtime {
             var collection = from.ToArray();
             if (to == null) {
                 to = new List<T>(collection.Length);
-            }
-            else {
+            } else {
                 to.Clear();
                 to.Capacity = collection.Length;
             }
@@ -36,6 +35,7 @@ namespace Lunari.Tsuki.Runtime {
             for (var i = 0; i < keys.Count; i++) {
                 this[keys[i]] = values[i];
             }
+
             // Free memory
             keys.Clear();
             values.Clear();
