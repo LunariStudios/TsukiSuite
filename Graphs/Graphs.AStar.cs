@@ -41,6 +41,23 @@ namespace Lunari.Tsuki.Graphs {
             return graph.AStar(from, to, heuristics, (i, to1, edge) => edge.Weight, out path, callbacks);
         }
 
+        public static bool AStarWithNavigator<V, E>(
+            this Graph<V, E> graph,
+            int from,
+            int to,
+            Heuristics<V, E> heuristics,
+            out GraphPathNavigator<V, E> navigator,
+            AStarCallbacks<V, E> callbacks = default
+        ) where E : IWeighted<float> {
+            if (graph.AStar(from, to, heuristics, out var path, callbacks)) {
+                navigator = new GraphPathNavigator<V, E>(path);
+                return true;
+            }
+
+            navigator = default;
+            return false;
+        }
+
         public static bool AStar<V>(
             this Graph<V, int> graph,
             int from,

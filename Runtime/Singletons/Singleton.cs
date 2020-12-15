@@ -56,21 +56,19 @@ namespace Lunari.Tsuki.Runtime.Singletons {
         /// The currently active instance of this singleton.
         /// <br/>
         /// If none is found, returns null.
-        /// <br/>
-        /// If you want an instance to be returned anyways, see <see cref="EnsuredInstance"/>.
         /// </summary>
         public static T Instance {
             get {
                 if (instance == null) {
                     instance = FindObjectOfType<T>();
                 }
+
                 return instance ? instance : instance = CreateSingleton();
             }
         }
+
         private static T CreateSingleton() {
-            return new GameObject {
-                name = $"Singleton ({typeof(T).Name})"
-            }.AddComponent<T>();
+            return GameObjects.CreateWith<T>($"Singleton ({typeof(T).Name})").Item2;
         }
     }
 }

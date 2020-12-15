@@ -11,7 +11,7 @@ namespace Lunari.Tsuki.Runtime {
             Actions.Add(action);
         }
 
-        public void Deschedule(GizmosAction action) {
+        public void DeSchedule(GizmosAction action) {
             Actions.Remove(action);
         }
 

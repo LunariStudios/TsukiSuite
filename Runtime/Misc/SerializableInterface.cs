@@ -6,12 +6,12 @@ namespace Lunari.Tsuki.Runtime.Misc {
     [Serializable]
     public class SerializableInterface<T> where T : class {
         public T Value {
-            get => Object as T;
-            set => Object = value as Object;
+            get => managed as T;
+            set => managed = value as Object;
         }
 
 
         [SerializeField, HideInInspector]
-        private Object Object;
+        private Object managed;
     }
 }
