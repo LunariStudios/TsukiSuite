@@ -3,32 +3,32 @@ using UnityEngine;
 
 namespace Lunari.Tsuki.Runtime.Misc {
     [Serializable]
-    public struct Direction : IComparable<Direction>, IComparable {
-        public static readonly Direction Up = new Direction(UnitValue.Zero, UnitValue.One);
-        public static readonly Direction Down = new Direction(UnitValue.Zero, UnitValue.MinusOne);
-        public static readonly Direction Left = new Direction(UnitValue.MinusOne, UnitValue.Zero);
-        public static readonly Direction Right = new Direction(UnitValue.One, UnitValue.Zero);
+    public struct Direction2D : IComparable<Direction2D>, IComparable {
+        public static readonly Direction2D Up = new Direction2D(UnitValue.Zero, UnitValue.One);
+        public static readonly Direction2D Down = new Direction2D(UnitValue.Zero, UnitValue.MinusOne);
+        public static readonly Direction2D Left = new Direction2D(UnitValue.MinusOne, UnitValue.Zero);
+        public static readonly Direction2D Right = new Direction2D(UnitValue.One, UnitValue.Zero);
 
-        public static readonly Direction UpLeft = new Direction(UnitValue.MinusOne, UnitValue.One);
-        public static readonly Direction UpRight = new Direction(UnitValue.One, UnitValue.One);
-        public static readonly Direction DownLeft = new Direction(UnitValue.MinusOne, UnitValue.MinusOne);
-        public static readonly Direction DownRight = new Direction(UnitValue.One, UnitValue.MinusOne);
+        public static readonly Direction2D UpLeft = new Direction2D(UnitValue.MinusOne, UnitValue.One);
+        public static readonly Direction2D UpRight = new Direction2D(UnitValue.One, UnitValue.One);
+        public static readonly Direction2D DownLeft = new Direction2D(UnitValue.MinusOne, UnitValue.MinusOne);
+        public static readonly Direction2D DownRight = new Direction2D(UnitValue.One, UnitValue.MinusOne);
 
-        public static Direction operator +(Direction lhs, Direction rhs) {
-            return new Direction(lhs.x + rhs.x, lhs.y + rhs.y);
+        public static Direction2D operator +(Direction2D lhs, Direction2D rhs) {
+            return new Direction2D(lhs.x + rhs.x, lhs.y + rhs.y);
         }
 
-        public static readonly Direction Zero = new Direction(UnitValue.Zero, UnitValue.Zero);
+        public static readonly Direction2D Zero = new Direction2D(UnitValue.Zero, UnitValue.Zero);
 
-        public static readonly Direction[] AllNonZero = {
+        public static readonly Direction2D[] AllNonZero = {
             Up, Down, Left, Right,
             UpLeft, UpRight, DownLeft, DownRight
         };
 
-        public static readonly Direction[] All = LoadAll();
+        public static readonly Direction2D[] All = LoadAll();
 
-        private static Direction[] LoadAll() {
-            var a = new Direction[9];
+        private static Direction2D[] LoadAll() {
+            var a = new Direction2D[9];
             Array.Copy(AllNonZero, a, 8);
             a[0] = Zero;
             return a;
@@ -48,7 +48,7 @@ namespace Lunari.Tsuki.Runtime.Misc {
             set => y = value;
         }
 
-        public int CompareTo(Direction other) {
+        public int CompareTo(Direction2D other) {
             if (y > other.y) {
                 return 1;
             }
@@ -63,47 +63,47 @@ namespace Lunari.Tsuki.Runtime.Misc {
         public int CompareTo(object obj) {
             if (ReferenceEquals(null, obj))
                 return 1;
-            if (!(obj is Direction))
+            if (!(obj is Direction2D))
                 throw new ArgumentException("Object must be of type Direction");
-            return CompareTo((Direction) obj);
+            return CompareTo((Direction2D) obj);
         }
 
-        public static bool operator ==(Direction left, Direction right) {
+        public static bool operator ==(Direction2D left, Direction2D right) {
             return left.CompareTo(right) == 0;
         }
 
-        public static bool operator !=(Direction left, Direction right) {
+        public static bool operator !=(Direction2D left, Direction2D right) {
             return !(left == right);
         }
 
-        public static bool operator <(Direction left, Direction right) {
+        public static bool operator <(Direction2D left, Direction2D right) {
             return left.CompareTo(right) < 0;
         }
 
-        public static bool operator >(Direction left, Direction right) {
+        public static bool operator >(Direction2D left, Direction2D right) {
             return left.CompareTo(right) > 0;
         }
 
-        public static bool operator <=(Direction left, Direction right) {
+        public static bool operator <=(Direction2D left, Direction2D right) {
             return left.CompareTo(right) <= 0;
         }
 
-        public static bool operator >=(Direction left, Direction right) {
+        public static bool operator >=(Direction2D left, Direction2D right) {
             return left.CompareTo(right) >= 0;
         }
 
-        public static Direction operator -(Direction d) {
-            return new Direction(-d.x, -d.y);
+        public static Direction2D operator -(Direction2D d) {
+            return new Direction2D(-d.x, -d.y);
         }
 
-        public bool Equals(Direction other) {
+        public bool Equals(Direction2D other) {
             return x.Equals(other.x) && y.Equals(other.y);
         }
 
         public override bool Equals(object obj) {
             if (ReferenceEquals(null, obj))
                 return false;
-            return obj is Direction && Equals((Direction) obj);
+            return obj is Direction2D && Equals((Direction2D) obj);
         }
 
         public override int GetHashCode() {
@@ -121,15 +121,15 @@ namespace Lunari.Tsuki.Runtime.Misc {
         }
 
 
-        public static Direction GetDirection(float x, float y, float xLimit, float yLimit) {
-            return new Direction(UnitValue.FromFloat(x, xLimit), UnitValue.FromFloat(y, yLimit));
+        public static Direction2D GetDirection(float x, float y, float xLimit, float yLimit) {
+            return new Direction2D(UnitValue.FromFloat(x, xLimit), UnitValue.FromFloat(y, yLimit));
         }
 
-        public static Direction FromVector(Vector2 vector2) {
+        public static Direction2D FromVector(Vector2 vector2) {
             return GetDirection(vector2.x, vector2.y);
         }
 
-        private static Direction GetDirection(float x, float y) {
+        private static Direction2D GetDirection(float x, float y) {
             if (y > 0) {
                 if (x > 0) {
                     return UpRight;
@@ -153,28 +153,28 @@ namespace Lunari.Tsuki.Runtime.Misc {
             return x < 0 ? Left : Zero;
         }
 
-        public static Direction FromVector(Vector2 vector2, float xLimit, float yLimit) {
+        public static Direction2D FromVector(Vector2 vector2, float xLimit, float yLimit) {
             return GetDirection(vector2.x, vector2.y, xLimit, yLimit);
         }
 
-        public Direction(UnitValue x, UnitValue y) {
+        public Direction2D(UnitValue x, UnitValue y) {
             this.x = x;
             this.y = y;
         }
 
-        public static implicit operator Vector2(Direction dir) {
+        public static implicit operator Vector2(Direction2D dir) {
             return new Vector2(dir.x, dir.y).normalized;
         }
 
-        public static implicit operator Vector3(Direction dir) {
+        public static implicit operator Vector3(Direction2D dir) {
             return (Vector2) dir;
         }
 
-        public static implicit operator Vector2Int(Direction dir) {
+        public static implicit operator Vector2Int(Direction2D dir) {
             return new Vector2Int(dir.x, dir.y);
         }
 
-        public static implicit operator Vector3Int(Direction dir) {
+        public static implicit operator Vector3Int(Direction2D dir) {
             return new Vector3Int(dir.x, dir.y, 0);
         }
 
@@ -186,7 +186,7 @@ namespace Lunari.Tsuki.Runtime.Misc {
             return x == UnitValue.Zero && y == UnitValue.Zero;
         }
 
-        public static Direction FromX(float x) {
+        public static Direction2D FromX(float x) {
             if (x > 0) {
                 return Right;
             }
@@ -194,7 +194,7 @@ namespace Lunari.Tsuki.Runtime.Misc {
             return x < 0 ? Left : Zero;
         }
 
-        public static Direction FromX(int x) {
+        public static Direction2D FromX(int x) {
             if (x > 0) {
                 return Right;
             }

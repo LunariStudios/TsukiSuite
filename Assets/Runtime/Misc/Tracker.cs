@@ -15,11 +15,7 @@ namespace Lunari.Tsuki.Runtime.Misc {
             objects.AddRange(Object.FindObjectsOfType<T>());
         }
 
-        public IEnumerable<T> Objects {
-            get {
-                return objects;
-            }
-        }
+        public IEnumerable<T> Objects => objects;
 
         private void OnDestroy(T arg0) {
             objects.Remove(arg0);

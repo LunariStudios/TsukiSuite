@@ -38,4 +38,39 @@ namespace Lunari.Tsuki.Graphs {
             }
         }
     }
+
+    public class GraphPathNavigator<V, E> {
+        private int current;
+        public UnityEvent onCurrentChanged, onReloaded;
+        private GraphPath<V, E> currentPath;
+
+        public GraphPath<V, E> CurrentPath => currentPath;
+
+        public GraphPathNavigator(GraphPath<V, E> currentPath, int current = 0) {
+            this.currentPath = currentPath;
+            this.current = current;
+        }
+
+        public void Reload(GraphPath<V, E> path) {
+            if (path == currentPath) {
+                return;
+            }
+
+            currentPath = path;
+            Current = 0;
+            onReloaded.Invoke();
+        }
+
+        public int Current {
+            get => current;
+            set {
+                if (current == value) {
+                    return;
+                }
+
+                current = value;
+                onCurrentChanged.Invoke();
+            }
+        }
+    }
 }
