@@ -23,7 +23,7 @@ namespace Lunari.Tsuki.Runtime.Exceptions {
     ///      */
     ///     throw new WTFException();
     /// }</code>
-    ///  Thanks google for this awesome pun
+    ///  Thanks google.
     ///  </summary>
     public class WTFException : Exception {
         public WTFException(string message = "Something went very wrong here") : base(message) { }
