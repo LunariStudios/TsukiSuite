@@ -1,11 +1,34 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using Lunari.Tsuki.Runtime;
-using UnityEngine;
 using UnityEngine.Events;
 
 namespace Lunari.Tsuki.Graphs {
+    public delegate float Heuristics(int index, int destination);
+
+    public delegate bool AStarFilter<E>(int from, int to, E edge);
+
+    public static partial class Graphs {
+        public static float ZeroHeuristics(int index, int destination) => 0;
+
+        /// <summary>
+        /// Called when a vertex is discovered after checking a vertex's neighbors 
+        /// </summary>
+        public delegate void OnDiscoveredCallback<E>(int from, int to, E edge);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public delegate void OnSelectedCallback<E>(int from, int to, E edge);
+
+        public delegate float WeightCalculator<E>(int from, int to, E edge);
+
+        public struct ExplorationCallbacks<V, E> {
+            public AStarFilter<E> EdgeFilter;
+            public OnDiscoveredCallback<E> OnVisit;
+            public OnSelectedCallback<E> OnSelected;
+        }
+    }
+
     public sealed class GraphPath<V, E> {
         public GraphPath(Graph<V, E> graph, int[] indices) {
             Graph = graph;
@@ -39,14 +62,14 @@ namespace Lunari.Tsuki.Graphs {
         }
     }
 
-    public class GraphPathNavigator<V, E> {
+    public class GraphPlan<V, E> {
         private int current;
         public UnityEvent onCurrentChanged, onReloaded;
         private GraphPath<V, E> currentPath;
 
         public GraphPath<V, E> CurrentPath => currentPath;
 
-        public GraphPathNavigator(GraphPath<V, E> currentPath, int current = 0) {
+        public GraphPlan(GraphPath<V, E> currentPath, int current = 0) {
             this.currentPath = currentPath;
             this.current = current;
         }
