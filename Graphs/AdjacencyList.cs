@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using System.Linq;
 using Lunari.Tsuki.Graphs.Exceptions;
 using Lunari.Tsuki.Runtime;
 using Lunari.Tsuki.Runtime.Exceptions;
