@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using Lunari.Tsuki.Runtime.Misc;
-using Lunari.Tsuki.Runtime.Singletons;
+﻿using Lunari.Tsuki.Runtime.Misc;
 using UnityEngine;
 
 namespace Lunari.Tsuki.Runtime {
