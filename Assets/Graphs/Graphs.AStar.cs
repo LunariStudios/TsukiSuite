@@ -2,55 +2,22 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Lunari.Tsuki.Runtime;
-using UnityEngine.Events;
+using Unity.Jobs;
 
 namespace Lunari.Tsuki.Graphs {
     public static partial class Graphs {
-        public delegate float Heuristics<V, E>(int index, int destination);
 
-        public delegate bool AStarFilter<E>(int from, int to, E edge);
-
-        public static float ZeroHeuristics(int index, int destination) => 0;
-
-        /// <summary>
-        /// Called when a vertex is discovered after checking a vertex's neighbors 
-        /// </summary>
-        public delegate void OnDiscoveredCallback<E>(int from, int to, E edge);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public delegate void OnSelectedCallback<E>(int from, int to, E edge);
-
-        public delegate float WeightCalculator<E>(int from, int to, E edge);
-
-        public struct AStarCallbacks<V, E> {
-            public AStarFilter<E> EdgeFilter;
-            public OnDiscoveredCallback<E> OnVisit;
-            public OnSelectedCallback<E> OnSelected;
-        }
-
-        public static bool AStar<V, E>(
+        public static bool AStarWithPlan<V, E>(
             this Graph<V, E> graph,
             int from,
             int to,
-            Heuristics<V, E> heuristics,
-            out GraphPath<V, E> path,
-            AStarCallbacks<V, E> callbacks = default
-        ) where E : IWeighted<float> {
-            return graph.AStar(from, to, heuristics, (i, to1, edge) => edge.Weight, out path, callbacks);
-        }
-
-        public static bool AStarWithNavigator<V, E>(
-            this Graph<V, E> graph,
-            int from,
-            int to,
-            Heuristics<V, E> heuristics,
-            out GraphPathNavigator<V, E> navigator,
-            AStarCallbacks<V, E> callbacks = default
-        ) where E : IWeighted<float> {
-            if (graph.AStar(from, to, heuristics, out var path, callbacks)) {
-                navigator = new GraphPathNavigator<V, E>(path);
+            Heuristics heuristics,
+            WeightCalculator<E> weightCalculator,
+            out GraphPlan<V, E> navigator,
+            ExplorationCallbacks<V, E> callbacks = default
+        ) {
+            if (graph.AStar(from, to, heuristics, weightCalculator, out var path, callbacks)) {
+                navigator = new GraphPlan<V, E>(path);
                 return true;
             }
 
@@ -58,13 +25,14 @@ namespace Lunari.Tsuki.Graphs {
             return false;
         }
 
+
         public static bool AStar<V>(
             this Graph<V, int> graph,
             int from,
             int to,
-            Heuristics<V, int> heuristics,
+            Heuristics heuristics,
             out GraphPath<V, int> path,
-            AStarCallbacks<V, int> callbacks = default
+            ExplorationCallbacks<V, int> callbacks = default
         ) {
             return graph.AStar(from, to, heuristics, (i, to1, edge) => edge, out path, callbacks);
         }
@@ -73,9 +41,9 @@ namespace Lunari.Tsuki.Graphs {
             this Graph<V, float> graph,
             int from,
             int to,
-            Heuristics<V, float> heuristics,
+            Heuristics heuristics,
             out GraphPath<V, float> path,
-            AStarCallbacks<V, float> callbacks = default
+            ExplorationCallbacks<V, float> callbacks = default
         ) {
             return graph.AStar(from, to, heuristics, (i, to1, edge) => edge, out path, callbacks);
         }
@@ -85,9 +53,9 @@ namespace Lunari.Tsuki.Graphs {
             this Graph<V, double> graph,
             int from,
             int to,
-            Heuristics<V, double> heuristics,
+            Heuristics heuristics,
             out GraphPath<V, double> path,
-            AStarCallbacks<V, double> callbacks = default
+            ExplorationCallbacks<V, double> callbacks = default
         ) {
             return graph.AStar(from, to, heuristics, (i, to1, edge) => (float) edge, out path, callbacks);
         }
@@ -96,10 +64,10 @@ namespace Lunari.Tsuki.Graphs {
             this Graph<V, E> graph,
             int from,
             int to,
-            Heuristics<V, E> heuristics,
+            Heuristics heuristics,
             WeightCalculator<E> calculator,
             out GraphPath<V, E> path,
-            AStarCallbacks<V, E> callbacks = default
+            ExplorationCallbacks<V, E> callbacks = default
         ) {
             var gScore = new Dictionary<int, float> {
                 {from, 0}
