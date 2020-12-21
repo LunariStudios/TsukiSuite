@@ -74,14 +74,67 @@ namespace Lunari.Tsuki.Graphs {
         public V Vertex(int index) {
             return Graph[Indices[index]];
         }
+
+        public bool IsLast(int current) {
+            return current == Indices.Length - 1;
+        }
     }
 
     public class GraphPlan<V, E> {
         private int current;
-        public UnityEvent onCurrentChanged, onReloaded;
+
+        public UnityEvent OnCurrentChanged { get; } = new UnityEvent();
+        public UnityEvent OnReloaded { get; } = new UnityEvent();
         private GraphPath<V, E> currentPath;
 
+
         public GraphPath<V, E> CurrentPath => currentPath;
+
+        public int CurrentIndex => CurrentPath.Indices[current];
+
+        public int NextIndex {
+            get {
+                if (CurrentPath.IsLast(current)) {
+                    return -1;
+                }
+
+                return CurrentPath.Indices[current + 1];
+            }
+        }
+
+        public V Vertex(int index) {
+            return currentPath.Vertex(index);
+        }
+
+        public E Edge(int index) {
+            return currentPath.Edge(index);
+        }
+
+        public V CurrentVertex => currentPath.Graph[CurrentIndex];
+
+        public V NextVertex {
+            get {
+                var next = NextIndex;
+                return next == -1 ? default : Vertex(next);
+            }
+        }
+
+        public E CurrentEdge => Edge(Current);
+
+        public E NextEdge {
+            get {
+                var next = NextIndex;
+                return next == -1 ? default : Edge(next);
+            }
+        }
+
+        public bool IsLast(int index) {
+            return currentPath.IsLast(index);
+        }
+
+        public bool IsAtLast() {
+            return IsLast(current);
+        }
 
         public GraphPlan(GraphPath<V, E> currentPath, int current = 0) {
             this.currentPath = currentPath;
@@ -95,7 +148,7 @@ namespace Lunari.Tsuki.Graphs {
 
             currentPath = path;
             Current = 0;
-            onReloaded.Invoke();
+            OnReloaded.Invoke();
         }
 
         public int Current {
@@ -106,7 +159,7 @@ namespace Lunari.Tsuki.Graphs {
                 }
 
                 current = value;
-                onCurrentChanged.Invoke();
+                OnCurrentChanged.Invoke();
             }
         }
     }
