@@ -38,12 +38,18 @@ namespace Lunari.Tsuki.Graphs {
         public int[] Indices { get; }
 
         public void Using(
-            UnityAction<Graph<V, E>, int, int, E> block
+            UnityAction<int, int, E> block
+        ) {
+            Using((from, to) => block(from, to, Graph[from, to]));
+        }
+
+        public void Using(
+            UnityAction<int, int> block
         ) {
             for (var i = 0; i < Indices.Length - 1; i++) {
                 var current = Indices[i];
                 var next = Indices[i + 1];
-                block(Graph, current, next, Graph[current, next]);
+                block(current, next);
             }
         }
 
@@ -59,6 +65,14 @@ namespace Lunari.Tsuki.Graphs {
                     yield return Graph[current, next];
                 }
             }
+        }
+
+        public E Edge(int index) {
+            return Graph[Indices[index], Indices[index + 1]];
+        }
+
+        public V Vertex(int index) {
+            return Graph[Indices[index]];
         }
     }
 
