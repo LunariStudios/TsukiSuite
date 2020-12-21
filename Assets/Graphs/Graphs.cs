@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using Lunari.Tsuki.Runtime;
 using UnityEngine.Events;
 
 namespace Lunari.Tsuki.Graphs {
@@ -158,7 +160,11 @@ namespace Lunari.Tsuki.Graphs {
                     return;
                 }
 
-                current = value;
+                var max = currentPath.Indices.Length - 1;
+                if (current < 0 || current > max) {
+                    throw new ArgumentOutOfRangeException(nameof(value), "Index must be between 0 and " + max);
+                }
+
                 OnCurrentChanged.Invoke();
             }
         }
