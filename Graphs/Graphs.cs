@@ -165,6 +165,7 @@ namespace Lunari.Tsuki.Graphs {
                     throw new ArgumentOutOfRangeException(nameof(value), "Index must be between 0 and " + max);
                 }
 
+                current = value;
                 OnCurrentChanged.Invoke();
             }
         }
