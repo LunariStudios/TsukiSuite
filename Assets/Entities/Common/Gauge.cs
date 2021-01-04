@@ -1,10 +1,19 @@
 using UnityEngine;
+#if ODIN_INSPECTOR
+using Sirenix.OdinInspector;
+#endif
 namespace Lunari.Tsuki.Entities.Common {
     public class Gauge : Trait {
-        [SerializeField, HideInInspector]
+        [SerializeField]
+#if ODIN_INSPECTOR
+        [HideInInspector]
+#endif
         private float value = 5;
 
-        [SerializeField, HideInInspector]
+        [SerializeField]
+#if ODIN_INSPECTOR
+        [HideInInspector]
+#endif
         private float maxValue = 10;
 
         [SerializeField]
