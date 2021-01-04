@@ -1,0 +1,16 @@
+{
+  "name": "Tsuki.Entities",
+  "rootNamespace": "Lunari.Tsuki",
+  "references": [
+    "GUID:4c0668d2c90a58d40a31bb673f8cde7d"
+  ],
+  "includePlatforms": [],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": true,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": false
+}

@@ -1,3 +1,4 @@
 ﻿{
-	"name": "Tsuki.Runtime"
+	"name": "Tsuki.Runtime",
+	"rootNamespace": "Lunari.Tsuki"
 }
