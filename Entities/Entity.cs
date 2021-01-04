@@ -1,10 +1,9 @@
-using System;
 using UnityEngine;
 using UnityEngine.Events;
 namespace Lunari.Tsuki.Entities {
-    public class Entity : MonoBehaviour {
+    public class Entity : MonoBehaviour, ITraits {
         private bool aware;
-        private Traits traits = new Traits();
+        private readonly Traits traits = new Traits();
         public UnityEvent onAwareChanged = new UnityEvent();
 
         public bool Aware {
@@ -36,6 +35,12 @@ namespace Lunari.Tsuki.Entities {
                 }
                 traits.Include(trait);
             }
+        }
+        public T GetTrait<T>() where T : Trait {
+            return traits.GetTrait<T>();
+        }
+        public void Delete() {
+            Destroy(gameObject);
         }
     }
 }
