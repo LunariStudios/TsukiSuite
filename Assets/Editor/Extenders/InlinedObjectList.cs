@@ -34,7 +34,7 @@ namespace Lunari.Tsuki.Editor.Extenders {
             for (var i = 0; i < subEditors.Count; i++) {
                 var editor = subEditors[i];
                 var token = objects[i];
-                using (new EditorGUILayout.HorizontalScope(GUIStyles.box)) {
+                using (new EditorGUILayout.HorizontalScope(Styles.box)) {
                     using (new EditorGUILayout.VerticalScope(TsukiStyles.NoMargin)) {
                         var buttonProperties = new[] {
                             GUILayout.MaxWidth(50)
@@ -47,10 +47,10 @@ namespace Lunari.Tsuki.Editor.Extenders {
                         using (new GUIColorScope(DeleteColor)) {
                             if (GUILayout.Button("Delete", buttonProperties)) {
                                 if (token != null && !EditorUtility.DisplayDialog(
-                                        "You are about to delete " + token.name,
-                                        "Are you sure about this?",
-                                        "Yep", "Nope"
-                                    )) {
+                                    "You are about to delete " + token.name,
+                                    "Are you sure about this?",
+                                    "Yep", "Nope"
+                                )) {
                                     continue;
                                 }
 
@@ -74,9 +74,9 @@ namespace Lunari.Tsuki.Editor.Extenders {
                                 EditorGUILayout.LabelField($"#{i} - {token.name}",
                                     EditorStyles.boldLabel);
                                 var hidden = (token.hideFlags & HideFlags.HideInHierarchy) == HideFlags.HideInHierarchy;
-                                var img = GUIIcons.GetIcon(hidden
-                                    ? GUIIcons.animationvisibilitytoggleoff
-                                    : GUIIcons.animationvisibilitytoggleon);
+                                var img = hidden
+                                    ? Icons.animationvisibilitytoggleoff
+                                    : Icons.animationvisibilitytoggleon;
                                 if (GUILayout.Button(img, GUIStyle.none,
                                     GUILayout.Width(EditorGUIUtility.singleLineHeight))) {
                                     token.hideFlags ^= HideFlags.HideInHierarchy;

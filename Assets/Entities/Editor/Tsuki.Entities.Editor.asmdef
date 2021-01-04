@@ -1,10 +1,14 @@
 {
-    "name": "Tsuki.Graphs",
+    "name": "Tsuki.Entities.Editor",
     "rootNamespace": "Lunari.Tsuki",
     "references": [
+        "GUID:c7b2a1cd13c5ebf469a4669c48bef51c",
+        "GUID:4e4b2da11469cf1a1a03b701b200edf7",
         "GUID:4c0668d2c90a58d40a31bb673f8cde7d"
     ],
-    "includePlatforms": [],
+    "includePlatforms": [
+        "Editor"
+    ],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,
