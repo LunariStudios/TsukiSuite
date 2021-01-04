@@ -1,6 +1,9 @@
 using System;
 using UnityEngine;
 using UnityEngine.Events;
+#if ODIN_INSPECTOR
+using Sirenix.OdinInspector;
+#endif
 namespace Lunari.Tsuki.Entities.Common {
     [Serializable]
     public sealed class HealthChangeEvent : UnityEvent<uint> { }
