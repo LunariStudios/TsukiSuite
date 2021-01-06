@@ -27,7 +27,6 @@ namespace Lunari.Tsuki.Entities {
         }
     }
     public class TraitDependencies : Traits {
-        private Entity entity;
         private readonly Trait of;
 
         public List<Exception> Problems {
@@ -35,13 +34,20 @@ namespace Lunari.Tsuki.Entities {
         } = new List<Exception>();
 
         public TraitDependencies(Entity entity, Trait of, bool initialize) {
-            this.entity = entity;
+            this.Entity = entity;
             this.of = of;
-            this.initialize = initialize;
+            this.Initialize = initialize;
         }
-        private bool initialize;
 
-        public bool Successful => initialize && Problems.IsEmpty();
+        public bool Successful => Initialize && Problems.IsEmpty();
+
+        public bool Initialize {
+            get;
+        }
+
+        public Entity Entity {
+            get;
+        }
 
         public string FailureReason {
             get {
@@ -51,14 +57,14 @@ namespace Lunari.Tsuki.Entities {
         public bool DependsOn<T>() where T : Trait {
             var found = GetTrait<T>();
             if (found == null) {
-                Problems.Add(new MissingTrait(entity, typeof(T), of));
+                Problems.Add(new MissingTrait(Entity, typeof(T), of));
             }
             return Successful;
         }
         public bool DependsOn<T>(ref T trait) where T : Trait {
             var found = GetTrait<T>();
             if (found == null) {
-                Problems.Add(new MissingTrait(entity, typeof(T), of));
+                Problems.Add(new MissingTrait(Entity, typeof(T), of));
             }
             if (Successful) {
                 trait = found;
