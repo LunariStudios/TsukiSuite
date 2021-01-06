@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 namespace Lunari.Tsuki.Entities {
@@ -38,6 +39,9 @@ namespace Lunari.Tsuki.Entities {
         }
         public T GetTrait<T>() where T : Trait {
             return traits.GetTrait<T>();
+        }
+        public IEnumerable<T> GetTraits<T>() where T : Trait {
+            return traits.GetTraits<T>();
         }
         public void Delete() {
             Destroy(gameObject);

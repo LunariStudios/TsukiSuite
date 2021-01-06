@@ -12,6 +12,14 @@ namespace Lunari.Tsuki.Entities {
             }
             return null;
         }
+        public IEnumerable<T> GetTraits<T>() where T : Trait {
+            foreach (var keyValuePair in traits) {
+                var trait = keyValuePair.Value;
+                if (trait is T cast) {
+                    yield return cast;
+                }
+            }
+        }
         public bool HasTrait(Type type) {
             return traits.Any(pair => pair.Key == type.GetHashCode());
         }
