@@ -1,7 +1,8 @@
-﻿using NUnit.Framework;
+﻿using Lunari.Tsuki.Graphs;
+using NUnit.Framework;
 using Assert = UnityEngine.Assertions.Assert;
 
-namespace Lunari.Tsuki.Graphs.Tests {
+namespace Graphs.Tests {
     public abstract class AbstractGraphTest<G> where G : Graph<string, int> {
         protected readonly G map;
         protected readonly int first;
