@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Reflection;
 using Lunari.Tsuki.Editor;
 using Lunari.Tsuki.Editor.Extenders;
+using Lunari.Tsuki.Entities.Problems;
 using Lunari.Tsuki.Runtime;
 using Lunari.Tsuki.Runtime.Scopes;
 using UnityEditor;
+using UnityEditor.Animations;
 using UnityEngine;
 namespace Lunari.Tsuki.Entities.Editor {
     [CustomEditor(typeof(Entity))]
@@ -27,7 +29,7 @@ namespace Lunari.Tsuki.Entities.Editor {
         }
         public override void OnInspectorGUI() {
             var found = entity.GetComponentsInChildren<Trait>();
-            var problems = new List<Exception>();
+            var problems = new List<Problem>();
             using (new EditorGUILayout.VerticalScope(EditorStyles.helpBox)) {
                 using (new EditorGUILayout.HorizontalScope()) {
                     EditorGUILayout.LabelField($"Traits ({found.Length})", EditorStyles.boldLabel);
@@ -65,10 +67,10 @@ namespace Lunari.Tsuki.Entities.Editor {
             }
             if (!problems.IsEmpty()) {
                 using (new EditorGUILayout.VerticalScope(EditorStyles.helpBox)) {
-                    EditorGUILayout.LabelField("Problems: ", Styles.Inspector.BoldLabel);
+                    EditorGUILayout.LabelField("Problems: ", EditorStyles.boldLabel);
                     foreach (var problem in problems) {
                         if (!HasSolution(problem)) {
-                            EditorGUILayout.HelpBox(problem.Message, MessageType.Error);
+                            EditorGUILayout.HelpBox(problem.Description, MessageType.Error);
                         }
                     }
                 }
@@ -82,13 +84,24 @@ namespace Lunari.Tsuki.Entities.Editor {
             }
         }
 
-        private bool HasSolution(Exception problem) {
+        private bool HasSolution(Problem problem) {
             if (problem is MissingTrait missingTrait) {
                 using (new EditorGUILayout.HorizontalScope(EditorStyles.helpBox)) {
-                    TsukiGUILayout.Icon(Icons.console_erroricon_2x, 32);
-                    GUILayout.Label(problem.Message);
+                    GUILayout.Label(new GUIContent(problem.Description, Icons.console_erroricon));
                     if (GUILayout.Button($"Add {missingTrait.DependencyType.Name}")) {
                         AddTrait(missingTrait.DependencyType);
+                    }
+                }
+                return true;
+            }
+            if (problem is MissingAnimatorParameter missingParameter) {
+                using (new EditorGUILayout.HorizontalScope(EditorStyles.helpBox)) {
+                    GUILayout.Label(new GUIContent(problem.Description, Icons.console_erroricon));
+                    if (GUILayout.Button($"Add {missingParameter.ParameterName} ({missingParameter.ParameterType})")) {
+                        var animator = entity.GetComponentInChildren<Animator>();
+                        if (animator.runtimeAnimatorController is AnimatorController controller) {
+                            controller.AddParameter(missingParameter.ParameterName, missingParameter.ParameterType);
+                        }
                     }
                 }
                 return true;

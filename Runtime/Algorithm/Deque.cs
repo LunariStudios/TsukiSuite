@@ -1,8 +1,6 @@
-using DequeUtility;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-
 namespace Lunari.Tsuki.Runtime.Algorithm {
     /// <summary>
     /// A genetic Deque class. It can be thought of as
@@ -725,10 +723,8 @@ namespace Lunari.Tsuki.Runtime.Algorithm {
 
         #endregion
     }
-}
 
 
-namespace DequeUtility {
     internal class Utility {
         public static int ClosestPowerOfTwoGreaterThan(int x) {
             x--;
