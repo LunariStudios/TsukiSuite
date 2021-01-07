@@ -15,8 +15,6 @@ namespace Lunari.Tsuki.Runtime {
         public void OnBeforeSerialize() {
             Copy(Keys, ref keys);
             Copy(Values, ref values);
-            // Free memory
-            Clear();
         }
 
         private void Copy<T>(IEnumerable<T> from, ref List<T> to) {
