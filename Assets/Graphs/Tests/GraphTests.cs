@@ -1,7 +1,8 @@
-﻿using NUnit.Framework;
+﻿using Lunari.Tsuki.Graphs;
+using NUnit.Framework;
 using Assert = UnityEngine.Assertions.Assert;
 
-namespace Lunari.Tsuki.Graphs.Tests {
+namespace Graphs.Tests {
     public class AdjacencyListTest : AbstractGraphTest<AdjacencyList<string, int>> {
         protected override int AddVertex(AdjacencyList<string, int> graph, string label) {
             return graph.AddVertex(label);
@@ -12,7 +13,7 @@ namespace Lunari.Tsuki.Graphs.Tests {
             Assert.IsTrue(map.AStar(
                 first,
                 third,
-                Graphs.ZeroHeuristics,
+                Lunari.Tsuki.Graphs.Graphs.ZeroHeuristics,
                 out var path
             ));
             Assert.IsNotNull(path);

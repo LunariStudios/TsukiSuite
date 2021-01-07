@@ -1,42 +1,22 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Lunari.Tsuki.Entities.Problems;
 using Lunari.Tsuki.Runtime;
+using UnityEditor.Animations;
+using UnityEngine;
 namespace Lunari.Tsuki.Entities {
-    public class MissingTrait : Exception {
-        public MissingTrait(
-            Entity entity,
-            Type dependencyType,
-            Trait requisitor
-        ) : base($"Entity {entity.name} does not have a trait of type {dependencyType.Name} which is a dependency of {requisitor} ") {
-            this.DependencyType = dependencyType;
-            this.Requisitor = requisitor;
-            this.Entity = entity;
-        }
-
-        public Type DependencyType {
-            get;
-        }
-
-        public Trait Requisitor {
-            get;
-        }
-
-        public Entity Entity {
-            get;
-        }
-    }
     public class TraitDependencies : Traits {
         private readonly Trait of;
 
-        public List<Exception> Problems {
+        public List<Problem> Problems {
             get;
-        } = new List<Exception>();
+        } = new List<Problem>();
 
         public TraitDependencies(Entity entity, Trait of, bool initialize) {
-            this.Entity = entity;
+            Entity = entity;
             this.of = of;
-            this.Initialize = initialize;
+            Initialize = initialize;
         }
 
         public bool Successful => Initialize && Problems.IsEmpty();
@@ -51,35 +31,36 @@ namespace Lunari.Tsuki.Entities {
 
         public string FailureReason {
             get {
-                return string.Join(Environment.NewLine, Problems.Select(exception => exception.Message));
+                return string.Join(Environment.NewLine, Problems.Select(exception => exception.Description));
             }
         }
-        public bool DependsOn<T>() where T : Trait {
+
+        public T DependsOn<T>() where T : Trait {
             var found = GetTrait<T>();
             if (found == null) {
                 Problems.Add(new MissingTrait(Entity, typeof(T), of));
             }
-            return Successful;
+            return found;
         }
-        public bool DependsOn<T>(ref T trait) where T : Trait {
-            var found = GetTrait<T>();
-            if (found == null) {
-                Problems.Add(new MissingTrait(Entity, typeof(T), of));
+        public T RequiresComponent<T>() where T : Component {
+            if (!Entity.TryGetComponentInChildren(out T component)) {
+                Problems.Add(new MissingComponent(Entity, typeof(T), of));
             }
-            if (Successful) {
-                trait = found;
+            return component;
+        }
+        public void RequiresAnimatorParameter(string parameter, AnimatorControllerParameterType type) {
+            var animator = RequiresComponent<Animator>();
+            if (animator != null && animator.runtimeAnimatorController == null) {
+                Problems.Add(new Problem(of, Entity, $"Animator {animator} does not have an animator controller"));
             }
-            return Successful;
-        }
-        public bool DependsOn<A, B>(ref A first, ref B second) where A : Trait where B : Trait {
-            var a = DependsOn(ref first);
-            var b = DependsOn(ref second);
-            return a && b;
-        }
-        public bool DependsOn<A, B, C>(ref A first, ref B second, ref C third) where A : Trait where B : Trait where C : Trait {
-            var a = DependsOn(ref first, ref second);
-            var b = DependsOn(ref third);
-            return a && b;
+#if UNITY_EDITOR
+            if (animator != null && animator.runtimeAnimatorController is AnimatorController controller) {
+                if (controller.parameters.Any(controllerParameter => controllerParameter.name == parameter && controllerParameter.type == type)) {
+                    return;
+                }
+                Problems.Add(new MissingAnimatorParameter(Entity, parameter, type, of));
+            }
+#endif
         }
     }
 }
