@@ -38,31 +38,33 @@ namespace Lunari.Tsuki.Entities.Editor {
                 EditorGUILayout.Space();
                 foreach (var trait in found) {
                     trait.TryClaim(entity, found, out var dependencies, false);
-                    using (new EditorGUILayout.HorizontalScope(Styles.box)) {
-                        var content = new GUIContent(trait.GetType().Name);
-                        if (!dependencies.Problems.IsEmpty()) {
-                            TsukiGUILayout.Icon(Icons.console_erroricon, 16);
-                        }
-                        EditorGUILayout.PrefixLabel(content);
-                        EditorGUILayout.Space(0, true);
-                        var obj = Selection.activeObject;
-                        var editable = true;
-                        if (obj == trait) {
-                            editable = false;
-                        } else if (obj is GameObject go && go == trait.gameObject) {
-                            editable = false;
-                        }
-                        using (new GUIEnabledScope(editable)) {
-                            if (GUILayout.Button("Select", GUILayout.Height(22), GUILayout.Width(32F * 4))) {
-                                Selection.activeObject = trait;
+                    if (dependencies != null) {
+
+                        using (new EditorGUILayout.HorizontalScope(Styles.box)) {
+                            var content = new GUIContent(trait.GetType().Name);
+                            if (!dependencies.Problems.IsEmpty()) {
+                                TsukiGUILayout.Icon(Icons.console_erroricon, 16);
+                            }
+                            EditorGUILayout.PrefixLabel(content);
+                            EditorGUILayout.Space(0, true);
+                            var obj = Selection.activeObject;
+                            var editable = true;
+                            if (obj == trait) {
+                                editable = false;
+                            } else if (obj is GameObject go && go == trait.gameObject) {
+                                editable = false;
+                            }
+                            using (new GUIEnabledScope(editable)) {
+                                if (GUILayout.Button("Select", GUILayout.Height(22), GUILayout.Width(32F * 4))) {
+                                    Selection.activeObject = trait;
+                                }
+                            }
+                            if (GUILayout.Button(Icons.treeeditor_trash, GUILayout.Height(22), GUILayout.Width(22))) {
+                                Delete(trait);
                             }
                         }
-                        if (GUILayout.Button(Icons.treeeditor_trash, GUILayout.Height(22), GUILayout.Width(22))) {
-                            Delete(trait);
-                        }
+                        problems.AddRange(dependencies.Problems);
                     }
-
-                    problems.AddRange(dependencies.Problems);
                 }
             }
             if (!problems.IsEmpty()) {
