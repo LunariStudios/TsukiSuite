@@ -5,7 +5,7 @@ namespace Lunari.Tsuki.Entities {
 
         public Entity Owner => entity;
         public TraitDependencies TryClaim(Entity requisitor, Trait[] traits, bool initialize = true) {
-            if (entity != null) {
+            if (initialize && entity != null) {
                 return null;
             }
 
