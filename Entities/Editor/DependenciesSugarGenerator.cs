@@ -21,8 +21,8 @@ namespace Lunari.Tsuki.Entities.Editor {
             builder.AppendLine("using Lunari.Tsuki.Entities;");
             builder.AppendLine("namespace Lunari.Tsuki.Entities {");
             builder.AppendLine("public static class Dependencies {");
-            GenerateFor("DependsOn", builder);
-            GenerateFor("RequiresComponent", builder);
+            GenerateFor("DependsOn", "Trait", builder);
+            GenerateFor("RequiresComponent", "Component", builder);
             builder.AppendLine("}");
             builder.AppendLine("}");
             var finalPath = Path.GetFullPath(FileName);
@@ -44,7 +44,7 @@ namespace Lunari.Tsuki.Entities.Editor {
             }
             return builder.ToString();
         }
-        private static void GenerateMethod(string method, string modifier, StringBuilder builder) {
+        private static void GenerateMethod(string method, string modifier, string typeConstraint, StringBuilder builder) {
             for (var i = 1; i <= Variants; i++) {
                 builder.Append($"public static bool {method}");
                 builder.Append('<');
@@ -63,7 +63,9 @@ namespace Lunari.Tsuki.Entities.Editor {
                 for (var j = 0; j < i; j++) {
                     builder.Append("where ");
                     builder.Append((char)('A' + j));
-                    builder.Append(" : Trait ");
+                    builder.Append(" : ");
+                    builder.Append(typeConstraint);
+                    builder.Append(' ');
                 }
                 builder.AppendLine(" {");
                 var single = i > 1;
@@ -84,8 +86,8 @@ namespace Lunari.Tsuki.Entities.Editor {
                 builder.AppendLine("}");
             }
         }
-        private static void GenerateFor(string method, StringBuilder builder) {
-            GenerateMethod(method, "out", builder);
+        private static void GenerateFor(string method, string typeParameter, StringBuilder builder) {
+            GenerateMethod(method, "out", typeParameter, builder);
         }
     }
 }
