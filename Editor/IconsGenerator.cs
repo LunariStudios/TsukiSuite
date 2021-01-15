@@ -9,12 +9,15 @@ using UnityEngine;
 namespace Lunari.Tsuki.Editor {
     public static class IconsGenerator {
         public const string IconsPath = "Assets/Editor/Icons.cs";
-
-        [MenuItem("Tsuki/Generate GUI Icons")]
-        private static void Generate() {
+        public static IEnumerable<string> GetAllIcons() {
             var editorAssetBundle = GetEditorAssetBundle();
             var iconsPath = GetIconsPath();
-            var assetNames = EnumerateIcons(editorAssetBundle, iconsPath).ToArray();
+            return EnumerateIcons(editorAssetBundle, iconsPath);
+        }
+
+        [MenuItem("Tools/Tsuki/Generate GUI Icons")]
+        private static void Generate() {
+            var assetNames = GetAllIcons().ToArray();
             var str = new StringBuilder();
             str.AppendLine("#if UNITY_EDITOR")
                 .AppendLine("using UnityEditor;")

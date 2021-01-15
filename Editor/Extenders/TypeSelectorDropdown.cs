@@ -38,7 +38,7 @@ namespace Lunari.Tsuki.Editor.Extenders {
             var all = TypeCache.GetTypesDerivedFrom<T>();
             foreach (var type in all) {
                 var path = selector(type);
-                var parent = path != null ? FindParent(root, path) : root;
+                var parent = path != null ? root.FindOrCreate(path) : root;
                 var item = new TypeSelectorItem(type, type.Name) {
                     icon = type.FindUnityIcon() as Texture2D
                 };
@@ -66,28 +66,10 @@ namespace Lunari.Tsuki.Editor.Extenders {
             }
             return -1;
         }
-        private static AdvancedDropdownItem FindParent(AdvancedDropdownItem root, string path) {
-            var current = root;
-            var toGet = new Stack<string>();
-            foreach (var s in path.Split('/').Reverse()) {
-                toGet.Push(s);
-            }
-            do {
-                var next = toGet.Pop();
-                var candidate = current.children.FirstOrDefault(item => item.name == next);
-                if (candidate == null) {
-                    var newItem = new AdvancedDropdownItem(next);
-                    current.AddChild(newItem);
-                    current = newItem;
-                } else {
-                    current = candidate;
-                }
-            } while (!toGet.IsEmpty());
-            return current;
-        }
+
         private static string SelectPath(MemberInfo type) {
             var category = type.GetCustomAttribute<CategoryAttribute>();
-            return category != null ? category.Category : null;
+            return category?.Category;
         }
     }
 }

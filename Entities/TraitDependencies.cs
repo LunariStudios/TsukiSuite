@@ -42,16 +42,19 @@ namespace Lunari.Tsuki.Entities {
             }
             return found;
         }
-        public T RequiresComponent<T>() where T : Component {
+        public T RequiresComponent<T>(string expectedLocation = null) where T : Component {
             if (!Entity.TryGetComponentInChildren(out T component)) {
-                Problems.Add(new MissingComponent(Entity, typeof(T), of));
+                Problems.Add(new MissingComponent(Entity, typeof(T), of, expectedLocation));
             }
             return component;
         }
+ 
         public void RequiresAnimatorParameter(string parameter, AnimatorControllerParameterType type) {
             var animator = RequiresComponent<Animator>();
             if (animator != null && animator.runtimeAnimatorController == null) {
-                Problems.Add(new Problem(of, Entity, $"Animator {animator} does not have an animator controller"));
+                if (!Problems.Any(problem => problem is MissingAnimatorController)) {
+                    Problems.Add(new MissingAnimatorController(of, Entity, animator));
+                }
             }
 #if UNITY_EDITOR
             if (animator != null && animator.runtimeAnimatorController is AnimatorController controller) {

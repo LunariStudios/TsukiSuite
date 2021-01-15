@@ -20,7 +20,7 @@ namespace Lunari.Tsuki.Editor {
             builder.AppendLine();
         }
 
-        [MenuItem("Tsuki/Generate GUI Styles")]
+        [MenuItem("Tools/Tsuki/Generate GUI Styles")]
         public static void Generate() {
             var str = new StringBuilder();
             str.AppendLine("#if UNITY_EDITOR")
