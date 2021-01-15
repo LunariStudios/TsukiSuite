@@ -13,5 +13,12 @@
   ],
   "contributors": [
     "Bruno \"DDevil\" Silva Freire"
+  ],
+  "samples": [
+    {
+      "displayName": "Basic Entity",
+      "description": "Displays how you can setup an entity with basic traits",
+      "path": "Samples~/Entities/Basic"
+    }
   ]
 }
