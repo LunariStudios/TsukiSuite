@@ -24,5 +24,9 @@ namespace Lunari.Tsuki.Editor {
             GUI.DrawTexture(rect, texture);
         }
 
+        public static void Texture(Texture texture, Vector2 textureSize) {
+            var rect = EditorGUILayout.GetControlRect(false, GUILayout.Width(textureSize.x), GUILayout.Height(textureSize.y));
+            GUI.DrawTexture(rect, texture);
+        }
     }
 }
