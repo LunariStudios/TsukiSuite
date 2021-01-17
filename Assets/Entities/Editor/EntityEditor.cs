@@ -13,7 +13,7 @@ namespace Lunari.Tsuki.Entities.Editor {
     public class EntityEditor : UnityEditor.Editor {
         private Entity entity;
         private TypeSelectorButton<Trait> button;
-        private static readonly Lazy<GUIStyle> ProblemStyle = new Lazy<GUIStyle> (() => new GUIStyle(Styles.WordWrappedMiniLabel) {
+        private static readonly Lazy<GUIStyle> ProblemStyle = new Lazy<GUIStyle>(() => new GUIStyle(Styles.WordWrappedMiniLabel) {
             wordWrap = true,
         });
         private void OnEnable() {
@@ -38,6 +38,16 @@ namespace Lunari.Tsuki.Entities.Editor {
                     button.OnInspectorGUI();
                 }
                 EditorGUILayout.Space();
+                if (EditorApplication.isPlaying) {
+                    GUILayout.Label(
+                        new GUIContent {
+                            image = Icons.console_infoicon,
+                            text = "Please exit play mode to inspect entity"
+                        },
+                        Styles.CenteredLabel
+                    );
+                    return;
+                }
                 foreach (var trait in found) {
                     trait.TryClaim(entity, found, out var dependencies, false);
                     if (dependencies == null) {
