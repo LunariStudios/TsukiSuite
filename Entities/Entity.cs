@@ -6,6 +6,7 @@ namespace Lunari.Tsuki.Entities {
         private bool aware;
         private readonly Traits traits = new Traits();
         public UnityEvent onAwareChanged = new UnityEvent();
+        public UnityEvent onDeleted = new UnityEvent();
 
         public bool Aware {
             get => aware;
@@ -44,6 +45,7 @@ namespace Lunari.Tsuki.Entities {
             return traits.GetTraits<T>();
         }
         public void Delete() {
+            onDeleted.Invoke();
             Destroy(gameObject);
         }
     }
