@@ -18,6 +18,9 @@ namespace Lunari.Tsuki.Runtime.Misc {
             set => currentTime = value;
         }
 
+        public void Reset() {
+            currentTime = cooldown;
+        }
         public bool Tick() {
             var completed = (currentTime -= Time.deltaTime) <= 0;
             if (completed) {
