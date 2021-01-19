@@ -13,6 +13,11 @@ namespace Lunari.Tsuki.Runtime.Misc {
 
         private float currentTime;
 
+        public float CurrentTime {
+            get => currentTime;
+            set => currentTime = value;
+        }
+
         public bool Tick() {
             var completed = (currentTime -= Time.deltaTime) <= 0;
             if (completed) {
