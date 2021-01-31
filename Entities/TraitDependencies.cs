@@ -3,8 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using Lunari.Tsuki.Entities.Problems;
 using Lunari.Tsuki.Runtime;
-using UnityEditor.Animations;
 using UnityEngine;
+
+#if UNITY_EDITOR
+using UnityEditor.Animations;
+#endif
+
 namespace Lunari.Tsuki.Entities {
     public class TraitDependencies : Traits {
         private readonly Trait of;
