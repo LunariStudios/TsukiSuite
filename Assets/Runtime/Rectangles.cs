@@ -1,8 +1,12 @@
-using UnityEditor;
 using UnityEngine;
+
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 namespace Lunari.Tsuki.Runtime {
     public static class Rectangles {
+#if UNITY_EDITOR
         public static float GetHeight(int nLines) {
             var sum = nLines * EditorGUIUtility.singleLineHeight;
             if (nLines > 1) {
@@ -19,7 +23,7 @@ namespace Lunari.Tsuki.Runtime {
         public static Rect GetLine(this Rect rect, uint lineIndex, float lineHeight) {
             return GetLine(rect, lineIndex, lineHeight, EditorGUIUtility.standardVerticalSpacing);
         }
-
+#endif
         /// <summary>
         /// Returns a Rect that correspond to what would be an "editor line" on the specified <see cref="lineHeight"/>
         /// on the specified <see cref="lineIndex"/>.
