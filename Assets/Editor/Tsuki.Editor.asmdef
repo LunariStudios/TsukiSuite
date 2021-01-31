@@ -1,10 +1,12 @@
 {
     "name": "Tsuki.Editor",
+    "rootNamespace": "Lunari.Tsuki",
     "references": [
         "GUID:4c0668d2c90a58d40a31bb673f8cde7d"
     ],
-    "rootNamespace": "Lunari.Tsuki",
-    "includePlatforms": [],
+    "includePlatforms": [
+        "Editor"
+    ],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,
