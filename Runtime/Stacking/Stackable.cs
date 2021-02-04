@@ -17,14 +17,14 @@ namespace Lunari.Tsuki.Runtime.Stacking {
         public Modifier<T> AddModifier(T value) {
             modifiers ??= new List<Modifier<T>>();
 
-            var handle = new Modifier<T>() {
+            var handle = new Modifier<T> {
                 value = value
             };
             modifiers.Add(handle);
             return handle;
         }
 
-        public void RemoveMultiplier(Modifier<T> handle) {
+        public void RemoveModifier(Modifier<T> handle) {
             modifiers?.Remove(handle);
         }
     }
