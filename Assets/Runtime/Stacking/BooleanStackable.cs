@@ -24,33 +24,40 @@ namespace Lunari.Tsuki.Runtime.Stacking {
 
         public override bool Value {
             get {
-                switch (mode) {
-                    case Mode.Any:
-                        foreach (var modifier in modifiers) {
-                            if (modifier.value) {
-                                return true;
-                            }
-                        }
-                        break;
-                    case Mode.All:
-                        foreach (var modifier in modifiers) {
-                            if (!modifier.value) {
-                                return false;
-                            }
-                        }
-                        break;
-                    case Mode.None:
-                        foreach (var modifier in modifiers) {
-                            if (modifier.value) {
-                                return false;
-                            }
-                        }
-                        break;
-                    default:
-                        throw new ArgumentOutOfRangeException();
+                if (modifiers != null) {
+                    return EvaluateModifiers();
                 }
                 return baseValue;
             }
+        }
+
+        private bool EvaluateModifiers() {
+            switch (mode) {
+                case Mode.Any:
+                    foreach (var modifier in modifiers) {
+                        if (modifier.value) {
+                            return true;
+                        }
+                    }
+                    break;
+                case Mode.All:
+                    foreach (var modifier in modifiers) {
+                        if (!modifier.value) {
+                            return false;
+                        }
+                    }
+                    break;
+                case Mode.None:
+                    foreach (var modifier in modifiers) {
+                        if (modifier.value) {
+                            return false;
+                        }
+                    }
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+            return baseValue;
         }
 
         public static implicit operator bool(BooleanStackable property) {
