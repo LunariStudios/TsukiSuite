@@ -1,7 +1,12 @@
 using System;
 using System.Collections.Generic;
 
+#if ODIN_INSPECTOR
+using Sirenix.OdinInspector;
+#endif
+
 namespace Lunari.Tsuki.Runtime.Stacking {
+    [Serializable]
     public class Modifier<T> {
         public T value;
     }
@@ -12,7 +17,9 @@ namespace Lunari.Tsuki.Runtime.Stacking {
         public abstract T Value {
             get;
         }
-
+#if ODIN_INSPECTOR
+        [ShowInInspector, ReadOnly]
+#endif
         protected List<Modifier<T>> modifiers;
         public Modifier<T> AddModifier(T value) {
             modifiers ??= new List<Modifier<T>>();
