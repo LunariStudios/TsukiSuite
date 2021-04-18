@@ -1,12 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Lunari.Tsuki.Runtime;
-using Unity.Jobs;
+using UnityEngine;
+using Lunari.Tsuki.Runtime.Algorithm;
 
 namespace Lunari.Tsuki.Graphs {
     public static partial class Graphs {
-
         public static bool AStarWithPlan<V, E>(
             this Graph<V, E> graph,
             int from,
@@ -75,23 +74,17 @@ namespace Lunari.Tsuki.Graphs {
             var fScore = new Dictionary<int, float> {
                 {from, heuristics(from, to)}
             };
-            var open = new SortedSet<int>(Comparer<int>.Create((first, second) => {
-                var a = fScore[first];
-                var b = fScore[second];
-                return a.CompareTo(b);
-            })) {
-                from
-            };
+            var open = new PriorityQueue<int, float>();
+            open.Enqueue(from, fScore[from]);
 
             var history = new Dictionary<int, int>();
-            while (!open.IsEmpty()) {
-                var i = open.First();
+            while (open.Count > 0) {
+                var i = open.Dequeue();
                 if (i == to) {
                     path = ReTrace(history, i, graph);
                     return true;
                 }
 
-                open.Remove(i);
                 var edges = graph.EdgesFrom(i).ToArray();
                 foreach (var (edge, neighborIndex) in edges) {
                     callbacks.OnVisit?.Invoke(i, neighborIndex, edge);
@@ -104,10 +97,11 @@ namespace Lunari.Tsuki.Graphs {
                     if (!gScore.ContainsKey(neighborIndex) || attempt < gScore[neighborIndex]) {
                         history[neighborIndex] = i;
                         gScore[neighborIndex] = attempt;
-                        fScore[neighborIndex] = attempt + heuristics(neighborIndex, to);
+                        float neighborFScore = attempt + heuristics(neighborIndex, to);
+                        fScore[neighborIndex] = neighborFScore;
                         callbacks.OnSelected?.Invoke(i, neighborIndex, edge);
                         if (!open.Contains(neighborIndex)) {
-                            open.Add(neighborIndex);
+                            open.Enqueue(neighborIndex, neighborFScore);
                         }
                     }
                 }
