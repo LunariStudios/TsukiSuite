@@ -27,7 +27,8 @@ namespace Lunari.Tsuki.Entities.Editor {
             button = new TypeSelectorButton<Trait>(
                 new GUIContent("Add Trait"),
                 AddTrait,
-                TraitExtensions.FindTraitLocation
+                TraitExtensions.FindTraitLocation,
+                type => entity.GetComponentInChildren(type) != null
             );
         }
 
