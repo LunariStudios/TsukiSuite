@@ -38,7 +38,7 @@ namespace Lunari.Tsuki.Editor.Extenders {
             var all = TypeCache.GetTypesDerivedFrom<T>();
             foreach (var type in all) {
                 var path = selector(type);
-                var parent = path != null ? root.FindOrCreate(path) : root;
+                var parent = path.IsNullOrEmpty() ? root.FindOrCreate(path) : root;
                 var item = new TypeSelectorItem(type, type.Name) {
                     icon = type.FindUnityIcon() as Texture2D
                 };

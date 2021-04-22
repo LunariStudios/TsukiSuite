@@ -10,6 +10,7 @@ namespace Lunari.Tsuki.Editor {
         public static GUIStyle Get(string key, EditorSkin skin = EditorSkin.Inspector) {
             return EditorGUIUtility.GetBuiltinSkin(skin).FindStyle(key);
         }
+
         public static GUIStyle box => Keys.box;
         public static GUIStyle button => Keys.button;
         public static GUIStyle toggle => Keys.toggle;
@@ -460,6 +461,7 @@ namespace Lunari.Tsuki.Editor {
         public static GUIStyle ProjectBrowserTextureIconDropShadow => Keys.ProjectBrowserTextureIconDropShadow;
         public static GUIStyle ProjectBrowserTopBarBg => Keys.ProjectBrowserTopBarBg;
         public static GUIStyle QualitySettingsDefault => Keys.QualitySettingsDefault;
+        public static GUIStyle quick_search_tab => Keys.quick_search_tab;
         public static GUIStyle Radio => Keys.Radio;
         public static GUIStyle RectangleToolHBar => Keys.RectangleToolHBar;
         public static GUIStyle RectangleToolHBarLeft => Keys.RectangleToolHBarLeft;
@@ -589,7 +591,17 @@ namespace Lunari.Tsuki.Editor {
         public static GUIStyle ToolbarSeachCancelButtonEmpty => Keys.ToolbarSeachCancelButtonEmpty;
         public static GUIStyle ToolbarSeachTextField => Keys.ToolbarSeachTextField;
         public static GUIStyle ToolbarSeachTextFieldPopup => Keys.ToolbarSeachTextFieldPopup;
+        public static GUIStyle ToolbarSearchCancelButtonWithJump => Keys.ToolbarSearchCancelButtonWithJump;
+        public static GUIStyle ToolbarSearchCancelButtonWithJumpEmpty => Keys.ToolbarSearchCancelButtonWithJumpEmpty;
         public static GUIStyle ToolbarSearchField => Keys.ToolbarSearchField;
+        public static GUIStyle ToolbarSearchTextFieldJumpButton => Keys.ToolbarSearchTextFieldJumpButton;
+        public static GUIStyle ToolbarSearchTextFieldWithJump => Keys.ToolbarSearchTextFieldWithJump;
+        public static GUIStyle ToolbarSearchTextFieldWithJumpPopup => Keys.ToolbarSearchTextFieldWithJumpPopup;
+
+        public static GUIStyle ToolbarSearchTextFieldWithJumpPopupSynced =>
+            Keys.ToolbarSearchTextFieldWithJumpPopupSynced;
+
+        public static GUIStyle ToolbarSearchTextFieldWithJumpSynced => Keys.ToolbarSearchTextFieldWithJumpSynced;
         public static GUIStyle ToolbarSlider => Keys.ToolbarSlider;
         public static GUIStyle ToolbarSliderTextField => Keys.ToolbarSliderTextField;
         public static GUIStyle ToolbarTextField => Keys.ToolbarTextField;
@@ -631,6 +643,7 @@ namespace Lunari.Tsuki.Editor {
         public static GUIStyle wordwrapminibutton => Keys.wordwrapminibutton;
         public static GUIStyle WordWrappedLabel => Keys.WordWrappedLabel;
         public static GUIStyle WordWrappedMiniLabel => Keys.WordWrappedMiniLabel;
+
         public static class Keys {
             public const string box = "box";
             public const string button = "button";
@@ -1082,6 +1095,7 @@ namespace Lunari.Tsuki.Editor {
             public const string ProjectBrowserTextureIconDropShadow = "ProjectBrowserTextureIconDropShadow";
             public const string ProjectBrowserTopBarBg = "ProjectBrowserTopBarBg";
             public const string QualitySettingsDefault = "QualitySettingsDefault";
+            public const string quick_search_tab = "quick search tab";
             public const string Radio = "Radio";
             public const string RectangleToolHBar = "RectangleToolHBar";
             public const string RectangleToolHBarLeft = "RectangleToolHBarLeft";
@@ -1211,7 +1225,14 @@ namespace Lunari.Tsuki.Editor {
             public const string ToolbarSeachCancelButtonEmpty = "ToolbarSeachCancelButtonEmpty";
             public const string ToolbarSeachTextField = "ToolbarSeachTextField";
             public const string ToolbarSeachTextFieldPopup = "ToolbarSeachTextFieldPopup";
+            public const string ToolbarSearchCancelButtonWithJump = "ToolbarSearchCancelButtonWithJump";
+            public const string ToolbarSearchCancelButtonWithJumpEmpty = "ToolbarSearchCancelButtonWithJumpEmpty";
             public const string ToolbarSearchField = "ToolbarSearchField";
+            public const string ToolbarSearchTextFieldJumpButton = "ToolbarSearchTextFieldJumpButton";
+            public const string ToolbarSearchTextFieldWithJump = "ToolbarSearchTextFieldWithJump";
+            public const string ToolbarSearchTextFieldWithJumpPopup = "ToolbarSearchTextFieldWithJumpPopup";
+            public const string ToolbarSearchTextFieldWithJumpPopupSynced = "ToolbarSearchTextFieldWithJumpPopupSynced";
+            public const string ToolbarSearchTextFieldWithJumpSynced = "ToolbarSearchTextFieldWithJumpSynced";
             public const string ToolbarSlider = "ToolbarSlider";
             public const string ToolbarSliderTextField = "ToolbarSliderTextField";
             public const string ToolbarTextField = "ToolbarTextField";
@@ -1254,6 +1275,7 @@ namespace Lunari.Tsuki.Editor {
             public const string WordWrappedLabel = "WordWrappedLabel";
             public const string WordWrappedMiniLabel = "WordWrappedMiniLabel";
         }
+
         public static class Game {
             public static GUIStyle box => Styles.Get(Keys.box, EditorSkin.Game);
             public static GUIStyle button => Styles.Get(Keys.button, EditorSkin.Game);
@@ -1267,13 +1289,25 @@ namespace Lunari.Tsuki.Editor {
             public static GUIStyle verticalslider => Styles.Get(Keys.verticalslider, EditorSkin.Game);
             public static GUIStyle verticalsliderthumb => Styles.Get(Keys.verticalsliderthumb, EditorSkin.Game);
             public static GUIStyle horizontalscrollbar => Styles.Get(Keys.horizontalscrollbar, EditorSkin.Game);
-            public static GUIStyle horizontalscrollbarthumb => Styles.Get(Keys.horizontalscrollbarthumb, EditorSkin.Game);
-            public static GUIStyle horizontalscrollbarleftbutton => Styles.Get(Keys.horizontalscrollbarleftbutton, EditorSkin.Game);
-            public static GUIStyle horizontalscrollbarrightbutton => Styles.Get(Keys.horizontalscrollbarrightbutton, EditorSkin.Game);
+
+            public static GUIStyle horizontalscrollbarthumb =>
+                Styles.Get(Keys.horizontalscrollbarthumb, EditorSkin.Game);
+
+            public static GUIStyle horizontalscrollbarleftbutton =>
+                Styles.Get(Keys.horizontalscrollbarleftbutton, EditorSkin.Game);
+
+            public static GUIStyle horizontalscrollbarrightbutton =>
+                Styles.Get(Keys.horizontalscrollbarrightbutton, EditorSkin.Game);
+
             public static GUIStyle verticalscrollbar => Styles.Get(Keys.verticalscrollbar, EditorSkin.Game);
             public static GUIStyle verticalscrollbarthumb => Styles.Get(Keys.verticalscrollbarthumb, EditorSkin.Game);
-            public static GUIStyle verticalscrollbarupbutton => Styles.Get(Keys.verticalscrollbarupbutton, EditorSkin.Game);
-            public static GUIStyle verticalscrollbardownbutton => Styles.Get(Keys.verticalscrollbardownbutton, EditorSkin.Game);
+
+            public static GUIStyle verticalscrollbarupbutton =>
+                Styles.Get(Keys.verticalscrollbarupbutton, EditorSkin.Game);
+
+            public static GUIStyle verticalscrollbardownbutton =>
+                Styles.Get(Keys.verticalscrollbardownbutton, EditorSkin.Game);
+
             public static GUIStyle scrollview => Styles.Get(Keys.scrollview, EditorSkin.Game);
             public static GUIStyle AboutWIndowLicenseLabel => Styles.Get(Keys.AboutWIndowLicenseLabel, EditorSkin.Game);
             public static GUIStyle AC_BoldHeader => Styles.Get(Keys.AC_BoldHeader, EditorSkin.Game);
@@ -1284,7 +1318,10 @@ namespace Lunari.Tsuki.Editor {
             public static GUIStyle AC_PreviewHeader => Styles.Get(Keys.AC_PreviewHeader, EditorSkin.Game);
             public static GUIStyle AC_PreviewText => Styles.Get(Keys.AC_PreviewText, EditorSkin.Game);
             public static GUIStyle AC_RightArrow => Styles.Get(Keys.AC_RightArrow, EditorSkin.Game);
-            public static GUIStyle AM_ChannelStripHeaderStyle => Styles.Get(Keys.AM_ChannelStripHeaderStyle, EditorSkin.Game);
+
+            public static GUIStyle AM_ChannelStripHeaderStyle =>
+                Styles.Get(Keys.AM_ChannelStripHeaderStyle, EditorSkin.Game);
+
             public static GUIStyle AM_EffectName => Styles.Get(Keys.AM_EffectName, EditorSkin.Game);
             public static GUIStyle AM_HeaderStyle => Styles.Get(Keys.AM_HeaderStyle, EditorSkin.Game);
             public static GUIStyle AM_MixerHeader => Styles.Get(Keys.AM_MixerHeader, EditorSkin.Game);
@@ -1293,14 +1330,25 @@ namespace Lunari.Tsuki.Editor {
             public static GUIStyle AM_ToolbarObjectField => Styles.Get(Keys.AM_ToolbarObjectField, EditorSkin.Game);
             public static GUIStyle AM_TotalVuLabel => Styles.Get(Keys.AM_TotalVuLabel, EditorSkin.Game);
             public static GUIStyle AM_VuValue => Styles.Get(Keys.AM_VuValue, EditorSkin.Game);
-            public static GUIStyle AnimationEventBackground => Styles.Get(Keys.AnimationEventBackground, EditorSkin.Game);
+
+            public static GUIStyle AnimationEventBackground =>
+                Styles.Get(Keys.AnimationEventBackground, EditorSkin.Game);
+
             public static GUIStyle AnimationEventTooltip => Styles.Get(Keys.AnimationEventTooltip, EditorSkin.Game);
-            public static GUIStyle AnimationEventTooltipArrow => Styles.Get(Keys.AnimationEventTooltipArrow, EditorSkin.Game);
-            public static GUIStyle AnimationKeyframeBackground => Styles.Get(Keys.AnimationKeyframeBackground, EditorSkin.Game);
+
+            public static GUIStyle AnimationEventTooltipArrow =>
+                Styles.Get(Keys.AnimationEventTooltipArrow, EditorSkin.Game);
+
+            public static GUIStyle AnimationKeyframeBackground =>
+                Styles.Get(Keys.AnimationKeyframeBackground, EditorSkin.Game);
+
             public static GUIStyle AnimationPlayHead => Styles.Get(Keys.AnimationPlayHead, EditorSkin.Game);
             public static GUIStyle AnimationRowEven => Styles.Get(Keys.AnimationRowEven, EditorSkin.Game);
             public static GUIStyle AnimationRowOdd => Styles.Get(Keys.AnimationRowOdd, EditorSkin.Game);
-            public static GUIStyle AnimationSelectionTextField => Styles.Get(Keys.AnimationSelectionTextField, EditorSkin.Game);
+
+            public static GUIStyle AnimationSelectionTextField =>
+                Styles.Get(Keys.AnimationSelectionTextField, EditorSkin.Game);
+
             public static GUIStyle AnimationTimelineTick => Styles.Get(Keys.AnimationTimelineTick, EditorSkin.Game);
             public static GUIStyle AnimClipToolbar => Styles.Get(Keys.AnimClipToolbar, EditorSkin.Game);
             public static GUIStyle AnimClipToolbarButton => Styles.Get(Keys.AnimClipToolbarButton, EditorSkin.Game);
@@ -1338,12 +1386,23 @@ namespace Lunari.Tsuki.Editor {
             public static GUIStyle BypassToggle => Styles.Get(Keys.BypassToggle, EditorSkin.Game);
             public static GUIStyle CacheFolderLocation => Styles.Get(Keys.CacheFolderLocation, EditorSkin.Game);
             public static GUIStyle CenteredLabel => Styles.Get(Keys.CenteredLabel, EditorSkin.Game);
-            public static GUIStyle ChannelStripAttenuationBar => Styles.Get(Keys.ChannelStripAttenuationBar, EditorSkin.Game);
-            public static GUIStyle ChannelStripAttenuationMarkerSquare => Styles.Get(Keys.ChannelStripAttenuationMarkerSquare, EditorSkin.Game);
+
+            public static GUIStyle ChannelStripAttenuationBar =>
+                Styles.Get(Keys.ChannelStripAttenuationBar, EditorSkin.Game);
+
+            public static GUIStyle ChannelStripAttenuationMarkerSquare =>
+                Styles.Get(Keys.ChannelStripAttenuationMarkerSquare, EditorSkin.Game);
+
             public static GUIStyle ChannelStripBg => Styles.Get(Keys.ChannelStripBg, EditorSkin.Game);
-            public static GUIStyle ChannelStripDuckingMarker => Styles.Get(Keys.ChannelStripDuckingMarker, EditorSkin.Game);
+
+            public static GUIStyle ChannelStripDuckingMarker =>
+                Styles.Get(Keys.ChannelStripDuckingMarker, EditorSkin.Game);
+
             public static GUIStyle ChannelStripEffectBar => Styles.Get(Keys.ChannelStripEffectBar, EditorSkin.Game);
-            public static GUIStyle ChannelStripSendReturnBar => Styles.Get(Keys.ChannelStripSendReturnBar, EditorSkin.Game);
+
+            public static GUIStyle ChannelStripSendReturnBar =>
+                Styles.Get(Keys.ChannelStripSendReturnBar, EditorSkin.Game);
+
             public static GUIStyle ChannelStripVUMeterBg => Styles.Get(Keys.ChannelStripVUMeterBg, EditorSkin.Game);
             public static GUIStyle CircularToggle => Styles.Get(Keys.CircularToggle, EditorSkin.Game);
             public static GUIStyle CN_Box => Styles.Get(Keys.CN_Box, EditorSkin.Game);
@@ -1374,14 +1433,24 @@ namespace Lunari.Tsuki.Editor {
             public static GUIStyle ColorPickerBackground => Styles.Get(Keys.ColorPickerBackground, EditorSkin.Game);
             public static GUIStyle ColorPickerBox => Styles.Get(Keys.ColorPickerBox, EditorSkin.Game);
             public static GUIStyle ColorPickerCurrentColor => Styles.Get(Keys.ColorPickerCurrentColor, EditorSkin.Game);
-            public static GUIStyle ColorPickerCurrentExposureSwatchBorder => Styles.Get(Keys.ColorPickerCurrentExposureSwatchBorder, EditorSkin.Game);
-            public static GUIStyle ColorPickerExposureSwatch => Styles.Get(Keys.ColorPickerExposureSwatch, EditorSkin.Game);
+
+            public static GUIStyle ColorPickerCurrentExposureSwatchBorder =>
+                Styles.Get(Keys.ColorPickerCurrentExposureSwatchBorder, EditorSkin.Game);
+
+            public static GUIStyle ColorPickerExposureSwatch =>
+                Styles.Get(Keys.ColorPickerExposureSwatch, EditorSkin.Game);
+
             public static GUIStyle ColorPickerHorizThumb => Styles.Get(Keys.ColorPickerHorizThumb, EditorSkin.Game);
             public static GUIStyle ColorPickerHueRing => Styles.Get(Keys.ColorPickerHueRing, EditorSkin.Game);
             public static GUIStyle ColorPickerHueRing_HDR => Styles.Get(Keys.ColorPickerHueRing_HDR, EditorSkin.Game);
             public static GUIStyle ColorPickerHueRingThumb => Styles.Get(Keys.ColorPickerHueRingThumb, EditorSkin.Game);
-            public static GUIStyle ColorPickerOriginalColor => Styles.Get(Keys.ColorPickerOriginalColor, EditorSkin.Game);
-            public static GUIStyle ColorPickerSliderBackground => Styles.Get(Keys.ColorPickerSliderBackground, EditorSkin.Game);
+
+            public static GUIStyle ColorPickerOriginalColor =>
+                Styles.Get(Keys.ColorPickerOriginalColor, EditorSkin.Game);
+
+            public static GUIStyle ColorPickerSliderBackground =>
+                Styles.Get(Keys.ColorPickerSliderBackground, EditorSkin.Game);
+
             public static GUIStyle Command => Styles.Get(Keys.Command, EditorSkin.Game);
             public static GUIStyle CommandLeft => Styles.Get(Keys.CommandLeft, EditorSkin.Game);
             public static GUIStyle CommandMid => Styles.Get(Keys.CommandMid, EditorSkin.Game);
@@ -1390,15 +1459,25 @@ namespace Lunari.Tsuki.Editor {
             public static GUIStyle ControlHighlight => Styles.Get(Keys.ControlHighlight, EditorSkin.Game);
             public static GUIStyle ControlLabel => Styles.Get(Keys.ControlLabel, EditorSkin.Game);
             public static GUIStyle CurveEditorBackground => Styles.Get(Keys.CurveEditorBackground, EditorSkin.Game);
-            public static GUIStyle CurveEditorLabelTickmarks => Styles.Get(Keys.CurveEditorLabelTickmarks, EditorSkin.Game);
-            public static GUIStyle CurveEditorLabelTickmarksOverflow => Styles.Get(Keys.CurveEditorLabelTickmarksOverflow, EditorSkin.Game);
-            public static GUIStyle CurveEditorRightAlignedLabel => Styles.Get(Keys.CurveEditorRightAlignedLabel, EditorSkin.Game);
+
+            public static GUIStyle CurveEditorLabelTickmarks =>
+                Styles.Get(Keys.CurveEditorLabelTickmarks, EditorSkin.Game);
+
+            public static GUIStyle CurveEditorLabelTickmarksOverflow =>
+                Styles.Get(Keys.CurveEditorLabelTickmarksOverflow, EditorSkin.Game);
+
+            public static GUIStyle CurveEditorRightAlignedLabel =>
+                Styles.Get(Keys.CurveEditorRightAlignedLabel, EditorSkin.Game);
+
             public static GUIStyle DD_Background => Styles.Get(Keys.DD_Background, EditorSkin.Game);
             public static GUIStyle DD_HeaderStyle => Styles.Get(Keys.DD_HeaderStyle, EditorSkin.Game);
             public static GUIStyle DD_ItemCheckmark => Styles.Get(Keys.DD_ItemCheckmark, EditorSkin.Game);
             public static GUIStyle DD_ItemStyle => Styles.Get(Keys.DD_ItemStyle, EditorSkin.Game);
             public static GUIStyle DD_LargeItemStyle => Styles.Get(Keys.DD_LargeItemStyle, EditorSkin.Game);
-            public static GUIStyle DefaultCenteredLargeText => Styles.Get(Keys.DefaultCenteredLargeText, EditorSkin.Game);
+
+            public static GUIStyle DefaultCenteredLargeText =>
+                Styles.Get(Keys.DefaultCenteredLargeText, EditorSkin.Game);
+
             public static GUIStyle DefaultCenteredText => Styles.Get(Keys.DefaultCenteredText, EditorSkin.Game);
             public static GUIStyle DefaultLineSeparator => Styles.Get(Keys.DefaultLineSeparator, EditorSkin.Game);
             public static GUIStyle dockarea => Styles.Get(Keys.dockarea, EditorSkin.Game);
@@ -1423,7 +1502,10 @@ namespace Lunari.Tsuki.Editor {
             public static GUIStyle ErrorLabel => Styles.Get(Keys.ErrorLabel, EditorSkin.Game);
             public static GUIStyle ExposablePopupItem => Styles.Get(Keys.ExposablePopupItem, EditorSkin.Game);
             public static GUIStyle ExposablePopupMenu => Styles.Get(Keys.ExposablePopupMenu, EditorSkin.Game);
-            public static GUIStyle EyeDropperHorizontalLine => Styles.Get(Keys.EyeDropperHorizontalLine, EditorSkin.Game);
+
+            public static GUIStyle EyeDropperHorizontalLine =>
+                Styles.Get(Keys.EyeDropperHorizontalLine, EditorSkin.Game);
+
             public static GUIStyle EyeDropperPickedPixel => Styles.Get(Keys.EyeDropperPickedPixel, EditorSkin.Game);
             public static GUIStyle EyeDropperVerticalLine => Styles.Get(Keys.EyeDropperVerticalLine, EditorSkin.Game);
             public static GUIStyle FloatFieldLinkButton => Styles.Get(Keys.FloatFieldLinkButton, EditorSkin.Game);
@@ -1473,24 +1555,40 @@ namespace Lunari.Tsuki.Editor {
             public static GUIStyle FrameBox => Styles.Get(Keys.FrameBox, EditorSkin.Game);
             public static GUIStyle GameViewBackground => Styles.Get(Keys.GameViewBackground, EditorSkin.Game);
             public static GUIStyle Grad_Down_Swatch => Styles.Get(Keys.Grad_Down_Swatch, EditorSkin.Game);
-            public static GUIStyle Grad_Down_Swatch_Overlay => Styles.Get(Keys.Grad_Down_Swatch_Overlay, EditorSkin.Game);
+
+            public static GUIStyle Grad_Down_Swatch_Overlay =>
+                Styles.Get(Keys.Grad_Down_Swatch_Overlay, EditorSkin.Game);
+
             public static GUIStyle Grad_Up_Swatch => Styles.Get(Keys.Grad_Up_Swatch, EditorSkin.Game);
             public static GUIStyle Grad_Up_Swatch_Overlay => Styles.Get(Keys.Grad_Up_Swatch_Overlay, EditorSkin.Game);
             public static GUIStyle grey_border => Styles.Get(Keys.grey_border, EditorSkin.Game);
             public static GUIStyle GridList => Styles.Get(Keys.GridList, EditorSkin.Game);
             public static GUIStyle GridListText => Styles.Get(Keys.GridListText, EditorSkin.Game);
             public static GUIStyle GroupBox => Styles.Get(Keys.GroupBox, EditorSkin.Game);
-            public static GUIStyle GUIEditor_BreadcrumbLeft => Styles.Get(Keys.GUIEditor_BreadcrumbLeft, EditorSkin.Game);
-            public static GUIStyle GUIEditor_BreadcrumbLeftBackground => Styles.Get(Keys.GUIEditor_BreadcrumbLeftBackground, EditorSkin.Game);
+
+            public static GUIStyle GUIEditor_BreadcrumbLeft =>
+                Styles.Get(Keys.GUIEditor_BreadcrumbLeft, EditorSkin.Game);
+
+            public static GUIStyle GUIEditor_BreadcrumbLeftBackground =>
+                Styles.Get(Keys.GUIEditor_BreadcrumbLeftBackground, EditorSkin.Game);
+
             public static GUIStyle GUIEditor_BreadcrumbMid => Styles.Get(Keys.GUIEditor_BreadcrumbMid, EditorSkin.Game);
-            public static GUIStyle GUIEditor_BreadcrumbMidBackground => Styles.Get(Keys.GUIEditor_BreadcrumbMidBackground, EditorSkin.Game);
+
+            public static GUIStyle GUIEditor_BreadcrumbMidBackground =>
+                Styles.Get(Keys.GUIEditor_BreadcrumbMidBackground, EditorSkin.Game);
+
             public static GUIStyle GV_Gizmo_DropDown => Styles.Get(Keys.GV_Gizmo_DropDown, EditorSkin.Game);
             public static GUIStyle HeaderButton => Styles.Get(Keys.HeaderButton, EditorSkin.Game);
             public static GUIStyle HeaderLabel => Styles.Get(Keys.HeaderLabel, EditorSkin.Game);
             public static GUIStyle HelpBox => Styles.Get(Keys.HelpBox, EditorSkin.Game);
             public static GUIStyle Hi_Label => Styles.Get(Keys.Hi_Label, EditorSkin.Game);
-            public static GUIStyle HorizontalMinMaxScrollbarThumb => Styles.Get(Keys.HorizontalMinMaxScrollbarThumb, EditorSkin.Game);
-            public static GUIStyle HorizontalSliderThumbExtent => Styles.Get(Keys.HorizontalSliderThumbExtent, EditorSkin.Game);
+
+            public static GUIStyle HorizontalMinMaxScrollbarThumb =>
+                Styles.Get(Keys.HorizontalMinMaxScrollbarThumb, EditorSkin.Game);
+
+            public static GUIStyle HorizontalSliderThumbExtent =>
+                Styles.Get(Keys.HorizontalSliderThumbExtent, EditorSkin.Game);
+
             public static GUIStyle hostview => Styles.Get(Keys.hostview, EditorSkin.Game);
             public static GUIStyle IconButton => Styles.Get(Keys.IconButton, EditorSkin.Game);
             public static GUIStyle IN_BigTitle => Styles.Get(Keys.IN_BigTitle, EditorSkin.Game);
@@ -1521,7 +1619,10 @@ namespace Lunari.Tsuki.Editor {
             public static GUIStyle LargeButtonMid => Styles.Get(Keys.LargeButtonMid, EditorSkin.Game);
             public static GUIStyle LargeButtonRight => Styles.Get(Keys.LargeButtonRight, EditorSkin.Game);
             public static GUIStyle LargeLabel => Styles.Get(Keys.LargeLabel, EditorSkin.Game);
-            public static GUIStyle LightmapEditorSelectedHighlight => Styles.Get(Keys.LightmapEditorSelectedHighlight, EditorSkin.Game);
+
+            public static GUIStyle LightmapEditorSelectedHighlight =>
+                Styles.Get(Keys.LightmapEditorSelectedHighlight, EditorSkin.Game);
+
             public static GUIStyle LinkLabel => Styles.Get(Keys.LinkLabel, EditorSkin.Game);
             public static GUIStyle LODBlackBox => Styles.Get(Keys.LODBlackBox, EditorSkin.Game);
             public static GUIStyle LODCameraLine => Styles.Get(Keys.LODCameraLine, EditorSkin.Game);
@@ -1551,7 +1652,10 @@ namespace Lunari.Tsuki.Editor {
             public static GUIStyle MeTransitionBack => Styles.Get(Keys.MeTransitionBack, EditorSkin.Game);
             public static GUIStyle MeTransitionBlock => Styles.Get(Keys.MeTransitionBlock, EditorSkin.Game);
             public static GUIStyle MeTransitionHandleLeft => Styles.Get(Keys.MeTransitionHandleLeft, EditorSkin.Game);
-            public static GUIStyle MeTransitionHandleLeftPrev => Styles.Get(Keys.MeTransitionHandleLeftPrev, EditorSkin.Game);
+
+            public static GUIStyle MeTransitionHandleLeftPrev =>
+                Styles.Get(Keys.MeTransitionHandleLeftPrev, EditorSkin.Game);
+
             public static GUIStyle MeTransitionHandleRight => Styles.Get(Keys.MeTransitionHandleRight, EditorSkin.Game);
             public static GUIStyle MeTransitionHead => Styles.Get(Keys.MeTransitionHead, EditorSkin.Game);
             public static GUIStyle MeTransitionSelect => Styles.Get(Keys.MeTransitionSelect, EditorSkin.Game);
@@ -1569,8 +1673,13 @@ namespace Lunari.Tsuki.Editor {
             public static GUIStyle minibuttonmid => Styles.Get(Keys.minibuttonmid, EditorSkin.Game);
             public static GUIStyle minibuttonright => Styles.Get(Keys.minibuttonright, EditorSkin.Game);
             public static GUIStyle MiniLabel => Styles.Get(Keys.MiniLabel, EditorSkin.Game);
-            public static GUIStyle MiniMinMaxSliderHorizontal => Styles.Get(Keys.MiniMinMaxSliderHorizontal, EditorSkin.Game);
-            public static GUIStyle MiniMinMaxSliderVertical => Styles.Get(Keys.MiniMinMaxSliderVertical, EditorSkin.Game);
+
+            public static GUIStyle MiniMinMaxSliderHorizontal =>
+                Styles.Get(Keys.MiniMinMaxSliderHorizontal, EditorSkin.Game);
+
+            public static GUIStyle MiniMinMaxSliderVertical =>
+                Styles.Get(Keys.MiniMinMaxSliderVertical, EditorSkin.Game);
+
             public static GUIStyle MiniPopup => Styles.Get(Keys.MiniPopup, EditorSkin.Game);
             public static GUIStyle MiniPullDown => Styles.Get(Keys.MiniPullDown, EditorSkin.Game);
             public static GUIStyle MiniSliderHorizontal => Styles.Get(Keys.MiniSliderHorizontal, EditorSkin.Game);
@@ -1578,7 +1687,10 @@ namespace Lunari.Tsuki.Editor {
             public static GUIStyle MiniTextField => Styles.Get(Keys.MiniTextField, EditorSkin.Game);
             public static GUIStyle MiniToolbarButton => Styles.Get(Keys.MiniToolbarButton, EditorSkin.Game);
             public static GUIStyle MiniToolbarButtonLeft => Styles.Get(Keys.MiniToolbarButtonLeft, EditorSkin.Game);
-            public static GUIStyle MinMaxHorizontalSliderThumb => Styles.Get(Keys.MinMaxHorizontalSliderThumb, EditorSkin.Game);
+
+            public static GUIStyle MinMaxHorizontalSliderThumb =>
+                Styles.Get(Keys.MinMaxHorizontalSliderThumb, EditorSkin.Game);
+
             public static GUIStyle MultiColumnArrow => Styles.Get(Keys.MultiColumnArrow, EditorSkin.Game);
             public static GUIStyle MultiColumnHeader => Styles.Get(Keys.MultiColumnHeader, EditorSkin.Game);
             public static GUIStyle MultiColumnHeaderCenter => Styles.Get(Keys.MultiColumnHeaderCenter, EditorSkin.Game);
@@ -1591,12 +1703,21 @@ namespace Lunari.Tsuki.Editor {
             public static GUIStyle ObjectFieldButton => Styles.Get(Keys.ObjectFieldButton, EditorSkin.Game);
             public static GUIStyle ObjectFieldMiniThumb => Styles.Get(Keys.ObjectFieldMiniThumb, EditorSkin.Game);
             public static GUIStyle ObjectFieldThumb => Styles.Get(Keys.ObjectFieldThumb, EditorSkin.Game);
-            public static GUIStyle ObjectFieldThumbLightmapPreviewOverlay => Styles.Get(Keys.ObjectFieldThumbLightmapPreviewOverlay, EditorSkin.Game);
+
+            public static GUIStyle ObjectFieldThumbLightmapPreviewOverlay =>
+                Styles.Get(Keys.ObjectFieldThumbLightmapPreviewOverlay, EditorSkin.Game);
+
             public static GUIStyle ObjectFieldThumbOverlay => Styles.Get(Keys.ObjectFieldThumbOverlay, EditorSkin.Game);
-            public static GUIStyle ObjectFieldThumbOverlay2 => Styles.Get(Keys.ObjectFieldThumbOverlay2, EditorSkin.Game);
+
+            public static GUIStyle ObjectFieldThumbOverlay2 =>
+                Styles.Get(Keys.ObjectFieldThumbOverlay2, EditorSkin.Game);
+
             public static GUIStyle ObjectPickerBackground => Styles.Get(Keys.ObjectPickerBackground, EditorSkin.Game);
             public static GUIStyle ObjectPickerLargeStatus => Styles.Get(Keys.ObjectPickerLargeStatus, EditorSkin.Game);
-            public static GUIStyle ObjectPickerPreviewBackground => Styles.Get(Keys.ObjectPickerPreviewBackground, EditorSkin.Game);
+
+            public static GUIStyle ObjectPickerPreviewBackground =>
+                Styles.Get(Keys.ObjectPickerPreviewBackground, EditorSkin.Game);
+
             public static GUIStyle ObjectPickerResultsEven => Styles.Get(Keys.ObjectPickerResultsEven, EditorSkin.Game);
             public static GUIStyle ObjectPickerResultsGrid => Styles.Get(Keys.ObjectPickerResultsGrid, EditorSkin.Game);
             public static GUIStyle ObjectPickerResultsOdd => Styles.Get(Keys.ObjectPickerResultsOdd, EditorSkin.Game);
@@ -1632,11 +1753,20 @@ namespace Lunari.Tsuki.Editor {
             public static GUIStyle PlayerSettingsPlatform => Styles.Get(Keys.PlayerSettingsPlatform, EditorSkin.Game);
             public static GUIStyle Popup => Styles.Get(Keys.Popup, EditorSkin.Game);
             public static GUIStyle PopupCurveDropdown => Styles.Get(Keys.PopupCurveDropdown, EditorSkin.Game);
-            public static GUIStyle PopupCurveEditorBackground => Styles.Get(Keys.PopupCurveEditorBackground, EditorSkin.Game);
+
+            public static GUIStyle PopupCurveEditorBackground =>
+                Styles.Get(Keys.PopupCurveEditorBackground, EditorSkin.Game);
+
             public static GUIStyle PopupCurveEditorSwatch => Styles.Get(Keys.PopupCurveEditorSwatch, EditorSkin.Game);
-            public static GUIStyle PopupCurveSwatchBackground => Styles.Get(Keys.PopupCurveSwatchBackground, EditorSkin.Game);
+
+            public static GUIStyle PopupCurveSwatchBackground =>
+                Styles.Get(Keys.PopupCurveSwatchBackground, EditorSkin.Game);
+
             public static GUIStyle PR_BrokenPrefabLabel => Styles.Get(Keys.PR_BrokenPrefabLabel, EditorSkin.Game);
-            public static GUIStyle PR_DisabledBrokenPrefabLabel => Styles.Get(Keys.PR_DisabledBrokenPrefabLabel, EditorSkin.Game);
+
+            public static GUIStyle PR_DisabledBrokenPrefabLabel =>
+                Styles.Get(Keys.PR_DisabledBrokenPrefabLabel, EditorSkin.Game);
+
             public static GUIStyle PR_DisabledLabel => Styles.Get(Keys.PR_DisabledLabel, EditorSkin.Game);
             public static GUIStyle PR_DisabledPrefabLabel => Styles.Get(Keys.PR_DisabledPrefabLabel, EditorSkin.Game);
             public static GUIStyle PR_Insertion => Styles.Get(Keys.PR_Insertion, EditorSkin.Game);
@@ -1656,7 +1786,10 @@ namespace Lunari.Tsuki.Editor {
             public static GUIStyle PreferencesSectionBox => Styles.Get(Keys.PreferencesSectionBox, EditorSkin.Game);
             public static GUIStyle PrefixLabel => Styles.Get(Keys.PrefixLabel, EditorSkin.Game);
             public static GUIStyle PreHorizontalScrollbar => Styles.Get(Keys.PreHorizontalScrollbar, EditorSkin.Game);
-            public static GUIStyle PreHorizontalScrollbarThumb => Styles.Get(Keys.PreHorizontalScrollbarThumb, EditorSkin.Game);
+
+            public static GUIStyle PreHorizontalScrollbarThumb =>
+                Styles.Get(Keys.PreHorizontalScrollbarThumb, EditorSkin.Game);
+
             public static GUIStyle PreLabel => Styles.Get(Keys.PreLabel, EditorSkin.Game);
             public static GUIStyle PreLabelUpper => Styles.Get(Keys.PreLabelUpper, EditorSkin.Game);
             public static GUIStyle PreMiniLabel => Styles.Get(Keys.PreMiniLabel, EditorSkin.Game);
@@ -1666,53 +1799,110 @@ namespace Lunari.Tsuki.Editor {
             public static GUIStyle PreToolbar => Styles.Get(Keys.PreToolbar, EditorSkin.Game);
             public static GUIStyle PreToolbar2 => Styles.Get(Keys.PreToolbar2, EditorSkin.Game);
             public static GUIStyle PreVerticalScrollbar => Styles.Get(Keys.PreVerticalScrollbar, EditorSkin.Game);
-            public static GUIStyle PreVerticalScrollbarThumb => Styles.Get(Keys.PreVerticalScrollbarThumb, EditorSkin.Game);
+
+            public static GUIStyle PreVerticalScrollbarThumb =>
+                Styles.Get(Keys.PreVerticalScrollbarThumb, EditorSkin.Game);
+
             public static GUIStyle PreviewPackageInUse => Styles.Get(Keys.PreviewPackageInUse, EditorSkin.Game);
             public static GUIStyle ProfilerBadge => Styles.Get(Keys.ProfilerBadge, EditorSkin.Game);
-            public static GUIStyle ProfilerDetailViewBackground => Styles.Get(Keys.ProfilerDetailViewBackground, EditorSkin.Game);
+
+            public static GUIStyle ProfilerDetailViewBackground =>
+                Styles.Get(Keys.ProfilerDetailViewBackground, EditorSkin.Game);
+
             public static GUIStyle ProfilerGraphBackground => Styles.Get(Keys.ProfilerGraphBackground, EditorSkin.Game);
             public static GUIStyle ProfilerHeaderLabel => Styles.Get(Keys.ProfilerHeaderLabel, EditorSkin.Game);
             public static GUIStyle ProfilerLeftPane => Styles.Get(Keys.ProfilerLeftPane, EditorSkin.Game);
             public static GUIStyle ProfilerNoDataAvailable => Styles.Get(Keys.ProfilerNoDataAvailable, EditorSkin.Game);
-            public static GUIStyle ProfilerNotSupportedWarningLabel => Styles.Get(Keys.ProfilerNotSupportedWarningLabel, EditorSkin.Game);
+
+            public static GUIStyle ProfilerNotSupportedWarningLabel =>
+                Styles.Get(Keys.ProfilerNotSupportedWarningLabel, EditorSkin.Game);
+
             public static GUIStyle ProfilerPaneSubLabel => Styles.Get(Keys.ProfilerPaneSubLabel, EditorSkin.Game);
             public static GUIStyle ProfilerRightPane => Styles.Get(Keys.ProfilerRightPane, EditorSkin.Game);
-            public static GUIStyle ProfilerScrollviewBackground => Styles.Get(Keys.ProfilerScrollviewBackground, EditorSkin.Game);
+
+            public static GUIStyle ProfilerScrollviewBackground =>
+                Styles.Get(Keys.ProfilerScrollviewBackground, EditorSkin.Game);
+
             public static GUIStyle ProfilerSelectedLabel => Styles.Get(Keys.ProfilerSelectedLabel, EditorSkin.Game);
             public static GUIStyle ProfilerTimelineBar => Styles.Get(Keys.ProfilerTimelineBar, EditorSkin.Game);
-            public static GUIStyle ProfilerTimelineDigDownArrow => Styles.Get(Keys.ProfilerTimelineDigDownArrow, EditorSkin.Game);
+
+            public static GUIStyle ProfilerTimelineDigDownArrow =>
+                Styles.Get(Keys.ProfilerTimelineDigDownArrow, EditorSkin.Game);
+
             public static GUIStyle ProfilerTimelineFoldout => Styles.Get(Keys.ProfilerTimelineFoldout, EditorSkin.Game);
-            public static GUIStyle ProfilerTimelineLeftPane => Styles.Get(Keys.ProfilerTimelineLeftPane, EditorSkin.Game);
-            public static GUIStyle ProfilerTimelineRollUpArrow => Styles.Get(Keys.ProfilerTimelineRollUpArrow, EditorSkin.Game);
+
+            public static GUIStyle ProfilerTimelineLeftPane =>
+                Styles.Get(Keys.ProfilerTimelineLeftPane, EditorSkin.Game);
+
+            public static GUIStyle ProfilerTimelineRollUpArrow =>
+                Styles.Get(Keys.ProfilerTimelineRollUpArrow, EditorSkin.Game);
+
             public static GUIStyle ProgressBarBack => Styles.Get(Keys.ProgressBarBack, EditorSkin.Game);
             public static GUIStyle ProgressBarBar => Styles.Get(Keys.ProgressBarBar, EditorSkin.Game);
             public static GUIStyle ProgressBarText => Styles.Get(Keys.ProgressBarText, EditorSkin.Game);
-            public static GUIStyle ProjectBrowserBottomBarBg => Styles.Get(Keys.ProjectBrowserBottomBarBg, EditorSkin.Game);
+
+            public static GUIStyle ProjectBrowserBottomBarBg =>
+                Styles.Get(Keys.ProjectBrowserBottomBarBg, EditorSkin.Game);
+
             public static GUIStyle ProjectBrowserGridLabel => Styles.Get(Keys.ProjectBrowserGridLabel, EditorSkin.Game);
-            public static GUIStyle ProjectBrowserHeaderBgMiddle => Styles.Get(Keys.ProjectBrowserHeaderBgMiddle, EditorSkin.Game);
-            public static GUIStyle ProjectBrowserHeaderBgTop => Styles.Get(Keys.ProjectBrowserHeaderBgTop, EditorSkin.Game);
-            public static GUIStyle ProjectBrowserIconAreaBg => Styles.Get(Keys.ProjectBrowserIconAreaBg, EditorSkin.Game);
-            public static GUIStyle ProjectBrowserIconDropShadow => Styles.Get(Keys.ProjectBrowserIconDropShadow, EditorSkin.Game);
+
+            public static GUIStyle ProjectBrowserHeaderBgMiddle =>
+                Styles.Get(Keys.ProjectBrowserHeaderBgMiddle, EditorSkin.Game);
+
+            public static GUIStyle ProjectBrowserHeaderBgTop =>
+                Styles.Get(Keys.ProjectBrowserHeaderBgTop, EditorSkin.Game);
+
+            public static GUIStyle ProjectBrowserIconAreaBg =>
+                Styles.Get(Keys.ProjectBrowserIconAreaBg, EditorSkin.Game);
+
+            public static GUIStyle ProjectBrowserIconDropShadow =>
+                Styles.Get(Keys.ProjectBrowserIconDropShadow, EditorSkin.Game);
+
             public static GUIStyle ProjectBrowserPreviewBg => Styles.Get(Keys.ProjectBrowserPreviewBg, EditorSkin.Game);
-            public static GUIStyle ProjectBrowserSubAssetBg => Styles.Get(Keys.ProjectBrowserSubAssetBg, EditorSkin.Game);
-            public static GUIStyle ProjectBrowserSubAssetBgCloseEnded => Styles.Get(Keys.ProjectBrowserSubAssetBgCloseEnded, EditorSkin.Game);
-            public static GUIStyle ProjectBrowserSubAssetBgDivider => Styles.Get(Keys.ProjectBrowserSubAssetBgDivider, EditorSkin.Game);
-            public static GUIStyle ProjectBrowserSubAssetBgMiddle => Styles.Get(Keys.ProjectBrowserSubAssetBgMiddle, EditorSkin.Game);
-            public static GUIStyle ProjectBrowserSubAssetBgOpenEnded => Styles.Get(Keys.ProjectBrowserSubAssetBgOpenEnded, EditorSkin.Game);
-            public static GUIStyle ProjectBrowserSubAssetExpandBtn => Styles.Get(Keys.ProjectBrowserSubAssetExpandBtn, EditorSkin.Game);
-            public static GUIStyle ProjectBrowserSubAssetExpandBtnMedium => Styles.Get(Keys.ProjectBrowserSubAssetExpandBtnMedium, EditorSkin.Game);
-            public static GUIStyle ProjectBrowserSubAssetExpandBtnSmall => Styles.Get(Keys.ProjectBrowserSubAssetExpandBtnSmall, EditorSkin.Game);
-            public static GUIStyle ProjectBrowserTextureIconDropShadow => Styles.Get(Keys.ProjectBrowserTextureIconDropShadow, EditorSkin.Game);
+
+            public static GUIStyle ProjectBrowserSubAssetBg =>
+                Styles.Get(Keys.ProjectBrowserSubAssetBg, EditorSkin.Game);
+
+            public static GUIStyle ProjectBrowserSubAssetBgCloseEnded =>
+                Styles.Get(Keys.ProjectBrowserSubAssetBgCloseEnded, EditorSkin.Game);
+
+            public static GUIStyle ProjectBrowserSubAssetBgDivider =>
+                Styles.Get(Keys.ProjectBrowserSubAssetBgDivider, EditorSkin.Game);
+
+            public static GUIStyle ProjectBrowserSubAssetBgMiddle =>
+                Styles.Get(Keys.ProjectBrowserSubAssetBgMiddle, EditorSkin.Game);
+
+            public static GUIStyle ProjectBrowserSubAssetBgOpenEnded =>
+                Styles.Get(Keys.ProjectBrowserSubAssetBgOpenEnded, EditorSkin.Game);
+
+            public static GUIStyle ProjectBrowserSubAssetExpandBtn =>
+                Styles.Get(Keys.ProjectBrowserSubAssetExpandBtn, EditorSkin.Game);
+
+            public static GUIStyle ProjectBrowserSubAssetExpandBtnMedium =>
+                Styles.Get(Keys.ProjectBrowserSubAssetExpandBtnMedium, EditorSkin.Game);
+
+            public static GUIStyle ProjectBrowserSubAssetExpandBtnSmall =>
+                Styles.Get(Keys.ProjectBrowserSubAssetExpandBtnSmall, EditorSkin.Game);
+
+            public static GUIStyle ProjectBrowserTextureIconDropShadow =>
+                Styles.Get(Keys.ProjectBrowserTextureIconDropShadow, EditorSkin.Game);
+
             public static GUIStyle ProjectBrowserTopBarBg => Styles.Get(Keys.ProjectBrowserTopBarBg, EditorSkin.Game);
             public static GUIStyle QualitySettingsDefault => Styles.Get(Keys.QualitySettingsDefault, EditorSkin.Game);
+            public static GUIStyle quick_search_tab => Styles.Get(Keys.quick_search_tab, EditorSkin.Game);
             public static GUIStyle Radio => Styles.Get(Keys.Radio, EditorSkin.Game);
             public static GUIStyle RectangleToolHBar => Styles.Get(Keys.RectangleToolHBar, EditorSkin.Game);
             public static GUIStyle RectangleToolHBarLeft => Styles.Get(Keys.RectangleToolHBarLeft, EditorSkin.Game);
             public static GUIStyle RectangleToolHBarRight => Styles.Get(Keys.RectangleToolHBarRight, EditorSkin.Game);
             public static GUIStyle RectangleToolHighlight => Styles.Get(Keys.RectangleToolHighlight, EditorSkin.Game);
             public static GUIStyle RectangleToolRippleLeft => Styles.Get(Keys.RectangleToolRippleLeft, EditorSkin.Game);
-            public static GUIStyle RectangleToolRippleRight => Styles.Get(Keys.RectangleToolRippleRight, EditorSkin.Game);
-            public static GUIStyle RectangleToolScaleBottom => Styles.Get(Keys.RectangleToolScaleBottom, EditorSkin.Game);
+
+            public static GUIStyle RectangleToolRippleRight =>
+                Styles.Get(Keys.RectangleToolRippleRight, EditorSkin.Game);
+
+            public static GUIStyle RectangleToolScaleBottom =>
+                Styles.Get(Keys.RectangleToolScaleBottom, EditorSkin.Game);
+
             public static GUIStyle RectangleToolScaleLeft => Styles.Get(Keys.RectangleToolScaleLeft, EditorSkin.Game);
             public static GUIStyle RectangleToolScaleRight => Styles.Get(Keys.RectangleToolScaleRight, EditorSkin.Game);
             public static GUIStyle RectangleToolScaleTop => Styles.Get(Keys.RectangleToolScaleTop, EditorSkin.Game);
@@ -1722,7 +1912,10 @@ namespace Lunari.Tsuki.Editor {
             public static GUIStyle RectangleToolVBarTop => Styles.Get(Keys.RectangleToolVBarTop, EditorSkin.Game);
             public static GUIStyle RegionBg => Styles.Get(Keys.RegionBg, EditorSkin.Game);
             public static GUIStyle ReorderableList => Styles.Get(Keys.ReorderableList, EditorSkin.Game);
-            public static GUIStyle ReorderableListRightAligned => Styles.Get(Keys.ReorderableListRightAligned, EditorSkin.Game);
+
+            public static GUIStyle ReorderableListRightAligned =>
+                Styles.Get(Keys.ReorderableListRightAligned, EditorSkin.Game);
+
             public static GUIStyle RightAlignedLabel => Styles.Get(Keys.RightAlignedLabel, EditorSkin.Game);
             public static GUIStyle RightLabel => Styles.Get(Keys.RightLabel, EditorSkin.Game);
             public static GUIStyle RL_Background => Styles.Get(Keys.RL_Background, EditorSkin.Game);
@@ -1737,7 +1930,10 @@ namespace Lunari.Tsuki.Editor {
             public static GUIStyle SC_ViewLabelCentered => Styles.Get(Keys.SC_ViewLabelCentered, EditorSkin.Game);
             public static GUIStyle SC_ViewLabelLeftAligned => Styles.Get(Keys.SC_ViewLabelLeftAligned, EditorSkin.Game);
             public static GUIStyle SceneTopBarBg => Styles.Get(Keys.SceneTopBarBg, EditorSkin.Game);
-            public static GUIStyle SceneViewOverlayTransparentBackground => Styles.Get(Keys.SceneViewOverlayTransparentBackground, EditorSkin.Game);
+
+            public static GUIStyle SceneViewOverlayTransparentBackground =>
+                Styles.Get(Keys.SceneViewOverlayTransparentBackground, EditorSkin.Game);
+
             public static GUIStyle SceneVisibility => Styles.Get(Keys.SceneVisibility, EditorSkin.Game);
             public static GUIStyle ScriptText => Styles.Get(Keys.ScriptText, EditorSkin.Game);
             public static GUIStyle ScrollViewAlt => Styles.Get(Keys.ScrollViewAlt, EditorSkin.Game);
@@ -1772,8 +1968,13 @@ namespace Lunari.Tsuki.Editor {
             public static GUIStyle StatusBarIcon => Styles.Get(Keys.StatusBarIcon, EditorSkin.Game);
             public static GUIStyle sv_iconselector_back => Styles.Get(Keys.sv_iconselector_back, EditorSkin.Game);
             public static GUIStyle sv_iconselector_button => Styles.Get(Keys.sv_iconselector_button, EditorSkin.Game);
-            public static GUIStyle sv_iconselector_labelselection => Styles.Get(Keys.sv_iconselector_labelselection, EditorSkin.Game);
-            public static GUIStyle sv_iconselector_selection => Styles.Get(Keys.sv_iconselector_selection, EditorSkin.Game);
+
+            public static GUIStyle sv_iconselector_labelselection =>
+                Styles.Get(Keys.sv_iconselector_labelselection, EditorSkin.Game);
+
+            public static GUIStyle sv_iconselector_selection =>
+                Styles.Get(Keys.sv_iconselector_selection, EditorSkin.Game);
+
             public static GUIStyle sv_iconselector_sep => Styles.Get(Keys.sv_iconselector_sep, EditorSkin.Game);
             public static GUIStyle sv_label_0 => Styles.Get(Keys.sv_label_0, EditorSkin.Game);
             public static GUIStyle sv_label_1 => Styles.Get(Keys.sv_label_1, EditorSkin.Game);
@@ -1820,21 +2021,57 @@ namespace Lunari.Tsuki.Editor {
             public static GUIStyle ToolbarButtonFlat => Styles.Get(Keys.ToolbarButtonFlat, EditorSkin.Game);
             public static GUIStyle toolbarbuttonLeft => Styles.Get(Keys.toolbarbuttonLeft, EditorSkin.Game);
             public static GUIStyle toolbarbuttonRight => Styles.Get(Keys.toolbarbuttonRight, EditorSkin.Game);
-            public static GUIStyle ToolbarCreateAddNewDropDown => Styles.Get(Keys.ToolbarCreateAddNewDropDown, EditorSkin.Game);
+
+            public static GUIStyle ToolbarCreateAddNewDropDown =>
+                Styles.Get(Keys.ToolbarCreateAddNewDropDown, EditorSkin.Game);
+
             public static GUIStyle ToolbarDropDown => Styles.Get(Keys.ToolbarDropDown, EditorSkin.Game);
             public static GUIStyle ToolbarDropDownLeft => Styles.Get(Keys.ToolbarDropDownLeft, EditorSkin.Game);
             public static GUIStyle ToolbarDropDownRight => Styles.Get(Keys.ToolbarDropDownRight, EditorSkin.Game);
             public static GUIStyle ToolbarDropDownToggle => Styles.Get(Keys.ToolbarDropDownToggle, EditorSkin.Game);
-            public static GUIStyle ToolbarDropDownToggleRight => Styles.Get(Keys.ToolbarDropDownToggleRight, EditorSkin.Game);
+
+            public static GUIStyle ToolbarDropDownToggleRight =>
+                Styles.Get(Keys.ToolbarDropDownToggleRight, EditorSkin.Game);
+
             public static GUIStyle ToolbarLabel => Styles.Get(Keys.ToolbarLabel, EditorSkin.Game);
             public static GUIStyle ToolbarPopup => Styles.Get(Keys.ToolbarPopup, EditorSkin.Game);
             public static GUIStyle ToolbarPopupLeft => Styles.Get(Keys.ToolbarPopupLeft, EditorSkin.Game);
             public static GUIStyle ToolbarPopupRight => Styles.Get(Keys.ToolbarPopupRight, EditorSkin.Game);
-            public static GUIStyle ToolbarSeachCancelButton => Styles.Get(Keys.ToolbarSeachCancelButton, EditorSkin.Game);
-            public static GUIStyle ToolbarSeachCancelButtonEmpty => Styles.Get(Keys.ToolbarSeachCancelButtonEmpty, EditorSkin.Game);
+
+            public static GUIStyle ToolbarSeachCancelButton =>
+                Styles.Get(Keys.ToolbarSeachCancelButton, EditorSkin.Game);
+
+            public static GUIStyle ToolbarSeachCancelButtonEmpty =>
+                Styles.Get(Keys.ToolbarSeachCancelButtonEmpty, EditorSkin.Game);
+
             public static GUIStyle ToolbarSeachTextField => Styles.Get(Keys.ToolbarSeachTextField, EditorSkin.Game);
-            public static GUIStyle ToolbarSeachTextFieldPopup => Styles.Get(Keys.ToolbarSeachTextFieldPopup, EditorSkin.Game);
+
+            public static GUIStyle ToolbarSeachTextFieldPopup =>
+                Styles.Get(Keys.ToolbarSeachTextFieldPopup, EditorSkin.Game);
+
+            public static GUIStyle ToolbarSearchCancelButtonWithJump =>
+                Styles.Get(Keys.ToolbarSearchCancelButtonWithJump, EditorSkin.Game);
+
+            public static GUIStyle ToolbarSearchCancelButtonWithJumpEmpty =>
+                Styles.Get(Keys.ToolbarSearchCancelButtonWithJumpEmpty, EditorSkin.Game);
+
             public static GUIStyle ToolbarSearchField => Styles.Get(Keys.ToolbarSearchField, EditorSkin.Game);
+
+            public static GUIStyle ToolbarSearchTextFieldJumpButton =>
+                Styles.Get(Keys.ToolbarSearchTextFieldJumpButton, EditorSkin.Game);
+
+            public static GUIStyle ToolbarSearchTextFieldWithJump =>
+                Styles.Get(Keys.ToolbarSearchTextFieldWithJump, EditorSkin.Game);
+
+            public static GUIStyle ToolbarSearchTextFieldWithJumpPopup =>
+                Styles.Get(Keys.ToolbarSearchTextFieldWithJumpPopup, EditorSkin.Game);
+
+            public static GUIStyle ToolbarSearchTextFieldWithJumpPopupSynced =>
+                Styles.Get(Keys.ToolbarSearchTextFieldWithJumpPopupSynced, EditorSkin.Game);
+
+            public static GUIStyle ToolbarSearchTextFieldWithJumpSynced =>
+                Styles.Get(Keys.ToolbarSearchTextFieldWithJumpSynced, EditorSkin.Game);
+
             public static GUIStyle ToolbarSlider => Styles.Get(Keys.ToolbarSlider, EditorSkin.Game);
             public static GUIStyle ToolbarSliderTextField => Styles.Get(Keys.ToolbarSliderTextField, EditorSkin.Game);
             public static GUIStyle ToolbarTextField => Styles.Get(Keys.ToolbarTextField, EditorSkin.Game);
@@ -1850,8 +2087,13 @@ namespace Lunari.Tsuki.Editor {
             public static GUIStyle U2D_dragDotDimmed => Styles.Get(Keys.U2D_dragDotDimmed, EditorSkin.Game);
             public static GUIStyle U2D_pivotDot => Styles.Get(Keys.U2D_pivotDot, EditorSkin.Game);
             public static GUIStyle U2D_pivotDotActive => Styles.Get(Keys.U2D_pivotDotActive, EditorSkin.Game);
-            public static GUIStyle VerticalMinMaxScrollbarThumb => Styles.Get(Keys.VerticalMinMaxScrollbarThumb, EditorSkin.Game);
-            public static GUIStyle VerticalSliderThumbExtent => Styles.Get(Keys.VerticalSliderThumbExtent, EditorSkin.Game);
+
+            public static GUIStyle VerticalMinMaxScrollbarThumb =>
+                Styles.Get(Keys.VerticalMinMaxScrollbarThumb, EditorSkin.Game);
+
+            public static GUIStyle VerticalSliderThumbExtent =>
+                Styles.Get(Keys.VerticalSliderThumbExtent, EditorSkin.Game);
+
             public static GUIStyle VideoClipImporterLabel => Styles.Get(Keys.VideoClipImporterLabel, EditorSkin.Game);
             public static GUIStyle WarningOverlay => Styles.Get(Keys.WarningOverlay, EditorSkin.Game);
             public static GUIStyle WhiteBackground => Styles.Get(Keys.WhiteBackground, EditorSkin.Game);
@@ -1877,6 +2119,7 @@ namespace Lunari.Tsuki.Editor {
             public static GUIStyle WordWrappedLabel => Styles.Get(Keys.WordWrappedLabel, EditorSkin.Game);
             public static GUIStyle WordWrappedMiniLabel => Styles.Get(Keys.WordWrappedMiniLabel, EditorSkin.Game);
         }
+
         public static class Inspector {
             public static GUIStyle box => Styles.Get(Keys.box, EditorSkin.Inspector);
             public static GUIStyle button => Styles.Get(Keys.button, EditorSkin.Inspector);
@@ -1886,19 +2129,39 @@ namespace Lunari.Tsuki.Editor {
             public static GUIStyle textfield => Styles.Get(Keys.textfield, EditorSkin.Inspector);
             public static GUIStyle textarea => Styles.Get(Keys.textarea, EditorSkin.Inspector);
             public static GUIStyle horizontalslider => Styles.Get(Keys.horizontalslider, EditorSkin.Inspector);
-            public static GUIStyle horizontalsliderthumb => Styles.Get(Keys.horizontalsliderthumb, EditorSkin.Inspector);
+
+            public static GUIStyle horizontalsliderthumb =>
+                Styles.Get(Keys.horizontalsliderthumb, EditorSkin.Inspector);
+
             public static GUIStyle verticalslider => Styles.Get(Keys.verticalslider, EditorSkin.Inspector);
             public static GUIStyle verticalsliderthumb => Styles.Get(Keys.verticalsliderthumb, EditorSkin.Inspector);
             public static GUIStyle horizontalscrollbar => Styles.Get(Keys.horizontalscrollbar, EditorSkin.Inspector);
-            public static GUIStyle horizontalscrollbarthumb => Styles.Get(Keys.horizontalscrollbarthumb, EditorSkin.Inspector);
-            public static GUIStyle horizontalscrollbarleftbutton => Styles.Get(Keys.horizontalscrollbarleftbutton, EditorSkin.Inspector);
-            public static GUIStyle horizontalscrollbarrightbutton => Styles.Get(Keys.horizontalscrollbarrightbutton, EditorSkin.Inspector);
+
+            public static GUIStyle horizontalscrollbarthumb =>
+                Styles.Get(Keys.horizontalscrollbarthumb, EditorSkin.Inspector);
+
+            public static GUIStyle horizontalscrollbarleftbutton =>
+                Styles.Get(Keys.horizontalscrollbarleftbutton, EditorSkin.Inspector);
+
+            public static GUIStyle horizontalscrollbarrightbutton =>
+                Styles.Get(Keys.horizontalscrollbarrightbutton, EditorSkin.Inspector);
+
             public static GUIStyle verticalscrollbar => Styles.Get(Keys.verticalscrollbar, EditorSkin.Inspector);
-            public static GUIStyle verticalscrollbarthumb => Styles.Get(Keys.verticalscrollbarthumb, EditorSkin.Inspector);
-            public static GUIStyle verticalscrollbarupbutton => Styles.Get(Keys.verticalscrollbarupbutton, EditorSkin.Inspector);
-            public static GUIStyle verticalscrollbardownbutton => Styles.Get(Keys.verticalscrollbardownbutton, EditorSkin.Inspector);
+
+            public static GUIStyle verticalscrollbarthumb =>
+                Styles.Get(Keys.verticalscrollbarthumb, EditorSkin.Inspector);
+
+            public static GUIStyle verticalscrollbarupbutton =>
+                Styles.Get(Keys.verticalscrollbarupbutton, EditorSkin.Inspector);
+
+            public static GUIStyle verticalscrollbardownbutton =>
+                Styles.Get(Keys.verticalscrollbardownbutton, EditorSkin.Inspector);
+
             public static GUIStyle scrollview => Styles.Get(Keys.scrollview, EditorSkin.Inspector);
-            public static GUIStyle AboutWIndowLicenseLabel => Styles.Get(Keys.AboutWIndowLicenseLabel, EditorSkin.Inspector);
+
+            public static GUIStyle AboutWIndowLicenseLabel =>
+                Styles.Get(Keys.AboutWIndowLicenseLabel, EditorSkin.Inspector);
+
             public static GUIStyle AC_BoldHeader => Styles.Get(Keys.AC_BoldHeader, EditorSkin.Inspector);
             public static GUIStyle AC_Button => Styles.Get(Keys.AC_Button, EditorSkin.Inspector);
             public static GUIStyle AC_ComponentButton => Styles.Get(Keys.AC_ComponentButton, EditorSkin.Inspector);
@@ -1907,29 +2170,55 @@ namespace Lunari.Tsuki.Editor {
             public static GUIStyle AC_PreviewHeader => Styles.Get(Keys.AC_PreviewHeader, EditorSkin.Inspector);
             public static GUIStyle AC_PreviewText => Styles.Get(Keys.AC_PreviewText, EditorSkin.Inspector);
             public static GUIStyle AC_RightArrow => Styles.Get(Keys.AC_RightArrow, EditorSkin.Inspector);
-            public static GUIStyle AM_ChannelStripHeaderStyle => Styles.Get(Keys.AM_ChannelStripHeaderStyle, EditorSkin.Inspector);
+
+            public static GUIStyle AM_ChannelStripHeaderStyle =>
+                Styles.Get(Keys.AM_ChannelStripHeaderStyle, EditorSkin.Inspector);
+
             public static GUIStyle AM_EffectName => Styles.Get(Keys.AM_EffectName, EditorSkin.Inspector);
             public static GUIStyle AM_HeaderStyle => Styles.Get(Keys.AM_HeaderStyle, EditorSkin.Inspector);
             public static GUIStyle AM_MixerHeader => Styles.Get(Keys.AM_MixerHeader, EditorSkin.Inspector);
             public static GUIStyle AM_MixerHeader2 => Styles.Get(Keys.AM_MixerHeader2, EditorSkin.Inspector);
             public static GUIStyle AM_ToolbarLabel => Styles.Get(Keys.AM_ToolbarLabel, EditorSkin.Inspector);
-            public static GUIStyle AM_ToolbarObjectField => Styles.Get(Keys.AM_ToolbarObjectField, EditorSkin.Inspector);
+
+            public static GUIStyle AM_ToolbarObjectField =>
+                Styles.Get(Keys.AM_ToolbarObjectField, EditorSkin.Inspector);
+
             public static GUIStyle AM_TotalVuLabel => Styles.Get(Keys.AM_TotalVuLabel, EditorSkin.Inspector);
             public static GUIStyle AM_VuValue => Styles.Get(Keys.AM_VuValue, EditorSkin.Inspector);
-            public static GUIStyle AnimationEventBackground => Styles.Get(Keys.AnimationEventBackground, EditorSkin.Inspector);
-            public static GUIStyle AnimationEventTooltip => Styles.Get(Keys.AnimationEventTooltip, EditorSkin.Inspector);
-            public static GUIStyle AnimationEventTooltipArrow => Styles.Get(Keys.AnimationEventTooltipArrow, EditorSkin.Inspector);
-            public static GUIStyle AnimationKeyframeBackground => Styles.Get(Keys.AnimationKeyframeBackground, EditorSkin.Inspector);
+
+            public static GUIStyle AnimationEventBackground =>
+                Styles.Get(Keys.AnimationEventBackground, EditorSkin.Inspector);
+
+            public static GUIStyle AnimationEventTooltip =>
+                Styles.Get(Keys.AnimationEventTooltip, EditorSkin.Inspector);
+
+            public static GUIStyle AnimationEventTooltipArrow =>
+                Styles.Get(Keys.AnimationEventTooltipArrow, EditorSkin.Inspector);
+
+            public static GUIStyle AnimationKeyframeBackground =>
+                Styles.Get(Keys.AnimationKeyframeBackground, EditorSkin.Inspector);
+
             public static GUIStyle AnimationPlayHead => Styles.Get(Keys.AnimationPlayHead, EditorSkin.Inspector);
             public static GUIStyle AnimationRowEven => Styles.Get(Keys.AnimationRowEven, EditorSkin.Inspector);
             public static GUIStyle AnimationRowOdd => Styles.Get(Keys.AnimationRowOdd, EditorSkin.Inspector);
-            public static GUIStyle AnimationSelectionTextField => Styles.Get(Keys.AnimationSelectionTextField, EditorSkin.Inspector);
-            public static GUIStyle AnimationTimelineTick => Styles.Get(Keys.AnimationTimelineTick, EditorSkin.Inspector);
+
+            public static GUIStyle AnimationSelectionTextField =>
+                Styles.Get(Keys.AnimationSelectionTextField, EditorSkin.Inspector);
+
+            public static GUIStyle AnimationTimelineTick =>
+                Styles.Get(Keys.AnimationTimelineTick, EditorSkin.Inspector);
+
             public static GUIStyle AnimClipToolbar => Styles.Get(Keys.AnimClipToolbar, EditorSkin.Inspector);
-            public static GUIStyle AnimClipToolbarButton => Styles.Get(Keys.AnimClipToolbarButton, EditorSkin.Inspector);
+
+            public static GUIStyle AnimClipToolbarButton =>
+                Styles.Get(Keys.AnimClipToolbarButton, EditorSkin.Inspector);
+
             public static GUIStyle AnimClipToolbarPopup => Styles.Get(Keys.AnimClipToolbarPopup, EditorSkin.Inspector);
             public static GUIStyle AnimItemBackground => Styles.Get(Keys.AnimItemBackground, EditorSkin.Inspector);
-            public static GUIStyle AnimLeftPaneSeparator => Styles.Get(Keys.AnimLeftPaneSeparator, EditorSkin.Inspector);
+
+            public static GUIStyle AnimLeftPaneSeparator =>
+                Styles.Get(Keys.AnimLeftPaneSeparator, EditorSkin.Inspector);
+
             public static GUIStyle AnimPlayToolbar => Styles.Get(Keys.AnimPlayToolbar, EditorSkin.Inspector);
             public static GUIStyle AnimPropDropdown => Styles.Get(Keys.AnimPropDropdown, EditorSkin.Inspector);
             public static GUIStyle AppCommand => Styles.Get(Keys.AppCommand, EditorSkin.Inspector);
@@ -1940,14 +2229,20 @@ namespace Lunari.Tsuki.Editor {
             public static GUIStyle AppToolbar => Styles.Get(Keys.AppToolbar, EditorSkin.Inspector);
             public static GUIStyle AppToolbarButtonLeft => Styles.Get(Keys.AppToolbarButtonLeft, EditorSkin.Inspector);
             public static GUIStyle AppToolbarButtonMid => Styles.Get(Keys.AppToolbarButtonMid, EditorSkin.Inspector);
-            public static GUIStyle AppToolbarButtonRight => Styles.Get(Keys.AppToolbarButtonRight, EditorSkin.Inspector);
+
+            public static GUIStyle AppToolbarButtonRight =>
+                Styles.Get(Keys.AppToolbarButtonRight, EditorSkin.Inspector);
+
             public static GUIStyle ArrowNavigationLeft => Styles.Get(Keys.ArrowNavigationLeft, EditorSkin.Inspector);
             public static GUIStyle ArrowNavigationRight => Styles.Get(Keys.ArrowNavigationRight, EditorSkin.Inspector);
             public static GUIStyle AssetLabel => Styles.Get(Keys.AssetLabel, EditorSkin.Inspector);
             public static GUIStyle AssetLabel_Icon => Styles.Get(Keys.AssetLabel_Icon, EditorSkin.Inspector);
             public static GUIStyle AssetLabel_Partial => Styles.Get(Keys.AssetLabel_Partial, EditorSkin.Inspector);
             public static GUIStyle AvatarMappingBox => Styles.Get(Keys.AvatarMappingBox, EditorSkin.Inspector);
-            public static GUIStyle AvatarMappingErrorLabel => Styles.Get(Keys.AvatarMappingErrorLabel, EditorSkin.Inspector);
+
+            public static GUIStyle AvatarMappingErrorLabel =>
+                Styles.Get(Keys.AvatarMappingErrorLabel, EditorSkin.Inspector);
+
             public static GUIStyle AxisLabelNumberField => Styles.Get(Keys.AxisLabelNumberField, EditorSkin.Inspector);
             public static GUIStyle Badge => Styles.Get(Keys.Badge, EditorSkin.Inspector);
             public static GUIStyle BoldLabel => Styles.Get(Keys.BoldLabel, EditorSkin.Inspector);
@@ -1961,13 +2256,27 @@ namespace Lunari.Tsuki.Editor {
             public static GUIStyle BypassToggle => Styles.Get(Keys.BypassToggle, EditorSkin.Inspector);
             public static GUIStyle CacheFolderLocation => Styles.Get(Keys.CacheFolderLocation, EditorSkin.Inspector);
             public static GUIStyle CenteredLabel => Styles.Get(Keys.CenteredLabel, EditorSkin.Inspector);
-            public static GUIStyle ChannelStripAttenuationBar => Styles.Get(Keys.ChannelStripAttenuationBar, EditorSkin.Inspector);
-            public static GUIStyle ChannelStripAttenuationMarkerSquare => Styles.Get(Keys.ChannelStripAttenuationMarkerSquare, EditorSkin.Inspector);
+
+            public static GUIStyle ChannelStripAttenuationBar =>
+                Styles.Get(Keys.ChannelStripAttenuationBar, EditorSkin.Inspector);
+
+            public static GUIStyle ChannelStripAttenuationMarkerSquare =>
+                Styles.Get(Keys.ChannelStripAttenuationMarkerSquare, EditorSkin.Inspector);
+
             public static GUIStyle ChannelStripBg => Styles.Get(Keys.ChannelStripBg, EditorSkin.Inspector);
-            public static GUIStyle ChannelStripDuckingMarker => Styles.Get(Keys.ChannelStripDuckingMarker, EditorSkin.Inspector);
-            public static GUIStyle ChannelStripEffectBar => Styles.Get(Keys.ChannelStripEffectBar, EditorSkin.Inspector);
-            public static GUIStyle ChannelStripSendReturnBar => Styles.Get(Keys.ChannelStripSendReturnBar, EditorSkin.Inspector);
-            public static GUIStyle ChannelStripVUMeterBg => Styles.Get(Keys.ChannelStripVUMeterBg, EditorSkin.Inspector);
+
+            public static GUIStyle ChannelStripDuckingMarker =>
+                Styles.Get(Keys.ChannelStripDuckingMarker, EditorSkin.Inspector);
+
+            public static GUIStyle ChannelStripEffectBar =>
+                Styles.Get(Keys.ChannelStripEffectBar, EditorSkin.Inspector);
+
+            public static GUIStyle ChannelStripSendReturnBar =>
+                Styles.Get(Keys.ChannelStripSendReturnBar, EditorSkin.Inspector);
+
+            public static GUIStyle ChannelStripVUMeterBg =>
+                Styles.Get(Keys.ChannelStripVUMeterBg, EditorSkin.Inspector);
+
             public static GUIStyle CircularToggle => Styles.Get(Keys.CircularToggle, EditorSkin.Inspector);
             public static GUIStyle CN_Box => Styles.Get(Keys.CN_Box, EditorSkin.Inspector);
             public static GUIStyle CN_CenteredText => Styles.Get(Keys.CN_CenteredText, EditorSkin.Inspector);
@@ -1976,35 +2285,68 @@ namespace Lunari.Tsuki.Editor {
             public static GUIStyle CN_EntryBackOdd => Styles.Get(Keys.CN_EntryBackOdd, EditorSkin.Inspector);
             public static GUIStyle CN_EntryError => Styles.Get(Keys.CN_EntryError, EditorSkin.Inspector);
             public static GUIStyle CN_EntryErrorIcon => Styles.Get(Keys.CN_EntryErrorIcon, EditorSkin.Inspector);
-            public static GUIStyle CN_EntryErrorIconSmall => Styles.Get(Keys.CN_EntryErrorIconSmall, EditorSkin.Inspector);
+
+            public static GUIStyle CN_EntryErrorIconSmall =>
+                Styles.Get(Keys.CN_EntryErrorIconSmall, EditorSkin.Inspector);
+
             public static GUIStyle CN_EntryErrorSmall => Styles.Get(Keys.CN_EntryErrorSmall, EditorSkin.Inspector);
             public static GUIStyle CN_EntryInfo => Styles.Get(Keys.CN_EntryInfo, EditorSkin.Inspector);
             public static GUIStyle CN_EntryInfoIcon => Styles.Get(Keys.CN_EntryInfoIcon, EditorSkin.Inspector);
-            public static GUIStyle CN_EntryInfoIconSmall => Styles.Get(Keys.CN_EntryInfoIconSmall, EditorSkin.Inspector);
+
+            public static GUIStyle CN_EntryInfoIconSmall =>
+                Styles.Get(Keys.CN_EntryInfoIconSmall, EditorSkin.Inspector);
+
             public static GUIStyle CN_EntryInfoSmall => Styles.Get(Keys.CN_EntryInfoSmall, EditorSkin.Inspector);
             public static GUIStyle CN_EntryWarn => Styles.Get(Keys.CN_EntryWarn, EditorSkin.Inspector);
             public static GUIStyle CN_EntryWarnIcon => Styles.Get(Keys.CN_EntryWarnIcon, EditorSkin.Inspector);
-            public static GUIStyle CN_EntryWarnIconSmall => Styles.Get(Keys.CN_EntryWarnIconSmall, EditorSkin.Inspector);
+
+            public static GUIStyle CN_EntryWarnIconSmall =>
+                Styles.Get(Keys.CN_EntryWarnIconSmall, EditorSkin.Inspector);
+
             public static GUIStyle CN_EntryWarnSmall => Styles.Get(Keys.CN_EntryWarnSmall, EditorSkin.Inspector);
             public static GUIStyle CN_Message => Styles.Get(Keys.CN_Message, EditorSkin.Inspector);
-            public static GUIStyle CN_StacktraceBackground => Styles.Get(Keys.CN_StacktraceBackground, EditorSkin.Inspector);
+
+            public static GUIStyle CN_StacktraceBackground =>
+                Styles.Get(Keys.CN_StacktraceBackground, EditorSkin.Inspector);
+
             public static GUIStyle CN_StacktraceStyle => Styles.Get(Keys.CN_StacktraceStyle, EditorSkin.Inspector);
             public static GUIStyle CN_StatusError => Styles.Get(Keys.CN_StatusError, EditorSkin.Inspector);
             public static GUIStyle CN_StatusInfo => Styles.Get(Keys.CN_StatusInfo, EditorSkin.Inspector);
             public static GUIStyle CN_StatusWarn => Styles.Get(Keys.CN_StatusWarn, EditorSkin.Inspector);
             public static GUIStyle ColorField => Styles.Get(Keys.ColorField, EditorSkin.Inspector);
             public static GUIStyle ColorPicker2DThumb => Styles.Get(Keys.ColorPicker2DThumb, EditorSkin.Inspector);
-            public static GUIStyle ColorPickerBackground => Styles.Get(Keys.ColorPickerBackground, EditorSkin.Inspector);
+
+            public static GUIStyle ColorPickerBackground =>
+                Styles.Get(Keys.ColorPickerBackground, EditorSkin.Inspector);
+
             public static GUIStyle ColorPickerBox => Styles.Get(Keys.ColorPickerBox, EditorSkin.Inspector);
-            public static GUIStyle ColorPickerCurrentColor => Styles.Get(Keys.ColorPickerCurrentColor, EditorSkin.Inspector);
-            public static GUIStyle ColorPickerCurrentExposureSwatchBorder => Styles.Get(Keys.ColorPickerCurrentExposureSwatchBorder, EditorSkin.Inspector);
-            public static GUIStyle ColorPickerExposureSwatch => Styles.Get(Keys.ColorPickerExposureSwatch, EditorSkin.Inspector);
-            public static GUIStyle ColorPickerHorizThumb => Styles.Get(Keys.ColorPickerHorizThumb, EditorSkin.Inspector);
+
+            public static GUIStyle ColorPickerCurrentColor =>
+                Styles.Get(Keys.ColorPickerCurrentColor, EditorSkin.Inspector);
+
+            public static GUIStyle ColorPickerCurrentExposureSwatchBorder =>
+                Styles.Get(Keys.ColorPickerCurrentExposureSwatchBorder, EditorSkin.Inspector);
+
+            public static GUIStyle ColorPickerExposureSwatch =>
+                Styles.Get(Keys.ColorPickerExposureSwatch, EditorSkin.Inspector);
+
+            public static GUIStyle ColorPickerHorizThumb =>
+                Styles.Get(Keys.ColorPickerHorizThumb, EditorSkin.Inspector);
+
             public static GUIStyle ColorPickerHueRing => Styles.Get(Keys.ColorPickerHueRing, EditorSkin.Inspector);
-            public static GUIStyle ColorPickerHueRing_HDR => Styles.Get(Keys.ColorPickerHueRing_HDR, EditorSkin.Inspector);
-            public static GUIStyle ColorPickerHueRingThumb => Styles.Get(Keys.ColorPickerHueRingThumb, EditorSkin.Inspector);
-            public static GUIStyle ColorPickerOriginalColor => Styles.Get(Keys.ColorPickerOriginalColor, EditorSkin.Inspector);
-            public static GUIStyle ColorPickerSliderBackground => Styles.Get(Keys.ColorPickerSliderBackground, EditorSkin.Inspector);
+
+            public static GUIStyle ColorPickerHueRing_HDR =>
+                Styles.Get(Keys.ColorPickerHueRing_HDR, EditorSkin.Inspector);
+
+            public static GUIStyle ColorPickerHueRingThumb =>
+                Styles.Get(Keys.ColorPickerHueRingThumb, EditorSkin.Inspector);
+
+            public static GUIStyle ColorPickerOriginalColor =>
+                Styles.Get(Keys.ColorPickerOriginalColor, EditorSkin.Inspector);
+
+            public static GUIStyle ColorPickerSliderBackground =>
+                Styles.Get(Keys.ColorPickerSliderBackground, EditorSkin.Inspector);
+
             public static GUIStyle Command => Styles.Get(Keys.Command, EditorSkin.Inspector);
             public static GUIStyle CommandLeft => Styles.Get(Keys.CommandLeft, EditorSkin.Inspector);
             public static GUIStyle CommandMid => Styles.Get(Keys.CommandMid, EditorSkin.Inspector);
@@ -2012,16 +2354,28 @@ namespace Lunari.Tsuki.Editor {
             public static GUIStyle ContentToolbar => Styles.Get(Keys.ContentToolbar, EditorSkin.Inspector);
             public static GUIStyle ControlHighlight => Styles.Get(Keys.ControlHighlight, EditorSkin.Inspector);
             public static GUIStyle ControlLabel => Styles.Get(Keys.ControlLabel, EditorSkin.Inspector);
-            public static GUIStyle CurveEditorBackground => Styles.Get(Keys.CurveEditorBackground, EditorSkin.Inspector);
-            public static GUIStyle CurveEditorLabelTickmarks => Styles.Get(Keys.CurveEditorLabelTickmarks, EditorSkin.Inspector);
-            public static GUIStyle CurveEditorLabelTickmarksOverflow => Styles.Get(Keys.CurveEditorLabelTickmarksOverflow, EditorSkin.Inspector);
-            public static GUIStyle CurveEditorRightAlignedLabel => Styles.Get(Keys.CurveEditorRightAlignedLabel, EditorSkin.Inspector);
+
+            public static GUIStyle CurveEditorBackground =>
+                Styles.Get(Keys.CurveEditorBackground, EditorSkin.Inspector);
+
+            public static GUIStyle CurveEditorLabelTickmarks =>
+                Styles.Get(Keys.CurveEditorLabelTickmarks, EditorSkin.Inspector);
+
+            public static GUIStyle CurveEditorLabelTickmarksOverflow =>
+                Styles.Get(Keys.CurveEditorLabelTickmarksOverflow, EditorSkin.Inspector);
+
+            public static GUIStyle CurveEditorRightAlignedLabel =>
+                Styles.Get(Keys.CurveEditorRightAlignedLabel, EditorSkin.Inspector);
+
             public static GUIStyle DD_Background => Styles.Get(Keys.DD_Background, EditorSkin.Inspector);
             public static GUIStyle DD_HeaderStyle => Styles.Get(Keys.DD_HeaderStyle, EditorSkin.Inspector);
             public static GUIStyle DD_ItemCheckmark => Styles.Get(Keys.DD_ItemCheckmark, EditorSkin.Inspector);
             public static GUIStyle DD_ItemStyle => Styles.Get(Keys.DD_ItemStyle, EditorSkin.Inspector);
             public static GUIStyle DD_LargeItemStyle => Styles.Get(Keys.DD_LargeItemStyle, EditorSkin.Inspector);
-            public static GUIStyle DefaultCenteredLargeText => Styles.Get(Keys.DefaultCenteredLargeText, EditorSkin.Inspector);
+
+            public static GUIStyle DefaultCenteredLargeText =>
+                Styles.Get(Keys.DefaultCenteredLargeText, EditorSkin.Inspector);
+
             public static GUIStyle DefaultCenteredText => Styles.Get(Keys.DefaultCenteredText, EditorSkin.Inspector);
             public static GUIStyle DefaultLineSeparator => Styles.Get(Keys.DefaultLineSeparator, EditorSkin.Inspector);
             public static GUIStyle dockarea => Styles.Get(Keys.dockarea, EditorSkin.Inspector);
@@ -2036,8 +2390,13 @@ namespace Lunari.Tsuki.Editor {
             public static GUIStyle DopesheetScaleRight => Styles.Get(Keys.DopesheetScaleRight, EditorSkin.Inspector);
             public static GUIStyle dragtab => Styles.Get(Keys.dragtab, EditorSkin.Inspector);
             public static GUIStyle dragtab_first => Styles.Get(Keys.dragtab_first, EditorSkin.Inspector);
-            public static GUIStyle dragtab_scroller_next => Styles.Get(Keys.dragtab_scroller_next, EditorSkin.Inspector);
-            public static GUIStyle dragtab_scroller_prev => Styles.Get(Keys.dragtab_scroller_prev, EditorSkin.Inspector);
+
+            public static GUIStyle dragtab_scroller_next =>
+                Styles.Get(Keys.dragtab_scroller_next, EditorSkin.Inspector);
+
+            public static GUIStyle dragtab_scroller_prev =>
+                Styles.Get(Keys.dragtab_scroller_prev, EditorSkin.Inspector);
+
             public static GUIStyle dragtabdropwindow => Styles.Get(Keys.dragtabdropwindow, EditorSkin.Inspector);
             public static GUIStyle DropDown => Styles.Get(Keys.DropDown, EditorSkin.Inspector);
             public static GUIStyle DropDownButton => Styles.Get(Keys.DropDownButton, EditorSkin.Inspector);
@@ -2046,9 +2405,16 @@ namespace Lunari.Tsuki.Editor {
             public static GUIStyle ErrorLabel => Styles.Get(Keys.ErrorLabel, EditorSkin.Inspector);
             public static GUIStyle ExposablePopupItem => Styles.Get(Keys.ExposablePopupItem, EditorSkin.Inspector);
             public static GUIStyle ExposablePopupMenu => Styles.Get(Keys.ExposablePopupMenu, EditorSkin.Inspector);
-            public static GUIStyle EyeDropperHorizontalLine => Styles.Get(Keys.EyeDropperHorizontalLine, EditorSkin.Inspector);
-            public static GUIStyle EyeDropperPickedPixel => Styles.Get(Keys.EyeDropperPickedPixel, EditorSkin.Inspector);
-            public static GUIStyle EyeDropperVerticalLine => Styles.Get(Keys.EyeDropperVerticalLine, EditorSkin.Inspector);
+
+            public static GUIStyle EyeDropperHorizontalLine =>
+                Styles.Get(Keys.EyeDropperHorizontalLine, EditorSkin.Inspector);
+
+            public static GUIStyle EyeDropperPickedPixel =>
+                Styles.Get(Keys.EyeDropperPickedPixel, EditorSkin.Inspector);
+
+            public static GUIStyle EyeDropperVerticalLine =>
+                Styles.Get(Keys.EyeDropperVerticalLine, EditorSkin.Inspector);
+
             public static GUIStyle FloatFieldLinkButton => Styles.Get(Keys.FloatFieldLinkButton, EditorSkin.Inspector);
             public static GUIStyle flow_background => Styles.Get(Keys.flow_background, EditorSkin.Inspector);
             public static GUIStyle flow_node_0 => Styles.Get(Keys.flow_node_0, EditorSkin.Inspector);
@@ -2096,24 +2462,44 @@ namespace Lunari.Tsuki.Editor {
             public static GUIStyle FrameBox => Styles.Get(Keys.FrameBox, EditorSkin.Inspector);
             public static GUIStyle GameViewBackground => Styles.Get(Keys.GameViewBackground, EditorSkin.Inspector);
             public static GUIStyle Grad_Down_Swatch => Styles.Get(Keys.Grad_Down_Swatch, EditorSkin.Inspector);
-            public static GUIStyle Grad_Down_Swatch_Overlay => Styles.Get(Keys.Grad_Down_Swatch_Overlay, EditorSkin.Inspector);
+
+            public static GUIStyle Grad_Down_Swatch_Overlay =>
+                Styles.Get(Keys.Grad_Down_Swatch_Overlay, EditorSkin.Inspector);
+
             public static GUIStyle Grad_Up_Swatch => Styles.Get(Keys.Grad_Up_Swatch, EditorSkin.Inspector);
-            public static GUIStyle Grad_Up_Swatch_Overlay => Styles.Get(Keys.Grad_Up_Swatch_Overlay, EditorSkin.Inspector);
+
+            public static GUIStyle Grad_Up_Swatch_Overlay =>
+                Styles.Get(Keys.Grad_Up_Swatch_Overlay, EditorSkin.Inspector);
+
             public static GUIStyle grey_border => Styles.Get(Keys.grey_border, EditorSkin.Inspector);
             public static GUIStyle GridList => Styles.Get(Keys.GridList, EditorSkin.Inspector);
             public static GUIStyle GridListText => Styles.Get(Keys.GridListText, EditorSkin.Inspector);
             public static GUIStyle GroupBox => Styles.Get(Keys.GroupBox, EditorSkin.Inspector);
-            public static GUIStyle GUIEditor_BreadcrumbLeft => Styles.Get(Keys.GUIEditor_BreadcrumbLeft, EditorSkin.Inspector);
-            public static GUIStyle GUIEditor_BreadcrumbLeftBackground => Styles.Get(Keys.GUIEditor_BreadcrumbLeftBackground, EditorSkin.Inspector);
-            public static GUIStyle GUIEditor_BreadcrumbMid => Styles.Get(Keys.GUIEditor_BreadcrumbMid, EditorSkin.Inspector);
-            public static GUIStyle GUIEditor_BreadcrumbMidBackground => Styles.Get(Keys.GUIEditor_BreadcrumbMidBackground, EditorSkin.Inspector);
+
+            public static GUIStyle GUIEditor_BreadcrumbLeft =>
+                Styles.Get(Keys.GUIEditor_BreadcrumbLeft, EditorSkin.Inspector);
+
+            public static GUIStyle GUIEditor_BreadcrumbLeftBackground =>
+                Styles.Get(Keys.GUIEditor_BreadcrumbLeftBackground, EditorSkin.Inspector);
+
+            public static GUIStyle GUIEditor_BreadcrumbMid =>
+                Styles.Get(Keys.GUIEditor_BreadcrumbMid, EditorSkin.Inspector);
+
+            public static GUIStyle GUIEditor_BreadcrumbMidBackground =>
+                Styles.Get(Keys.GUIEditor_BreadcrumbMidBackground, EditorSkin.Inspector);
+
             public static GUIStyle GV_Gizmo_DropDown => Styles.Get(Keys.GV_Gizmo_DropDown, EditorSkin.Inspector);
             public static GUIStyle HeaderButton => Styles.Get(Keys.HeaderButton, EditorSkin.Inspector);
             public static GUIStyle HeaderLabel => Styles.Get(Keys.HeaderLabel, EditorSkin.Inspector);
             public static GUIStyle HelpBox => Styles.Get(Keys.HelpBox, EditorSkin.Inspector);
             public static GUIStyle Hi_Label => Styles.Get(Keys.Hi_Label, EditorSkin.Inspector);
-            public static GUIStyle HorizontalMinMaxScrollbarThumb => Styles.Get(Keys.HorizontalMinMaxScrollbarThumb, EditorSkin.Inspector);
-            public static GUIStyle HorizontalSliderThumbExtent => Styles.Get(Keys.HorizontalSliderThumbExtent, EditorSkin.Inspector);
+
+            public static GUIStyle HorizontalMinMaxScrollbarThumb =>
+                Styles.Get(Keys.HorizontalMinMaxScrollbarThumb, EditorSkin.Inspector);
+
+            public static GUIStyle HorizontalSliderThumbExtent =>
+                Styles.Get(Keys.HorizontalSliderThumbExtent, EditorSkin.Inspector);
+
             public static GUIStyle hostview => Styles.Get(Keys.hostview, EditorSkin.Inspector);
             public static GUIStyle IconButton => Styles.Get(Keys.IconButton, EditorSkin.Inspector);
             public static GUIStyle IN_BigTitle => Styles.Get(Keys.IN_BigTitle, EditorSkin.Inspector);
@@ -2121,15 +2507,24 @@ namespace Lunari.Tsuki.Editor {
             public static GUIStyle IN_BigTitle_Post => Styles.Get(Keys.IN_BigTitle_Post, EditorSkin.Inspector);
             public static GUIStyle IN_CenteredLabel => Styles.Get(Keys.IN_CenteredLabel, EditorSkin.Inspector);
             public static GUIStyle IN_DropDown => Styles.Get(Keys.IN_DropDown, EditorSkin.Inspector);
-            public static GUIStyle IN_EditColliderButton => Styles.Get(Keys.IN_EditColliderButton, EditorSkin.Inspector);
+
+            public static GUIStyle IN_EditColliderButton =>
+                Styles.Get(Keys.IN_EditColliderButton, EditorSkin.Inspector);
+
             public static GUIStyle IN_Foldout => Styles.Get(Keys.IN_Foldout, EditorSkin.Inspector);
             public static GUIStyle IN_Footer => Styles.Get(Keys.IN_Footer, EditorSkin.Inspector);
             public static GUIStyle IN_Label => Styles.Get(Keys.IN_Label, EditorSkin.Inspector);
             public static GUIStyle IN_LockButton => Styles.Get(Keys.IN_LockButton, EditorSkin.Inspector);
-            public static GUIStyle IN_MinMaxStateDropDown => Styles.Get(Keys.IN_MinMaxStateDropDown, EditorSkin.Inspector);
+
+            public static GUIStyle IN_MinMaxStateDropDown =>
+                Styles.Get(Keys.IN_MinMaxStateDropDown, EditorSkin.Inspector);
+
             public static GUIStyle IN_ObjectField => Styles.Get(Keys.IN_ObjectField, EditorSkin.Inspector);
             public static GUIStyle IN_TextField => Styles.Get(Keys.IN_TextField, EditorSkin.Inspector);
-            public static GUIStyle IN_ThumbnailSelection => Styles.Get(Keys.IN_ThumbnailSelection, EditorSkin.Inspector);
+
+            public static GUIStyle IN_ThumbnailSelection =>
+                Styles.Get(Keys.IN_ThumbnailSelection, EditorSkin.Inspector);
+
             public static GUIStyle IN_ThumbnailShadow => Styles.Get(Keys.IN_ThumbnailShadow, EditorSkin.Inspector);
             public static GUIStyle IN_Title => Styles.Get(Keys.IN_Title, EditorSkin.Inspector);
             public static GUIStyle IN_Title_Flat => Styles.Get(Keys.IN_Title_Flat, EditorSkin.Inspector);
@@ -2144,7 +2539,10 @@ namespace Lunari.Tsuki.Editor {
             public static GUIStyle LargeButtonMid => Styles.Get(Keys.LargeButtonMid, EditorSkin.Inspector);
             public static GUIStyle LargeButtonRight => Styles.Get(Keys.LargeButtonRight, EditorSkin.Inspector);
             public static GUIStyle LargeLabel => Styles.Get(Keys.LargeLabel, EditorSkin.Inspector);
-            public static GUIStyle LightmapEditorSelectedHighlight => Styles.Get(Keys.LightmapEditorSelectedHighlight, EditorSkin.Inspector);
+
+            public static GUIStyle LightmapEditorSelectedHighlight =>
+                Styles.Get(Keys.LightmapEditorSelectedHighlight, EditorSkin.Inspector);
+
             public static GUIStyle LinkLabel => Styles.Get(Keys.LinkLabel, EditorSkin.Inspector);
             public static GUIStyle LODBlackBox => Styles.Get(Keys.LODBlackBox, EditorSkin.Inspector);
             public static GUIStyle LODCameraLine => Styles.Get(Keys.LODCameraLine, EditorSkin.Inspector);
@@ -2156,9 +2554,15 @@ namespace Lunari.Tsuki.Editor {
             public static GUIStyle LODSceneText => Styles.Get(Keys.LODSceneText, EditorSkin.Inspector);
             public static GUIStyle LODSliderBG => Styles.Get(Keys.LODSliderBG, EditorSkin.Inspector);
             public static GUIStyle LODSliderRange => Styles.Get(Keys.LODSliderRange, EditorSkin.Inspector);
-            public static GUIStyle LODSliderRangeSelected => Styles.Get(Keys.LODSliderRangeSelected, EditorSkin.Inspector);
+
+            public static GUIStyle LODSliderRangeSelected =>
+                Styles.Get(Keys.LODSliderRangeSelected, EditorSkin.Inspector);
+
             public static GUIStyle LODSliderText => Styles.Get(Keys.LODSliderText, EditorSkin.Inspector);
-            public static GUIStyle LODSliderTextSelected => Styles.Get(Keys.LODSliderTextSelected, EditorSkin.Inspector);
+
+            public static GUIStyle LODSliderTextSelected =>
+                Styles.Get(Keys.LODSliderTextSelected, EditorSkin.Inspector);
+
             public static GUIStyle MeBlendBackground => Styles.Get(Keys.MeBlendBackground, EditorSkin.Inspector);
             public static GUIStyle MeBlendPosition => Styles.Get(Keys.MeBlendPosition, EditorSkin.Inspector);
             public static GUIStyle MeBlendTriangleLeft => Styles.Get(Keys.MeBlendTriangleLeft, EditorSkin.Inspector);
@@ -2173,12 +2577,22 @@ namespace Lunari.Tsuki.Editor {
             public static GUIStyle MeTimeLabel => Styles.Get(Keys.MeTimeLabel, EditorSkin.Inspector);
             public static GUIStyle MeTransitionBack => Styles.Get(Keys.MeTransitionBack, EditorSkin.Inspector);
             public static GUIStyle MeTransitionBlock => Styles.Get(Keys.MeTransitionBlock, EditorSkin.Inspector);
-            public static GUIStyle MeTransitionHandleLeft => Styles.Get(Keys.MeTransitionHandleLeft, EditorSkin.Inspector);
-            public static GUIStyle MeTransitionHandleLeftPrev => Styles.Get(Keys.MeTransitionHandleLeftPrev, EditorSkin.Inspector);
-            public static GUIStyle MeTransitionHandleRight => Styles.Get(Keys.MeTransitionHandleRight, EditorSkin.Inspector);
+
+            public static GUIStyle MeTransitionHandleLeft =>
+                Styles.Get(Keys.MeTransitionHandleLeft, EditorSkin.Inspector);
+
+            public static GUIStyle MeTransitionHandleLeftPrev =>
+                Styles.Get(Keys.MeTransitionHandleLeftPrev, EditorSkin.Inspector);
+
+            public static GUIStyle MeTransitionHandleRight =>
+                Styles.Get(Keys.MeTransitionHandleRight, EditorSkin.Inspector);
+
             public static GUIStyle MeTransitionHead => Styles.Get(Keys.MeTransitionHead, EditorSkin.Inspector);
             public static GUIStyle MeTransitionSelect => Styles.Get(Keys.MeTransitionSelect, EditorSkin.Inspector);
-            public static GUIStyle MeTransitionSelectHead => Styles.Get(Keys.MeTransitionSelectHead, EditorSkin.Inspector);
+
+            public static GUIStyle MeTransitionSelectHead =>
+                Styles.Get(Keys.MeTransitionSelectHead, EditorSkin.Inspector);
+
             public static GUIStyle MeTransOff2On => Styles.Get(Keys.MeTransOff2On, EditorSkin.Inspector);
             public static GUIStyle MeTransOffLeft => Styles.Get(Keys.MeTransOffLeft, EditorSkin.Inspector);
             public static GUIStyle MeTransOffRight => Styles.Get(Keys.MeTransOffRight, EditorSkin.Inspector);
@@ -2192,38 +2606,77 @@ namespace Lunari.Tsuki.Editor {
             public static GUIStyle minibuttonmid => Styles.Get(Keys.minibuttonmid, EditorSkin.Inspector);
             public static GUIStyle minibuttonright => Styles.Get(Keys.minibuttonright, EditorSkin.Inspector);
             public static GUIStyle MiniLabel => Styles.Get(Keys.MiniLabel, EditorSkin.Inspector);
-            public static GUIStyle MiniMinMaxSliderHorizontal => Styles.Get(Keys.MiniMinMaxSliderHorizontal, EditorSkin.Inspector);
-            public static GUIStyle MiniMinMaxSliderVertical => Styles.Get(Keys.MiniMinMaxSliderVertical, EditorSkin.Inspector);
+
+            public static GUIStyle MiniMinMaxSliderHorizontal =>
+                Styles.Get(Keys.MiniMinMaxSliderHorizontal, EditorSkin.Inspector);
+
+            public static GUIStyle MiniMinMaxSliderVertical =>
+                Styles.Get(Keys.MiniMinMaxSliderVertical, EditorSkin.Inspector);
+
             public static GUIStyle MiniPopup => Styles.Get(Keys.MiniPopup, EditorSkin.Inspector);
             public static GUIStyle MiniPullDown => Styles.Get(Keys.MiniPullDown, EditorSkin.Inspector);
             public static GUIStyle MiniSliderHorizontal => Styles.Get(Keys.MiniSliderHorizontal, EditorSkin.Inspector);
             public static GUIStyle MiniSliderVertical => Styles.Get(Keys.MiniSliderVertical, EditorSkin.Inspector);
             public static GUIStyle MiniTextField => Styles.Get(Keys.MiniTextField, EditorSkin.Inspector);
             public static GUIStyle MiniToolbarButton => Styles.Get(Keys.MiniToolbarButton, EditorSkin.Inspector);
-            public static GUIStyle MiniToolbarButtonLeft => Styles.Get(Keys.MiniToolbarButtonLeft, EditorSkin.Inspector);
-            public static GUIStyle MinMaxHorizontalSliderThumb => Styles.Get(Keys.MinMaxHorizontalSliderThumb, EditorSkin.Inspector);
+
+            public static GUIStyle MiniToolbarButtonLeft =>
+                Styles.Get(Keys.MiniToolbarButtonLeft, EditorSkin.Inspector);
+
+            public static GUIStyle MinMaxHorizontalSliderThumb =>
+                Styles.Get(Keys.MinMaxHorizontalSliderThumb, EditorSkin.Inspector);
+
             public static GUIStyle MultiColumnArrow => Styles.Get(Keys.MultiColumnArrow, EditorSkin.Inspector);
             public static GUIStyle MultiColumnHeader => Styles.Get(Keys.MultiColumnHeader, EditorSkin.Inspector);
-            public static GUIStyle MultiColumnHeaderCenter => Styles.Get(Keys.MultiColumnHeaderCenter, EditorSkin.Inspector);
-            public static GUIStyle MultiColumnHeaderRight => Styles.Get(Keys.MultiColumnHeaderRight, EditorSkin.Inspector);
+
+            public static GUIStyle MultiColumnHeaderCenter =>
+                Styles.Get(Keys.MultiColumnHeaderCenter, EditorSkin.Inspector);
+
+            public static GUIStyle MultiColumnHeaderRight =>
+                Styles.Get(Keys.MultiColumnHeaderRight, EditorSkin.Inspector);
+
             public static GUIStyle MultiColumnTopBar => Styles.Get(Keys.MultiColumnTopBar, EditorSkin.Inspector);
             public static GUIStyle MuteToggle => Styles.Get(Keys.MuteToggle, EditorSkin.Inspector);
-            public static GUIStyle NotificationBackground => Styles.Get(Keys.NotificationBackground, EditorSkin.Inspector);
+
+            public static GUIStyle NotificationBackground =>
+                Styles.Get(Keys.NotificationBackground, EditorSkin.Inspector);
+
             public static GUIStyle NotificationText => Styles.Get(Keys.NotificationText, EditorSkin.Inspector);
             public static GUIStyle ObjectField => Styles.Get(Keys.ObjectField, EditorSkin.Inspector);
             public static GUIStyle ObjectFieldButton => Styles.Get(Keys.ObjectFieldButton, EditorSkin.Inspector);
             public static GUIStyle ObjectFieldMiniThumb => Styles.Get(Keys.ObjectFieldMiniThumb, EditorSkin.Inspector);
             public static GUIStyle ObjectFieldThumb => Styles.Get(Keys.ObjectFieldThumb, EditorSkin.Inspector);
-            public static GUIStyle ObjectFieldThumbLightmapPreviewOverlay => Styles.Get(Keys.ObjectFieldThumbLightmapPreviewOverlay, EditorSkin.Inspector);
-            public static GUIStyle ObjectFieldThumbOverlay => Styles.Get(Keys.ObjectFieldThumbOverlay, EditorSkin.Inspector);
-            public static GUIStyle ObjectFieldThumbOverlay2 => Styles.Get(Keys.ObjectFieldThumbOverlay2, EditorSkin.Inspector);
-            public static GUIStyle ObjectPickerBackground => Styles.Get(Keys.ObjectPickerBackground, EditorSkin.Inspector);
-            public static GUIStyle ObjectPickerLargeStatus => Styles.Get(Keys.ObjectPickerLargeStatus, EditorSkin.Inspector);
-            public static GUIStyle ObjectPickerPreviewBackground => Styles.Get(Keys.ObjectPickerPreviewBackground, EditorSkin.Inspector);
-            public static GUIStyle ObjectPickerResultsEven => Styles.Get(Keys.ObjectPickerResultsEven, EditorSkin.Inspector);
-            public static GUIStyle ObjectPickerResultsGrid => Styles.Get(Keys.ObjectPickerResultsGrid, EditorSkin.Inspector);
-            public static GUIStyle ObjectPickerResultsOdd => Styles.Get(Keys.ObjectPickerResultsOdd, EditorSkin.Inspector);
-            public static GUIStyle ObjectPickerSmallStatus => Styles.Get(Keys.ObjectPickerSmallStatus, EditorSkin.Inspector);
+
+            public static GUIStyle ObjectFieldThumbLightmapPreviewOverlay =>
+                Styles.Get(Keys.ObjectFieldThumbLightmapPreviewOverlay, EditorSkin.Inspector);
+
+            public static GUIStyle ObjectFieldThumbOverlay =>
+                Styles.Get(Keys.ObjectFieldThumbOverlay, EditorSkin.Inspector);
+
+            public static GUIStyle ObjectFieldThumbOverlay2 =>
+                Styles.Get(Keys.ObjectFieldThumbOverlay2, EditorSkin.Inspector);
+
+            public static GUIStyle ObjectPickerBackground =>
+                Styles.Get(Keys.ObjectPickerBackground, EditorSkin.Inspector);
+
+            public static GUIStyle ObjectPickerLargeStatus =>
+                Styles.Get(Keys.ObjectPickerLargeStatus, EditorSkin.Inspector);
+
+            public static GUIStyle ObjectPickerPreviewBackground =>
+                Styles.Get(Keys.ObjectPickerPreviewBackground, EditorSkin.Inspector);
+
+            public static GUIStyle ObjectPickerResultsEven =>
+                Styles.Get(Keys.ObjectPickerResultsEven, EditorSkin.Inspector);
+
+            public static GUIStyle ObjectPickerResultsGrid =>
+                Styles.Get(Keys.ObjectPickerResultsGrid, EditorSkin.Inspector);
+
+            public static GUIStyle ObjectPickerResultsOdd =>
+                Styles.Get(Keys.ObjectPickerResultsOdd, EditorSkin.Inspector);
+
+            public static GUIStyle ObjectPickerSmallStatus =>
+                Styles.Get(Keys.ObjectPickerSmallStatus, EditorSkin.Inspector);
+
             public static GUIStyle ObjectPickerTab => Styles.Get(Keys.ObjectPickerTab, EditorSkin.Inspector);
             public static GUIStyle ObjectPickerToolbar => Styles.Get(Keys.ObjectPickerToolbar, EditorSkin.Inspector);
             public static GUIStyle OffsetDropDown => Styles.Get(Keys.OffsetDropDown, EditorSkin.Inspector);
@@ -2252,16 +2705,32 @@ namespace Lunari.Tsuki.Editor {
             public static GUIStyle OverrideMargin => Styles.Get(Keys.OverrideMargin, EditorSkin.Inspector);
             public static GUIStyle PaneOptions => Styles.Get(Keys.PaneOptions, EditorSkin.Inspector);
             public static GUIStyle PlayerSettingsLevel => Styles.Get(Keys.PlayerSettingsLevel, EditorSkin.Inspector);
-            public static GUIStyle PlayerSettingsPlatform => Styles.Get(Keys.PlayerSettingsPlatform, EditorSkin.Inspector);
+
+            public static GUIStyle PlayerSettingsPlatform =>
+                Styles.Get(Keys.PlayerSettingsPlatform, EditorSkin.Inspector);
+
             public static GUIStyle Popup => Styles.Get(Keys.Popup, EditorSkin.Inspector);
             public static GUIStyle PopupCurveDropdown => Styles.Get(Keys.PopupCurveDropdown, EditorSkin.Inspector);
-            public static GUIStyle PopupCurveEditorBackground => Styles.Get(Keys.PopupCurveEditorBackground, EditorSkin.Inspector);
-            public static GUIStyle PopupCurveEditorSwatch => Styles.Get(Keys.PopupCurveEditorSwatch, EditorSkin.Inspector);
-            public static GUIStyle PopupCurveSwatchBackground => Styles.Get(Keys.PopupCurveSwatchBackground, EditorSkin.Inspector);
+
+            public static GUIStyle PopupCurveEditorBackground =>
+                Styles.Get(Keys.PopupCurveEditorBackground, EditorSkin.Inspector);
+
+            public static GUIStyle PopupCurveEditorSwatch =>
+                Styles.Get(Keys.PopupCurveEditorSwatch, EditorSkin.Inspector);
+
+            public static GUIStyle PopupCurveSwatchBackground =>
+                Styles.Get(Keys.PopupCurveSwatchBackground, EditorSkin.Inspector);
+
             public static GUIStyle PR_BrokenPrefabLabel => Styles.Get(Keys.PR_BrokenPrefabLabel, EditorSkin.Inspector);
-            public static GUIStyle PR_DisabledBrokenPrefabLabel => Styles.Get(Keys.PR_DisabledBrokenPrefabLabel, EditorSkin.Inspector);
+
+            public static GUIStyle PR_DisabledBrokenPrefabLabel =>
+                Styles.Get(Keys.PR_DisabledBrokenPrefabLabel, EditorSkin.Inspector);
+
             public static GUIStyle PR_DisabledLabel => Styles.Get(Keys.PR_DisabledLabel, EditorSkin.Inspector);
-            public static GUIStyle PR_DisabledPrefabLabel => Styles.Get(Keys.PR_DisabledPrefabLabel, EditorSkin.Inspector);
+
+            public static GUIStyle PR_DisabledPrefabLabel =>
+                Styles.Get(Keys.PR_DisabledPrefabLabel, EditorSkin.Inspector);
+
             public static GUIStyle PR_Insertion => Styles.Get(Keys.PR_Insertion, EditorSkin.Inspector);
             public static GUIStyle PR_Label => Styles.Get(Keys.PR_Label, EditorSkin.Inspector);
             public static GUIStyle PR_Ping => Styles.Get(Keys.PR_Ping, EditorSkin.Inspector);
@@ -2274,12 +2743,23 @@ namespace Lunari.Tsuki.Editor {
             public static GUIStyle PreButtonGreen => Styles.Get(Keys.PreButtonGreen, EditorSkin.Inspector);
             public static GUIStyle PreButtonRed => Styles.Get(Keys.PreButtonRed, EditorSkin.Inspector);
             public static GUIStyle PreDropDown => Styles.Get(Keys.PreDropDown, EditorSkin.Inspector);
-            public static GUIStyle PreferencesKeysElement => Styles.Get(Keys.PreferencesKeysElement, EditorSkin.Inspector);
+
+            public static GUIStyle PreferencesKeysElement =>
+                Styles.Get(Keys.PreferencesKeysElement, EditorSkin.Inspector);
+
             public static GUIStyle PreferencesSection => Styles.Get(Keys.PreferencesSection, EditorSkin.Inspector);
-            public static GUIStyle PreferencesSectionBox => Styles.Get(Keys.PreferencesSectionBox, EditorSkin.Inspector);
+
+            public static GUIStyle PreferencesSectionBox =>
+                Styles.Get(Keys.PreferencesSectionBox, EditorSkin.Inspector);
+
             public static GUIStyle PrefixLabel => Styles.Get(Keys.PrefixLabel, EditorSkin.Inspector);
-            public static GUIStyle PreHorizontalScrollbar => Styles.Get(Keys.PreHorizontalScrollbar, EditorSkin.Inspector);
-            public static GUIStyle PreHorizontalScrollbarThumb => Styles.Get(Keys.PreHorizontalScrollbarThumb, EditorSkin.Inspector);
+
+            public static GUIStyle PreHorizontalScrollbar =>
+                Styles.Get(Keys.PreHorizontalScrollbar, EditorSkin.Inspector);
+
+            public static GUIStyle PreHorizontalScrollbarThumb =>
+                Styles.Get(Keys.PreHorizontalScrollbarThumb, EditorSkin.Inspector);
+
             public static GUIStyle PreLabel => Styles.Get(Keys.PreLabel, EditorSkin.Inspector);
             public static GUIStyle PreLabelUpper => Styles.Get(Keys.PreLabelUpper, EditorSkin.Inspector);
             public static GUIStyle PreMiniLabel => Styles.Get(Keys.PreMiniLabel, EditorSkin.Inspector);
@@ -2289,63 +2769,155 @@ namespace Lunari.Tsuki.Editor {
             public static GUIStyle PreToolbar => Styles.Get(Keys.PreToolbar, EditorSkin.Inspector);
             public static GUIStyle PreToolbar2 => Styles.Get(Keys.PreToolbar2, EditorSkin.Inspector);
             public static GUIStyle PreVerticalScrollbar => Styles.Get(Keys.PreVerticalScrollbar, EditorSkin.Inspector);
-            public static GUIStyle PreVerticalScrollbarThumb => Styles.Get(Keys.PreVerticalScrollbarThumb, EditorSkin.Inspector);
+
+            public static GUIStyle PreVerticalScrollbarThumb =>
+                Styles.Get(Keys.PreVerticalScrollbarThumb, EditorSkin.Inspector);
+
             public static GUIStyle PreviewPackageInUse => Styles.Get(Keys.PreviewPackageInUse, EditorSkin.Inspector);
             public static GUIStyle ProfilerBadge => Styles.Get(Keys.ProfilerBadge, EditorSkin.Inspector);
-            public static GUIStyle ProfilerDetailViewBackground => Styles.Get(Keys.ProfilerDetailViewBackground, EditorSkin.Inspector);
-            public static GUIStyle ProfilerGraphBackground => Styles.Get(Keys.ProfilerGraphBackground, EditorSkin.Inspector);
+
+            public static GUIStyle ProfilerDetailViewBackground =>
+                Styles.Get(Keys.ProfilerDetailViewBackground, EditorSkin.Inspector);
+
+            public static GUIStyle ProfilerGraphBackground =>
+                Styles.Get(Keys.ProfilerGraphBackground, EditorSkin.Inspector);
+
             public static GUIStyle ProfilerHeaderLabel => Styles.Get(Keys.ProfilerHeaderLabel, EditorSkin.Inspector);
             public static GUIStyle ProfilerLeftPane => Styles.Get(Keys.ProfilerLeftPane, EditorSkin.Inspector);
-            public static GUIStyle ProfilerNoDataAvailable => Styles.Get(Keys.ProfilerNoDataAvailable, EditorSkin.Inspector);
-            public static GUIStyle ProfilerNotSupportedWarningLabel => Styles.Get(Keys.ProfilerNotSupportedWarningLabel, EditorSkin.Inspector);
+
+            public static GUIStyle ProfilerNoDataAvailable =>
+                Styles.Get(Keys.ProfilerNoDataAvailable, EditorSkin.Inspector);
+
+            public static GUIStyle ProfilerNotSupportedWarningLabel =>
+                Styles.Get(Keys.ProfilerNotSupportedWarningLabel, EditorSkin.Inspector);
+
             public static GUIStyle ProfilerPaneSubLabel => Styles.Get(Keys.ProfilerPaneSubLabel, EditorSkin.Inspector);
             public static GUIStyle ProfilerRightPane => Styles.Get(Keys.ProfilerRightPane, EditorSkin.Inspector);
-            public static GUIStyle ProfilerScrollviewBackground => Styles.Get(Keys.ProfilerScrollviewBackground, EditorSkin.Inspector);
-            public static GUIStyle ProfilerSelectedLabel => Styles.Get(Keys.ProfilerSelectedLabel, EditorSkin.Inspector);
+
+            public static GUIStyle ProfilerScrollviewBackground =>
+                Styles.Get(Keys.ProfilerScrollviewBackground, EditorSkin.Inspector);
+
+            public static GUIStyle ProfilerSelectedLabel =>
+                Styles.Get(Keys.ProfilerSelectedLabel, EditorSkin.Inspector);
+
             public static GUIStyle ProfilerTimelineBar => Styles.Get(Keys.ProfilerTimelineBar, EditorSkin.Inspector);
-            public static GUIStyle ProfilerTimelineDigDownArrow => Styles.Get(Keys.ProfilerTimelineDigDownArrow, EditorSkin.Inspector);
-            public static GUIStyle ProfilerTimelineFoldout => Styles.Get(Keys.ProfilerTimelineFoldout, EditorSkin.Inspector);
-            public static GUIStyle ProfilerTimelineLeftPane => Styles.Get(Keys.ProfilerTimelineLeftPane, EditorSkin.Inspector);
-            public static GUIStyle ProfilerTimelineRollUpArrow => Styles.Get(Keys.ProfilerTimelineRollUpArrow, EditorSkin.Inspector);
+
+            public static GUIStyle ProfilerTimelineDigDownArrow =>
+                Styles.Get(Keys.ProfilerTimelineDigDownArrow, EditorSkin.Inspector);
+
+            public static GUIStyle ProfilerTimelineFoldout =>
+                Styles.Get(Keys.ProfilerTimelineFoldout, EditorSkin.Inspector);
+
+            public static GUIStyle ProfilerTimelineLeftPane =>
+                Styles.Get(Keys.ProfilerTimelineLeftPane, EditorSkin.Inspector);
+
+            public static GUIStyle ProfilerTimelineRollUpArrow =>
+                Styles.Get(Keys.ProfilerTimelineRollUpArrow, EditorSkin.Inspector);
+
             public static GUIStyle ProgressBarBack => Styles.Get(Keys.ProgressBarBack, EditorSkin.Inspector);
             public static GUIStyle ProgressBarBar => Styles.Get(Keys.ProgressBarBar, EditorSkin.Inspector);
             public static GUIStyle ProgressBarText => Styles.Get(Keys.ProgressBarText, EditorSkin.Inspector);
-            public static GUIStyle ProjectBrowserBottomBarBg => Styles.Get(Keys.ProjectBrowserBottomBarBg, EditorSkin.Inspector);
-            public static GUIStyle ProjectBrowserGridLabel => Styles.Get(Keys.ProjectBrowserGridLabel, EditorSkin.Inspector);
-            public static GUIStyle ProjectBrowserHeaderBgMiddle => Styles.Get(Keys.ProjectBrowserHeaderBgMiddle, EditorSkin.Inspector);
-            public static GUIStyle ProjectBrowserHeaderBgTop => Styles.Get(Keys.ProjectBrowserHeaderBgTop, EditorSkin.Inspector);
-            public static GUIStyle ProjectBrowserIconAreaBg => Styles.Get(Keys.ProjectBrowserIconAreaBg, EditorSkin.Inspector);
-            public static GUIStyle ProjectBrowserIconDropShadow => Styles.Get(Keys.ProjectBrowserIconDropShadow, EditorSkin.Inspector);
-            public static GUIStyle ProjectBrowserPreviewBg => Styles.Get(Keys.ProjectBrowserPreviewBg, EditorSkin.Inspector);
-            public static GUIStyle ProjectBrowserSubAssetBg => Styles.Get(Keys.ProjectBrowserSubAssetBg, EditorSkin.Inspector);
-            public static GUIStyle ProjectBrowserSubAssetBgCloseEnded => Styles.Get(Keys.ProjectBrowserSubAssetBgCloseEnded, EditorSkin.Inspector);
-            public static GUIStyle ProjectBrowserSubAssetBgDivider => Styles.Get(Keys.ProjectBrowserSubAssetBgDivider, EditorSkin.Inspector);
-            public static GUIStyle ProjectBrowserSubAssetBgMiddle => Styles.Get(Keys.ProjectBrowserSubAssetBgMiddle, EditorSkin.Inspector);
-            public static GUIStyle ProjectBrowserSubAssetBgOpenEnded => Styles.Get(Keys.ProjectBrowserSubAssetBgOpenEnded, EditorSkin.Inspector);
-            public static GUIStyle ProjectBrowserSubAssetExpandBtn => Styles.Get(Keys.ProjectBrowserSubAssetExpandBtn, EditorSkin.Inspector);
-            public static GUIStyle ProjectBrowserSubAssetExpandBtnMedium => Styles.Get(Keys.ProjectBrowserSubAssetExpandBtnMedium, EditorSkin.Inspector);
-            public static GUIStyle ProjectBrowserSubAssetExpandBtnSmall => Styles.Get(Keys.ProjectBrowserSubAssetExpandBtnSmall, EditorSkin.Inspector);
-            public static GUIStyle ProjectBrowserTextureIconDropShadow => Styles.Get(Keys.ProjectBrowserTextureIconDropShadow, EditorSkin.Inspector);
-            public static GUIStyle ProjectBrowserTopBarBg => Styles.Get(Keys.ProjectBrowserTopBarBg, EditorSkin.Inspector);
-            public static GUIStyle QualitySettingsDefault => Styles.Get(Keys.QualitySettingsDefault, EditorSkin.Inspector);
+
+            public static GUIStyle ProjectBrowserBottomBarBg =>
+                Styles.Get(Keys.ProjectBrowserBottomBarBg, EditorSkin.Inspector);
+
+            public static GUIStyle ProjectBrowserGridLabel =>
+                Styles.Get(Keys.ProjectBrowserGridLabel, EditorSkin.Inspector);
+
+            public static GUIStyle ProjectBrowserHeaderBgMiddle =>
+                Styles.Get(Keys.ProjectBrowserHeaderBgMiddle, EditorSkin.Inspector);
+
+            public static GUIStyle ProjectBrowserHeaderBgTop =>
+                Styles.Get(Keys.ProjectBrowserHeaderBgTop, EditorSkin.Inspector);
+
+            public static GUIStyle ProjectBrowserIconAreaBg =>
+                Styles.Get(Keys.ProjectBrowserIconAreaBg, EditorSkin.Inspector);
+
+            public static GUIStyle ProjectBrowserIconDropShadow =>
+                Styles.Get(Keys.ProjectBrowserIconDropShadow, EditorSkin.Inspector);
+
+            public static GUIStyle ProjectBrowserPreviewBg =>
+                Styles.Get(Keys.ProjectBrowserPreviewBg, EditorSkin.Inspector);
+
+            public static GUIStyle ProjectBrowserSubAssetBg =>
+                Styles.Get(Keys.ProjectBrowserSubAssetBg, EditorSkin.Inspector);
+
+            public static GUIStyle ProjectBrowserSubAssetBgCloseEnded =>
+                Styles.Get(Keys.ProjectBrowserSubAssetBgCloseEnded, EditorSkin.Inspector);
+
+            public static GUIStyle ProjectBrowserSubAssetBgDivider =>
+                Styles.Get(Keys.ProjectBrowserSubAssetBgDivider, EditorSkin.Inspector);
+
+            public static GUIStyle ProjectBrowserSubAssetBgMiddle =>
+                Styles.Get(Keys.ProjectBrowserSubAssetBgMiddle, EditorSkin.Inspector);
+
+            public static GUIStyle ProjectBrowserSubAssetBgOpenEnded =>
+                Styles.Get(Keys.ProjectBrowserSubAssetBgOpenEnded, EditorSkin.Inspector);
+
+            public static GUIStyle ProjectBrowserSubAssetExpandBtn =>
+                Styles.Get(Keys.ProjectBrowserSubAssetExpandBtn, EditorSkin.Inspector);
+
+            public static GUIStyle ProjectBrowserSubAssetExpandBtnMedium =>
+                Styles.Get(Keys.ProjectBrowserSubAssetExpandBtnMedium, EditorSkin.Inspector);
+
+            public static GUIStyle ProjectBrowserSubAssetExpandBtnSmall =>
+                Styles.Get(Keys.ProjectBrowserSubAssetExpandBtnSmall, EditorSkin.Inspector);
+
+            public static GUIStyle ProjectBrowserTextureIconDropShadow =>
+                Styles.Get(Keys.ProjectBrowserTextureIconDropShadow, EditorSkin.Inspector);
+
+            public static GUIStyle ProjectBrowserTopBarBg =>
+                Styles.Get(Keys.ProjectBrowserTopBarBg, EditorSkin.Inspector);
+
+            public static GUIStyle QualitySettingsDefault =>
+                Styles.Get(Keys.QualitySettingsDefault, EditorSkin.Inspector);
+
+            public static GUIStyle quick_search_tab => Styles.Get(Keys.quick_search_tab, EditorSkin.Inspector);
             public static GUIStyle Radio => Styles.Get(Keys.Radio, EditorSkin.Inspector);
             public static GUIStyle RectangleToolHBar => Styles.Get(Keys.RectangleToolHBar, EditorSkin.Inspector);
-            public static GUIStyle RectangleToolHBarLeft => Styles.Get(Keys.RectangleToolHBarLeft, EditorSkin.Inspector);
-            public static GUIStyle RectangleToolHBarRight => Styles.Get(Keys.RectangleToolHBarRight, EditorSkin.Inspector);
-            public static GUIStyle RectangleToolHighlight => Styles.Get(Keys.RectangleToolHighlight, EditorSkin.Inspector);
-            public static GUIStyle RectangleToolRippleLeft => Styles.Get(Keys.RectangleToolRippleLeft, EditorSkin.Inspector);
-            public static GUIStyle RectangleToolRippleRight => Styles.Get(Keys.RectangleToolRippleRight, EditorSkin.Inspector);
-            public static GUIStyle RectangleToolScaleBottom => Styles.Get(Keys.RectangleToolScaleBottom, EditorSkin.Inspector);
-            public static GUIStyle RectangleToolScaleLeft => Styles.Get(Keys.RectangleToolScaleLeft, EditorSkin.Inspector);
-            public static GUIStyle RectangleToolScaleRight => Styles.Get(Keys.RectangleToolScaleRight, EditorSkin.Inspector);
-            public static GUIStyle RectangleToolScaleTop => Styles.Get(Keys.RectangleToolScaleTop, EditorSkin.Inspector);
-            public static GUIStyle RectangleToolSelection => Styles.Get(Keys.RectangleToolSelection, EditorSkin.Inspector);
+
+            public static GUIStyle RectangleToolHBarLeft =>
+                Styles.Get(Keys.RectangleToolHBarLeft, EditorSkin.Inspector);
+
+            public static GUIStyle RectangleToolHBarRight =>
+                Styles.Get(Keys.RectangleToolHBarRight, EditorSkin.Inspector);
+
+            public static GUIStyle RectangleToolHighlight =>
+                Styles.Get(Keys.RectangleToolHighlight, EditorSkin.Inspector);
+
+            public static GUIStyle RectangleToolRippleLeft =>
+                Styles.Get(Keys.RectangleToolRippleLeft, EditorSkin.Inspector);
+
+            public static GUIStyle RectangleToolRippleRight =>
+                Styles.Get(Keys.RectangleToolRippleRight, EditorSkin.Inspector);
+
+            public static GUIStyle RectangleToolScaleBottom =>
+                Styles.Get(Keys.RectangleToolScaleBottom, EditorSkin.Inspector);
+
+            public static GUIStyle RectangleToolScaleLeft =>
+                Styles.Get(Keys.RectangleToolScaleLeft, EditorSkin.Inspector);
+
+            public static GUIStyle RectangleToolScaleRight =>
+                Styles.Get(Keys.RectangleToolScaleRight, EditorSkin.Inspector);
+
+            public static GUIStyle RectangleToolScaleTop =>
+                Styles.Get(Keys.RectangleToolScaleTop, EditorSkin.Inspector);
+
+            public static GUIStyle RectangleToolSelection =>
+                Styles.Get(Keys.RectangleToolSelection, EditorSkin.Inspector);
+
             public static GUIStyle RectangleToolVBar => Styles.Get(Keys.RectangleToolVBar, EditorSkin.Inspector);
-            public static GUIStyle RectangleToolVBarBottom => Styles.Get(Keys.RectangleToolVBarBottom, EditorSkin.Inspector);
+
+            public static GUIStyle RectangleToolVBarBottom =>
+                Styles.Get(Keys.RectangleToolVBarBottom, EditorSkin.Inspector);
+
             public static GUIStyle RectangleToolVBarTop => Styles.Get(Keys.RectangleToolVBarTop, EditorSkin.Inspector);
             public static GUIStyle RegionBg => Styles.Get(Keys.RegionBg, EditorSkin.Inspector);
             public static GUIStyle ReorderableList => Styles.Get(Keys.ReorderableList, EditorSkin.Inspector);
-            public static GUIStyle ReorderableListRightAligned => Styles.Get(Keys.ReorderableListRightAligned, EditorSkin.Inspector);
+
+            public static GUIStyle ReorderableListRightAligned =>
+                Styles.Get(Keys.ReorderableListRightAligned, EditorSkin.Inspector);
+
             public static GUIStyle RightAlignedLabel => Styles.Get(Keys.RightAlignedLabel, EditorSkin.Inspector);
             public static GUIStyle RightLabel => Styles.Get(Keys.RightLabel, EditorSkin.Inspector);
             public static GUIStyle RL_Background => Styles.Get(Keys.RL_Background, EditorSkin.Inspector);
@@ -2358,14 +2930,23 @@ namespace Lunari.Tsuki.Editor {
             public static GUIStyle SC_ViewAxisLabel => Styles.Get(Keys.SC_ViewAxisLabel, EditorSkin.Inspector);
             public static GUIStyle SC_ViewLabel => Styles.Get(Keys.SC_ViewLabel, EditorSkin.Inspector);
             public static GUIStyle SC_ViewLabelCentered => Styles.Get(Keys.SC_ViewLabelCentered, EditorSkin.Inspector);
-            public static GUIStyle SC_ViewLabelLeftAligned => Styles.Get(Keys.SC_ViewLabelLeftAligned, EditorSkin.Inspector);
+
+            public static GUIStyle SC_ViewLabelLeftAligned =>
+                Styles.Get(Keys.SC_ViewLabelLeftAligned, EditorSkin.Inspector);
+
             public static GUIStyle SceneTopBarBg => Styles.Get(Keys.SceneTopBarBg, EditorSkin.Inspector);
-            public static GUIStyle SceneViewOverlayTransparentBackground => Styles.Get(Keys.SceneViewOverlayTransparentBackground, EditorSkin.Inspector);
+
+            public static GUIStyle SceneViewOverlayTransparentBackground =>
+                Styles.Get(Keys.SceneViewOverlayTransparentBackground, EditorSkin.Inspector);
+
             public static GUIStyle SceneVisibility => Styles.Get(Keys.SceneVisibility, EditorSkin.Inspector);
             public static GUIStyle ScriptText => Styles.Get(Keys.ScriptText, EditorSkin.Inspector);
             public static GUIStyle ScrollViewAlt => Styles.Get(Keys.ScrollViewAlt, EditorSkin.Inspector);
             public static GUIStyle SearchCancelButton => Styles.Get(Keys.SearchCancelButton, EditorSkin.Inspector);
-            public static GUIStyle SearchCancelButtonEmpty => Styles.Get(Keys.SearchCancelButtonEmpty, EditorSkin.Inspector);
+
+            public static GUIStyle SearchCancelButtonEmpty =>
+                Styles.Get(Keys.SearchCancelButtonEmpty, EditorSkin.Inspector);
+
             public static GUIStyle SearchModeFilter => Styles.Get(Keys.SearchModeFilter, EditorSkin.Inspector);
             public static GUIStyle SearchTextField => Styles.Get(Keys.SearchTextField, EditorSkin.Inspector);
             public static GUIStyle SelectionRect => Styles.Get(Keys.SelectionRect, EditorSkin.Inspector);
@@ -2374,9 +2955,15 @@ namespace Lunari.Tsuki.Editor {
             public static GUIStyle SettingsListItem => Styles.Get(Keys.SettingsListItem, EditorSkin.Inspector);
             public static GUIStyle SettingsTreeItem => Styles.Get(Keys.SettingsTreeItem, EditorSkin.Inspector);
             public static GUIStyle ShurikenCheckMark => Styles.Get(Keys.ShurikenCheckMark, EditorSkin.Inspector);
-            public static GUIStyle ShurikenCheckMarkMixed => Styles.Get(Keys.ShurikenCheckMarkMixed, EditorSkin.Inspector);
+
+            public static GUIStyle ShurikenCheckMarkMixed =>
+                Styles.Get(Keys.ShurikenCheckMarkMixed, EditorSkin.Inspector);
+
             public static GUIStyle ShurikenDropdown => Styles.Get(Keys.ShurikenDropdown, EditorSkin.Inspector);
-            public static GUIStyle ShurikenEditableLabel => Styles.Get(Keys.ShurikenEditableLabel, EditorSkin.Inspector);
+
+            public static GUIStyle ShurikenEditableLabel =>
+                Styles.Get(Keys.ShurikenEditableLabel, EditorSkin.Inspector);
+
             public static GUIStyle ShurikenEffectBg => Styles.Get(Keys.ShurikenEffectBg, EditorSkin.Inspector);
             public static GUIStyle ShurikenEmitterTitle => Styles.Get(Keys.ShurikenEmitterTitle, EditorSkin.Inspector);
             public static GUIStyle ShurikenLabel => Styles.Get(Keys.ShurikenLabel, EditorSkin.Inspector);
@@ -2394,9 +2981,16 @@ namespace Lunari.Tsuki.Editor {
             public static GUIStyle StaticDropdown => Styles.Get(Keys.StaticDropdown, EditorSkin.Inspector);
             public static GUIStyle StatusBarIcon => Styles.Get(Keys.StatusBarIcon, EditorSkin.Inspector);
             public static GUIStyle sv_iconselector_back => Styles.Get(Keys.sv_iconselector_back, EditorSkin.Inspector);
-            public static GUIStyle sv_iconselector_button => Styles.Get(Keys.sv_iconselector_button, EditorSkin.Inspector);
-            public static GUIStyle sv_iconselector_labelselection => Styles.Get(Keys.sv_iconselector_labelselection, EditorSkin.Inspector);
-            public static GUIStyle sv_iconselector_selection => Styles.Get(Keys.sv_iconselector_selection, EditorSkin.Inspector);
+
+            public static GUIStyle sv_iconselector_button =>
+                Styles.Get(Keys.sv_iconselector_button, EditorSkin.Inspector);
+
+            public static GUIStyle sv_iconselector_labelselection =>
+                Styles.Get(Keys.sv_iconselector_labelselection, EditorSkin.Inspector);
+
+            public static GUIStyle sv_iconselector_selection =>
+                Styles.Get(Keys.sv_iconselector_selection, EditorSkin.Inspector);
+
             public static GUIStyle sv_iconselector_sep => Styles.Get(Keys.sv_iconselector_sep, EditorSkin.Inspector);
             public static GUIStyle sv_label_0 => Styles.Get(Keys.sv_label_0, EditorSkin.Inspector);
             public static GUIStyle sv_label_1 => Styles.Get(Keys.sv_label_1, EditorSkin.Inspector);
@@ -2426,7 +3020,10 @@ namespace Lunari.Tsuki.Editor {
             public static GUIStyle TE_toolbarbutton => Styles.Get(Keys.TE_toolbarbutton, EditorSkin.Inspector);
             public static GUIStyle TE_ToolbarDropDown => Styles.Get(Keys.TE_ToolbarDropDown, EditorSkin.Inspector);
             public static GUIStyle TextFieldDropDown => Styles.Get(Keys.TextFieldDropDown, EditorSkin.Inspector);
-            public static GUIStyle TextFieldDropDownText => Styles.Get(Keys.TextFieldDropDownText, EditorSkin.Inspector);
+
+            public static GUIStyle TextFieldDropDownText =>
+                Styles.Get(Keys.TextFieldDropDownText, EditorSkin.Inspector);
+
             public static GUIStyle TimeAreaToolbar => Styles.Get(Keys.TimeAreaToolbar, EditorSkin.Inspector);
             public static GUIStyle TimeRulerBackground => Styles.Get(Keys.TimeRulerBackground, EditorSkin.Inspector);
             public static GUIStyle TimeScrubber => Styles.Get(Keys.TimeScrubber, EditorSkin.Inspector);
@@ -2443,23 +3040,65 @@ namespace Lunari.Tsuki.Editor {
             public static GUIStyle ToolbarButtonFlat => Styles.Get(Keys.ToolbarButtonFlat, EditorSkin.Inspector);
             public static GUIStyle toolbarbuttonLeft => Styles.Get(Keys.toolbarbuttonLeft, EditorSkin.Inspector);
             public static GUIStyle toolbarbuttonRight => Styles.Get(Keys.toolbarbuttonRight, EditorSkin.Inspector);
-            public static GUIStyle ToolbarCreateAddNewDropDown => Styles.Get(Keys.ToolbarCreateAddNewDropDown, EditorSkin.Inspector);
+
+            public static GUIStyle ToolbarCreateAddNewDropDown =>
+                Styles.Get(Keys.ToolbarCreateAddNewDropDown, EditorSkin.Inspector);
+
             public static GUIStyle ToolbarDropDown => Styles.Get(Keys.ToolbarDropDown, EditorSkin.Inspector);
             public static GUIStyle ToolbarDropDownLeft => Styles.Get(Keys.ToolbarDropDownLeft, EditorSkin.Inspector);
             public static GUIStyle ToolbarDropDownRight => Styles.Get(Keys.ToolbarDropDownRight, EditorSkin.Inspector);
-            public static GUIStyle ToolbarDropDownToggle => Styles.Get(Keys.ToolbarDropDownToggle, EditorSkin.Inspector);
-            public static GUIStyle ToolbarDropDownToggleRight => Styles.Get(Keys.ToolbarDropDownToggleRight, EditorSkin.Inspector);
+
+            public static GUIStyle ToolbarDropDownToggle =>
+                Styles.Get(Keys.ToolbarDropDownToggle, EditorSkin.Inspector);
+
+            public static GUIStyle ToolbarDropDownToggleRight =>
+                Styles.Get(Keys.ToolbarDropDownToggleRight, EditorSkin.Inspector);
+
             public static GUIStyle ToolbarLabel => Styles.Get(Keys.ToolbarLabel, EditorSkin.Inspector);
             public static GUIStyle ToolbarPopup => Styles.Get(Keys.ToolbarPopup, EditorSkin.Inspector);
             public static GUIStyle ToolbarPopupLeft => Styles.Get(Keys.ToolbarPopupLeft, EditorSkin.Inspector);
             public static GUIStyle ToolbarPopupRight => Styles.Get(Keys.ToolbarPopupRight, EditorSkin.Inspector);
-            public static GUIStyle ToolbarSeachCancelButton => Styles.Get(Keys.ToolbarSeachCancelButton, EditorSkin.Inspector);
-            public static GUIStyle ToolbarSeachCancelButtonEmpty => Styles.Get(Keys.ToolbarSeachCancelButtonEmpty, EditorSkin.Inspector);
-            public static GUIStyle ToolbarSeachTextField => Styles.Get(Keys.ToolbarSeachTextField, EditorSkin.Inspector);
-            public static GUIStyle ToolbarSeachTextFieldPopup => Styles.Get(Keys.ToolbarSeachTextFieldPopup, EditorSkin.Inspector);
+
+            public static GUIStyle ToolbarSeachCancelButton =>
+                Styles.Get(Keys.ToolbarSeachCancelButton, EditorSkin.Inspector);
+
+            public static GUIStyle ToolbarSeachCancelButtonEmpty =>
+                Styles.Get(Keys.ToolbarSeachCancelButtonEmpty, EditorSkin.Inspector);
+
+            public static GUIStyle ToolbarSeachTextField =>
+                Styles.Get(Keys.ToolbarSeachTextField, EditorSkin.Inspector);
+
+            public static GUIStyle ToolbarSeachTextFieldPopup =>
+                Styles.Get(Keys.ToolbarSeachTextFieldPopup, EditorSkin.Inspector);
+
+            public static GUIStyle ToolbarSearchCancelButtonWithJump =>
+                Styles.Get(Keys.ToolbarSearchCancelButtonWithJump, EditorSkin.Inspector);
+
+            public static GUIStyle ToolbarSearchCancelButtonWithJumpEmpty =>
+                Styles.Get(Keys.ToolbarSearchCancelButtonWithJumpEmpty, EditorSkin.Inspector);
+
             public static GUIStyle ToolbarSearchField => Styles.Get(Keys.ToolbarSearchField, EditorSkin.Inspector);
+
+            public static GUIStyle ToolbarSearchTextFieldJumpButton =>
+                Styles.Get(Keys.ToolbarSearchTextFieldJumpButton, EditorSkin.Inspector);
+
+            public static GUIStyle ToolbarSearchTextFieldWithJump =>
+                Styles.Get(Keys.ToolbarSearchTextFieldWithJump, EditorSkin.Inspector);
+
+            public static GUIStyle ToolbarSearchTextFieldWithJumpPopup =>
+                Styles.Get(Keys.ToolbarSearchTextFieldWithJumpPopup, EditorSkin.Inspector);
+
+            public static GUIStyle ToolbarSearchTextFieldWithJumpPopupSynced =>
+                Styles.Get(Keys.ToolbarSearchTextFieldWithJumpPopupSynced, EditorSkin.Inspector);
+
+            public static GUIStyle ToolbarSearchTextFieldWithJumpSynced =>
+                Styles.Get(Keys.ToolbarSearchTextFieldWithJumpSynced, EditorSkin.Inspector);
+
             public static GUIStyle ToolbarSlider => Styles.Get(Keys.ToolbarSlider, EditorSkin.Inspector);
-            public static GUIStyle ToolbarSliderTextField => Styles.Get(Keys.ToolbarSliderTextField, EditorSkin.Inspector);
+
+            public static GUIStyle ToolbarSliderTextField =>
+                Styles.Get(Keys.ToolbarSliderTextField, EditorSkin.Inspector);
+
             public static GUIStyle ToolbarTextField => Styles.Get(Keys.ToolbarTextField, EditorSkin.Inspector);
             public static GUIStyle Tooltip => Styles.Get(Keys.Tooltip, EditorSkin.Inspector);
             public static GUIStyle TV_Insertion => Styles.Get(Keys.TV_Insertion, EditorSkin.Inspector);
@@ -2473,14 +3112,24 @@ namespace Lunari.Tsuki.Editor {
             public static GUIStyle U2D_dragDotDimmed => Styles.Get(Keys.U2D_dragDotDimmed, EditorSkin.Inspector);
             public static GUIStyle U2D_pivotDot => Styles.Get(Keys.U2D_pivotDot, EditorSkin.Inspector);
             public static GUIStyle U2D_pivotDotActive => Styles.Get(Keys.U2D_pivotDotActive, EditorSkin.Inspector);
-            public static GUIStyle VerticalMinMaxScrollbarThumb => Styles.Get(Keys.VerticalMinMaxScrollbarThumb, EditorSkin.Inspector);
-            public static GUIStyle VerticalSliderThumbExtent => Styles.Get(Keys.VerticalSliderThumbExtent, EditorSkin.Inspector);
-            public static GUIStyle VideoClipImporterLabel => Styles.Get(Keys.VideoClipImporterLabel, EditorSkin.Inspector);
+
+            public static GUIStyle VerticalMinMaxScrollbarThumb =>
+                Styles.Get(Keys.VerticalMinMaxScrollbarThumb, EditorSkin.Inspector);
+
+            public static GUIStyle VerticalSliderThumbExtent =>
+                Styles.Get(Keys.VerticalSliderThumbExtent, EditorSkin.Inspector);
+
+            public static GUIStyle VideoClipImporterLabel =>
+                Styles.Get(Keys.VideoClipImporterLabel, EditorSkin.Inspector);
+
             public static GUIStyle WarningOverlay => Styles.Get(Keys.WarningOverlay, EditorSkin.Inspector);
             public static GUIStyle WhiteBackground => Styles.Get(Keys.WhiteBackground, EditorSkin.Inspector);
             public static GUIStyle WhiteBoldLabel => Styles.Get(Keys.WhiteBoldLabel, EditorSkin.Inspector);
             public static GUIStyle WhiteLabel => Styles.Get(Keys.WhiteLabel, EditorSkin.Inspector);
-            public static GUIStyle WhiteLargeCenterLabel => Styles.Get(Keys.WhiteLargeCenterLabel, EditorSkin.Inspector);
+
+            public static GUIStyle WhiteLargeCenterLabel =>
+                Styles.Get(Keys.WhiteLargeCenterLabel, EditorSkin.Inspector);
+
             public static GUIStyle WhiteLargeLabel => Styles.Get(Keys.WhiteLargeLabel, EditorSkin.Inspector);
             public static GUIStyle WhiteMiniLabel => Styles.Get(Keys.WhiteMiniLabel, EditorSkin.Inspector);
             public static GUIStyle WinBtn => Styles.Get(Keys.WinBtn, EditorSkin.Inspector);
@@ -2500,6 +3149,7 @@ namespace Lunari.Tsuki.Editor {
             public static GUIStyle WordWrappedLabel => Styles.Get(Keys.WordWrappedLabel, EditorSkin.Inspector);
             public static GUIStyle WordWrappedMiniLabel => Styles.Get(Keys.WordWrappedMiniLabel, EditorSkin.Inspector);
         }
+
         public static class Scene {
             public static GUIStyle box => Styles.Get(Keys.box, EditorSkin.Scene);
             public static GUIStyle button => Styles.Get(Keys.button, EditorSkin.Scene);
@@ -2513,15 +3163,30 @@ namespace Lunari.Tsuki.Editor {
             public static GUIStyle verticalslider => Styles.Get(Keys.verticalslider, EditorSkin.Scene);
             public static GUIStyle verticalsliderthumb => Styles.Get(Keys.verticalsliderthumb, EditorSkin.Scene);
             public static GUIStyle horizontalscrollbar => Styles.Get(Keys.horizontalscrollbar, EditorSkin.Scene);
-            public static GUIStyle horizontalscrollbarthumb => Styles.Get(Keys.horizontalscrollbarthumb, EditorSkin.Scene);
-            public static GUIStyle horizontalscrollbarleftbutton => Styles.Get(Keys.horizontalscrollbarleftbutton, EditorSkin.Scene);
-            public static GUIStyle horizontalscrollbarrightbutton => Styles.Get(Keys.horizontalscrollbarrightbutton, EditorSkin.Scene);
+
+            public static GUIStyle horizontalscrollbarthumb =>
+                Styles.Get(Keys.horizontalscrollbarthumb, EditorSkin.Scene);
+
+            public static GUIStyle horizontalscrollbarleftbutton =>
+                Styles.Get(Keys.horizontalscrollbarleftbutton, EditorSkin.Scene);
+
+            public static GUIStyle horizontalscrollbarrightbutton =>
+                Styles.Get(Keys.horizontalscrollbarrightbutton, EditorSkin.Scene);
+
             public static GUIStyle verticalscrollbar => Styles.Get(Keys.verticalscrollbar, EditorSkin.Scene);
             public static GUIStyle verticalscrollbarthumb => Styles.Get(Keys.verticalscrollbarthumb, EditorSkin.Scene);
-            public static GUIStyle verticalscrollbarupbutton => Styles.Get(Keys.verticalscrollbarupbutton, EditorSkin.Scene);
-            public static GUIStyle verticalscrollbardownbutton => Styles.Get(Keys.verticalscrollbardownbutton, EditorSkin.Scene);
+
+            public static GUIStyle verticalscrollbarupbutton =>
+                Styles.Get(Keys.verticalscrollbarupbutton, EditorSkin.Scene);
+
+            public static GUIStyle verticalscrollbardownbutton =>
+                Styles.Get(Keys.verticalscrollbardownbutton, EditorSkin.Scene);
+
             public static GUIStyle scrollview => Styles.Get(Keys.scrollview, EditorSkin.Scene);
-            public static GUIStyle AboutWIndowLicenseLabel => Styles.Get(Keys.AboutWIndowLicenseLabel, EditorSkin.Scene);
+
+            public static GUIStyle AboutWIndowLicenseLabel =>
+                Styles.Get(Keys.AboutWIndowLicenseLabel, EditorSkin.Scene);
+
             public static GUIStyle AC_BoldHeader => Styles.Get(Keys.AC_BoldHeader, EditorSkin.Scene);
             public static GUIStyle AC_Button => Styles.Get(Keys.AC_Button, EditorSkin.Scene);
             public static GUIStyle AC_ComponentButton => Styles.Get(Keys.AC_ComponentButton, EditorSkin.Scene);
@@ -2530,7 +3195,10 @@ namespace Lunari.Tsuki.Editor {
             public static GUIStyle AC_PreviewHeader => Styles.Get(Keys.AC_PreviewHeader, EditorSkin.Scene);
             public static GUIStyle AC_PreviewText => Styles.Get(Keys.AC_PreviewText, EditorSkin.Scene);
             public static GUIStyle AC_RightArrow => Styles.Get(Keys.AC_RightArrow, EditorSkin.Scene);
-            public static GUIStyle AM_ChannelStripHeaderStyle => Styles.Get(Keys.AM_ChannelStripHeaderStyle, EditorSkin.Scene);
+
+            public static GUIStyle AM_ChannelStripHeaderStyle =>
+                Styles.Get(Keys.AM_ChannelStripHeaderStyle, EditorSkin.Scene);
+
             public static GUIStyle AM_EffectName => Styles.Get(Keys.AM_EffectName, EditorSkin.Scene);
             public static GUIStyle AM_HeaderStyle => Styles.Get(Keys.AM_HeaderStyle, EditorSkin.Scene);
             public static GUIStyle AM_MixerHeader => Styles.Get(Keys.AM_MixerHeader, EditorSkin.Scene);
@@ -2539,14 +3207,25 @@ namespace Lunari.Tsuki.Editor {
             public static GUIStyle AM_ToolbarObjectField => Styles.Get(Keys.AM_ToolbarObjectField, EditorSkin.Scene);
             public static GUIStyle AM_TotalVuLabel => Styles.Get(Keys.AM_TotalVuLabel, EditorSkin.Scene);
             public static GUIStyle AM_VuValue => Styles.Get(Keys.AM_VuValue, EditorSkin.Scene);
-            public static GUIStyle AnimationEventBackground => Styles.Get(Keys.AnimationEventBackground, EditorSkin.Scene);
+
+            public static GUIStyle AnimationEventBackground =>
+                Styles.Get(Keys.AnimationEventBackground, EditorSkin.Scene);
+
             public static GUIStyle AnimationEventTooltip => Styles.Get(Keys.AnimationEventTooltip, EditorSkin.Scene);
-            public static GUIStyle AnimationEventTooltipArrow => Styles.Get(Keys.AnimationEventTooltipArrow, EditorSkin.Scene);
-            public static GUIStyle AnimationKeyframeBackground => Styles.Get(Keys.AnimationKeyframeBackground, EditorSkin.Scene);
+
+            public static GUIStyle AnimationEventTooltipArrow =>
+                Styles.Get(Keys.AnimationEventTooltipArrow, EditorSkin.Scene);
+
+            public static GUIStyle AnimationKeyframeBackground =>
+                Styles.Get(Keys.AnimationKeyframeBackground, EditorSkin.Scene);
+
             public static GUIStyle AnimationPlayHead => Styles.Get(Keys.AnimationPlayHead, EditorSkin.Scene);
             public static GUIStyle AnimationRowEven => Styles.Get(Keys.AnimationRowEven, EditorSkin.Scene);
             public static GUIStyle AnimationRowOdd => Styles.Get(Keys.AnimationRowOdd, EditorSkin.Scene);
-            public static GUIStyle AnimationSelectionTextField => Styles.Get(Keys.AnimationSelectionTextField, EditorSkin.Scene);
+
+            public static GUIStyle AnimationSelectionTextField =>
+                Styles.Get(Keys.AnimationSelectionTextField, EditorSkin.Scene);
+
             public static GUIStyle AnimationTimelineTick => Styles.Get(Keys.AnimationTimelineTick, EditorSkin.Scene);
             public static GUIStyle AnimClipToolbar => Styles.Get(Keys.AnimClipToolbar, EditorSkin.Scene);
             public static GUIStyle AnimClipToolbarButton => Styles.Get(Keys.AnimClipToolbarButton, EditorSkin.Scene);
@@ -2570,7 +3249,10 @@ namespace Lunari.Tsuki.Editor {
             public static GUIStyle AssetLabel_Icon => Styles.Get(Keys.AssetLabel_Icon, EditorSkin.Scene);
             public static GUIStyle AssetLabel_Partial => Styles.Get(Keys.AssetLabel_Partial, EditorSkin.Scene);
             public static GUIStyle AvatarMappingBox => Styles.Get(Keys.AvatarMappingBox, EditorSkin.Scene);
-            public static GUIStyle AvatarMappingErrorLabel => Styles.Get(Keys.AvatarMappingErrorLabel, EditorSkin.Scene);
+
+            public static GUIStyle AvatarMappingErrorLabel =>
+                Styles.Get(Keys.AvatarMappingErrorLabel, EditorSkin.Scene);
+
             public static GUIStyle AxisLabelNumberField => Styles.Get(Keys.AxisLabelNumberField, EditorSkin.Scene);
             public static GUIStyle Badge => Styles.Get(Keys.Badge, EditorSkin.Scene);
             public static GUIStyle BoldLabel => Styles.Get(Keys.BoldLabel, EditorSkin.Scene);
@@ -2584,12 +3266,23 @@ namespace Lunari.Tsuki.Editor {
             public static GUIStyle BypassToggle => Styles.Get(Keys.BypassToggle, EditorSkin.Scene);
             public static GUIStyle CacheFolderLocation => Styles.Get(Keys.CacheFolderLocation, EditorSkin.Scene);
             public static GUIStyle CenteredLabel => Styles.Get(Keys.CenteredLabel, EditorSkin.Scene);
-            public static GUIStyle ChannelStripAttenuationBar => Styles.Get(Keys.ChannelStripAttenuationBar, EditorSkin.Scene);
-            public static GUIStyle ChannelStripAttenuationMarkerSquare => Styles.Get(Keys.ChannelStripAttenuationMarkerSquare, EditorSkin.Scene);
+
+            public static GUIStyle ChannelStripAttenuationBar =>
+                Styles.Get(Keys.ChannelStripAttenuationBar, EditorSkin.Scene);
+
+            public static GUIStyle ChannelStripAttenuationMarkerSquare =>
+                Styles.Get(Keys.ChannelStripAttenuationMarkerSquare, EditorSkin.Scene);
+
             public static GUIStyle ChannelStripBg => Styles.Get(Keys.ChannelStripBg, EditorSkin.Scene);
-            public static GUIStyle ChannelStripDuckingMarker => Styles.Get(Keys.ChannelStripDuckingMarker, EditorSkin.Scene);
+
+            public static GUIStyle ChannelStripDuckingMarker =>
+                Styles.Get(Keys.ChannelStripDuckingMarker, EditorSkin.Scene);
+
             public static GUIStyle ChannelStripEffectBar => Styles.Get(Keys.ChannelStripEffectBar, EditorSkin.Scene);
-            public static GUIStyle ChannelStripSendReturnBar => Styles.Get(Keys.ChannelStripSendReturnBar, EditorSkin.Scene);
+
+            public static GUIStyle ChannelStripSendReturnBar =>
+                Styles.Get(Keys.ChannelStripSendReturnBar, EditorSkin.Scene);
+
             public static GUIStyle ChannelStripVUMeterBg => Styles.Get(Keys.ChannelStripVUMeterBg, EditorSkin.Scene);
             public static GUIStyle CircularToggle => Styles.Get(Keys.CircularToggle, EditorSkin.Scene);
             public static GUIStyle CN_Box => Styles.Get(Keys.CN_Box, EditorSkin.Scene);
@@ -2610,7 +3303,10 @@ namespace Lunari.Tsuki.Editor {
             public static GUIStyle CN_EntryWarnIconSmall => Styles.Get(Keys.CN_EntryWarnIconSmall, EditorSkin.Scene);
             public static GUIStyle CN_EntryWarnSmall => Styles.Get(Keys.CN_EntryWarnSmall, EditorSkin.Scene);
             public static GUIStyle CN_Message => Styles.Get(Keys.CN_Message, EditorSkin.Scene);
-            public static GUIStyle CN_StacktraceBackground => Styles.Get(Keys.CN_StacktraceBackground, EditorSkin.Scene);
+
+            public static GUIStyle CN_StacktraceBackground =>
+                Styles.Get(Keys.CN_StacktraceBackground, EditorSkin.Scene);
+
             public static GUIStyle CN_StacktraceStyle => Styles.Get(Keys.CN_StacktraceStyle, EditorSkin.Scene);
             public static GUIStyle CN_StatusError => Styles.Get(Keys.CN_StatusError, EditorSkin.Scene);
             public static GUIStyle CN_StatusInfo => Styles.Get(Keys.CN_StatusInfo, EditorSkin.Scene);
@@ -2619,15 +3315,29 @@ namespace Lunari.Tsuki.Editor {
             public static GUIStyle ColorPicker2DThumb => Styles.Get(Keys.ColorPicker2DThumb, EditorSkin.Scene);
             public static GUIStyle ColorPickerBackground => Styles.Get(Keys.ColorPickerBackground, EditorSkin.Scene);
             public static GUIStyle ColorPickerBox => Styles.Get(Keys.ColorPickerBox, EditorSkin.Scene);
-            public static GUIStyle ColorPickerCurrentColor => Styles.Get(Keys.ColorPickerCurrentColor, EditorSkin.Scene);
-            public static GUIStyle ColorPickerCurrentExposureSwatchBorder => Styles.Get(Keys.ColorPickerCurrentExposureSwatchBorder, EditorSkin.Scene);
-            public static GUIStyle ColorPickerExposureSwatch => Styles.Get(Keys.ColorPickerExposureSwatch, EditorSkin.Scene);
+
+            public static GUIStyle ColorPickerCurrentColor =>
+                Styles.Get(Keys.ColorPickerCurrentColor, EditorSkin.Scene);
+
+            public static GUIStyle ColorPickerCurrentExposureSwatchBorder =>
+                Styles.Get(Keys.ColorPickerCurrentExposureSwatchBorder, EditorSkin.Scene);
+
+            public static GUIStyle ColorPickerExposureSwatch =>
+                Styles.Get(Keys.ColorPickerExposureSwatch, EditorSkin.Scene);
+
             public static GUIStyle ColorPickerHorizThumb => Styles.Get(Keys.ColorPickerHorizThumb, EditorSkin.Scene);
             public static GUIStyle ColorPickerHueRing => Styles.Get(Keys.ColorPickerHueRing, EditorSkin.Scene);
             public static GUIStyle ColorPickerHueRing_HDR => Styles.Get(Keys.ColorPickerHueRing_HDR, EditorSkin.Scene);
-            public static GUIStyle ColorPickerHueRingThumb => Styles.Get(Keys.ColorPickerHueRingThumb, EditorSkin.Scene);
-            public static GUIStyle ColorPickerOriginalColor => Styles.Get(Keys.ColorPickerOriginalColor, EditorSkin.Scene);
-            public static GUIStyle ColorPickerSliderBackground => Styles.Get(Keys.ColorPickerSliderBackground, EditorSkin.Scene);
+
+            public static GUIStyle ColorPickerHueRingThumb =>
+                Styles.Get(Keys.ColorPickerHueRingThumb, EditorSkin.Scene);
+
+            public static GUIStyle ColorPickerOriginalColor =>
+                Styles.Get(Keys.ColorPickerOriginalColor, EditorSkin.Scene);
+
+            public static GUIStyle ColorPickerSliderBackground =>
+                Styles.Get(Keys.ColorPickerSliderBackground, EditorSkin.Scene);
+
             public static GUIStyle Command => Styles.Get(Keys.Command, EditorSkin.Scene);
             public static GUIStyle CommandLeft => Styles.Get(Keys.CommandLeft, EditorSkin.Scene);
             public static GUIStyle CommandMid => Styles.Get(Keys.CommandMid, EditorSkin.Scene);
@@ -2636,15 +3346,25 @@ namespace Lunari.Tsuki.Editor {
             public static GUIStyle ControlHighlight => Styles.Get(Keys.ControlHighlight, EditorSkin.Scene);
             public static GUIStyle ControlLabel => Styles.Get(Keys.ControlLabel, EditorSkin.Scene);
             public static GUIStyle CurveEditorBackground => Styles.Get(Keys.CurveEditorBackground, EditorSkin.Scene);
-            public static GUIStyle CurveEditorLabelTickmarks => Styles.Get(Keys.CurveEditorLabelTickmarks, EditorSkin.Scene);
-            public static GUIStyle CurveEditorLabelTickmarksOverflow => Styles.Get(Keys.CurveEditorLabelTickmarksOverflow, EditorSkin.Scene);
-            public static GUIStyle CurveEditorRightAlignedLabel => Styles.Get(Keys.CurveEditorRightAlignedLabel, EditorSkin.Scene);
+
+            public static GUIStyle CurveEditorLabelTickmarks =>
+                Styles.Get(Keys.CurveEditorLabelTickmarks, EditorSkin.Scene);
+
+            public static GUIStyle CurveEditorLabelTickmarksOverflow =>
+                Styles.Get(Keys.CurveEditorLabelTickmarksOverflow, EditorSkin.Scene);
+
+            public static GUIStyle CurveEditorRightAlignedLabel =>
+                Styles.Get(Keys.CurveEditorRightAlignedLabel, EditorSkin.Scene);
+
             public static GUIStyle DD_Background => Styles.Get(Keys.DD_Background, EditorSkin.Scene);
             public static GUIStyle DD_HeaderStyle => Styles.Get(Keys.DD_HeaderStyle, EditorSkin.Scene);
             public static GUIStyle DD_ItemCheckmark => Styles.Get(Keys.DD_ItemCheckmark, EditorSkin.Scene);
             public static GUIStyle DD_ItemStyle => Styles.Get(Keys.DD_ItemStyle, EditorSkin.Scene);
             public static GUIStyle DD_LargeItemStyle => Styles.Get(Keys.DD_LargeItemStyle, EditorSkin.Scene);
-            public static GUIStyle DefaultCenteredLargeText => Styles.Get(Keys.DefaultCenteredLargeText, EditorSkin.Scene);
+
+            public static GUIStyle DefaultCenteredLargeText =>
+                Styles.Get(Keys.DefaultCenteredLargeText, EditorSkin.Scene);
+
             public static GUIStyle DefaultCenteredText => Styles.Get(Keys.DefaultCenteredText, EditorSkin.Scene);
             public static GUIStyle DefaultLineSeparator => Styles.Get(Keys.DefaultLineSeparator, EditorSkin.Scene);
             public static GUIStyle dockarea => Styles.Get(Keys.dockarea, EditorSkin.Scene);
@@ -2669,7 +3389,10 @@ namespace Lunari.Tsuki.Editor {
             public static GUIStyle ErrorLabel => Styles.Get(Keys.ErrorLabel, EditorSkin.Scene);
             public static GUIStyle ExposablePopupItem => Styles.Get(Keys.ExposablePopupItem, EditorSkin.Scene);
             public static GUIStyle ExposablePopupMenu => Styles.Get(Keys.ExposablePopupMenu, EditorSkin.Scene);
-            public static GUIStyle EyeDropperHorizontalLine => Styles.Get(Keys.EyeDropperHorizontalLine, EditorSkin.Scene);
+
+            public static GUIStyle EyeDropperHorizontalLine =>
+                Styles.Get(Keys.EyeDropperHorizontalLine, EditorSkin.Scene);
+
             public static GUIStyle EyeDropperPickedPixel => Styles.Get(Keys.EyeDropperPickedPixel, EditorSkin.Scene);
             public static GUIStyle EyeDropperVerticalLine => Styles.Get(Keys.EyeDropperVerticalLine, EditorSkin.Scene);
             public static GUIStyle FloatFieldLinkButton => Styles.Get(Keys.FloatFieldLinkButton, EditorSkin.Scene);
@@ -2719,24 +3442,41 @@ namespace Lunari.Tsuki.Editor {
             public static GUIStyle FrameBox => Styles.Get(Keys.FrameBox, EditorSkin.Scene);
             public static GUIStyle GameViewBackground => Styles.Get(Keys.GameViewBackground, EditorSkin.Scene);
             public static GUIStyle Grad_Down_Swatch => Styles.Get(Keys.Grad_Down_Swatch, EditorSkin.Scene);
-            public static GUIStyle Grad_Down_Swatch_Overlay => Styles.Get(Keys.Grad_Down_Swatch_Overlay, EditorSkin.Scene);
+
+            public static GUIStyle Grad_Down_Swatch_Overlay =>
+                Styles.Get(Keys.Grad_Down_Swatch_Overlay, EditorSkin.Scene);
+
             public static GUIStyle Grad_Up_Swatch => Styles.Get(Keys.Grad_Up_Swatch, EditorSkin.Scene);
             public static GUIStyle Grad_Up_Swatch_Overlay => Styles.Get(Keys.Grad_Up_Swatch_Overlay, EditorSkin.Scene);
             public static GUIStyle grey_border => Styles.Get(Keys.grey_border, EditorSkin.Scene);
             public static GUIStyle GridList => Styles.Get(Keys.GridList, EditorSkin.Scene);
             public static GUIStyle GridListText => Styles.Get(Keys.GridListText, EditorSkin.Scene);
             public static GUIStyle GroupBox => Styles.Get(Keys.GroupBox, EditorSkin.Scene);
-            public static GUIStyle GUIEditor_BreadcrumbLeft => Styles.Get(Keys.GUIEditor_BreadcrumbLeft, EditorSkin.Scene);
-            public static GUIStyle GUIEditor_BreadcrumbLeftBackground => Styles.Get(Keys.GUIEditor_BreadcrumbLeftBackground, EditorSkin.Scene);
-            public static GUIStyle GUIEditor_BreadcrumbMid => Styles.Get(Keys.GUIEditor_BreadcrumbMid, EditorSkin.Scene);
-            public static GUIStyle GUIEditor_BreadcrumbMidBackground => Styles.Get(Keys.GUIEditor_BreadcrumbMidBackground, EditorSkin.Scene);
+
+            public static GUIStyle GUIEditor_BreadcrumbLeft =>
+                Styles.Get(Keys.GUIEditor_BreadcrumbLeft, EditorSkin.Scene);
+
+            public static GUIStyle GUIEditor_BreadcrumbLeftBackground =>
+                Styles.Get(Keys.GUIEditor_BreadcrumbLeftBackground, EditorSkin.Scene);
+
+            public static GUIStyle GUIEditor_BreadcrumbMid =>
+                Styles.Get(Keys.GUIEditor_BreadcrumbMid, EditorSkin.Scene);
+
+            public static GUIStyle GUIEditor_BreadcrumbMidBackground =>
+                Styles.Get(Keys.GUIEditor_BreadcrumbMidBackground, EditorSkin.Scene);
+
             public static GUIStyle GV_Gizmo_DropDown => Styles.Get(Keys.GV_Gizmo_DropDown, EditorSkin.Scene);
             public static GUIStyle HeaderButton => Styles.Get(Keys.HeaderButton, EditorSkin.Scene);
             public static GUIStyle HeaderLabel => Styles.Get(Keys.HeaderLabel, EditorSkin.Scene);
             public static GUIStyle HelpBox => Styles.Get(Keys.HelpBox, EditorSkin.Scene);
             public static GUIStyle Hi_Label => Styles.Get(Keys.Hi_Label, EditorSkin.Scene);
-            public static GUIStyle HorizontalMinMaxScrollbarThumb => Styles.Get(Keys.HorizontalMinMaxScrollbarThumb, EditorSkin.Scene);
-            public static GUIStyle HorizontalSliderThumbExtent => Styles.Get(Keys.HorizontalSliderThumbExtent, EditorSkin.Scene);
+
+            public static GUIStyle HorizontalMinMaxScrollbarThumb =>
+                Styles.Get(Keys.HorizontalMinMaxScrollbarThumb, EditorSkin.Scene);
+
+            public static GUIStyle HorizontalSliderThumbExtent =>
+                Styles.Get(Keys.HorizontalSliderThumbExtent, EditorSkin.Scene);
+
             public static GUIStyle hostview => Styles.Get(Keys.hostview, EditorSkin.Scene);
             public static GUIStyle IconButton => Styles.Get(Keys.IconButton, EditorSkin.Scene);
             public static GUIStyle IN_BigTitle => Styles.Get(Keys.IN_BigTitle, EditorSkin.Scene);
@@ -2767,7 +3507,10 @@ namespace Lunari.Tsuki.Editor {
             public static GUIStyle LargeButtonMid => Styles.Get(Keys.LargeButtonMid, EditorSkin.Scene);
             public static GUIStyle LargeButtonRight => Styles.Get(Keys.LargeButtonRight, EditorSkin.Scene);
             public static GUIStyle LargeLabel => Styles.Get(Keys.LargeLabel, EditorSkin.Scene);
-            public static GUIStyle LightmapEditorSelectedHighlight => Styles.Get(Keys.LightmapEditorSelectedHighlight, EditorSkin.Scene);
+
+            public static GUIStyle LightmapEditorSelectedHighlight =>
+                Styles.Get(Keys.LightmapEditorSelectedHighlight, EditorSkin.Scene);
+
             public static GUIStyle LinkLabel => Styles.Get(Keys.LinkLabel, EditorSkin.Scene);
             public static GUIStyle LODBlackBox => Styles.Get(Keys.LODBlackBox, EditorSkin.Scene);
             public static GUIStyle LODCameraLine => Styles.Get(Keys.LODCameraLine, EditorSkin.Scene);
@@ -2797,8 +3540,13 @@ namespace Lunari.Tsuki.Editor {
             public static GUIStyle MeTransitionBack => Styles.Get(Keys.MeTransitionBack, EditorSkin.Scene);
             public static GUIStyle MeTransitionBlock => Styles.Get(Keys.MeTransitionBlock, EditorSkin.Scene);
             public static GUIStyle MeTransitionHandleLeft => Styles.Get(Keys.MeTransitionHandleLeft, EditorSkin.Scene);
-            public static GUIStyle MeTransitionHandleLeftPrev => Styles.Get(Keys.MeTransitionHandleLeftPrev, EditorSkin.Scene);
-            public static GUIStyle MeTransitionHandleRight => Styles.Get(Keys.MeTransitionHandleRight, EditorSkin.Scene);
+
+            public static GUIStyle MeTransitionHandleLeftPrev =>
+                Styles.Get(Keys.MeTransitionHandleLeftPrev, EditorSkin.Scene);
+
+            public static GUIStyle MeTransitionHandleRight =>
+                Styles.Get(Keys.MeTransitionHandleRight, EditorSkin.Scene);
+
             public static GUIStyle MeTransitionHead => Styles.Get(Keys.MeTransitionHead, EditorSkin.Scene);
             public static GUIStyle MeTransitionSelect => Styles.Get(Keys.MeTransitionSelect, EditorSkin.Scene);
             public static GUIStyle MeTransitionSelectHead => Styles.Get(Keys.MeTransitionSelectHead, EditorSkin.Scene);
@@ -2815,8 +3563,13 @@ namespace Lunari.Tsuki.Editor {
             public static GUIStyle minibuttonmid => Styles.Get(Keys.minibuttonmid, EditorSkin.Scene);
             public static GUIStyle minibuttonright => Styles.Get(Keys.minibuttonright, EditorSkin.Scene);
             public static GUIStyle MiniLabel => Styles.Get(Keys.MiniLabel, EditorSkin.Scene);
-            public static GUIStyle MiniMinMaxSliderHorizontal => Styles.Get(Keys.MiniMinMaxSliderHorizontal, EditorSkin.Scene);
-            public static GUIStyle MiniMinMaxSliderVertical => Styles.Get(Keys.MiniMinMaxSliderVertical, EditorSkin.Scene);
+
+            public static GUIStyle MiniMinMaxSliderHorizontal =>
+                Styles.Get(Keys.MiniMinMaxSliderHorizontal, EditorSkin.Scene);
+
+            public static GUIStyle MiniMinMaxSliderVertical =>
+                Styles.Get(Keys.MiniMinMaxSliderVertical, EditorSkin.Scene);
+
             public static GUIStyle MiniPopup => Styles.Get(Keys.MiniPopup, EditorSkin.Scene);
             public static GUIStyle MiniPullDown => Styles.Get(Keys.MiniPullDown, EditorSkin.Scene);
             public static GUIStyle MiniSliderHorizontal => Styles.Get(Keys.MiniSliderHorizontal, EditorSkin.Scene);
@@ -2824,10 +3577,16 @@ namespace Lunari.Tsuki.Editor {
             public static GUIStyle MiniTextField => Styles.Get(Keys.MiniTextField, EditorSkin.Scene);
             public static GUIStyle MiniToolbarButton => Styles.Get(Keys.MiniToolbarButton, EditorSkin.Scene);
             public static GUIStyle MiniToolbarButtonLeft => Styles.Get(Keys.MiniToolbarButtonLeft, EditorSkin.Scene);
-            public static GUIStyle MinMaxHorizontalSliderThumb => Styles.Get(Keys.MinMaxHorizontalSliderThumb, EditorSkin.Scene);
+
+            public static GUIStyle MinMaxHorizontalSliderThumb =>
+                Styles.Get(Keys.MinMaxHorizontalSliderThumb, EditorSkin.Scene);
+
             public static GUIStyle MultiColumnArrow => Styles.Get(Keys.MultiColumnArrow, EditorSkin.Scene);
             public static GUIStyle MultiColumnHeader => Styles.Get(Keys.MultiColumnHeader, EditorSkin.Scene);
-            public static GUIStyle MultiColumnHeaderCenter => Styles.Get(Keys.MultiColumnHeaderCenter, EditorSkin.Scene);
+
+            public static GUIStyle MultiColumnHeaderCenter =>
+                Styles.Get(Keys.MultiColumnHeaderCenter, EditorSkin.Scene);
+
             public static GUIStyle MultiColumnHeaderRight => Styles.Get(Keys.MultiColumnHeaderRight, EditorSkin.Scene);
             public static GUIStyle MultiColumnTopBar => Styles.Get(Keys.MultiColumnTopBar, EditorSkin.Scene);
             public static GUIStyle MuteToggle => Styles.Get(Keys.MuteToggle, EditorSkin.Scene);
@@ -2837,16 +3596,35 @@ namespace Lunari.Tsuki.Editor {
             public static GUIStyle ObjectFieldButton => Styles.Get(Keys.ObjectFieldButton, EditorSkin.Scene);
             public static GUIStyle ObjectFieldMiniThumb => Styles.Get(Keys.ObjectFieldMiniThumb, EditorSkin.Scene);
             public static GUIStyle ObjectFieldThumb => Styles.Get(Keys.ObjectFieldThumb, EditorSkin.Scene);
-            public static GUIStyle ObjectFieldThumbLightmapPreviewOverlay => Styles.Get(Keys.ObjectFieldThumbLightmapPreviewOverlay, EditorSkin.Scene);
-            public static GUIStyle ObjectFieldThumbOverlay => Styles.Get(Keys.ObjectFieldThumbOverlay, EditorSkin.Scene);
-            public static GUIStyle ObjectFieldThumbOverlay2 => Styles.Get(Keys.ObjectFieldThumbOverlay2, EditorSkin.Scene);
+
+            public static GUIStyle ObjectFieldThumbLightmapPreviewOverlay =>
+                Styles.Get(Keys.ObjectFieldThumbLightmapPreviewOverlay, EditorSkin.Scene);
+
+            public static GUIStyle ObjectFieldThumbOverlay =>
+                Styles.Get(Keys.ObjectFieldThumbOverlay, EditorSkin.Scene);
+
+            public static GUIStyle ObjectFieldThumbOverlay2 =>
+                Styles.Get(Keys.ObjectFieldThumbOverlay2, EditorSkin.Scene);
+
             public static GUIStyle ObjectPickerBackground => Styles.Get(Keys.ObjectPickerBackground, EditorSkin.Scene);
-            public static GUIStyle ObjectPickerLargeStatus => Styles.Get(Keys.ObjectPickerLargeStatus, EditorSkin.Scene);
-            public static GUIStyle ObjectPickerPreviewBackground => Styles.Get(Keys.ObjectPickerPreviewBackground, EditorSkin.Scene);
-            public static GUIStyle ObjectPickerResultsEven => Styles.Get(Keys.ObjectPickerResultsEven, EditorSkin.Scene);
-            public static GUIStyle ObjectPickerResultsGrid => Styles.Get(Keys.ObjectPickerResultsGrid, EditorSkin.Scene);
+
+            public static GUIStyle ObjectPickerLargeStatus =>
+                Styles.Get(Keys.ObjectPickerLargeStatus, EditorSkin.Scene);
+
+            public static GUIStyle ObjectPickerPreviewBackground =>
+                Styles.Get(Keys.ObjectPickerPreviewBackground, EditorSkin.Scene);
+
+            public static GUIStyle ObjectPickerResultsEven =>
+                Styles.Get(Keys.ObjectPickerResultsEven, EditorSkin.Scene);
+
+            public static GUIStyle ObjectPickerResultsGrid =>
+                Styles.Get(Keys.ObjectPickerResultsGrid, EditorSkin.Scene);
+
             public static GUIStyle ObjectPickerResultsOdd => Styles.Get(Keys.ObjectPickerResultsOdd, EditorSkin.Scene);
-            public static GUIStyle ObjectPickerSmallStatus => Styles.Get(Keys.ObjectPickerSmallStatus, EditorSkin.Scene);
+
+            public static GUIStyle ObjectPickerSmallStatus =>
+                Styles.Get(Keys.ObjectPickerSmallStatus, EditorSkin.Scene);
+
             public static GUIStyle ObjectPickerTab => Styles.Get(Keys.ObjectPickerTab, EditorSkin.Scene);
             public static GUIStyle ObjectPickerToolbar => Styles.Get(Keys.ObjectPickerToolbar, EditorSkin.Scene);
             public static GUIStyle OffsetDropDown => Styles.Get(Keys.OffsetDropDown, EditorSkin.Scene);
@@ -2878,11 +3656,20 @@ namespace Lunari.Tsuki.Editor {
             public static GUIStyle PlayerSettingsPlatform => Styles.Get(Keys.PlayerSettingsPlatform, EditorSkin.Scene);
             public static GUIStyle Popup => Styles.Get(Keys.Popup, EditorSkin.Scene);
             public static GUIStyle PopupCurveDropdown => Styles.Get(Keys.PopupCurveDropdown, EditorSkin.Scene);
-            public static GUIStyle PopupCurveEditorBackground => Styles.Get(Keys.PopupCurveEditorBackground, EditorSkin.Scene);
+
+            public static GUIStyle PopupCurveEditorBackground =>
+                Styles.Get(Keys.PopupCurveEditorBackground, EditorSkin.Scene);
+
             public static GUIStyle PopupCurveEditorSwatch => Styles.Get(Keys.PopupCurveEditorSwatch, EditorSkin.Scene);
-            public static GUIStyle PopupCurveSwatchBackground => Styles.Get(Keys.PopupCurveSwatchBackground, EditorSkin.Scene);
+
+            public static GUIStyle PopupCurveSwatchBackground =>
+                Styles.Get(Keys.PopupCurveSwatchBackground, EditorSkin.Scene);
+
             public static GUIStyle PR_BrokenPrefabLabel => Styles.Get(Keys.PR_BrokenPrefabLabel, EditorSkin.Scene);
-            public static GUIStyle PR_DisabledBrokenPrefabLabel => Styles.Get(Keys.PR_DisabledBrokenPrefabLabel, EditorSkin.Scene);
+
+            public static GUIStyle PR_DisabledBrokenPrefabLabel =>
+                Styles.Get(Keys.PR_DisabledBrokenPrefabLabel, EditorSkin.Scene);
+
             public static GUIStyle PR_DisabledLabel => Styles.Get(Keys.PR_DisabledLabel, EditorSkin.Scene);
             public static GUIStyle PR_DisabledPrefabLabel => Styles.Get(Keys.PR_DisabledPrefabLabel, EditorSkin.Scene);
             public static GUIStyle PR_Insertion => Styles.Get(Keys.PR_Insertion, EditorSkin.Scene);
@@ -2902,7 +3689,10 @@ namespace Lunari.Tsuki.Editor {
             public static GUIStyle PreferencesSectionBox => Styles.Get(Keys.PreferencesSectionBox, EditorSkin.Scene);
             public static GUIStyle PrefixLabel => Styles.Get(Keys.PrefixLabel, EditorSkin.Scene);
             public static GUIStyle PreHorizontalScrollbar => Styles.Get(Keys.PreHorizontalScrollbar, EditorSkin.Scene);
-            public static GUIStyle PreHorizontalScrollbarThumb => Styles.Get(Keys.PreHorizontalScrollbarThumb, EditorSkin.Scene);
+
+            public static GUIStyle PreHorizontalScrollbarThumb =>
+                Styles.Get(Keys.PreHorizontalScrollbarThumb, EditorSkin.Scene);
+
             public static GUIStyle PreLabel => Styles.Get(Keys.PreLabel, EditorSkin.Scene);
             public static GUIStyle PreLabelUpper => Styles.Get(Keys.PreLabelUpper, EditorSkin.Scene);
             public static GUIStyle PreMiniLabel => Styles.Get(Keys.PreMiniLabel, EditorSkin.Scene);
@@ -2912,63 +3702,138 @@ namespace Lunari.Tsuki.Editor {
             public static GUIStyle PreToolbar => Styles.Get(Keys.PreToolbar, EditorSkin.Scene);
             public static GUIStyle PreToolbar2 => Styles.Get(Keys.PreToolbar2, EditorSkin.Scene);
             public static GUIStyle PreVerticalScrollbar => Styles.Get(Keys.PreVerticalScrollbar, EditorSkin.Scene);
-            public static GUIStyle PreVerticalScrollbarThumb => Styles.Get(Keys.PreVerticalScrollbarThumb, EditorSkin.Scene);
+
+            public static GUIStyle PreVerticalScrollbarThumb =>
+                Styles.Get(Keys.PreVerticalScrollbarThumb, EditorSkin.Scene);
+
             public static GUIStyle PreviewPackageInUse => Styles.Get(Keys.PreviewPackageInUse, EditorSkin.Scene);
             public static GUIStyle ProfilerBadge => Styles.Get(Keys.ProfilerBadge, EditorSkin.Scene);
-            public static GUIStyle ProfilerDetailViewBackground => Styles.Get(Keys.ProfilerDetailViewBackground, EditorSkin.Scene);
-            public static GUIStyle ProfilerGraphBackground => Styles.Get(Keys.ProfilerGraphBackground, EditorSkin.Scene);
+
+            public static GUIStyle ProfilerDetailViewBackground =>
+                Styles.Get(Keys.ProfilerDetailViewBackground, EditorSkin.Scene);
+
+            public static GUIStyle ProfilerGraphBackground =>
+                Styles.Get(Keys.ProfilerGraphBackground, EditorSkin.Scene);
+
             public static GUIStyle ProfilerHeaderLabel => Styles.Get(Keys.ProfilerHeaderLabel, EditorSkin.Scene);
             public static GUIStyle ProfilerLeftPane => Styles.Get(Keys.ProfilerLeftPane, EditorSkin.Scene);
-            public static GUIStyle ProfilerNoDataAvailable => Styles.Get(Keys.ProfilerNoDataAvailable, EditorSkin.Scene);
-            public static GUIStyle ProfilerNotSupportedWarningLabel => Styles.Get(Keys.ProfilerNotSupportedWarningLabel, EditorSkin.Scene);
+
+            public static GUIStyle ProfilerNoDataAvailable =>
+                Styles.Get(Keys.ProfilerNoDataAvailable, EditorSkin.Scene);
+
+            public static GUIStyle ProfilerNotSupportedWarningLabel =>
+                Styles.Get(Keys.ProfilerNotSupportedWarningLabel, EditorSkin.Scene);
+
             public static GUIStyle ProfilerPaneSubLabel => Styles.Get(Keys.ProfilerPaneSubLabel, EditorSkin.Scene);
             public static GUIStyle ProfilerRightPane => Styles.Get(Keys.ProfilerRightPane, EditorSkin.Scene);
-            public static GUIStyle ProfilerScrollviewBackground => Styles.Get(Keys.ProfilerScrollviewBackground, EditorSkin.Scene);
+
+            public static GUIStyle ProfilerScrollviewBackground =>
+                Styles.Get(Keys.ProfilerScrollviewBackground, EditorSkin.Scene);
+
             public static GUIStyle ProfilerSelectedLabel => Styles.Get(Keys.ProfilerSelectedLabel, EditorSkin.Scene);
             public static GUIStyle ProfilerTimelineBar => Styles.Get(Keys.ProfilerTimelineBar, EditorSkin.Scene);
-            public static GUIStyle ProfilerTimelineDigDownArrow => Styles.Get(Keys.ProfilerTimelineDigDownArrow, EditorSkin.Scene);
-            public static GUIStyle ProfilerTimelineFoldout => Styles.Get(Keys.ProfilerTimelineFoldout, EditorSkin.Scene);
-            public static GUIStyle ProfilerTimelineLeftPane => Styles.Get(Keys.ProfilerTimelineLeftPane, EditorSkin.Scene);
-            public static GUIStyle ProfilerTimelineRollUpArrow => Styles.Get(Keys.ProfilerTimelineRollUpArrow, EditorSkin.Scene);
+
+            public static GUIStyle ProfilerTimelineDigDownArrow =>
+                Styles.Get(Keys.ProfilerTimelineDigDownArrow, EditorSkin.Scene);
+
+            public static GUIStyle ProfilerTimelineFoldout =>
+                Styles.Get(Keys.ProfilerTimelineFoldout, EditorSkin.Scene);
+
+            public static GUIStyle ProfilerTimelineLeftPane =>
+                Styles.Get(Keys.ProfilerTimelineLeftPane, EditorSkin.Scene);
+
+            public static GUIStyle ProfilerTimelineRollUpArrow =>
+                Styles.Get(Keys.ProfilerTimelineRollUpArrow, EditorSkin.Scene);
+
             public static GUIStyle ProgressBarBack => Styles.Get(Keys.ProgressBarBack, EditorSkin.Scene);
             public static GUIStyle ProgressBarBar => Styles.Get(Keys.ProgressBarBar, EditorSkin.Scene);
             public static GUIStyle ProgressBarText => Styles.Get(Keys.ProgressBarText, EditorSkin.Scene);
-            public static GUIStyle ProjectBrowserBottomBarBg => Styles.Get(Keys.ProjectBrowserBottomBarBg, EditorSkin.Scene);
-            public static GUIStyle ProjectBrowserGridLabel => Styles.Get(Keys.ProjectBrowserGridLabel, EditorSkin.Scene);
-            public static GUIStyle ProjectBrowserHeaderBgMiddle => Styles.Get(Keys.ProjectBrowserHeaderBgMiddle, EditorSkin.Scene);
-            public static GUIStyle ProjectBrowserHeaderBgTop => Styles.Get(Keys.ProjectBrowserHeaderBgTop, EditorSkin.Scene);
-            public static GUIStyle ProjectBrowserIconAreaBg => Styles.Get(Keys.ProjectBrowserIconAreaBg, EditorSkin.Scene);
-            public static GUIStyle ProjectBrowserIconDropShadow => Styles.Get(Keys.ProjectBrowserIconDropShadow, EditorSkin.Scene);
-            public static GUIStyle ProjectBrowserPreviewBg => Styles.Get(Keys.ProjectBrowserPreviewBg, EditorSkin.Scene);
-            public static GUIStyle ProjectBrowserSubAssetBg => Styles.Get(Keys.ProjectBrowserSubAssetBg, EditorSkin.Scene);
-            public static GUIStyle ProjectBrowserSubAssetBgCloseEnded => Styles.Get(Keys.ProjectBrowserSubAssetBgCloseEnded, EditorSkin.Scene);
-            public static GUIStyle ProjectBrowserSubAssetBgDivider => Styles.Get(Keys.ProjectBrowserSubAssetBgDivider, EditorSkin.Scene);
-            public static GUIStyle ProjectBrowserSubAssetBgMiddle => Styles.Get(Keys.ProjectBrowserSubAssetBgMiddle, EditorSkin.Scene);
-            public static GUIStyle ProjectBrowserSubAssetBgOpenEnded => Styles.Get(Keys.ProjectBrowserSubAssetBgOpenEnded, EditorSkin.Scene);
-            public static GUIStyle ProjectBrowserSubAssetExpandBtn => Styles.Get(Keys.ProjectBrowserSubAssetExpandBtn, EditorSkin.Scene);
-            public static GUIStyle ProjectBrowserSubAssetExpandBtnMedium => Styles.Get(Keys.ProjectBrowserSubAssetExpandBtnMedium, EditorSkin.Scene);
-            public static GUIStyle ProjectBrowserSubAssetExpandBtnSmall => Styles.Get(Keys.ProjectBrowserSubAssetExpandBtnSmall, EditorSkin.Scene);
-            public static GUIStyle ProjectBrowserTextureIconDropShadow => Styles.Get(Keys.ProjectBrowserTextureIconDropShadow, EditorSkin.Scene);
+
+            public static GUIStyle ProjectBrowserBottomBarBg =>
+                Styles.Get(Keys.ProjectBrowserBottomBarBg, EditorSkin.Scene);
+
+            public static GUIStyle ProjectBrowserGridLabel =>
+                Styles.Get(Keys.ProjectBrowserGridLabel, EditorSkin.Scene);
+
+            public static GUIStyle ProjectBrowserHeaderBgMiddle =>
+                Styles.Get(Keys.ProjectBrowserHeaderBgMiddle, EditorSkin.Scene);
+
+            public static GUIStyle ProjectBrowserHeaderBgTop =>
+                Styles.Get(Keys.ProjectBrowserHeaderBgTop, EditorSkin.Scene);
+
+            public static GUIStyle ProjectBrowserIconAreaBg =>
+                Styles.Get(Keys.ProjectBrowserIconAreaBg, EditorSkin.Scene);
+
+            public static GUIStyle ProjectBrowserIconDropShadow =>
+                Styles.Get(Keys.ProjectBrowserIconDropShadow, EditorSkin.Scene);
+
+            public static GUIStyle ProjectBrowserPreviewBg =>
+                Styles.Get(Keys.ProjectBrowserPreviewBg, EditorSkin.Scene);
+
+            public static GUIStyle ProjectBrowserSubAssetBg =>
+                Styles.Get(Keys.ProjectBrowserSubAssetBg, EditorSkin.Scene);
+
+            public static GUIStyle ProjectBrowserSubAssetBgCloseEnded =>
+                Styles.Get(Keys.ProjectBrowserSubAssetBgCloseEnded, EditorSkin.Scene);
+
+            public static GUIStyle ProjectBrowserSubAssetBgDivider =>
+                Styles.Get(Keys.ProjectBrowserSubAssetBgDivider, EditorSkin.Scene);
+
+            public static GUIStyle ProjectBrowserSubAssetBgMiddle =>
+                Styles.Get(Keys.ProjectBrowserSubAssetBgMiddle, EditorSkin.Scene);
+
+            public static GUIStyle ProjectBrowserSubAssetBgOpenEnded =>
+                Styles.Get(Keys.ProjectBrowserSubAssetBgOpenEnded, EditorSkin.Scene);
+
+            public static GUIStyle ProjectBrowserSubAssetExpandBtn =>
+                Styles.Get(Keys.ProjectBrowserSubAssetExpandBtn, EditorSkin.Scene);
+
+            public static GUIStyle ProjectBrowserSubAssetExpandBtnMedium =>
+                Styles.Get(Keys.ProjectBrowserSubAssetExpandBtnMedium, EditorSkin.Scene);
+
+            public static GUIStyle ProjectBrowserSubAssetExpandBtnSmall =>
+                Styles.Get(Keys.ProjectBrowserSubAssetExpandBtnSmall, EditorSkin.Scene);
+
+            public static GUIStyle ProjectBrowserTextureIconDropShadow =>
+                Styles.Get(Keys.ProjectBrowserTextureIconDropShadow, EditorSkin.Scene);
+
             public static GUIStyle ProjectBrowserTopBarBg => Styles.Get(Keys.ProjectBrowserTopBarBg, EditorSkin.Scene);
             public static GUIStyle QualitySettingsDefault => Styles.Get(Keys.QualitySettingsDefault, EditorSkin.Scene);
+            public static GUIStyle quick_search_tab => Styles.Get(Keys.quick_search_tab, EditorSkin.Scene);
             public static GUIStyle Radio => Styles.Get(Keys.Radio, EditorSkin.Scene);
             public static GUIStyle RectangleToolHBar => Styles.Get(Keys.RectangleToolHBar, EditorSkin.Scene);
             public static GUIStyle RectangleToolHBarLeft => Styles.Get(Keys.RectangleToolHBarLeft, EditorSkin.Scene);
             public static GUIStyle RectangleToolHBarRight => Styles.Get(Keys.RectangleToolHBarRight, EditorSkin.Scene);
             public static GUIStyle RectangleToolHighlight => Styles.Get(Keys.RectangleToolHighlight, EditorSkin.Scene);
-            public static GUIStyle RectangleToolRippleLeft => Styles.Get(Keys.RectangleToolRippleLeft, EditorSkin.Scene);
-            public static GUIStyle RectangleToolRippleRight => Styles.Get(Keys.RectangleToolRippleRight, EditorSkin.Scene);
-            public static GUIStyle RectangleToolScaleBottom => Styles.Get(Keys.RectangleToolScaleBottom, EditorSkin.Scene);
+
+            public static GUIStyle RectangleToolRippleLeft =>
+                Styles.Get(Keys.RectangleToolRippleLeft, EditorSkin.Scene);
+
+            public static GUIStyle RectangleToolRippleRight =>
+                Styles.Get(Keys.RectangleToolRippleRight, EditorSkin.Scene);
+
+            public static GUIStyle RectangleToolScaleBottom =>
+                Styles.Get(Keys.RectangleToolScaleBottom, EditorSkin.Scene);
+
             public static GUIStyle RectangleToolScaleLeft => Styles.Get(Keys.RectangleToolScaleLeft, EditorSkin.Scene);
-            public static GUIStyle RectangleToolScaleRight => Styles.Get(Keys.RectangleToolScaleRight, EditorSkin.Scene);
+
+            public static GUIStyle RectangleToolScaleRight =>
+                Styles.Get(Keys.RectangleToolScaleRight, EditorSkin.Scene);
+
             public static GUIStyle RectangleToolScaleTop => Styles.Get(Keys.RectangleToolScaleTop, EditorSkin.Scene);
             public static GUIStyle RectangleToolSelection => Styles.Get(Keys.RectangleToolSelection, EditorSkin.Scene);
             public static GUIStyle RectangleToolVBar => Styles.Get(Keys.RectangleToolVBar, EditorSkin.Scene);
-            public static GUIStyle RectangleToolVBarBottom => Styles.Get(Keys.RectangleToolVBarBottom, EditorSkin.Scene);
+
+            public static GUIStyle RectangleToolVBarBottom =>
+                Styles.Get(Keys.RectangleToolVBarBottom, EditorSkin.Scene);
+
             public static GUIStyle RectangleToolVBarTop => Styles.Get(Keys.RectangleToolVBarTop, EditorSkin.Scene);
             public static GUIStyle RegionBg => Styles.Get(Keys.RegionBg, EditorSkin.Scene);
             public static GUIStyle ReorderableList => Styles.Get(Keys.ReorderableList, EditorSkin.Scene);
-            public static GUIStyle ReorderableListRightAligned => Styles.Get(Keys.ReorderableListRightAligned, EditorSkin.Scene);
+
+            public static GUIStyle ReorderableListRightAligned =>
+                Styles.Get(Keys.ReorderableListRightAligned, EditorSkin.Scene);
+
             public static GUIStyle RightAlignedLabel => Styles.Get(Keys.RightAlignedLabel, EditorSkin.Scene);
             public static GUIStyle RightLabel => Styles.Get(Keys.RightLabel, EditorSkin.Scene);
             public static GUIStyle RL_Background => Styles.Get(Keys.RL_Background, EditorSkin.Scene);
@@ -2981,14 +3846,23 @@ namespace Lunari.Tsuki.Editor {
             public static GUIStyle SC_ViewAxisLabel => Styles.Get(Keys.SC_ViewAxisLabel, EditorSkin.Scene);
             public static GUIStyle SC_ViewLabel => Styles.Get(Keys.SC_ViewLabel, EditorSkin.Scene);
             public static GUIStyle SC_ViewLabelCentered => Styles.Get(Keys.SC_ViewLabelCentered, EditorSkin.Scene);
-            public static GUIStyle SC_ViewLabelLeftAligned => Styles.Get(Keys.SC_ViewLabelLeftAligned, EditorSkin.Scene);
+
+            public static GUIStyle SC_ViewLabelLeftAligned =>
+                Styles.Get(Keys.SC_ViewLabelLeftAligned, EditorSkin.Scene);
+
             public static GUIStyle SceneTopBarBg => Styles.Get(Keys.SceneTopBarBg, EditorSkin.Scene);
-            public static GUIStyle SceneViewOverlayTransparentBackground => Styles.Get(Keys.SceneViewOverlayTransparentBackground, EditorSkin.Scene);
+
+            public static GUIStyle SceneViewOverlayTransparentBackground =>
+                Styles.Get(Keys.SceneViewOverlayTransparentBackground, EditorSkin.Scene);
+
             public static GUIStyle SceneVisibility => Styles.Get(Keys.SceneVisibility, EditorSkin.Scene);
             public static GUIStyle ScriptText => Styles.Get(Keys.ScriptText, EditorSkin.Scene);
             public static GUIStyle ScrollViewAlt => Styles.Get(Keys.ScrollViewAlt, EditorSkin.Scene);
             public static GUIStyle SearchCancelButton => Styles.Get(Keys.SearchCancelButton, EditorSkin.Scene);
-            public static GUIStyle SearchCancelButtonEmpty => Styles.Get(Keys.SearchCancelButtonEmpty, EditorSkin.Scene);
+
+            public static GUIStyle SearchCancelButtonEmpty =>
+                Styles.Get(Keys.SearchCancelButtonEmpty, EditorSkin.Scene);
+
             public static GUIStyle SearchModeFilter => Styles.Get(Keys.SearchModeFilter, EditorSkin.Scene);
             public static GUIStyle SearchTextField => Styles.Get(Keys.SearchTextField, EditorSkin.Scene);
             public static GUIStyle SelectionRect => Styles.Get(Keys.SelectionRect, EditorSkin.Scene);
@@ -3018,8 +3892,13 @@ namespace Lunari.Tsuki.Editor {
             public static GUIStyle StatusBarIcon => Styles.Get(Keys.StatusBarIcon, EditorSkin.Scene);
             public static GUIStyle sv_iconselector_back => Styles.Get(Keys.sv_iconselector_back, EditorSkin.Scene);
             public static GUIStyle sv_iconselector_button => Styles.Get(Keys.sv_iconselector_button, EditorSkin.Scene);
-            public static GUIStyle sv_iconselector_labelselection => Styles.Get(Keys.sv_iconselector_labelselection, EditorSkin.Scene);
-            public static GUIStyle sv_iconselector_selection => Styles.Get(Keys.sv_iconselector_selection, EditorSkin.Scene);
+
+            public static GUIStyle sv_iconselector_labelselection =>
+                Styles.Get(Keys.sv_iconselector_labelselection, EditorSkin.Scene);
+
+            public static GUIStyle sv_iconselector_selection =>
+                Styles.Get(Keys.sv_iconselector_selection, EditorSkin.Scene);
+
             public static GUIStyle sv_iconselector_sep => Styles.Get(Keys.sv_iconselector_sep, EditorSkin.Scene);
             public static GUIStyle sv_label_0 => Styles.Get(Keys.sv_label_0, EditorSkin.Scene);
             public static GUIStyle sv_label_1 => Styles.Get(Keys.sv_label_1, EditorSkin.Scene);
@@ -3066,21 +3945,57 @@ namespace Lunari.Tsuki.Editor {
             public static GUIStyle ToolbarButtonFlat => Styles.Get(Keys.ToolbarButtonFlat, EditorSkin.Scene);
             public static GUIStyle toolbarbuttonLeft => Styles.Get(Keys.toolbarbuttonLeft, EditorSkin.Scene);
             public static GUIStyle toolbarbuttonRight => Styles.Get(Keys.toolbarbuttonRight, EditorSkin.Scene);
-            public static GUIStyle ToolbarCreateAddNewDropDown => Styles.Get(Keys.ToolbarCreateAddNewDropDown, EditorSkin.Scene);
+
+            public static GUIStyle ToolbarCreateAddNewDropDown =>
+                Styles.Get(Keys.ToolbarCreateAddNewDropDown, EditorSkin.Scene);
+
             public static GUIStyle ToolbarDropDown => Styles.Get(Keys.ToolbarDropDown, EditorSkin.Scene);
             public static GUIStyle ToolbarDropDownLeft => Styles.Get(Keys.ToolbarDropDownLeft, EditorSkin.Scene);
             public static GUIStyle ToolbarDropDownRight => Styles.Get(Keys.ToolbarDropDownRight, EditorSkin.Scene);
             public static GUIStyle ToolbarDropDownToggle => Styles.Get(Keys.ToolbarDropDownToggle, EditorSkin.Scene);
-            public static GUIStyle ToolbarDropDownToggleRight => Styles.Get(Keys.ToolbarDropDownToggleRight, EditorSkin.Scene);
+
+            public static GUIStyle ToolbarDropDownToggleRight =>
+                Styles.Get(Keys.ToolbarDropDownToggleRight, EditorSkin.Scene);
+
             public static GUIStyle ToolbarLabel => Styles.Get(Keys.ToolbarLabel, EditorSkin.Scene);
             public static GUIStyle ToolbarPopup => Styles.Get(Keys.ToolbarPopup, EditorSkin.Scene);
             public static GUIStyle ToolbarPopupLeft => Styles.Get(Keys.ToolbarPopupLeft, EditorSkin.Scene);
             public static GUIStyle ToolbarPopupRight => Styles.Get(Keys.ToolbarPopupRight, EditorSkin.Scene);
-            public static GUIStyle ToolbarSeachCancelButton => Styles.Get(Keys.ToolbarSeachCancelButton, EditorSkin.Scene);
-            public static GUIStyle ToolbarSeachCancelButtonEmpty => Styles.Get(Keys.ToolbarSeachCancelButtonEmpty, EditorSkin.Scene);
+
+            public static GUIStyle ToolbarSeachCancelButton =>
+                Styles.Get(Keys.ToolbarSeachCancelButton, EditorSkin.Scene);
+
+            public static GUIStyle ToolbarSeachCancelButtonEmpty =>
+                Styles.Get(Keys.ToolbarSeachCancelButtonEmpty, EditorSkin.Scene);
+
             public static GUIStyle ToolbarSeachTextField => Styles.Get(Keys.ToolbarSeachTextField, EditorSkin.Scene);
-            public static GUIStyle ToolbarSeachTextFieldPopup => Styles.Get(Keys.ToolbarSeachTextFieldPopup, EditorSkin.Scene);
+
+            public static GUIStyle ToolbarSeachTextFieldPopup =>
+                Styles.Get(Keys.ToolbarSeachTextFieldPopup, EditorSkin.Scene);
+
+            public static GUIStyle ToolbarSearchCancelButtonWithJump =>
+                Styles.Get(Keys.ToolbarSearchCancelButtonWithJump, EditorSkin.Scene);
+
+            public static GUIStyle ToolbarSearchCancelButtonWithJumpEmpty =>
+                Styles.Get(Keys.ToolbarSearchCancelButtonWithJumpEmpty, EditorSkin.Scene);
+
             public static GUIStyle ToolbarSearchField => Styles.Get(Keys.ToolbarSearchField, EditorSkin.Scene);
+
+            public static GUIStyle ToolbarSearchTextFieldJumpButton =>
+                Styles.Get(Keys.ToolbarSearchTextFieldJumpButton, EditorSkin.Scene);
+
+            public static GUIStyle ToolbarSearchTextFieldWithJump =>
+                Styles.Get(Keys.ToolbarSearchTextFieldWithJump, EditorSkin.Scene);
+
+            public static GUIStyle ToolbarSearchTextFieldWithJumpPopup =>
+                Styles.Get(Keys.ToolbarSearchTextFieldWithJumpPopup, EditorSkin.Scene);
+
+            public static GUIStyle ToolbarSearchTextFieldWithJumpPopupSynced =>
+                Styles.Get(Keys.ToolbarSearchTextFieldWithJumpPopupSynced, EditorSkin.Scene);
+
+            public static GUIStyle ToolbarSearchTextFieldWithJumpSynced =>
+                Styles.Get(Keys.ToolbarSearchTextFieldWithJumpSynced, EditorSkin.Scene);
+
             public static GUIStyle ToolbarSlider => Styles.Get(Keys.ToolbarSlider, EditorSkin.Scene);
             public static GUIStyle ToolbarSliderTextField => Styles.Get(Keys.ToolbarSliderTextField, EditorSkin.Scene);
             public static GUIStyle ToolbarTextField => Styles.Get(Keys.ToolbarTextField, EditorSkin.Scene);
@@ -3096,8 +4011,13 @@ namespace Lunari.Tsuki.Editor {
             public static GUIStyle U2D_dragDotDimmed => Styles.Get(Keys.U2D_dragDotDimmed, EditorSkin.Scene);
             public static GUIStyle U2D_pivotDot => Styles.Get(Keys.U2D_pivotDot, EditorSkin.Scene);
             public static GUIStyle U2D_pivotDotActive => Styles.Get(Keys.U2D_pivotDotActive, EditorSkin.Scene);
-            public static GUIStyle VerticalMinMaxScrollbarThumb => Styles.Get(Keys.VerticalMinMaxScrollbarThumb, EditorSkin.Scene);
-            public static GUIStyle VerticalSliderThumbExtent => Styles.Get(Keys.VerticalSliderThumbExtent, EditorSkin.Scene);
+
+            public static GUIStyle VerticalMinMaxScrollbarThumb =>
+                Styles.Get(Keys.VerticalMinMaxScrollbarThumb, EditorSkin.Scene);
+
+            public static GUIStyle VerticalSliderThumbExtent =>
+                Styles.Get(Keys.VerticalSliderThumbExtent, EditorSkin.Scene);
+
             public static GUIStyle VideoClipImporterLabel => Styles.Get(Keys.VideoClipImporterLabel, EditorSkin.Scene);
             public static GUIStyle WarningOverlay => Styles.Get(Keys.WarningOverlay, EditorSkin.Scene);
             public static GUIStyle WhiteBackground => Styles.Get(Keys.WhiteBackground, EditorSkin.Scene);
