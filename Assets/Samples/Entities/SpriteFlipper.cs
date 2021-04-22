@@ -2,7 +2,7 @@
 
 namespace Lunari.Tsuki.Samples.Entities {
     [TraitLocation(CommonLocation.View)]
-    public class TraitA : Trait {
+    public class SpriteFlipper : Trait {
         
     }
 }

@@ -9,13 +9,16 @@ namespace Lunari.Tsuki.Editor {
             return FindOrCreate(root, path, n => new AdvancedDropdownItem(n));
         }
         public static T FindOrCreate<T>(this T root, string path, Func<string, T> creator) where T : AdvancedDropdownItem {
+            if (path.IsNullOrEmpty()) {
+                return root;
+            }
             var current = root;
-            var toGet = new Stack<string>();
-            foreach (var s in path.Split('/').Reverse()) {
-                toGet.Push(s);
+            var toGet = new Queue<string>();
+            foreach (var s in path.Split('/')) {
+                toGet.Enqueue(s);
             }
             do {
-                var next = toGet.Pop();
+                var next = toGet.Dequeue();
                 var candidate = (T)current.children.FirstOrDefault(item => item.name == next);
                 if (candidate == null) {
                     var newItem = creator(next);
