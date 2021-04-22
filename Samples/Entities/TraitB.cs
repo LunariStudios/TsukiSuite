@@ -1,8 +1,8 @@
 ﻿using Lunari.Tsuki.Entities;
 
 namespace Lunari.Tsuki.Samples.Entities {
-    [TraitLocation(CommonLocation.View)]
-    public class TraitA : Trait {
+    [TraitLocation(CommonLocation.Attack)]
+    public class TraitB : Trait {
         
     }
 }
