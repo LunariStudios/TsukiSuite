@@ -13,10 +13,11 @@ namespace Lunari.Tsuki.Editor.Extenders {
         public TypeSelectorButton(
             ModularContent<GUIContent> guiContent,
             TypeSelectorDropdown<T>.OnSelectedCallback onTypeSelected,
-            TypeSelectorDropdown<T>.PathSelector groupSelector = null
+            TypeSelectorDropdown<T>.PathSelector groupSelector = null,
+            Predicate<Type> typeFilter = null
         ) {
             this.guiContent = guiContent;
-            selector = new TypeSelectorDropdown<T>(onTypeSelected, groupSelector);
+            selector = new TypeSelectorDropdown<T>(onTypeSelected, groupSelector, typeFilter);
         }
 
         public void OnInspectorGUI() {
