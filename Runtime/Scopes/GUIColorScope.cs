@@ -12,6 +12,13 @@ namespace Lunari.Tsuki.Runtime.Scopes {
         private readonly Color color;
         private readonly ColorTarget target;
 
+        public GUIColorScope(
+            bool condition,
+            Color color,
+            ColorTarget target = ColorTarget.Normal
+        ) : this(condition ? color : GUI.color, target) {
+        }
+
         public GUIColorScope(Color red, ColorTarget target = ColorTarget.Normal) {
             this.target = target;
             switch (target) {
