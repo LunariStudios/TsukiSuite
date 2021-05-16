@@ -39,7 +39,9 @@ namespace Lunari.Tsuki.Entities {
 
             return found;
         }
-
+        public T RequiresComponent<T>(CommonLocation commonLocation) where T : Component {
+            return RequiresComponent<T>(TraitLocations.PathOf(commonLocation));
+        }
         public T RequiresComponent<T>(string expectedLocation = null) where T : Component {
             if (!Entity.TryGetComponentInChildren(out T component)) {
                 Problems.Add(new MissingComponent(Entity, typeof(T), of, expectedLocation));
