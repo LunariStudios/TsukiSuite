@@ -10,12 +10,12 @@ using UnityEditor.Animations;
 #endif
 
 namespace Lunari.Tsuki.Entities {
-    public class TraitDependencies : Traits {
+    public class TraitDescriptor : Traits {
         private readonly Trait of;
 
         public List<Problem> Problems { get; } = new List<Problem>();
 
-        public TraitDependencies(Entity entity, Trait of, bool initialize) {
+        public TraitDescriptor(Entity entity, Trait of, bool initialize) {
             Entity = entity;
             this.of = of;
             Initialize = initialize;
