@@ -14,7 +14,7 @@ namespace Lunari.Tsuki.Entities {
             Combat,
             AI,
             Attack,
-            View, 
+            View,
             FX
         };
 
@@ -30,6 +30,10 @@ namespace Lunari.Tsuki.Entities {
         Attack,
         View,
         FX
+    }
+
+    public interface ITraitPathConvertible {
+        string Path { get; }
     }
 
     public class TraitLocationAttribute : Attribute {
