@@ -5,12 +5,12 @@ using UnityEngine;
 namespace Lunari.Tsuki.Samples.Entities {
     public class Dummy : Trait {
         private Gauge gauge;
-        public override void Configure(TraitDependencies dependencies) {
-            dependencies.DependsOn(out gauge);
-            dependencies.RequiresComponent<Animator>(TraitLocations.View);
-            dependencies.RequiresComponent<CharacterController>(TraitLocations.Root);
+        public override void Configure(TraitDescriptor descriptor) {
+            descriptor.DependsOn(out gauge);
+            descriptor.RequiresComponent<Animator>(TraitLocations.View);
+            descriptor.RequiresComponent<CharacterController>(TraitLocations.Root);
             foreach (AnimatorControllerParameterType value in Enum.GetValues(typeof(AnimatorControllerParameterType))) {
-                dependencies.RequiresAnimatorParameter(value.ToString(), value);
+                descriptor.RequiresAnimatorParameter(value.ToString(), value);
             }
         }
     }
