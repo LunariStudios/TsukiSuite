@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Reflection;
+using UnityEditor;
 using UnityEngine;
 namespace Lunari.Tsuki.Entities.Problems {
     public class MissingTrait : Problem {
@@ -33,6 +34,7 @@ namespace Lunari.Tsuki.Entities.Problems {
                     toAddOn = found;
                 }
                 toAddOn.gameObject.AddComponent(dependencyType);
+                EditorUtility.SetDirty(toAddOn);
             });
         }
 
