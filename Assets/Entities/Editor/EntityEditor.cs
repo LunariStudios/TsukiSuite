@@ -99,8 +99,13 @@ namespace Lunari.Tsuki.Entities.Editor {
             var stack = string.Empty;
             tree.Explore(delegate(string entry, Tree<string, List<Trait>>.Node node) {
                     shouldClose[stack] = false;
+                    foreach (var trait in node.Value) {
+                        trait.TryClaim(entity, all, out var a, false);
+                        problems.AddRange(a.Problems);
+                    }
+
                     if (entry == null) {
-                        Draw(node.Value, all, problems);
+                        Draw(node.Value, all);
                         return;
                     }
 
@@ -112,7 +117,7 @@ namespace Lunari.Tsuki.Entities.Editor {
                     }
 
                     if (shown) {
-                        Draw(node.Value, all, problems);
+                        Draw(node.Value, all);
                     }
                 },
                 delegate(string entry, Tree<string, List<Trait>>.Node node) {
@@ -133,8 +138,7 @@ namespace Lunari.Tsuki.Entities.Editor {
 
         void Draw(
             IEnumerable<Trait> children,
-            Trait[] all,
-            List<Problem> problems
+            Trait[] all
         ) {
             foreach (var trait in children) {
                 trait.TryClaim(entity, all, out var dependencies, false);
@@ -154,8 +158,7 @@ namespace Lunari.Tsuki.Entities.Editor {
                     var editable = true;
                     if (obj == trait) {
                         editable = false;
-                    }
-                    else if (obj is GameObject go && go == trait.gameObject) {
+                    } else if (obj is GameObject go && go == trait.gameObject) {
                         editable = false;
                     }
 
@@ -169,8 +172,6 @@ namespace Lunari.Tsuki.Entities.Editor {
                         Delete(trait);
                     }
                 }
-
-                problems.AddRange(dependencies.Problems);
             }
         }
 
@@ -217,7 +218,9 @@ namespace Lunari.Tsuki.Entities.Editor {
                 toAddOn = found;
             }
 
-            toAddOn.gameObject.AddComponent(trait);
+            var gameObject = toAddOn.gameObject;
+            gameObject.AddComponent(trait);
+            EditorUtility.SetDirty(gameObject);
         }
     }
 }
