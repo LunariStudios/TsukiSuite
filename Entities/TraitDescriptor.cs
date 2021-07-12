@@ -11,13 +11,13 @@ using UnityEditor.Animations;
 
 namespace Lunari.Tsuki.Entities {
     public class TraitDescriptor : Traits {
-        private readonly Trait of;
+        public Trait Of { get; }
 
         public List<Problem> Problems { get; } = new List<Problem>();
 
         public TraitDescriptor(Entity entity, Trait of, bool initialize) {
             Entity = entity;
-            this.of = of;
+            Of = of;
             Initialize = initialize;
         }
 
@@ -34,7 +34,7 @@ namespace Lunari.Tsuki.Entities {
         public T DependsOn<T>(bool allowSubclasses = false) where T : Trait {
             var found = GetTrait<T>(allowSubclasses);
             if (found == null) {
-                Problems.Add(new MissingTrait(Entity, typeof(T), of));
+                Problems.Add(new MissingTrait(Entity, typeof(T), Of));
             }
 
             return found;
@@ -44,7 +44,7 @@ namespace Lunari.Tsuki.Entities {
         }
         public T RequiresComponent<T>(string expectedLocation = null) where T : Component {
             if (!Entity.TryGetComponentInChildren(out T component)) {
-                Problems.Add(new MissingComponent(Entity, typeof(T), of, expectedLocation));
+                Problems.Add(new MissingComponent(Entity, typeof(T), Of, expectedLocation));
             }
 
             return component;
@@ -54,7 +54,7 @@ namespace Lunari.Tsuki.Entities {
             var animator = RequiresComponent<Animator>();
             if (animator != null && animator.runtimeAnimatorController == null) {
                 if (!Problems.Any(problem => problem is MissingAnimatorController)) {
-                    Problems.Add(new MissingAnimatorController(of, Entity, animator));
+                    Problems.Add(new MissingAnimatorController(Of, Entity, animator));
                 }
             }
 #if UNITY_EDITOR
@@ -64,7 +64,7 @@ namespace Lunari.Tsuki.Entities {
                     return;
                 }
 
-                Problems.Add(new MissingAnimatorParameter(Entity, parameter, type, of));
+                Problems.Add(new MissingAnimatorParameter(Entity, parameter, type, Of));
             }
 #endif
         }
