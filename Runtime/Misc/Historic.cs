@@ -1,5 +1,9 @@
 ﻿using UnityEngine;
 using System;
+#if ODIN_INSPECTOR
+using Sirenix.OdinInspector;
+
+#endif
 
 namespace Lunari.Tsuki.Runtime.Misc {
     /// <summary>
@@ -7,9 +11,11 @@ namespace Lunari.Tsuki.Runtime.Misc {
     /// </summary>
     [Serializable]
     public class Historic<T> {
-        [SerializeField, NonSerialized]
-        protected T current;
+        [SerializeField, NonSerialized] protected T current;
         protected T last;
+#if ODIN_INSPECTOR
+        [ShowInInspector]
+#endif
         public T Current {
             get => current;
             set {

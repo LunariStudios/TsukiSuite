@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 
 namespace Lunari.Tsuki.Runtime.Algorithm {
@@ -33,6 +34,25 @@ namespace Lunari.Tsuki.Runtime.Algorithm {
                     yield return buffer[i];
                 }
             }
+        }
+
+        public T PeekHead(int indexBack) {
+            var ptr = head - indexBack;
+
+            if (ptr < 0) {
+                ptr += Count;
+            }
+
+            return buffer[ptr];
+        }
+        public T PeekTail(int indexForward) {
+            var ptr = tail + indexForward;
+
+            if (ptr >= Count) {
+                ptr %= Count;
+            }
+
+            return buffer[ptr];
         }
 
         IEnumerator IEnumerable.GetEnumerator() {

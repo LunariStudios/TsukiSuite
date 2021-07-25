@@ -181,5 +181,16 @@ namespace Lunari.Tsuki.Runtime {
                 }
             }
         }
+
+        public static Type GetTypeByName(string name) {
+            foreach (var assembly in KnownAssemblies) {
+                var found = assembly.GetType(name);
+                if (found != null) {
+                    return found;
+                }
+            }
+
+            return null;
+        }
     }
 }
