@@ -1,13 +1,24 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
+#if ODIN_INSPECTOR
+using Sirenix.OdinInspector;
 
+#endif
 namespace Lunari.Tsuki.Runtime.Algorithm {
     public class RingBuffer<T> : IEnumerable<T> {
+#if ODIN_INSPECTOR
+        [ShowInInspector, ReadOnly]
+#endif
         private readonly T[] buffer;
+#if ODIN_INSPECTOR
+        [ShowInInspector, ReadOnly]
+#endif
         private int head;
+#if ODIN_INSPECTOR
+        [ShowInInspector, ReadOnly]
+#endif
         private int tail;
 
         public RingBuffer(int size) {
@@ -36,6 +47,15 @@ namespace Lunari.Tsuki.Runtime.Algorithm {
             }
         }
 
+        public T Peek(int offset) {
+            var i = tail + offset;
+            if (i > Count) {
+                i %= Count;
+            }
+
+            return buffer[i];
+        }
+
         public T PeekHead(int indexBack) {
             var ptr = head - indexBack;
 
@@ -45,6 +65,7 @@ namespace Lunari.Tsuki.Runtime.Algorithm {
 
             return buffer[ptr];
         }
+
         public T PeekTail(int indexForward) {
             var ptr = tail + indexForward;
 
@@ -69,7 +90,7 @@ namespace Lunari.Tsuki.Runtime.Algorithm {
         }
 
         private void CheckOverflow(ref int i) {
-            if (i > buffer.Length) {
+            if (i >= buffer.Length) {
                 i = 0;
             }
         }
