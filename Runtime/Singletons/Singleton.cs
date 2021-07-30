@@ -28,6 +28,13 @@ namespace Lunari.Tsuki.Runtime.Singletons {
         /// If you want an instance to be returned anyways, see <see cref="EnsuredInstance"/>.
         /// </summary>
         public static T Instance => instance ? instance : instance = FindObjectOfType<T>();
+
+        protected virtual void Start() {
+            if (instance != null && instance != this) {
+                Debug.Log($"Destroying {this} because singleton of type {typeof(T).Name} already exists ({instance})");
+                Destroy(gameObject);
+            }
+        }
 /*
 
         /// <summary>
