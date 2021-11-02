@@ -1,5 +1,5 @@
 using System;
-namespace Lunari.Tsuki.Runtime.Stacking {
+namespace Lunari.Tsuki.Stacking {
     [Serializable]
     public class FloatStackable : Stackable<float> {
         public float masterMultiplier = 1;

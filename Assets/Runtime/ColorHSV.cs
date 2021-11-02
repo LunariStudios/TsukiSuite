@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
 using UnityEngine;
-
-namespace Lunari.Tsuki.Runtime {
+namespace Lunari.Tsuki {
     [Serializable]
     public struct ColorHSV {
 

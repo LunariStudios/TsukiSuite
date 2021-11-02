@@ -1,7 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-namespace Lunari.Tsuki.Runtime.Algorithm {
+namespace Lunari.Tsuki.Algorithm {
     /// <summary>
     /// A genetic Deque class. It can be thought of as
     /// a double-ended queue, hence Deque. This allows for

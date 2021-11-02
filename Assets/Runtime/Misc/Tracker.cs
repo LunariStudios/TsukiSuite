@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-
-namespace Lunari.Tsuki.Runtime.Misc {
+namespace Lunari.Tsuki.Misc {
     public sealed class Tracker<T> where T : Object {
         private readonly List<T> objects = new List<T>();
 

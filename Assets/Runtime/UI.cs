@@ -1,6 +1,5 @@
 ﻿using UnityEngine.UI;
-
-namespace Lunari.Tsuki.Runtime {
+namespace Lunari.Tsuki {
     public static class UI {
         public static void SetAlpha(this Graphic graphic, float alpha) {
             var c = graphic.color;

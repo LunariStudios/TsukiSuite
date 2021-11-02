@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
-
-namespace Lunari.Tsuki.Runtime.Singletons {
+namespace Lunari.Tsuki.Singletons {
     /// <summary>
     /// <see cref="ScriptableObject"/> version of <see cref="Singleton{T}"/>
     /// <br/>

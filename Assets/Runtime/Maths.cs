@@ -1,4 +1,4 @@
-namespace Lunari.Tsuki.Runtime {
+namespace Lunari.Tsuki {
     public static class Maths {
         public static int Clamp(int value, int min, int max) {
             if (value > max) {

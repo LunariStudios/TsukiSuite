@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
-
-namespace Lunari.Tsuki.Runtime.Singletons {
+namespace Lunari.Tsuki.Singletons {
     /// <summary>
     /// Represents an object of which there is only one instance ever.
     /// Usually managers.

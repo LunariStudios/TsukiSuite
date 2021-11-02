@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
-
-namespace Lunari.Tsuki.Runtime.Logging {
+namespace Lunari.Tsuki.Logging {
     public class UnityLogger {
         public UnityLogger(string name) {
             this.Name = name;

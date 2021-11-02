@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
-using Lunari.Tsuki.Runtime;
-using Lunari.Tsuki.Runtime.Algorithm;
+using Lunari.Tsuki.Algorithm;
 
 namespace Lunari.Tsuki.Entities.Editor {
     public static class TraitEditorUtils {

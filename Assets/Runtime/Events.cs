@@ -1,7 +1,6 @@
 ﻿using System;
 using UnityEngine.Events;
-
-namespace Lunari.Tsuki.Runtime {
+namespace Lunari.Tsuki {
     public static class Events {
         public static UnityAction AddListenerAndInvoke(this UnityEvent unityEvent, UnityAction action) {
             unityEvent.AddListener(action);

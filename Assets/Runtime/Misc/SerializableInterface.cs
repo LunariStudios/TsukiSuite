@@ -2,7 +2,7 @@
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace Lunari.Tsuki.Runtime.Misc {
+namespace Lunari.Tsuki.Misc {
     [Serializable]
     public class SerializableInterface<T> where T : class {
         public T Value {

@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
-
-namespace Lunari.Tsuki.Runtime {
+namespace Lunari.Tsuki {
     public static class Textures {
         public static readonly Texture2D WhiteTexture = Pixel(UnityEngine.Color.white);
         public static readonly Texture2D BlackTexture = Pixel(UnityEngine.Color.black);

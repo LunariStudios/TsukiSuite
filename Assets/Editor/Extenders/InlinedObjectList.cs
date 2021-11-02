@@ -1,7 +1,6 @@
 #if UNITY_EDITOR
 using System.Collections.Generic;
-using Lunari.Tsuki.Runtime;
-using Lunari.Tsuki.Runtime.Scopes;
+using Lunari.Tsuki.Scopes;
 using UnityEditor;
 using UnityEngine;
 using Object = UnityEngine.Object;

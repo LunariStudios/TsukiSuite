@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
-
-namespace Lunari.Tsuki.Runtime {
+namespace Lunari.Tsuki {
     public static class Objects {
         /// <summary>
         /// Creates a copy of this object and places it at the specified <see cref="position"/>.
