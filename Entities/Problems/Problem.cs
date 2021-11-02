@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 namespace Lunari.Tsuki.Entities.Problems {
 
     public class Solution {
@@ -22,16 +23,21 @@ namespace Lunari.Tsuki.Entities.Problems {
             Requisitor = requisitor;
             Entity = entity;
             Description = description;
-            Solution = solution;
+            Solutions = new List<Solution>();
+            if (solution != null) {
+                WithSolution(solution);
+            }
         }
-        protected void WithSolution(string description, Action solution) {
-            Solution = new Solution(description, solution);
+        public  void WithSolution(Solution description) {
+            Solutions.Add(description);
+        }
+        public void WithSolution(string description, Action solution) {
+            WithSolution(new Solution(description, solution));
         }
 
 
-        public Solution Solution {
+        public List<Solution> Solutions {
             get;
-            private set;
         }
 
         public Trait Requisitor {

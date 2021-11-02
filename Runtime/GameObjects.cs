@@ -1,8 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using UnityEngine.Events;
-
-namespace Lunari.Tsuki.Runtime {
+namespace Lunari.Tsuki {
     public static class GameObjects {
         /// <summary>
         /// Creates a new <see cref="GameObject"/> with the specified component.

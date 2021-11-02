@@ -1,7 +1,6 @@
 using System;
 using UnityEngine;
-
-namespace Lunari.Tsuki.Runtime.Scopes {
+namespace Lunari.Tsuki.Scopes {
     public class GUIEnabledScope : IDisposable {
         private bool before;
 

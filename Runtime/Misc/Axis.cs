@@ -1,6 +1,5 @@
 using System;
-
-namespace Lunari.Tsuki.Runtime.Misc {
+namespace Lunari.Tsuki.Misc {
     [Flags]
     public enum Axis : byte{
         X = 1 << 0,

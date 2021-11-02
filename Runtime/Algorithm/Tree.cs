@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-
-namespace Lunari.Tsuki.Runtime.Algorithm {
+namespace Lunari.Tsuki.Algorithm {
     public class Tree<K, V> : IEnumerable<Tree<K, V>.Node> {
         public class Node {
             public Dictionary<K, Node> Children { get; } = new Dictionary<K, Node>();

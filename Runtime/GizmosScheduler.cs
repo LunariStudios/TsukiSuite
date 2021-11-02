@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
-using Lunari.Tsuki.Runtime.Singletons;
-
-namespace Lunari.Tsuki.Runtime {
+using Lunari.Tsuki.Singletons;
+namespace Lunari.Tsuki {
     public delegate void GizmosAction();
 
     public class GizmosScheduler : StaticSingleton<GizmosScheduler> {

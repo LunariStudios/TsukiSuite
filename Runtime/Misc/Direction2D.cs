@@ -1,7 +1,6 @@
 ﻿using System;
 using UnityEngine;
-
-namespace Lunari.Tsuki.Runtime.Misc {
+namespace Lunari.Tsuki.Misc {
     [Serializable]
     public struct Direction2D : IComparable<Direction2D>, IComparable {
         public static readonly Direction2D Up = new Direction2D(UnitValue.Zero, UnitValue.One);

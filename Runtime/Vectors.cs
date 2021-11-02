@@ -1,8 +1,7 @@
 ﻿using System;
-using Lunari.Tsuki.Runtime.Misc;
+using Lunari.Tsuki.Misc;
 using UnityEngine;
-
-namespace Lunari.Tsuki.Runtime {
+namespace Lunari.Tsuki {
     public static class Vectors {
         /// <summary>
         /// Returns a string with all the decimal plates of this <see cref="vector"/> components. 

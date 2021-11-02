@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Lunari.Tsuki.Algorithm;
 using UnityEngine;
-using Lunari.Tsuki.Runtime.Algorithm;
 
 namespace Lunari.Tsuki.Graphs {
     public static partial class Graphs {

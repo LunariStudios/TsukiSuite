@@ -1,5 +1,4 @@
 using System;
-using Lunari.Tsuki.Runtime;
 
 namespace Lunari.Tsuki.Entities {
     public static class TraitExtensions {

@@ -1,6 +1,5 @@
 ﻿using System;
-
-namespace Lunari.Tsuki.Runtime {
+namespace Lunari.Tsuki {
     public static class Numbers {
         public static string ToHex(this float value) {
             return BitConverter.ToString(BitConverter.GetBytes(value));

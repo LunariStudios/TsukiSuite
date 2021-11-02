@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Lunari.Tsuki.Entities.Problems;
-using Lunari.Tsuki.Runtime;
 using UnityEngine;
 #if UNITY_EDITOR
 using UnityEditor.Animations;
@@ -67,6 +66,9 @@ namespace Lunari.Tsuki.Entities {
                 Problems.Add(new MissingAnimatorParameter(Entity, parameter, type, Of));
             }
 #endif
+        }
+        public ProblemBuilder AddProblem(string message) {
+            return new ProblemBuilder(this, message);
         }
     }
 }
