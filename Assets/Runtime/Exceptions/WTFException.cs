@@ -1,6 +1,5 @@
 using System;
-
-namespace Lunari.Tsuki.Runtime.Exceptions {
+namespace Lunari.Tsuki.Exceptions {
     /// <inheritdoc     />
     ///  <summary>
     ///  What a Terrible Failure exception.

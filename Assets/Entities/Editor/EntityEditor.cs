@@ -2,28 +2,29 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using Lunari.Tsuki.Algorithm;
 using Lunari.Tsuki.Editor;
 using Lunari.Tsuki.Editor.Extenders;
 using Lunari.Tsuki.Entities.Problems;
-using Lunari.Tsuki.Runtime;
-using Lunari.Tsuki.Runtime.Algorithm;
-using Lunari.Tsuki.Runtime.Scopes;
+using Lunari.Tsuki.Scopes;
 using UnityEditor;
+using UnityEditor.IMGUI.Controls;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Lunari.Tsuki.Entities.Editor {
     [CustomEditor(typeof(Entity))]
     public class EntityEditor : UnityEditor.Editor {
         private Entity entity;
         private TypeSelectorButton<Trait> button;
-
+        private DropdownButton multipleSolutionsButton;
         private static readonly Lazy<GUIStyle> ProblemStyle = new Lazy<GUIStyle>(() =>
             new GUIStyle(Styles.WordWrappedMiniLabel) {
                 wordWrap = true,
             });
 
         private void OnEnable() {
-            entity = (Entity) target;
+            entity = (Entity)target;
             button = new TypeSelectorButton<Trait>(
                 new GUIContent("Add Trait"),
                 AddTrait,
@@ -66,19 +67,27 @@ namespace Lunari.Tsuki.Entities.Editor {
                     using (new EditorGUILayout.HorizontalScope(EditorStyles.helpBox)) {
                         GUILayout.Label(new GUIContent(problem.Description, Icons.console_erroricon),
                             ProblemStyle.Value);
-                        var solution = problem.Solution;
-                        if (solution == null) {
-                            continue;
-                        }
-
-                        if (GUILayout.Button(
-                            solution.Description,
-                            GUILayout.ExpandHeight(true)
-                        )) {
-                            solution.Action();
+                        var solutions = problem.Solutions;
+                        using (new EditorGUILayout.VerticalScope()) {
+                            foreach (var solution in solutions) {
+                                DrawSolution(solution);
+                            }
                         }
                     }
+
                 }
+            }
+        }
+        private static void DrawSolution(Solution solution) {
+            if (solution == null) {
+                return;
+            }
+
+            if (GUILayout.Button(
+                    solution.Description,
+                    GUILayout.ExpandHeight(true)
+                )) {
+                solution.Action();
             }
         }
 
@@ -97,7 +106,8 @@ namespace Lunari.Tsuki.Entities.Editor {
         private void DrawTraitTree(Trait[] all, List<Problem> problems) {
             var tree = TraitEditorUtils.CalcTraitTreeOf(all);
             var stack = string.Empty;
-            tree.Explore(delegate(string entry, Tree<string, List<Trait>>.Node node) {
+            tree.Explore(delegate(string entry, Tree<string, List<Trait>>.Node node)
+                {
                     shouldClose[stack] = false;
                     foreach (var trait in node.Value) {
                         trait.TryClaim(entity, all, out var a, false);
@@ -120,7 +130,8 @@ namespace Lunari.Tsuki.Entities.Editor {
                         Draw(node.Value, all);
                     }
                 },
-                delegate(string entry, Tree<string, List<Trait>>.Node node) {
+                delegate(string entry, Tree<string, List<Trait>>.Node node)
+                {
                     if (entry == null) {
                         return;
                     }

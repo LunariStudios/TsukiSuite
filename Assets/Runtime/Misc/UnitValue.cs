@@ -1,7 +1,6 @@
 ﻿using System;
 using UnityEngine;
-
-namespace Lunari.Tsuki.Runtime.Misc {
+namespace Lunari.Tsuki.Misc {
     [Serializable]
     public struct UnitValue {
         public static readonly UnitValue One = new UnitValue(1);

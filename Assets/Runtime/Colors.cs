@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
-
-namespace Lunari.Tsuki.Runtime {
+namespace Lunari.Tsuki {
     public static class Colors {
         /// <summary>
         /// Creates a random color with the provided <see cref="alpha"/> value

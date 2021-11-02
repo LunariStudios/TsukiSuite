@@ -1,21 +1,20 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
-using System.Runtime.CompilerServices;
-
-namespace Lunari.Tsuki.Runtime.Algorithm {
+using UnityEngine;
+using Debug = System.Diagnostics.Debug;
+namespace Lunari.Tsuki.Algorithm {
     [DebuggerDisplay("Count = {Count}")]
     public class PriorityQueue<TElement, TPriority> {
         private (TElement Element, TPriority Priority)[] _nodes;
 
 
-        private readonly IComparer<TPriority>? _comparer;
+        private readonly IComparer<TPriority> _comparer;
 
 
-        private UnorderedItemsCollection? _unorderedItems;
+        private UnorderedItemsCollection _unorderedItems;
 
 
         private int _size;
@@ -31,7 +30,7 @@ namespace Lunari.Tsuki.Runtime.Algorithm {
 
 #if DEBUG
         static PriorityQueue() {
-            Debug.Assert(Log2Arity > 0 && Math.Pow(2, Log2Arity) == Arity);
+            Debug.Assert(Log2Arity > 0 && Mathf.Approximately((float)Math.Pow(2, Log2Arity), Arity));
         }
 #endif
 
@@ -46,13 +45,13 @@ namespace Lunari.Tsuki.Runtime.Algorithm {
             : this(initialCapacity, comparer: null) { }
 
 
-        public PriorityQueue(IComparer<TPriority>? comparer) {
+        public PriorityQueue(IComparer<TPriority> comparer) {
             _nodes = Array.Empty<(TElement, TPriority)>();
             _comparer = InitializeComparer(comparer);
         }
 
 
-        public PriorityQueue(int initialCapacity, IComparer<TPriority>? comparer) {
+        public PriorityQueue(int initialCapacity, IComparer<TPriority> comparer) {
             if (initialCapacity < 0) {
                 throw new ArgumentOutOfRangeException();
             }
@@ -66,8 +65,10 @@ namespace Lunari.Tsuki.Runtime.Algorithm {
             : this(items, comparer: null) { }
 
 
-        public PriorityQueue(IEnumerable<(TElement Element, TPriority Priority)> items,
-            IComparer<TPriority>? comparer) {
+        public PriorityQueue(
+            IEnumerable<(TElement Element, TPriority Priority)> items,
+            IComparer<TPriority> comparer
+        ) {
             if (items is null) {
                 throw new ArgumentNullException(nameof(items));
             }
@@ -101,8 +102,7 @@ namespace Lunari.Tsuki.Runtime.Algorithm {
 
             if (_comparer == null) {
                 MoveUpDefaultComparer((element, priority), currentSize);
-            }
-            else {
+            } else {
                 MoveUpCustomComparer((element, priority), currentSize);
             }
         }
@@ -128,8 +128,10 @@ namespace Lunari.Tsuki.Runtime.Algorithm {
         }
 
 
-        public bool TryDequeue(out TElement element,
-            out TPriority priority) {
+        public bool TryDequeue(
+            out TElement element,
+            out TPriority priority
+        ) {
             if (_size != 0) {
                 (element, priority) = _nodes[0];
                 RemoveRootNode();
@@ -167,8 +169,7 @@ namespace Lunari.Tsuki.Runtime.Algorithm {
                         _version++;
                         return root.Element;
                     }
-                }
-                else {
+                } else {
                     if (_comparer.Compare(priority, root.Priority) > 0) {
                         MoveDownCustomComparer((element, priority), 0);
                         _version++;
@@ -196,8 +197,7 @@ namespace Lunari.Tsuki.Runtime.Algorithm {
                 if (collection != null) {
                     collection.CopyTo(_nodes, 0);
                     _size = count;
-                }
-                else {
+                } else {
                     int i = 0;
                     (TElement, TPriority)[] nodes = _nodes;
                     foreach ((TElement element, TPriority priority) in items) {
@@ -217,8 +217,7 @@ namespace Lunari.Tsuki.Runtime.Algorithm {
                 if (_size > 1) {
                     Heapify();
                 }
-            }
-            else {
+            } else {
                 foreach ((TElement element, TPriority priority) in items) {
                     Enqueue(element, priority);
                 }
@@ -255,8 +254,7 @@ namespace Lunari.Tsuki.Runtime.Algorithm {
                 if (i > 1) {
                     Heapify();
                 }
-            }
-            else {
+            } else {
                 foreach (TElement element in elements) {
                     Enqueue(element, priority);
                 }
@@ -286,7 +284,7 @@ namespace Lunari.Tsuki.Runtime.Algorithm {
 
 
         public void TrimExcess() {
-            int threshold = (int) (_nodes.Length * 0.9);
+            int threshold = (int)(_nodes.Length * 0.9);
             if (_size < threshold) {
                 Array.Resize(ref _nodes, _size);
                 _version++;
@@ -319,8 +317,7 @@ namespace Lunari.Tsuki.Runtime.Algorithm {
                 (TElement Element, TPriority Priority) lastNode = _nodes[lastNodeIndex];
                 if (_comparer == null) {
                     MoveDownDefaultComparer(lastNode, 0);
-                }
-                else {
+                } else {
                     MoveDownCustomComparer(lastNode, 0);
                 }
             }
@@ -343,8 +340,7 @@ namespace Lunari.Tsuki.Runtime.Algorithm {
                 for (int index = lastParentWithChildren; index >= 0; --index) {
                     MoveDownDefaultComparer(nodes[index], index);
                 }
-            }
-            else {
+            } else {
                 for (int index = lastParentWithChildren; index >= 0; --index) {
                     MoveDownCustomComparer(nodes[index], index);
                 }
@@ -365,8 +361,7 @@ namespace Lunari.Tsuki.Runtime.Algorithm {
                 if (Comparer<TPriority>.Default.Compare(node.Priority, parent.Priority) < 0) {
                     nodes[nodeIndex] = parent;
                     nodeIndex = parentIndex;
-                }
-                else {
+                } else {
                     break;
                 }
             }
@@ -389,8 +384,7 @@ namespace Lunari.Tsuki.Runtime.Algorithm {
                 if (comparer.Compare(node.Priority, parent.Priority) < 0) {
                     nodes[nodeIndex] = parent;
                     nodeIndex = parentIndex;
-                }
-                else {
+                } else {
                     break;
                 }
             }
@@ -467,7 +461,7 @@ namespace Lunari.Tsuki.Runtime.Algorithm {
         }
 
 
-        private static IComparer<TPriority>? InitializeComparer(IComparer<TPriority>? comparer) {
+        private static IComparer<TPriority> InitializeComparer(IComparer<TPriority> comparer) {
             if (typeof(TPriority).IsValueType) {
                 if (comparer == Comparer<TPriority>.Default) {
                     return null;
@@ -475,9 +469,7 @@ namespace Lunari.Tsuki.Runtime.Algorithm {
 
                 return comparer;
             }
-            else {
-                return comparer ?? Comparer<TPriority>.Default;
-            }
+            return comparer ?? Comparer<TPriority>.Default;
         }
 
         public sealed class UnorderedItemsCollection : IReadOnlyCollection<(TElement Element, TPriority Priority)>,
@@ -537,7 +529,7 @@ namespace Lunari.Tsuki.Runtime.Algorithm {
                 public bool MoveNext() {
                     PriorityQueue<TElement, TPriority> localQueue = _queue;
 
-                    if (_version == localQueue._version && ((uint) _index < (uint) localQueue._size)) {
+                    if (_version == localQueue._version && ((uint)_index < (uint)localQueue._size)) {
                         _current = localQueue._nodes[_index];
                         _index++;
                         return true;

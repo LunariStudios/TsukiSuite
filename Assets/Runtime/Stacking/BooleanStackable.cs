@@ -1,5 +1,5 @@
 using System;
-namespace Lunari.Tsuki.Runtime.Stacking {
+namespace Lunari.Tsuki.Stacking {
     [Serializable]
     public class BooleanStackable : Stackable<bool> {
         public Mode mode;

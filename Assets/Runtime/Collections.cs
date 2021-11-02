@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Random = System.Random;
 
-namespace Lunari.Tsuki.Runtime {
+namespace Lunari.Tsuki {
     public class ComparableComparer<T> : Comparer<T> where T : IComparable<T> {
         public override int Compare(T x, T y) {
             if (x == null) {

@@ -1,8 +1,7 @@
-﻿using Lunari.Tsuki.Runtime.Misc;
-using Lunari.Tsuki.Runtime.Scopes;
+﻿using Lunari.Tsuki.Misc;
+using Lunari.Tsuki.Scopes;
 using UnityEngine;
-
-namespace Lunari.Tsuki.Runtime {
+namespace Lunari.Tsuki {
     public static class Gizmos2 {
         public static void DrawWireBox2D(Vector2 center, Vector2 size) {
             var halfWidth = size.x / 2;

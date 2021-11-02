@@ -1,11 +1,11 @@
-﻿using UnityEngine;
-using System;
+﻿using System;
+using UnityEngine;
 #if ODIN_INSPECTOR
 using Sirenix.OdinInspector;
 
 #endif
 
-namespace Lunari.Tsuki.Runtime.Misc {
+namespace Lunari.Tsuki.Misc {
     /// <summary>
     /// Container for a value that also stores the last set value;
     /// </summary>

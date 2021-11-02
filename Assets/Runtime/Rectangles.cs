@@ -1,10 +1,9 @@
-using UnityEngine;
-
-#if UNITY_EDITOR
 using UnityEditor;
+using UnityEngine;
+#if UNITY_EDITOR
 #endif
 
-namespace Lunari.Tsuki.Runtime {
+namespace Lunari.Tsuki {
     public static class Rectangles {
 #if UNITY_EDITOR
         public static float GetHeight(int nLines) {

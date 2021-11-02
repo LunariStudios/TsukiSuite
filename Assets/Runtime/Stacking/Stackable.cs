@@ -1,11 +1,10 @@
 using System;
 using System.Collections.Generic;
-
 #if ODIN_INSPECTOR
 using Sirenix.OdinInspector;
 #endif
 
-namespace Lunari.Tsuki.Runtime.Stacking {
+namespace Lunari.Tsuki.Stacking {
     [Serializable]
     public class Modifier<T> {
         public T value;

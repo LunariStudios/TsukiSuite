@@ -1,9 +1,9 @@
 ﻿using System.Linq;
+using UnityEditor.Animations;
 using UnityEngine;
 #if UNITY_EDITOR
-using UnityEditor.Animations;
 #endif
-namespace Lunari.Tsuki.Runtime {
+namespace Lunari.Tsuki {
     public static class Animations {
 #if UNITY_EDITOR
         public enum AnimatorParameterProblem {

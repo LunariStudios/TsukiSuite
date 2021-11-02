@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-
-namespace Lunari.Tsuki.Runtime {
+namespace Lunari.Tsuki {
     [Serializable]
     public class SerializableDictionary<K, V> : Dictionary<K, V>, ISerializationCallbackReceiver {
         [SerializeField, HideInInspector]

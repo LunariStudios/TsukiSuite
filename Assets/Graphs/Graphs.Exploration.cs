@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Lunari.Tsuki.Runtime.Algorithm;
+using Lunari.Tsuki.Algorithm;
 
 namespace Lunari.Tsuki.Graphs {
     /// <summary>

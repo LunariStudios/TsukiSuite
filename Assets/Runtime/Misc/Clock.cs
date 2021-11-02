@@ -1,7 +1,6 @@
 ﻿using System;
 using UnityEngine;
-
-namespace Lunari.Tsuki.Runtime.Misc {
+namespace Lunari.Tsuki.Misc {
     [Serializable]
     public struct Clock {
         public float cooldown;

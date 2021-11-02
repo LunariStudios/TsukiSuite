@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
-
-namespace Lunari.Tsuki.Runtime {
+namespace Lunari.Tsuki {
     public static class Types {
         public static T GetCustomAttribute<T>(this Type type, bool inherit = false) where T : Attribute {
             var attr = type.GetCustomAttributes(inherit);

@@ -1,4 +1,4 @@
-﻿namespace Lunari.Tsuki.Runtime {
+﻿namespace Lunari.Tsuki {
     public static class Enums {
         public static bool IsSet(this int enumeration, int mask) {
             return (enumeration & mask) == mask;
