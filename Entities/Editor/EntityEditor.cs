@@ -1,36 +1,41 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
 using Lunari.Tsuki.Algorithm;
 using Lunari.Tsuki.Editor;
 using Lunari.Tsuki.Editor.Extenders;
 using Lunari.Tsuki.Entities.Problems;
-using Lunari.Tsuki.Scopes;
 using UnityEditor;
-using UnityEditor.IMGUI.Controls;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Lunari.Tsuki.Entities.Editor {
     [CustomEditor(typeof(Entity))]
-    public class EntityEditor : UnityEditor.Editor {
-        private Entity entity;
-        private TypeSelectorButton<Trait> button;
-        private DropdownButton multipleSolutionsButton;
-        private static readonly Lazy<GUIStyle> ProblemStyle = new Lazy<GUIStyle>(() =>
-            new GUIStyle(Styles.WordWrappedMiniLabel) {
+    public partial class EntityEditor : UnityEditor.Editor {
+        private static readonly Lazy<GUIStyle> ProblemStyle = new Lazy<GUIStyle>(
+            () => new GUIStyle(Styles.WordWrappedMiniLabel) {
                 wordWrap = true,
-            });
+            }
+        );
+        private Entity entity;
+        private EntityMeta meta;
+        private TypeSelectorButton<Trait> addTraitButton;
+        private Dictionary<string, TraitOptions> traitOptions;
+        private Dictionary<string, GroupOptions> groupOptions;
 
         private void OnEnable() {
-            entity = (Entity)target;
-            button = new TypeSelectorButton<Trait>(
+            entity = (Entity) target;
+            ReloadMeta();
+            traitOptions = new Dictionary<string, TraitOptions>();
+            groupOptions = new Dictionary<string, GroupOptions>();
+            addTraitButton = new TypeSelectorButton<Trait>(
                 new GUIContent("Add Trait"),
                 AddTrait,
                 TraitExtensions.FindTraitLocation,
-                type => entity.GetComponentInChildren(type) != null
+                type => entity.GetComponentInChildren(type) != null && !type.IsAbstract
             );
+        }
+        private void ReloadMeta() {
+            meta = new EntityMeta(entity);
         }
 
         public override void OnInspectorGUI() {
@@ -39,7 +44,7 @@ namespace Lunari.Tsuki.Entities.Editor {
             using (new EditorGUILayout.VerticalScope()) {
                 using (new EditorGUILayout.HorizontalScope()) {
                     EditorGUILayout.LabelField($"Traits ({found.Length})", EditorStyles.boldLabel);
-                    button.OnInspectorGUI();
+                    addTraitButton.OnInspectorGUI();
                 }
 
                 EditorGUILayout.Space();
@@ -54,7 +59,7 @@ namespace Lunari.Tsuki.Entities.Editor {
                     return;
                 }
 
-                DrawTraitTree(found, problems);
+                DrawTraits();
             }
 
             if (problems.IsEmpty()) {
@@ -78,127 +83,17 @@ namespace Lunari.Tsuki.Entities.Editor {
                 }
             }
         }
-        private static void DrawSolution(Solution solution) {
-            if (solution == null) {
-                return;
-            }
 
-            if (GUILayout.Button(
-                    solution.Description,
-                    GUILayout.ExpandHeight(true)
-                )) {
-                solution.Action();
-            }
-        }
 
-        private Dictionary<string, bool> traitGroupVisibility = new Dictionary<string, bool>();
-
-        private Dictionary<string, bool> shouldClose = new Dictionary<string, bool>();
 
         private bool IsTraitCategoryVisible(string category) {
             if (category.IsNullOrEmpty()) {
                 return true;
             }
 
-            return traitGroupVisibility.TryGetValue(category, out var shown) && shown;
+            return groupOptions.TryGetValue(category, out var options) && options.shown;
         }
 
-        private void DrawTraitTree(Trait[] all, List<Problem> problems) {
-            var tree = TraitEditorUtils.CalcTraitTreeOf(all);
-            var stack = string.Empty;
-            tree.Explore(delegate(string entry, Tree<string, List<Trait>>.Node node)
-                {
-                    shouldClose[stack] = false;
-                    foreach (var trait in node.Value) {
-                        trait.TryClaim(entity, all, out var a, false);
-                        problems.AddRange(a.Problems);
-                    }
-
-                    if (entry == null) {
-                        Draw(node.Value, all);
-                        return;
-                    }
-
-                    var parentVisible = IsTraitCategoryVisible(stack);
-                    stack += entry + '/';
-                    var shown = parentVisible && IsTraitCategoryVisible(stack);
-                    if (parentVisible) {
-                        shown = traitGroupVisibility[stack] = BeginTraitGroup(shown, stack);
-                    }
-
-                    if (shown) {
-                        Draw(node.Value, all);
-                    }
-                },
-                delegate(string entry, Tree<string, List<Trait>>.Node node)
-                {
-                    if (entry == null) {
-                        return;
-                    }
-
-                    var shownSelf = IsTraitCategoryVisible(stack);
-                    var suffix = entry + '/';
-                    stack = stack.Remove(stack.Length - suffix.Length, suffix.Length);
-                    var parentVisible = IsTraitCategoryVisible(stack);
-
-                    if (parentVisible) {
-                        EndTraitGroup();
-                    }
-                });
-        }
-
-        void Draw(
-            IEnumerable<Trait> children,
-            Trait[] all
-        ) {
-            foreach (var trait in children) {
-                trait.TryClaim(entity, all, out var dependencies, false);
-                if (dependencies == null) {
-                    continue;
-                }
-
-                using (new EditorGUILayout.HorizontalScope(Styles.box)) {
-                    var content = new GUIContent(trait.GetType().Name);
-                    if (!dependencies.Problems.IsEmpty()) {
-                        TsukiGUILayout.Icon(Icons.console_erroricon, 16);
-                    }
-
-                    EditorGUILayout.PrefixLabel(content);
-                    EditorGUILayout.Space(0, true);
-                    var obj = Selection.activeObject;
-                    var editable = true;
-                    if (obj == trait) {
-                        editable = false;
-                    } else if (obj is GameObject go && go == trait.gameObject) {
-                        editable = false;
-                    }
-
-                    using (new GUIEnabledScope(editable)) {
-                        if (GUILayout.Button("Select", GUILayout.Height(22), GUILayout.Width(32F * 4))) {
-                            Selection.activeObject = trait;
-                        }
-                    }
-
-                    if (GUILayout.Button(Icons.treeeditor_trash, GUILayout.Height(22), GUILayout.Width(22))) {
-                        Delete(trait);
-                    }
-                }
-            }
-        }
-
-        private bool BeginTraitGroup(bool shown, string stack) {
-            EditorGUILayout.BeginVertical(Styles.FrameBox);
-            using (new EditorGUILayout.HorizontalScope()) {
-                shown = EditorGUILayout.Toggle(shown, Styles.Foldout, GUILayout.Width(16F));
-                EditorGUILayout.LabelField(stack, Styles.BoldLabel);
-            }
-
-            return shown;
-        }
-
-        private void EndTraitGroup() {
-            EditorGUILayout.EndVertical();
-        }
 
         private void Delete(Trait trait) {
             var go = trait.gameObject;

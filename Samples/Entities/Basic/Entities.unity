@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44658822, g: 0.49642307, b: 0.5748253, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -241,7 +241,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 161628554}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 1081199319}
+  m_Script: {fileID: 11500000, guid: 3c006342da9043dfb2deaf2b6479322f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &161628557
@@ -253,7 +253,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 161628554}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 2117619634}
+  m_Script: {fileID: 11500000, guid: 7ab24b08b3aa411d9d6a7b5071dec724, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!115 &216188193
@@ -396,20 +396,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5295c8bec6b842e7bb087803fcd2f0f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!115 &1081199319
-MonoScript:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  serializedVersion: 5
-  m_Script: 
-  m_DefaultReferences: {}
-  m_Icon: {fileID: 0}
-  m_ExecutionOrder: 0
-  m_ClassName: Combatant2
-  m_Namespace: Lunari.Tsuki.Samples.Entities
 --- !u!1 &1180914637
 GameObject:
   m_ObjectHideFlags: 0
@@ -450,7 +436,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1180914637}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 1682814263}
+  m_Script: {fileID: 11500000, guid: a294d9d075b14415b3b1080a06e81854, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1377771796
@@ -506,7 +492,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1377771796}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 1732962629}
+  m_Script: {fileID: 11500000, guid: 5632c9b1ee0d48adb5b04f6a77bbe568, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1512262009
@@ -611,34 +597,6 @@ MonoBehaviour:
   maxValue: 10
   restoration: 3
   regenerate: 1
---- !u!115 &1682814263
-MonoScript:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  serializedVersion: 5
-  m_Script: 
-  m_DefaultReferences: {}
-  m_Icon: {fileID: 0}
-  m_ExecutionOrder: 0
-  m_ClassName: TraitB
-  m_Namespace: Lunari.Tsuki.Samples.Entities
---- !u!115 &1732962629
-MonoScript:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  serializedVersion: 5
-  m_Script: 
-  m_DefaultReferences: {}
-  m_Icon: {fileID: 0}
-  m_ExecutionOrder: 0
-  m_ClassName: AITraitThatDoStuff
-  m_Namespace: Lunari.Tsuki.Samples.Entities
 --- !u!1 &1743759845
 GameObject:
   m_ObjectHideFlags: 0
@@ -732,17 +690,3 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!115 &2117619634
-MonoScript:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  serializedVersion: 5
-  m_Script: 
-  m_DefaultReferences: {}
-  m_Icon: {fileID: 0}
-  m_ExecutionOrder: 0
-  m_ClassName: Combatant
-  m_Namespace: Lunari.Tsuki.Samples.Entities
