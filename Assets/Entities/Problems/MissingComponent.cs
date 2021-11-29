@@ -10,7 +10,7 @@ namespace Lunari.Tsuki.Entities.Problems {
             string expectedLocation = null
         ) : base(requisitor, entity, $"Entity {entity.name} does not have a component of type {dependencyType.Name} which is a dependency of {requisitor} ") {
             DependencyType = dependencyType;
-            if (expectedLocation != null) {
+            if (!dependencyType.IsAbstract && expectedLocation != null) {
                 WithSolution($"Add {dependencyType.Name}", delegate {
                     var path = new Queue<string>();
 

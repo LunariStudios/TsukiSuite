@@ -51,12 +51,29 @@ namespace Lunari.Tsuki.Algorithm {
         public static void Explore<K, V>(
             this Tree<K, V> tree,
             Action<K, Tree<K, V>.Node> onEnter,
-            Action<K, Tree<K, V>.Node> onExit
-        ) {
+            Action<K, Tree<K, V>.Node> onExit) {
             void Recurse(K entry, Tree<K, V>.Node node) {
                 onEnter(entry, node);
                 foreach (var child in node.Children) {
                     Recurse(child.Key, child.Value);
+                }
+
+                onExit(entry, node);
+            }
+
+            Recurse(default, tree.Root);
+        }
+        public static void Explore<K, V>(
+            this Tree<K, V> tree,
+            Action<K, Tree<K, V>.Node> onEnter,
+            Action<K, Tree<K, V>.Node> onExit,
+            Func<K, Tree<K, V>.Node, bool> shouldEnter ) {
+            void Recurse(K entry, Tree<K, V>.Node node) {
+                onEnter(entry, node);
+                foreach (var child in node.Children) {
+                    if (shouldEnter(child.Key, child.Value)) {
+                        Recurse(child.Key, child.Value);
+                    }
                 }
 
                 onExit(entry, node);
