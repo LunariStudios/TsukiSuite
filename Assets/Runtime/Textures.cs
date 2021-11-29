@@ -10,6 +10,7 @@ namespace Lunari.Tsuki {
         public static readonly Texture2D MagentaTexture = Pixel(UnityEngine.Color.magenta);
         public static readonly Texture2D YellowTexture = Pixel(UnityEngine.Color.yellow);
         public static readonly Texture2D GreyTexture = Pixel(UnityEngine.Color.grey);
+        public static readonly Texture2D TransparentTexture = Pixel(UnityEngine.Color.clear);
 
         /// <summary>
         /// Create a 1x1 texture of the provided color

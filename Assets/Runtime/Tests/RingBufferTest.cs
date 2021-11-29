@@ -1,11 +1,10 @@
 using System;
 using System.Linq;
-using Lunari.Tsuki.Runtime.Algorithm;
+using Lunari.Tsuki.Algorithm;
 using NUnit.Framework;
-using UnityEngine.TestTools;
 using Assert = UnityEngine.Assertions.Assert;
 
-namespace Lunari.Tsuki.Runtime.Tests {
+namespace Tsuki.Runtime.Tests.Runtime.Tests {
     public class RingBufferTest {
         private const int BufferSize = 32;
 

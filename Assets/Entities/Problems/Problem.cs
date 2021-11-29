@@ -8,6 +8,11 @@ namespace Lunari.Tsuki.Entities.Problems {
             Action = solution;
         }
 
+        public int Score {
+            get;
+            set;
+        } = 0;
+
         public string Description {
             get;
         }
@@ -28,7 +33,7 @@ namespace Lunari.Tsuki.Entities.Problems {
                 WithSolution(solution);
             }
         }
-        public  void WithSolution(Solution description) {
+        public void WithSolution(Solution description) {
             Solutions.Add(description);
         }
         public void WithSolution(string description, Action solution) {
