@@ -34,7 +34,8 @@ namespace Lunari.Tsuki.Entities {
 
                 if (!trait.TryClaim(this, found, out var dependencies)) {
                     Debug.LogWarning(
-                        $"Unable to claim trait {trait}: {dependencies.FailureReason}"
+                        $"Unable to claim trait {trait}: {dependencies.FailureReason}",
+                        this
                     );
                     continue;
                 }
