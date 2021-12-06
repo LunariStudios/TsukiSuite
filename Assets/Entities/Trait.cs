@@ -24,5 +24,9 @@ namespace Lunari.Tsuki.Entities {
             return result != null && result.Successful;
         }
         public virtual void Configure(TraitDescriptor descriptor) { }
+        public override string ToString() {
+            var ownerName = Owner == null ? "none" : Owner.name;
+            return $"{GetType().GetLegibleName()} (Owned by {ownerName})";
+        }
     }
 }
