@@ -48,7 +48,7 @@ namespace Tsuki.Runtime.Tests.Runtime.Tests {
             try {
                 new RingBuffer<int>(0);
             }
-            catch (Exception e) {
+            catch (Exception) {
                 failed = true;
             }
 
@@ -62,7 +62,7 @@ namespace Tsuki.Runtime.Tests.Runtime.Tests {
             try {
                 buffer.Push(-1);
             }
-            catch (Exception e) {
+            catch (Exception) {
                 failed = true;
             }
 
@@ -76,7 +76,7 @@ namespace Tsuki.Runtime.Tests.Runtime.Tests {
             try {
                 buffer.Pop();
             }
-            catch (Exception e) {
+            catch (Exception) {
                 failed = true;
             }
 
