@@ -3,8 +3,10 @@ using System.Globalization;
 using System.Linq;
 using System.Numerics;
 using Lunari.Tsuki.Editor.Extenders;
+using Lunari.Tsuki.Editor.Windows;
 using UnityEditor;
 using UnityEditor.IMGUI.Controls;
+using UnityEditor.PackageManager.UI;
 using UnityEngine;
 using Vector2 = UnityEngine.Vector2;
 namespace Lunari.Tsuki.Editor {
@@ -47,6 +49,7 @@ namespace Lunari.Tsuki.Editor {
         private Vector2 scroll;
         private Lazy<DropdownButton> icons;
         private Rect lastRect;
+        private int numHorizontalBoxes = 3;
         private void OnEnable() {
             icons = new Lazy<DropdownButton>(() => {
                 var icon = new IconDropdown(IconsGenerator.GetAllIcons().ToArray());
@@ -61,6 +64,7 @@ namespace Lunari.Tsuki.Editor {
         private void OnGUI() {
             search = EditorGUILayout.TextField("Search", search, Styles.SearchTextField);
             text = EditorGUILayout.TextField("Preview Text", text);
+            numHorizontalBoxes = EditorGUILayout.IntField("Num Horizontal Boxes", numHorizontalBoxes);
             using (new EditorGUILayout.VerticalScope(Styles.FrameBox)) {
                 EditorGUILayout.LabelField("Current Texture:", texture);
                 textureSize = EditorGUILayout.Vector2Field("Preview Size", textureSize);
@@ -70,10 +74,11 @@ namespace Lunari.Tsuki.Editor {
                 }
             }
             var guiSkins = GUI.skin;
-
+            int index = 0;
             using (var scope = new EditorGUILayout.ScrollViewScope(scroll)) {
+                EditorGUILayout.BeginHorizontal();
                 foreach (var o in guiSkins) {
-                    var style = (GUIStyle) o;
+                    var style = (GUIStyle)o;
                     var name = style.name;
 
                     if (!search.IsNullOrEmpty()) {
@@ -81,20 +86,37 @@ namespace Lunari.Tsuki.Editor {
                             continue;
                         }
                     }
-                    using (new EditorGUILayout.VerticalScope(Styles.FrameBox)) {
-                        EditorGUILayout.LabelField(name, Styles.BoldLabel);
-                        GUIContent content;
-                        if (!texture.IsNullOrEmpty()) {
-                            content = new GUIContent(EditorGUIUtility.IconContent(texture)) {
-                                text = text
-                            };
-                        } else {
-                            content = new GUIContent(text);
-                        }
-                        EditorGUILayout.LabelField(content, style);
+                    DrawGUIStylePreview(style);
+                    if (++index == numHorizontalBoxes) {
+                        index = 0;
+                        EditorGUILayout.EndHorizontal();
+                        EditorGUILayout.BeginHorizontal();
                     }
+
                 }
                 scroll = scope.scrollPosition;
+                EditorGUILayout.EndHorizontal();
+            }
+        }
+        private void DrawGUIStylePreview(GUIStyle style) {
+            using (new EditorGUILayout.VerticalScope(Styles.FrameBox)) {
+                using (new EditorGUILayout.HorizontalScope()) {
+                    EditorGUILayout.LabelField(style.name, Styles.BoldLabel, GUILayout.ExpandWidth(true));
+                    if (GUILayout.Button("Inspect")) {
+                        var inspector = CreateWindow<GUIStyleInspector>("Inspect " + style.name + " style.");
+                        inspector.SetStyle(style);
+                        inspector.ShowTab();
+                    }
+                }
+                GUIContent content;
+                if (!texture.IsNullOrEmpty()) {
+                    content = new GUIContent(EditorGUIUtility.IconContent(texture)) {
+                        text = text
+                    };
+                } else {
+                    content = new GUIContent(text);
+                }
+                EditorGUILayout.LabelField(content, style);
             }
         }
     }

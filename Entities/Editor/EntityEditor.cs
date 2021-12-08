@@ -44,7 +44,7 @@ namespace Lunari.Tsuki.Entities.Editor {
             using (new EditorGUILayout.VerticalScope()) {
                 using (new EditorGUILayout.HorizontalScope()) {
                     EditorGUILayout.LabelField($"Traits ({found.Length})", EditorStyles.boldLabel);
-                    addTraitButton.OnInspectorGUI();
+                    addTraitButton?.OnInspectorGUI();
                 }
 
                 EditorGUILayout.Space();

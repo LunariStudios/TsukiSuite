@@ -15,6 +15,9 @@ namespace Lunari.Tsuki.Entities.Editor {
         }
         public static TraitDescriptor PeekDescription(this Trait trait) {
             var entity = trait.GetComponentInParent<Entity>();
+            if (entity == null) {
+                return null;
+            }
             var allTraits = entity.GetComponentsInChildren<Trait>();
             return trait.PeekDescription(entity, allTraits);
         }
