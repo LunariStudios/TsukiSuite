@@ -40,7 +40,6 @@ namespace Lunari.Tsuki.Entities.Editor {
 
         public override void OnInspectorGUI() {
             var found = entity.GetComponentsInChildren<Trait>();
-            var problems = new List<Problem>();
             using (new EditorGUILayout.VerticalScope()) {
                 using (new EditorGUILayout.HorizontalScope()) {
                     EditorGUILayout.LabelField($"Traits ({found.Length})", EditorStyles.boldLabel);
@@ -61,7 +60,11 @@ namespace Lunari.Tsuki.Entities.Editor {
 
                 DrawTraits();
             }
-
+            var problems = new List<Problem>();
+            var allTraits = meta.AllTraits;
+            foreach (var trait in allTraits) {
+                problems.AddRange(trait.PeekDescription(entity, allTraits).Problems);
+            }
             if (problems.IsEmpty()) {
                 return;
             }
