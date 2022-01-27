@@ -21,7 +21,7 @@ namespace Lunari.Tsuki.Entities.Editor {
         private TypeSelectorButton<Trait> addTraitButton;
         private Dictionary<string, TraitOptions> traitOptions;
         private Dictionary<string, GroupOptions> groupOptions;
-
+        private void OnDestroy() { }
         private void OnEnable() {
             entity = (Entity) target;
             ReloadMeta();
@@ -33,17 +33,27 @@ namespace Lunari.Tsuki.Entities.Editor {
                 TraitExtensions.FindTraitLocation,
                 type => entity.GetComponentInChildren(type) != null && !type.IsAbstract
             );
+            addTraitButton.RectCalculated += (ref Rect rect) => {
+                rect.xMin -= rect.width / 2;
+            };
         }
         private void ReloadMeta() {
+            var oldMeta = meta;
             meta = new EntityMeta(entity);
-        }
 
+        }
+        private void OnValidate() {
+            ReloadMeta();
+        }
         public override void OnInspectorGUI() {
             var found = entity.GetComponentsInChildren<Trait>();
             using (new EditorGUILayout.VerticalScope()) {
                 using (new EditorGUILayout.HorizontalScope()) {
                     EditorGUILayout.LabelField($"Traits ({found.Length})", EditorStyles.boldLabel);
                     addTraitButton?.OnInspectorGUI();
+                    if (GUILayout.Button("Refresh")) {
+                        ReloadMeta();
+                    }
                 }
 
                 EditorGUILayout.Space();
@@ -88,7 +98,6 @@ namespace Lunari.Tsuki.Entities.Editor {
         }
 
 
-
         private bool IsTraitCategoryVisible(string category) {
             if (category.IsNullOrEmpty()) {
                 return true;
@@ -129,6 +138,7 @@ namespace Lunari.Tsuki.Entities.Editor {
 
             var gameObject = toAddOn.gameObject;
             gameObject.AddComponent(trait);
+            ReloadMeta();
             EditorUtility.SetDirty(gameObject);
         }
     }

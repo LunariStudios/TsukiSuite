@@ -82,5 +82,40 @@ namespace Tsuki.Runtime.Tests.Runtime.Tests {
 
             Assert.IsTrue(failed, "Expected buffer to underflow, but no exception was thrown");
         }
+        [Test]
+        public void IsFullTest() {
+            const int length = 200;
+            var buffer = new RingBuffer<int>(length);
+            Assert.IsFalse(buffer.IsFull, "Expected buffer to be empty");
+            for (int i = 0; i < length; i++) {
+                buffer.Push(i);
+            }
+            Assert.IsTrue(buffer.IsFull, "Expected buffer to be full");
+        }
+
+        [Test]
+        public void IsEmptyTest() {
+            const int length = 200;
+            var buffer = new RingBuffer<int>(length);
+            Assert.IsTrue(buffer.IsEmpty, "Expected buffer to be empty");
+            for (int i = 0; i < length; i++) {
+                buffer.Push(i);
+            }
+            Assert.IsFalse(buffer.IsEmpty, "Expected buffer to not be empty");
+        }
+        [Test]
+        public void CountTest() {
+            const int length = 200;
+            var buffer = new RingBuffer<int>(length);
+            for (int i = 0; i < length; i++) {
+                buffer.Push(i);
+                var expectedSize = i + 1;
+                Assert.AreEqual(buffer.Count, expectedSize, $"Expected count to be {expectedSize}");
+            }
+            for (int i = 0; i < length; i++) {
+                buffer.LoopPush(i);
+                Assert.AreEqual(buffer.Count, length, $"Expected count to be {length} @ {i}");
+            }
+        }
     }
 }

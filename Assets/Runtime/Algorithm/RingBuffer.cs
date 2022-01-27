@@ -29,21 +29,12 @@ namespace Lunari.Tsuki.Algorithm {
             buffer = new T[size];
             head = 0;
             tail = 0;
+            Count = 0;
         }
 
         public IEnumerator<T> GetEnumerator() {
-            for (var i = tail; i < Count; i++) {
-                if (tail == head) {
-                    break;
-                }
-
-                yield return buffer[i];
-            }
-
-            if (tail > head) {
-                for (var i = 0; i <= head; i++) {
-                    yield return buffer[i];
-                }
+            for (var i = 0; i < Count; i++) {
+                yield return buffer[(tail + i) % buffer.Length];
             }
         }
 
@@ -81,12 +72,13 @@ namespace Lunari.Tsuki.Algorithm {
         }
 
         public void Push(T item) {
-            if (head == tail - 1) {
+            if (IsFull) {
                 throw new OverflowException("Ring buffer is full!");
             }
 
             buffer[head++] = item;
             CheckOverflow(ref head);
+            Count++;
         }
 
         private void CheckOverflow(ref int i) {
@@ -96,12 +88,13 @@ namespace Lunari.Tsuki.Algorithm {
         }
 
         public T Pop() {
-            if (tail == head) {
+            if (IsEmpty) {
                 throw new OverflowException("Ring buffer is empty!");
             }
 
             var value = buffer[tail++];
             CheckOverflow(ref tail);
+            Count--;
             return value;
         }
 
@@ -122,18 +115,19 @@ namespace Lunari.Tsuki.Algorithm {
             }
         }
 
+        public bool IsFull => Count == buffer.Length;
+        public bool IsEmpty => Count == 0;
+
         public int Count {
-            get {
-                if (head == tail) {
-                    return 0;
-                }
+            get;
+            private set;
+        }
 
-                if (head > tail) {
-                    return head - tail;
-                }
-
-                return buffer.Length - tail + head;
+        public void LoopPush(T value) {
+            if (IsFull) {
+                Pop();
             }
+            Push(value);
         }
     }
 }
