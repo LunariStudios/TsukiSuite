@@ -1,5 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Lunari.Tsuki.Algorithm;
+using UnityEditor;
+using UnityEngine;
 
 namespace Lunari.Tsuki.Entities.Editor {
     public static class TraitEditorUtils {
@@ -24,6 +28,18 @@ namespace Lunari.Tsuki.Entities.Editor {
         public static TraitDescriptor PeekDescription(this Trait trait, Entity entity, Trait[] all) {
             trait.TryClaim(entity, all, out var dependencies, false);
             return dependencies;
+        }
+        public static bool IsCurrentlySelected(Component trait) {
+            var activeObject = Selection.activeObject;
+            var candidates = new List<UnityEngine.Object>() {
+                trait,
+                trait.gameObject
+            };
+            var entity = trait.GetComponentInParent<Entity>();
+            if (entity != null) {
+                candidates.Add(entity);
+            }
+            return candidates.Any(candidate => candidate == activeObject);
         }
     }
 }

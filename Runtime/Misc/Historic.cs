@@ -24,11 +24,15 @@ namespace Lunari.Tsuki.Misc {
             }
         }
 
+        public T Last => last;
+
         public static implicit operator T(Historic<T> value) {
             return value.current;
         }
     }
-
+    public class UnityHistoric<T> : Historic<T> where T : UnityEngine.Object {
+        public bool JustChanged => current != last;
+    }
     [Serializable]
     public class BooleanHistoric : Historic<bool> {
         public bool JustActivated => current && !last;
