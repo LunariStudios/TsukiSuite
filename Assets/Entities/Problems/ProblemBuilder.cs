@@ -7,11 +7,13 @@ namespace Lunari.Tsuki.Entities.Problems {
             this.descriptor = descriptor;
             problem = new Problem(descriptor.Of, descriptor.Entity, description);
         }
-        public void WithSolution(Solution solution) {
+        public ProblemBuilder WithSolution(Solution solution) {
             problem.WithSolution(solution);
+            return this;
         }
-        public void WithSolution(string description, Action solution) {
+        public ProblemBuilder WithSolution(string description, Action solution) {
             problem.WithSolution(description, solution);
+            return this;
         }
     }
 }

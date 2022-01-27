@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using Lunari.Tsuki.Algorithm;
 using Lunari.Tsuki.Editor;
 using Lunari.Tsuki.Entities.Problems;
@@ -14,7 +13,7 @@ namespace Lunari.Tsuki.Entities.Editor {
             public bool shown;
         }
         public struct TraitOptions { }
-        private static void DrawSolution(Solution solution) {
+        private  void DrawSolution(Solution solution) {
             if (solution == null) {
                 return;
             }
@@ -24,6 +23,7 @@ namespace Lunari.Tsuki.Entities.Editor {
                     GUILayout.ExpandHeight(true)
                 )) {
                 solution.Action();
+                ReloadMeta();
             }
         }
 
@@ -71,6 +71,9 @@ namespace Lunari.Tsuki.Entities.Editor {
 
                 if (shown) {
                     foreach (var trait in @group) {
+                        if (trait == null) {
+                            continue;
+                        }
                         DrawTrait(trait);
                     }
                 }
@@ -98,14 +101,6 @@ namespace Lunari.Tsuki.Entities.Editor {
             return found;
         }
 
-        void Draw(
-            IEnumerable<Trait> children,
-            Trait[] all
-        ) {
-            foreach (var trait in children) {
-                DrawTrait(trait);
-            }
-        }
         private void DrawTrait(Trait trait) {
             var dependencies = trait.PeekDescription(entity, meta.AllTraits);
             if (dependencies == null) {

@@ -42,7 +42,18 @@ namespace Lunari.Tsuki.Entities {
             return RequiresComponent<T>(TraitLocations.PathOf(commonLocation));
         }
         public T RequiresComponent<T>(string expectedLocation = null) where T : Component {
+            foreach (var problem in Problems) {
+                if (
+                    problem is MissingComponent missing
+                    && missing.DependencyType == typeof(T)
+                    && problem.Entity == Entity
+                    && problem.Requisitor == Of
+                ) {
+                    return null;
+                }
+            }
             if (!Entity.TryGetComponentInChildren(out T component)) {
+
                 Problems.Add(new MissingComponent(Entity, typeof(T), Of, expectedLocation));
             }
 
@@ -59,7 +70,7 @@ namespace Lunari.Tsuki.Entities {
 #if UNITY_EDITOR
             if (animator != null && animator.runtimeAnimatorController is AnimatorController controller) {
                 if (controller.parameters.Any(controllerParameter =>
-                    controllerParameter.name == parameter && controllerParameter.type == type)) {
+                        controllerParameter.name == parameter && controllerParameter.type == type)) {
                     return;
                 }
 
