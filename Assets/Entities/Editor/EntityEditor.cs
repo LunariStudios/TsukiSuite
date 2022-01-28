@@ -24,7 +24,9 @@ namespace Lunari.Tsuki.Entities.Editor {
         private void OnDestroy() { }
         private void OnEnable() {
             entity = (Entity) target;
-            ReloadMeta();
+            if (!EditorApplication.isPlaying) {
+                ReloadMeta();
+            }
             traitOptions = new Dictionary<string, TraitOptions>();
             groupOptions = new Dictionary<string, GroupOptions>();
             addTraitButton = new TypeSelectorButton<Trait>(
