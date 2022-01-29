@@ -25,6 +25,7 @@ namespace Lunari.Tsuki.Entities.Problems {
                     }
                 );
             }
+#if UNITY_EDITOR
             foreach (var type in TypeCache.GetTypesDerivedFrom(DependencyType)) {
                 if (type.IsAbstract) {
                     continue;
@@ -34,6 +35,7 @@ namespace Lunari.Tsuki.Entities.Problems {
                     AddComponentTo(entity, type);
                 });
             }
+#endif
         }
         private static void AddComponentTo(Entity entity, Type dependencyType) {
             var path = new Queue<string>();
