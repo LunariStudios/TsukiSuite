@@ -40,6 +40,17 @@ namespace Lunari.Tsuki {
         }
 
         /// <summary>
+        /// Copies this color, and return a new color with the modified alpha set to <see cref="alpha"/>
+        /// </summary>
+        /// <param name="color">The color to copy from</param>
+        /// <param name="alpha">The new alpha</param>
+        /// <returns></returns>
+        public static Color SetAlpha(this Color color, float alpha) {
+            var c = color;
+            SetAlpha(ref c, alpha);
+            return c;
+        }
+        /// <summary>
         /// Copies this color, and return a new color with the modified hue set to <see cref="hue"/>
         /// </summary>
         /// <param name="color">The color to copy from</param>
@@ -79,6 +90,14 @@ namespace Lunari.Tsuki {
         public static void SetHue(ref Color color, float hue) {
             Color.RGBToHSV(color, out _, out var s, out var v);
             color = Color.HSVToRGB(hue, s, v);
+        }
+        /// <summary>
+        /// Modifies the alpha value of color, without creating a copy.
+        /// </summary>
+        /// <param name="color">The color instance to modify</param>
+        /// <param name="alpha">The new alpha</param>
+        public static void SetAlpha(ref Color color, float alpha) {
+            color.a = alpha;
         }
     }
 }
