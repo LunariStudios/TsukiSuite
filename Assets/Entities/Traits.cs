@@ -4,9 +4,9 @@ using System.Linq;
 
 namespace Lunari.Tsuki.Entities {
     public class Traits : ITraits {
-        private readonly Dictionary<int, Trait> traits = new Dictionary<int, Trait>();
+        private readonly Dictionary<int, ITrait> traits = new Dictionary<int, ITrait>();
 
-        public T GetTrait<T>(bool allowSubclass = false) where T : Trait {
+        public T GetTrait<T>(bool allowSubclass = false) where T : ITrait {
             if (allowSubclass) {
                 foreach (var trait in traits.Values) {
                     if (trait is T required) {
@@ -21,10 +21,10 @@ namespace Lunari.Tsuki.Entities {
                 }
             }
 
-            return null;
+            return default;
         }
 
-        public IEnumerable<T> GetTraits<T>() where T : Trait {
+        public IEnumerable<T> GetTraits<T>() where T : ITrait {
             foreach (var keyValuePair in traits) {
                 var trait = keyValuePair.Value;
                 if (trait is T cast) {
@@ -37,7 +37,7 @@ namespace Lunari.Tsuki.Entities {
             return traits.Any(pair => pair.Key == type.GetHashCode());
         }
 
-        public void Include(Trait trait) {
+        public void Include(ITrait trait) {
             traits[trait.GetType().GetHashCode()] = trait;
         }
 

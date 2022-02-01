@@ -10,12 +10,13 @@ using Lunari.Tsuki.Runtime.Algorithm;
 using Lunari.Tsuki.Runtime.Scopes;
 using UnityEditor;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace Lunari.Tsuki.Entities.Editor {
     [CustomEditor(typeof(Entity))]
     public class EntityEditor : UnityEditor.Editor {
         private Entity entity;
-        private TypeSelectorButton<Trait> button;
+        private TypeSelectorButton<ITrait> button;
 
         private static readonly Lazy<GUIStyle> ProblemStyle = new Lazy<GUIStyle>(() =>
             new GUIStyle(Styles.WordWrappedMiniLabel) {
@@ -24,8 +25,8 @@ namespace Lunari.Tsuki.Entities.Editor {
 
         private void OnEnable() {
             entity = (Entity) target;
-            button = new TypeSelectorButton<Trait>(
-                new GUIContent("Add Trait"),
+            button = new TypeSelectorButton<ITrait>(
+                new GUIContent("Add ITrait"),
                 AddTrait,
                 TraitExtensions.FindTraitLocation,
                 type => entity.GetComponentInChildren(type) != null
@@ -33,7 +34,7 @@ namespace Lunari.Tsuki.Entities.Editor {
         }
 
         public override void OnInspectorGUI() {
-            var found = entity.GetComponentsInChildren<Trait>();
+            var found = entity.GetComponentsInChildren<ITrait>();
             var problems = new List<Problem>();
             using (new EditorGUILayout.VerticalScope()) {
                 using (new EditorGUILayout.HorizontalScope()) {
@@ -94,10 +95,10 @@ namespace Lunari.Tsuki.Entities.Editor {
             return traitGroupVisibility.TryGetValue(category, out var shown) && shown;
         }
 
-        private void DrawTraitTree(Trait[] all, List<Problem> problems) {
+        private void DrawTraitTree(ITrait[] all, List<Problem> problems) {
             var tree = TraitEditorUtils.CalcTraitTreeOf(all);
             var stack = string.Empty;
-            tree.Explore(delegate(string entry, Tree<string, List<Trait>>.Node node) {
+            tree.Explore(delegate(string entry, Tree<string, List<ITrait>>.Node node) {
                     shouldClose[stack] = false;
                     foreach (var trait in node.Value) {
                         trait.TryClaim(entity, all, out var a, false);
@@ -120,7 +121,7 @@ namespace Lunari.Tsuki.Entities.Editor {
                         Draw(node.Value, all);
                     }
                 },
-                delegate(string entry, Tree<string, List<Trait>>.Node node) {
+                delegate(string entry, Tree<string, List<ITrait>>.Node node) {
                     if (entry == null) {
                         return;
                     }
@@ -137,8 +138,8 @@ namespace Lunari.Tsuki.Entities.Editor {
         }
 
         void Draw(
-            IEnumerable<Trait> children,
-            Trait[] all
+            IEnumerable<ITrait> children,
+            ITrait[] all
         ) {
             foreach (var trait in children) {
                 trait.TryClaim(entity, all, out var dependencies, false);
@@ -164,7 +165,7 @@ namespace Lunari.Tsuki.Entities.Editor {
 
                     using (new GUIEnabledScope(editable)) {
                         if (GUILayout.Button("Select", GUILayout.Height(22), GUILayout.Width(32F * 4))) {
-                            Selection.activeObject = trait;
+                            Selection.activeObject = (Object) trait;
                         }
                     }
 
@@ -189,9 +190,9 @@ namespace Lunari.Tsuki.Entities.Editor {
             EditorGUILayout.EndVertical();
         }
 
-        private void Delete(Trait trait) {
+        private void Delete(ITrait trait) {
             var go = trait.gameObject;
-            DestroyImmediate(trait);
+            DestroyImmediate((Object) trait);
             if (go != entity.gameObject && go.transform.childCount == 0) {
                 DestroyImmediate(go);
             }
