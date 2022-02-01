@@ -11,11 +11,11 @@ using UnityEditor.Animations;
 
 namespace Lunari.Tsuki.Entities {
     public class TraitDescriptor : Traits {
-        public Trait Of { get; }
+        public ITrait Of { get; }
 
         public List<Problem> Problems { get; } = new List<Problem>();
 
-        public TraitDescriptor(Entity entity, Trait of, bool initialize) {
+        public TraitDescriptor(Entity entity, ITrait of, bool initialize) {
             Entity = entity;
             Of = of;
             Initialize = initialize;
@@ -31,7 +31,7 @@ namespace Lunari.Tsuki.Entities {
             get { return string.Join(Environment.NewLine, Problems.Select(exception => exception.Description)); }
         }
 
-        public T DependsOn<T>(bool allowSubclasses = false) where T : Trait {
+        public T DependsOn<T>(bool allowSubclasses = false) where T : ITrait {
             var found = GetTrait<T>(allowSubclasses);
             if (found == null) {
                 Problems.Add(new MissingTrait(Entity, typeof(T), Of));

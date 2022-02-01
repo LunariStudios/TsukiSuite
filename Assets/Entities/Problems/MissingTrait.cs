@@ -10,7 +10,7 @@ namespace Lunari.Tsuki.Entities.Problems {
         public MissingTrait(
             Entity entity,
             Type dependencyType,
-            Trait requisitor
+            ITrait requisitor
         ) : base(
             requisitor,
             entity,
