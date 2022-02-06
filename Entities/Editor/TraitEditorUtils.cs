@@ -7,6 +7,9 @@ using UnityEngine;
 
 namespace Lunari.Tsuki.Entities.Editor {
     public static class TraitEditorUtils {
+        public static Entity TryFindParentEntity(this Trait t) {
+            return t.GetComponentInParent<Entity>();
+        }
         public static Tree<string, TraitGroup> FindTraitTreeOf(IEnumerable<Trait> traits) {
             var tree = new Tree<string, TraitGroup>(new TraitGroup());
             foreach (var trait in traits) {
