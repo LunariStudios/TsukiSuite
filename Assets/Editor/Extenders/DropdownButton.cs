@@ -5,12 +5,19 @@ namespace Lunari.Tsuki.Editor.Extenders {
     public class DropdownButton {
         private Rect lastRect;
         private readonly AdvancedDropdown dropdown;
-        public DropdownButton(AdvancedDropdown dropdown) {
+
+        public GUIContent Label {
+            get;
+            set;
+        }
+
+        public DropdownButton(AdvancedDropdown dropdown, GUIContent label) {
             this.dropdown = dropdown;
-            
+            Label = label;
+
         }
         public void OnGUI() {
-            var r = EditorGUILayout.DropdownButton(new GUIContent("Select Texture"), FocusType.Passive);
+            var r = EditorGUILayout.DropdownButton(Label, FocusType.Passive);
             if (Event.current.type == EventType.Repaint) {
                 lastRect = GUILayoutUtility.GetLastRect();
             }
