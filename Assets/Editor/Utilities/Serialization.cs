@@ -14,6 +14,15 @@ namespace Lunari.Tsuki.Editor.Utilities {
         public static T FindInstanceWithin<T>(this SerializedProperty property) where T : class {
             return property.FindInstanceAt<T>(property.serializedObject.targetObject);
         }
+        /// <summary>
+        /// Finds the instance of the serialized property inside the object that the <see cref="property"/> exists in.
+        /// </summary>
+        /// <param name="property">The property to find an instance for</param>
+        /// <typeparam name="T">The type of the instance</typeparam>
+        /// <returns>The found instance or null if it can't be cast to <see cref="T"/></returns>
+        public static object FindInstanceWithin(this SerializedProperty property) {
+            return property.FindInstanceAt(property.serializedObject.targetObject);
+        }
 
         /// <summary>
         /// Finds the instance of the serialized property inside the given object

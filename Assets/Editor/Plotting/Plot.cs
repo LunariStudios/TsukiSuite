@@ -25,11 +25,7 @@ namespace Lunari.Tsuki.Editor.Plotting {
             set;
         } = 1;
 
-        public float[] Data {
-            get {
-                return data;
-            }
-        }
+        public float[] Data => data;
 
         public float Min {
             get;

@@ -58,7 +58,7 @@ namespace Lunari.Tsuki.Editor {
                     var t = item.GetTexture();
                     textureSize = new Vector2(t.width, t.height);
                 };
-                return new DropdownButton(icon);
+                return new DropdownButton(icon, new GUIContent("Select Icon"));
             });
         }
         private void OnGUI() {
