@@ -32,7 +32,7 @@ namespace Lunari.Tsuki {
             r.height = lineHeight;
             r.y += lineIndex * lineHeight;
             if (lineIndex > 0) {
-                r.y += (lineIndex - 1) * lineSpacing;
+                r.y += lineIndex * lineSpacing;
             }
 
             return r;
@@ -780,18 +780,22 @@ namespace Lunari.Tsuki {
         public static Rect ExpandTo(this Rect rect, Vector2 pos) {
             if (pos.x < rect.xMin) {
                 rect.xMin = pos.x;
-            }
-            else if (pos.x > rect.xMax) {
+            } else if (pos.x > rect.xMax) {
                 rect.xMax = pos.x;
             }
 
             if (pos.y < rect.yMin) {
                 rect.yMin = pos.y;
-            }
-            else if (pos.y > rect.yMax) {
+            } else if (pos.y > rect.yMax) {
                 rect.yMax = pos.y;
             }
 
+            return rect;
+        }
+        public static Rect SetSizeKeepCenter(this Rect rect, Vector2 size) {
+            var c = rect.center;
+            rect.size = size;
+            rect.center = c;
             return rect;
         }
     }
