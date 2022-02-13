@@ -18,20 +18,20 @@ namespace Lunari.Tsuki.Scopes {
         ) : this(condition ? color : GUI.color, target) {
         }
 
-        public GUIColorScope(Color red, ColorTarget target = ColorTarget.Normal) {
+        public GUIColorScope(Color color, ColorTarget target = ColorTarget.Normal) {
             this.target = target;
             switch (target) {
                 case ColorTarget.Normal:
-                    color = GUI.color;
-                    GUI.color = red;
+                    this.color = GUI.color;
+                    GUI.color = color;
                     break;
                 case ColorTarget.Content:
-                    color = GUI.contentColor;
-                    GUI.contentColor = red;
+                    this.color = GUI.contentColor;
+                    GUI.contentColor = color;
                     break;
                 case ColorTarget.Background:
-                    color = GUI.backgroundColor;
-                    GUI.backgroundColor = red;
+                    this.color = GUI.backgroundColor;
+                    GUI.backgroundColor = color;
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(target), target, null);
