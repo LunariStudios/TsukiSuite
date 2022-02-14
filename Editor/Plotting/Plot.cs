@@ -54,9 +54,9 @@ namespace Lunari.Tsuki.Editor.Plotting {
             foreach (var value in data) {
                 var relative = Mathf.Clamp01(Mathf.InverseLerp(Min, Max, value));
                 var x = i * sampleSize;
-                var yOffset = rect.height * relative;
-                var y = rect.height - yOffset;
-
+                var height = rect.height;
+                var yOffset = (height - 1) * relative;
+                var y = height - yOffset;
                 points[i] = new Vector3 {
                     x = x,
                     y = y,
