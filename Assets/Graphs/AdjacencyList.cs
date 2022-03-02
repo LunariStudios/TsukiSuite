@@ -22,6 +22,13 @@ namespace Lunari.Tsuki.Graphs {
         [SerializeField]
         private List<Node> nodes = new List<Node>();
 
+        public IEnumerable<V> Vertices {
+            get {
+                foreach (var node in nodes) {
+                    yield return node.vertex;
+                }
+            }
+        }
         public override void ClearVertices() {
             nodes.Clear();
         }
