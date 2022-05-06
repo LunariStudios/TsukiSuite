@@ -15,11 +15,14 @@ namespace Lunari.Tsuki {
             return sum;
         }
 
-        public static Rect GetLine(this Rect rect, uint lineIndex) {
+        public static Rect SkipLines(this Rect rect, int numLines) {
+            return rect.AddYMin(GetHeight(numLines));
+        }
+        public static Rect GetLine(this Rect rect, int lineIndex) {
             return GetLine(rect, lineIndex, EditorGUIUtility.singleLineHeight);
         }
 
-        public static Rect GetLine(this Rect rect, uint lineIndex, float lineHeight) {
+        public static Rect GetLine(this Rect rect, int lineIndex, float lineHeight) {
             return GetLine(rect, lineIndex, lineHeight, EditorGUIUtility.standardVerticalSpacing);
         }
 #endif
@@ -27,7 +30,7 @@ namespace Lunari.Tsuki {
         /// Returns a Rect that correspond to what would be an "editor line" on the specified <see cref="lineHeight"/>
         /// on the specified <see cref="lineIndex"/>.
         /// </summary>
-        public static Rect GetLine(this Rect rect, uint lineIndex, float lineHeight, float lineSpacing) {
+        public static Rect GetLine(this Rect rect, int lineIndex, float lineHeight, float lineSpacing) {
             var r = rect;
             r.height = lineHeight;
             r.y += lineIndex * lineHeight;
