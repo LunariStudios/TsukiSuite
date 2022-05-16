@@ -8,18 +8,12 @@ namespace Lunari.Tsuki.Cheater {
         private static CommandWindow window;
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
         private static void Init() {
-            Open();
+            window ??= new CommandWindow();
         }
         public CommandWindow() {
             var (go, created) = GameObjects.CreateWith<CommandHook>();
             created.Setup(this);
             hook = created;
-        }
-        public static void Open() {
-            window ??= new CommandWindow();
-            if (!window.open) {
-                window.OpenWindow();
-            }
         }
         private void OpenWindow() {
             open = true;
@@ -30,17 +24,43 @@ namespace Lunari.Tsuki.Cheater {
         }
 
         public void OnGUI() {
+            Pool();
             if (open) {
-
+                Draw();
             }
-            Draw();
         }
         private bool open;
         private string command;
         private readonly CommandCompleter completer = new CommandCompleter();
         private readonly CommandHook hook;
 
+        private void Pool() {
+            var ev = Event.current;
+            if (ev.type != EventType.KeyDown) {
+                return;
+            }
+            if (ev.keyCode != KeyCode.C) {
+                return;
+            }
+            EventModifiers target = EventModifiers.Shift;
+            if (Application.platform == RuntimePlatform.OSXEditor) {
+                target |= EventModifiers.Command;
+            } else {
+                target |= EventModifiers.Control;
+            }
+            if ((ev.modifiers & target) != target) {
+                return;
+            }
+            ToggleWindow();
+        }
 
+        private void ToggleWindow() {
+            if (open) {
+                CloseWindow();
+            } else {
+                OpenWindow();
+            }
+        }
         private void Draw() {
             var commandAreaRect = Screen.safeArea;
             commandAreaRect = commandAreaRect.SetHeight(128);
