@@ -1,17 +1,21 @@
+using System;
 using Lunari.Tsuki.Algorithm;
 using Lunari.Tsuki.Editor;
 using Lunari.Tsuki.Entities.Problems;
 using Lunari.Tsuki.Scopes;
 using UnityEditor;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace Lunari.Tsuki.Entities.Editor {
     public partial class EntityEditor {
 
 
+        [Serializable]
         public struct GroupOptions {
             public bool shown;
         }
+        [Serializable]
         public struct TraitOptions { }
         private  void DrawSolution(Solution solution) {
             if (solution == null) {
@@ -101,7 +105,7 @@ namespace Lunari.Tsuki.Entities.Editor {
             return found;
         }
 
-        private void DrawTrait(Trait trait) {
+        private void DrawTrait(ITrait trait) {
             var dependencies = trait.PeekDescription(entity, meta.AllTraits);
             if (dependencies == null) {
                 return;
@@ -125,12 +129,12 @@ namespace Lunari.Tsuki.Entities.Editor {
 
                 using (new GUIEnabledScope(editable)) {
                     if (GUILayout.Button("Select", GUILayout.Height(22), GUILayout.Width(32F * 4))) {
-                        Selection.activeObject = trait;
+                        Selection.activeObject = (Object) trait;
                     }
                 }
 
                 if (GUILayout.Button(Icons.treeeditor_trash, GUILayout.Height(22), GUILayout.Width(22))) {
-                    Delete(trait);
+                    Delete((Trait) trait);
                 }
             }
         }

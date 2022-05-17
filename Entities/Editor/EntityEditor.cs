@@ -7,18 +7,21 @@ using Lunari.Tsuki.Editor.Extenders;
 using Lunari.Tsuki.Entities.Problems;
 using UnityEditor;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace Lunari.Tsuki.Entities.Editor {
     [CustomEditor(typeof(Entity))]
     public partial class EntityEditor : UnityEditor.Editor {
-        private static readonly Lazy<GUIStyle> ProblemStyle = new Lazy<GUIStyle>(
-            () => new GUIStyle(Styles.WordWrappedMiniLabel) {
+
+        private Entity entity;
+
+        private static readonly Lazy<GUIStyle> ProblemStyle = new Lazy<GUIStyle>(() =>
+            new GUIStyle(Styles.WordWrappedMiniLabel) {
                 wordWrap = true,
             }
         );
-        private Entity entity;
         private EntityMeta meta;
-        private TypeSelectorButton<Trait> addTraitButton;
+        private TypeSelectorButton<ITrait> addTraitButton;
         private Dictionary<string, TraitOptions> traitOptions;
         private Dictionary<string, GroupOptions> groupOptions;
         private void OnDestroy() { }
@@ -29,13 +32,14 @@ namespace Lunari.Tsuki.Entities.Editor {
             }
             traitOptions = new Dictionary<string, TraitOptions>();
             groupOptions = new Dictionary<string, GroupOptions>();
-            addTraitButton = new TypeSelectorButton<Trait>(
+            addTraitButton = new TypeSelectorButton<ITrait>(
                 new GUIContent("Add Trait"),
                 AddTrait,
                 TraitExtensions.FindTraitLocation,
                 type => entity.GetComponentInChildren(type) != null && !type.IsAbstract
             );
-            addTraitButton.RectCalculated += (ref Rect rect) => {
+            addTraitButton.RectCalculated += (ref Rect rect) =>
+            {
                 rect.xMin -= rect.width / 2;
             };
         }
@@ -48,7 +52,8 @@ namespace Lunari.Tsuki.Entities.Editor {
             ReloadMeta();
         }
         public override void OnInspectorGUI() {
-            var found = entity.GetComponentsInChildren<Trait>();
+            var found = entity.GetComponentsInChildren<ITrait>();
+            var problems = new List<Problem>();
             using (new EditorGUILayout.VerticalScope()) {
                 using (new EditorGUILayout.HorizontalScope()) {
                     EditorGUILayout.LabelField($"Traits ({found.Length})", EditorStyles.boldLabel);
@@ -72,7 +77,7 @@ namespace Lunari.Tsuki.Entities.Editor {
 
                 DrawTraits();
             }
-            var problems = new List<Problem>();
+            problems = new List<Problem>();
             var allTraits = meta.AllTraits;
             foreach (var trait in allTraits) {
                 problems.AddRange(trait.PeekDescription(entity, allTraits).Problems);
@@ -108,10 +113,9 @@ namespace Lunari.Tsuki.Entities.Editor {
             return groupOptions.TryGetValue(category, out var options) && options.shown;
         }
 
-
         private void Delete(Trait trait) {
             var go = trait.gameObject;
-            DestroyImmediate(trait);
+            DestroyImmediate((Object) trait);
             if (go != entity.gameObject && go.transform.childCount == 0) {
                 DestroyImmediate(go);
             }
