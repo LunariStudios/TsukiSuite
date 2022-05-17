@@ -24,7 +24,7 @@ namespace Lunari.Tsuki.Entities.Problems {
     }
     public class Problem {
 
-        public Problem(Trait requisitor, Entity entity, string description, Solution solution = null) {
+        public Problem(ITrait requisitor, Entity entity, string description, Solution solution = null) {
             Requisitor = requisitor;
             Entity = entity;
             Description = description;
@@ -45,7 +45,7 @@ namespace Lunari.Tsuki.Entities.Problems {
             get;
         }
 
-        public Trait Requisitor {
+        public ITrait Requisitor {
             get;
         }
 
