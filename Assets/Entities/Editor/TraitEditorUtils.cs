@@ -7,10 +7,10 @@ using UnityEngine;
 
 namespace Lunari.Tsuki.Entities.Editor {
     public static class TraitEditorUtils {
-        public static Entity TryFindParentEntity(this Trait t) {
-            return t.GetComponentInParent<Entity>();
+        public static Entity TryFindParentEntity(this ITrait t) {
+            return t.gameObject.GetComponentInParent<Entity>();
         }
-        public static Tree<string, TraitGroup> FindTraitTreeOf(IEnumerable<Trait> traits) {
+        public static Tree<string, TraitGroup> FindTraitTreeOf(IEnumerable<ITrait> traits) {
             var tree = new Tree<string, TraitGroup>(new TraitGroup());
             foreach (var trait in traits) {
                 var location = TraitExtensions.FindTraitLocation(trait);
@@ -28,7 +28,7 @@ namespace Lunari.Tsuki.Entities.Editor {
             var allTraits = entity.GetComponentsInChildren<Trait>();
             return trait.PeekDescription(entity, allTraits);
         }
-        public static TraitDescriptor PeekDescription(this Trait trait, Entity entity, Trait[] all) {
+        public static TraitDescriptor PeekDescription(this ITrait trait, Entity entity, Trait[] all) {
             trait.TryClaim(entity, all, out var dependencies, false);
             return dependencies;
         }

@@ -23,7 +23,7 @@ namespace Lunari.Tsuki.Entities {
 
         private void Awake() {
             Aware = true;
-            var found = GetComponentsInChildren<Trait>();
+            var found = GetComponentsInChildren<ITrait>();
             foreach (var trait in found) {
                 if (traits.HasTrait(found.GetType())) {
                     Debug.LogWarning(
@@ -44,11 +44,11 @@ namespace Lunari.Tsuki.Entities {
             }
         }
 
-        public T GetTrait<T>(bool allowSubclasses = false) where T : Trait {
+        public T GetTrait<T>(bool allowSubclasses = false) where T : ITrait {
             return traits.GetTrait<T>(allowSubclasses);
         }
 
-        public IEnumerable<T> GetTraits<T>() where T : Trait {
+        public IEnumerable<T> GetTraits<T>() where T : ITrait {
             return traits.GetTraits<T>();
         }
 

@@ -11,7 +11,7 @@ namespace Lunari.Tsuki.Entities.Problems {
         public MissingComponent(
             Entity entity,
             Type dependencyType,
-            Trait requisitor,
+            ITrait requisitor,
             string expectedLocation = null
         ) : base(requisitor, entity, $"Entity {entity.name} does not have a component of type {dependencyType.Name} which is a dependency of {requisitor} ") {
             DependencyType = dependencyType;
