@@ -12,7 +12,7 @@ namespace Lunari.Tsuki.Entities.Editor {
             get;
         }
 
-        public Trait[] AllTraits {
+        public ITrait[] AllTraits {
             get;
         }
 
@@ -22,7 +22,7 @@ namespace Lunari.Tsuki.Entities.Editor {
 
         public EntityMeta(Entity entity) {
             Entity = entity;
-            AllTraits = entity.GetComponentsInChildren<Trait>();
+            AllTraits = entity.GetComponentsInChildren<ITrait>();
             TraitTree = TraitEditorUtils.FindTraitTreeOf(AllTraits);
             foreach (var trait in AllTraits) {
                 trait.PeekDescription();

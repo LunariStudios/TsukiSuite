@@ -20,15 +20,15 @@ namespace Lunari.Tsuki.Entities.Editor {
 
             return tree;
         }
-        public static TraitDescriptor PeekDescription(this Trait trait) {
-            var entity = trait.GetComponentInParent<Entity>();
+        public static TraitDescriptor PeekDescription(this ITrait trait) {
+            var entity = trait.gameObject.GetComponentInParent<Entity>();
             if (entity == null) {
                 return null;
             }
             var allTraits = entity.GetComponentsInChildren<Trait>();
             return trait.PeekDescription(entity, allTraits);
         }
-        public static TraitDescriptor PeekDescription(this ITrait trait, Entity entity, Trait[] all) {
+        public static TraitDescriptor PeekDescription(this ITrait trait, Entity entity, ITrait[] all) {
             trait.TryClaim(entity, all, out var dependencies, false);
             return dependencies;
         }
