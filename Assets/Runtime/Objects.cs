@@ -12,6 +12,21 @@ namespace Lunari.Tsuki {
         /// <param name="obj">The object to clone.</param>
         /// <param name="position">The position to place the clone in.</param>
         /// <typeparam name="T">The type of the object to clone. Usually implicit.</typeparam>
+        public static T Clone<T>(this T obj) where T : Object {
+            return Object.Instantiate(obj);
+        }
+
+        /// <summary>
+        /// Creates a copy of this object and places it at the specified <see cref="position"/>.
+        /// <br/>
+        /// The copy has no parent transform.
+        /// <br/>
+        /// Equivalent to <see cref="Object"/>.
+        /// <see cref="Object.Instantiate(UnityEngine.Object,UnityEngine.Vector3,UnityEngine.Quaternion)"/>.
+        /// </summary>
+        /// <param name="obj">The object to clone.</param>
+        /// <param name="position">The position to place the clone in.</param>
+        /// <typeparam name="T">The type of the object to clone. Usually implicit.</typeparam>
         public static T Clone<T>(this T obj, Vector3 position) where T : Object {
             return Clone(obj, position, Quaternion.identity);
         }
@@ -71,7 +86,7 @@ namespace Lunari.Tsuki {
         public static bool TryGetComponentInChildren<T>(this Component obj, out T component) where T : Component {
             return (component = obj.GetComponentInChildren<T>()) != null;
         }
-        
+
         /// <summary>
         /// Attempts to find an existing instance of a component of type <see cref="T"/> within this 
         /// game object's children.
