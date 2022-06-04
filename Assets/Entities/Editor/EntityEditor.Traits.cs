@@ -9,8 +9,6 @@ using Object = UnityEngine.Object;
 
 namespace Lunari.Tsuki.Entities.Editor {
     public partial class EntityEditor {
-
-
         [Serializable]
         public struct GroupOptions {
             public bool shown;
