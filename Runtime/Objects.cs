@@ -83,7 +83,7 @@ namespace Lunari.Tsuki {
         /// <param name="obj">The game object to search for the component in.</param>
         /// <param name="component">Where the found component will be written back to</param>
         /// <typeparam name="T">The type of the component to search for.</typeparam>
-        public static bool TryGetComponentInChildren<T>(this Component obj, out T component) where T : Component {
+        public static bool TryGetComponentInChildren<T>(this Component obj, out T component) {
             return (component = obj.GetComponentInChildren<T>()) != null;
         }
 
@@ -97,7 +97,7 @@ namespace Lunari.Tsuki {
         /// <param name="obj">The game object to search for the component in.</param>
         /// <param name="component">Where the found component will be written back to</param>
         /// <typeparam name="T">The type of the component to search for.</typeparam>
-        public static bool TryGetComponentInParent<T>(this Component obj, out T component) where T : Component {
+        public static bool TryGetComponentInParent<T>(this Component obj, out T component) {
             return (component = obj.GetComponentInParent<T>()) != null;
         }
     }
