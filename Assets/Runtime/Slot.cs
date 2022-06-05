@@ -40,6 +40,15 @@ namespace Lunari.Tsuki {
             });
             return this;
         }
+        public Slot<T> OnChangedToNull(UnityAction onChanged) {
+            OnChanged(v =>
+            {
+                if (v == null) {
+                    onChanged();
+                }
+            });
+            return this;
+        }
 
         public Slot<T> Listen(UnityEvent unityEvent, UnityAction action) {
             unityEvent.AddListener(action);
@@ -114,84 +123,6 @@ namespace Lunari.Tsuki {
 
         public void Clear() {
             Value = null;
-        }
-    }
-    public static class Slots<T> where T : class {
-        public static Slot<T> OnChanged(UnityAction onChanged) {
-            var slot = new Slot<T>();
-            slot.OnChanged(onChanged);
-            return slot;
-        }
-        public static Slot<T> OnChanged(UnityAction<T> onChanged) {
-            var slot = new Slot<T>();
-            slot.OnChanged(onChanged);
-            return slot;
-        }
-
-        public static Slot<T> OnChangedNotNull(UnityAction<T> onChanged) {
-            var slot = new Slot<T>();
-            slot.OnChangedNotNull(onChanged);
-            return slot;
-        }
-
-        public static Slot<T> Listen(UnityEvent unityEvent, UnityAction action) {
-            var slot = new Slot<T>();
-            slot.Listen(unityEvent, action);
-            return slot;
-        }
-
-        public static Slot<T> ListenAndInvoke(UnityEvent unityEvent, UnityAction action) {
-            var slot = new Slot<T>();
-            slot.ListenAndInvoke(unityEvent, action);
-            return slot;
-        }
-
-        public static Slot<T> Listen<A>(UnityEvent<A> unityEvent, UnityAction<A> action) {
-            var slot = new Slot<T>();
-            slot.Listen(unityEvent, action);
-            return slot;
-        }
-
-        public static Slot<T> ListenAndInvoke<A>(UnityEvent<A> unityEvent, UnityAction<A> action, A initialValue) {
-            var slot = new Slot<T>();
-            slot.ListenAndInvoke(unityEvent, action, initialValue);
-            return slot;
-        }
-
-        public static Slot<T> Listen<A, B>(UnityEvent<A, B> unityEvent, UnityAction<A, B> action) {
-            var slot = new Slot<T>();
-            slot.Listen(unityEvent, action);
-            return slot;
-        }
-
-        public static Slot<T> ListenAndInvoke<A, B>(UnityEvent<A, B> unityEvent, UnityAction<A, B> action, A first, B second) {
-            var slot = new Slot<T>();
-            slot.ListenAndInvoke(unityEvent, action, first, second);
-            return slot;
-        }
-
-        public static Slot<T> Listen<A, B, C>(UnityEvent<A, B, C> unityEvent, UnityAction<A, B, C> action) {
-            var slot = new Slot<T>();
-            slot.Listen(unityEvent, action);
-            return slot;
-        }
-
-        public static Slot<T> ListenAndInvoke<A, B, C>(UnityEvent<A, B, C> unityEvent, UnityAction<A, B, C> action, A first, B second, C third) {
-            var slot = new Slot<T>();
-            slot.ListenAndInvoke(unityEvent, action, first, second, third);
-            return slot;
-        }
-
-        public static Slot<T> Listen<A, B, C, D>(UnityEvent<A, B, C, D> unityEvent, UnityAction<A, B, C, D> action) {
-            var slot = new Slot<T>();
-            slot.Listen(unityEvent, action);
-            return slot;
-        }
-
-        public static Slot<T> ListenAndInvoke<A, B, C, D>(UnityEvent<A, B, C, D> unityEvent, UnityAction<A, B, C, D> action, A first, B second, C third, D fourth) {
-            var slot = new Slot<T>();
-            slot.ListenAndInvoke(unityEvent, action, first, second, third, fourth);
-            return slot;
         }
     }
 }
