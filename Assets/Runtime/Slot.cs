@@ -1,5 +1,8 @@
 ﻿using System;
 using UnityEngine.Events;
+#if ODIN_INSPECTOR
+using Sirenix.OdinInspector;
+#endif
 namespace Lunari.Tsuki {
     [Serializable]
     public class Slot<T> where T : class {
@@ -8,6 +11,9 @@ namespace Lunari.Tsuki {
 
         public static implicit operator T(Slot<T> slot) => slot.value;
 
+#if ODIN_INSPECTOR
+        [ShowInInspector]
+#endif
         public T Value {
             get => value;
             set {
@@ -31,6 +37,15 @@ namespace Lunari.Tsuki {
             });
             return this;
         }
+        public Slot<T> OnChanged(UnityAction<T, T> onChanged) {
+            var last = Value;
+            OnChanged(() =>
+            {
+                onChanged(last, Value);
+                last = Value;
+            });
+            return this;
+        }
         public Slot<T> OnChangedNotNull(UnityAction<T> onChanged) {
             OnChanged(v =>
             {
@@ -49,6 +64,28 @@ namespace Lunari.Tsuki {
             });
             return this;
         }
+
+        public Slot<T> OnValueRemoved(UnityAction<T> onChanged) {
+            var last = Value;
+            OnChanged(v =>
+            {
+                if (last != null) {
+                    onChanged(last);
+                }
+                last = v;
+            });
+            return this;
+        }
+        public Slot<T> OnChangedToNull(UnityAction<T> onChanged) {
+            var last = Value;
+            OnChangedToNull(() =>
+            {
+                onChanged(last);
+                last = Value;
+            });
+            return this;
+        }
+
 
         public Slot<T> Listen(UnityEvent unityEvent, UnityAction action) {
             unityEvent.AddListener(action);
