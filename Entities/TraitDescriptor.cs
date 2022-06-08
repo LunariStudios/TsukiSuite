@@ -61,7 +61,9 @@ namespace Lunari.Tsuki.Entities {
         }
 
         public void RequiresAnimatorParameter(string parameter, AnimatorControllerParameterType type) {
-            var animator = RequiresComponent<Animator>();
+            RequiresAnimatorParameter(RequiresComponent<Animator>(), parameter, type);
+        }
+        public void RequiresAnimatorParameter(Animator animator, string parameter, AnimatorControllerParameterType type) {
             if (animator != null && animator.runtimeAnimatorController == null) {
                 if (!Problems.Any(problem => problem is MissingAnimatorController)) {
                     Problems.Add(new MissingAnimatorController(Of, Entity, animator));
