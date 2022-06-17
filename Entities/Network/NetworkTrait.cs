@@ -3,15 +3,17 @@ using Lunari.Tsuki.Entities;
 using Unity.Netcode;
 namespace Lunari.Entities.Network {
     public abstract class NetworkTrait : NetworkBehaviour, ITrait {
+        private Entity owner;
+
         public Entity Owner {
-            get;
-            private set;
+            get => owner;
+            private set => owner = value;
         }
 
-        public virtual void Configure(TraitDescriptor descriptor) { }
-        void ITrait.AssignOwner(Entity owner) {
-            Owner = owner;
+        public TraitDescriptor TryClaim(Entity requisitor, ITrait[] traits, bool initialize = true) {
+            return this.ExecuteClaim(requisitor, traits, initialize, out owner);
         }
+        public virtual void Describe(TraitDescriptor descriptor) { }
 
         public override string ToString() {
             var ownerName = Owner == null ? "none" : Owner.name;
