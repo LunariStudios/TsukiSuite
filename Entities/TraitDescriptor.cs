@@ -81,7 +81,9 @@ namespace Lunari.Tsuki.Entities {
 #endif
         }
         public ProblemBuilder AddProblem(string message) {
-            return new ProblemBuilder(this, message);
+            var builder = new ProblemBuilder(this, message);
+            Problems.Add(builder.Problem);
+            return builder;
         }
     }
 }
