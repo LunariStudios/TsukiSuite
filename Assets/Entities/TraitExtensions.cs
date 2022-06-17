@@ -1,7 +1,7 @@
 using System;
 
 namespace Lunari.Tsuki.Entities {
-    public static class TraitExtensions {
+    public static partial class TraitExtensions {
         public static bool HasTrait<T>(this ITraits traits) where T : ITrait {
             return traits.GetTrait<T>() != null;
         }
