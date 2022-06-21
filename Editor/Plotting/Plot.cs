@@ -35,7 +35,7 @@ namespace Lunari.Tsuki.Editor.Plotting {
         public float Max {
             get;
             set;
-        } = 1;
+        } = 1.0F;
 
         public void Resize(int size) {
             Array.Resize(ref data, size);
