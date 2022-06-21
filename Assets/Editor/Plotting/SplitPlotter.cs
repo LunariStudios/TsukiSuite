@@ -44,9 +44,9 @@ namespace Lunari.Tsuki.Editor.Plotting {
 
         public override void Plot(float height) {
             var rect = GetPlotRect(height);
-            if (left.Enabled || right.Enabled) {
+            /*if (left.Enabled || right.Enabled) {
                 GUI.Box(rect, GUIContent.none);
-            }
+            }*/
             left.Draw(rect);
             right.Draw(rect);
             const float limitsSize = 128;
