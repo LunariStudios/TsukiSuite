@@ -1,14 +1,16 @@
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Events;
 namespace Lunari.Tsuki.Editor.Preference {
     public abstract class EditorPreference<T> {
-        private readonly string key;
-        private readonly T defaultValue;
-        private bool loaded = false;
-        private T cached;
+        private readonly string _key;
+        private readonly T _defaultValue;
+        private bool _loaded = false;
+        private T _cached;
+        public UnityEvent Changed { get; } = new UnityEvent();
         protected EditorPreference(string key, T defaultValue) {
-            this.key = key;
-            this.defaultValue = defaultValue;
+            _key = key;
+            _defaultValue = defaultValue;
         }
         protected abstract void Write(string key, T value);
         protected abstract T Read(string key);
@@ -19,17 +21,19 @@ namespace Lunari.Tsuki.Editor.Preference {
 
         public T Value {
             get {
-                if (!loaded) {
-                    loaded = true;
-                    cached = EditorPrefs.HasKey(key) ? Read(key) : defaultValue;
+                if (!_loaded) {
+                    _loaded = true;
+                    _cached = EditorPrefs.HasKey(_key) ? Read(_key) : _defaultValue;
                 }
-                return cached;
+                return _cached;
             }
             set {
-                Write(key, value);
-                loaded = false;
+                Write(_key, value);
+                _loaded = false;
+                Changed.Invoke();
             }
         }
+
     }
     public class FloatEditorPreference : EditorPreference<float> {
 
@@ -55,6 +59,19 @@ namespace Lunari.Tsuki.Editor.Preference {
         }
         public override void DrawField(GUIContent label) {
             Value = EditorGUILayout.Toggle(label, Value);
+        }
+    }
+    public class IntEditorPreference : EditorPreference<int> {
+        public IntEditorPreference(string key, int defaultValue) : base(key, defaultValue) {
+        }
+        protected override void Write(string key, int value) {
+            EditorPrefs.SetInt(key, value);
+        }
+        protected override int Read(string key) {
+            return EditorPrefs.GetInt(key);
+        }
+        public override void DrawField(GUIContent label) {
+            Value = EditorGUILayout.IntField(label, Value);
         }
     }
 }
