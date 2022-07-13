@@ -13,7 +13,7 @@ namespace Lunari.Tsuki.Samples.Entities.Health {
 
         private Living living;
  
-        public override void Configure(TraitDescriptor descriptor) {
+        public override void Describe(TraitDescriptor descriptor) {
             descriptor.DependsOn(out living);
         }
 
