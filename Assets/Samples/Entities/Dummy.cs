@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Lunari.Tsuki.Samples.Entities {
     public class Dummy : Trait {
         private Gauge gauge;
-        public override void Configure(TraitDescriptor descriptor) {
+        public override void Describe(TraitDescriptor descriptor) {
             descriptor.DependsOn(out gauge);
             descriptor.RequiresComponent<Animator>(TraitLocations.View);
             descriptor.RequiresComponent<CharacterController>(TraitLocations.Root);
