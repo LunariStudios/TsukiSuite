@@ -4,28 +4,25 @@ using UnityEngine.Events;
 using UnityEngine.UIElements;
 namespace Lunari.Tsuki {
     public static class SlotExtensions {
+        public static Slot<T> When<T>(this Slot<T> slot, UnityAction<T> onChanged) where T : class {
+            slot.OnChanged(onChanged);
+            onChanged(slot.Value);
+            return slot;
+        }
+
         public static Slot<T> WhenNotNull<T>(this Slot<T> slot, UnityAction<T> block) where T : class {
-            slot.OnChanged(v => {
+            return slot.When(v => {
                 if (v != null) {
                     block(v);
                 }
             });
-            var current = slot.Value;
-            if (current != null) {
-                block(current);
-            }
-            return slot;
         }
         public static Slot<T> WhenNull<T>(this Slot<T> slot, UnityAction block) where T : class {
-            slot.OnChanged(v => {
+            return slot.When(v => {
                 if (v == null) {
                     block();
                 }
             });
-            if (slot.Value == null) {
-                block();
-            }
-            return slot;
         }
 
         public static Slot<T> OnValueRemoved<T>(this Slot<T> slot, UnityAction<T> onChanged) where T : class {
@@ -129,6 +126,9 @@ namespace Lunari.Tsuki {
                 }
             });
             return slot;
+        }
+        public static Slot<T> EnableWhenNotNull<T>(this Slot<T> slot, VisualElement recordingToolbar) where T : class {
+            return slot.When(value => recordingToolbar.SetEnabled(value != null));
         }
     }
 }
