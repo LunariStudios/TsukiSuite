@@ -74,4 +74,17 @@ namespace Lunari.Tsuki.Editor.Preference {
             Value = EditorGUILayout.IntField(label, Value);
         }
     }
+    public class StringEditorPreference : EditorPreference<string> {
+        public StringEditorPreference(string key, string defaultValue) : base(key, defaultValue) {
+        }
+        protected override void Write(string key, string value) {
+            EditorPrefs.SetString(key, value);
+        }
+        protected override string Read(string key) {
+            return EditorPrefs.GetString(key);
+        }
+        public override void DrawField(GUIContent label) {
+            Value = EditorGUILayout.TextField(label, Value);
+        }
+    }
 }
