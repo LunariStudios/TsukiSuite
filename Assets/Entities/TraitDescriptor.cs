@@ -85,5 +85,8 @@ namespace Lunari.Tsuki.Entities {
             Problems.Add(builder.Problem);
             return builder;
         }
+        public void AddProblems(IEnumerable<Problem> problems) {
+            Problems.AddRange(problems);
+        }
     }
 }

@@ -39,6 +39,19 @@ namespace Lunari.Tsuki {
         public static bool IsNullOrEmpty(this ICollection collection) {
             return collection == null || collection.IsEmpty();
         }
+        public static T FirstOf<T>(this ICollection collection) where T : class {
+            if (collection == null) {
+                return null;
+            }
+            
+            foreach (var o in collection) {
+                if (o is T candidate) {
+                    return candidate;
+                }
+            }
+            
+            return null;
+        }
 
         public static T GetOrPut<T>(this ICollection<T> collection, Func<T, bool> predicate, Func<T> instantiator) {
             foreach (var obj in collection) {
@@ -65,7 +78,8 @@ namespace Lunari.Tsuki {
         public static List<T> GetAllOrPut<T>(
             this ICollection<T> collection,
             Func<T, bool> predicate,
-            Func<T> instantiator) {
+            Func<T> instantiator
+        ) {
             var list = collection.Where(predicate).ToList();
             if (!list.IsEmpty()) {
                 return list;
@@ -80,14 +94,16 @@ namespace Lunari.Tsuki {
 
         public static TSource MinBy<TSource, TKey>(
             this IEnumerable<TSource> source,
-            Func<TSource, TKey> selector) where TKey : IComparable<TKey> {
+            Func<TSource, TKey> selector
+        ) where TKey : IComparable<TKey> {
             return source.MinBy(selector, Comparer<TKey>.Default);
         }
 
         public static T MinBy<T, K>(
             this IEnumerable<T> source,
             Func<T, K> selector,
-            IComparer<K> comparer) {
+            IComparer<K> comparer
+        ) {
             if (source == null) {
                 throw new ArgumentNullException(nameof(source));
             }
@@ -122,14 +138,16 @@ namespace Lunari.Tsuki {
 
         public static TSource MaxBy<TSource, TKey>(
             this IEnumerable<TSource> source,
-            Func<TSource, TKey> selector) where TKey : IComparable<TKey> {
+            Func<TSource, TKey> selector
+        ) where TKey : IComparable<TKey> {
             return source.MaxBy(selector, Comparer<TKey>.Default);
         }
 
         public static T MaxBy<T, K>(
             this IEnumerable<T> source,
             Func<T, K> selector,
-            IComparer<K> comparer) {
+            IComparer<K> comparer
+        ) {
             if (source == null) {
                 throw new ArgumentNullException(nameof(source));
             }
