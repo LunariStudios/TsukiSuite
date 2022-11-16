@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 namespace Lunari.Tsuki.Editor.Plotting {
@@ -25,7 +26,13 @@ namespace Lunari.Tsuki.Editor.Plotting {
             set;
         } = 1;
 
-        public float[] Data => data;
+        public float[] Data {
+            get => data;
+            set {
+                data = value;
+                Array.Resize(ref points, data.Length);
+            }
+        }
 
         public float Min {
             get;
@@ -42,16 +49,19 @@ namespace Lunari.Tsuki.Editor.Plotting {
             Array.Resize(ref points, size);
         }
         public void Draw(Rect rect) {
+            Draw(rect, data);
+        }
+        public void Draw(Rect rect, IReadOnlyCollection<float> buffer) {
             if (!Enabled) {
                 return;
             }
-            var count = data.Length;
+            var count = buffer.Count;
             var sampleSize = rect.width / count;
             var i = 0;
             GUI.BeginClip(rect);
             var oldColor = Handles.color;
             Handles.color = Color;
-            foreach (var value in data) {
+            foreach (var value in buffer) {
                 var relative = Mathf.Clamp01(Mathf.InverseLerp(Min, Max, value));
                 var x = i * sampleSize;
                 var height = rect.height;
