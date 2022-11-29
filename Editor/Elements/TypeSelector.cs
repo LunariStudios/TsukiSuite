@@ -9,7 +9,7 @@ namespace Lunari.Tsuki.Editor.Elements {
         public event Action<Type> OnTypeSelected;
         public TypeSelector() {
             var types = TypeCache.GetTypesDerivedFrom<T>()
-                .Where(type => !type.IsAbstract)
+                .Where(type => !type.IsAbstract && !type.IsGenericType)
                 .ToList();
 
             _dropdown = new PopupField<Type>() {
