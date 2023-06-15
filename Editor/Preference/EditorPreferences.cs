@@ -95,7 +95,7 @@ namespace Lunari.Tsuki.Editor.Preference {
             return Enum.TryParse(EditorPrefs.GetString(key), out T value) ? value : default;
         }
         public override void DrawField(GUIContent label) {
-            EditorGUILayout.EnumPopup(label, Value);
+            Value = (T) EditorGUILayout.EnumPopup(label, Value);
         }
     }
 }
