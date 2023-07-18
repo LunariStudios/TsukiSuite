@@ -1,7 +1,6 @@
 using UnityEngine;
+
 namespace Lunari.Tsuki.Entities {
-
-
     public abstract class Trait : MonoBehaviour, ITrait {
         private Entity owner;
 

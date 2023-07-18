@@ -17,6 +17,8 @@ namespace Lunari.Tsuki.Entities {
             get;
         }
 
+        public virtual int Priority => 0; 
+
         public TraitDescriptor TryClaim(Entity requisitor, ITrait[] traits, bool initialize = true);
 
         public void Describe(TraitDescriptor descriptor);

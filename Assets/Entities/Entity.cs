@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using System.Linq;
+using Sirenix.Utilities;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -24,6 +26,7 @@ namespace Lunari.Tsuki.Entities {
         private void Awake() {
             Aware = true;
             var found = GetComponentsInChildren<ITrait>();
+            found.Sort((first, second) => first.Priority.CompareTo(second.Priority));
             foreach (var trait in found) {
                 if (traits.HasTrait(found.GetType())) {
                     Debug.LogWarning(
