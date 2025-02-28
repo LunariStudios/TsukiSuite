@@ -119,7 +119,7 @@ namespace Lunari.Tsuki.Entities.Editor {
                 EditorGUILayout.Space(0, true);
                 var obj = Selection.activeObject;
                 var editable = true;
-                if (obj == trait) {
+                if (obj == (Object) trait) {
                     editable = false;
                 } else if (obj is GameObject go && go == trait.gameObject) {
                     editable = false;

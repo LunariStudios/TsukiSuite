@@ -1,4 +1,10 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
+
+#if ODIN_INSPECTOR
+using Sirenix.Utilities;
+#endif
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -23,16 +29,18 @@ namespace Lunari.Tsuki.Entities {
 
         private void Awake() {
             Aware = true;
-            var found = GetComponentsInChildren<ITrait>();
-            foreach (var trait in found) {
-                if (traits.HasTrait(found.GetType())) {
+            var allTraits = GetComponentsInChildren<ITrait>()
+                .OrderBy(trait => trait.Priority)
+                .ToArray();
+            foreach (var trait in allTraits) {
+                if (traits.HasTrait(allTraits.GetType())) {
                     Debug.LogWarning(
                         $"Entity '{this}' has multiple traits of type '{trait.GetType()}', please remove one of the traits before building for Release"
                     );
                     continue;
                 }
 
-                if (!trait.TryClaim(this, found, out var dependencies)) {
+                if (!trait.TryClaim(this, allTraits, out var dependencies)) {
                     Debug.LogWarning(
                         $"Unable to claim trait {trait}: {dependencies.FailureReason}",
                         this

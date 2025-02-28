@@ -7,7 +7,7 @@ using Sirenix.OdinInspector;
 
 #endif
 namespace Lunari.Tsuki.Algorithm {
-    public class RingBuffer<T> : IReadOnlyCollection<T> {
+    public class RingBuffer<T> : IEnumerable<T> {
 #if ODIN_INSPECTOR
         [ShowInInspector, ReadOnly]
 #endif
