@@ -1,4 +1,3 @@
-using System;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
@@ -50,7 +49,8 @@ namespace Lunari.Tsuki.Editor.Preference {
         }
     }
     public class BoolEditorPreference : EditorPreference<bool> {
-        public BoolEditorPreference(string key, bool defaultValue) : base(key, defaultValue) { }
+        public BoolEditorPreference(string key, bool defaultValue) : base(key, defaultValue) {
+        }
         protected override void Write(string key, bool value) {
             EditorPrefs.SetBool(key, value);
         }
@@ -62,7 +62,8 @@ namespace Lunari.Tsuki.Editor.Preference {
         }
     }
     public class IntEditorPreference : EditorPreference<int> {
-        public IntEditorPreference(string key, int defaultValue) : base(key, defaultValue) { }
+        public IntEditorPreference(string key, int defaultValue) : base(key, defaultValue) {
+        }
         protected override void Write(string key, int value) {
             EditorPrefs.SetInt(key, value);
         }
@@ -74,7 +75,8 @@ namespace Lunari.Tsuki.Editor.Preference {
         }
     }
     public class StringEditorPreference : EditorPreference<string> {
-        public StringEditorPreference(string key, string defaultValue) : base(key, defaultValue) { }
+        public StringEditorPreference(string key, string defaultValue) : base(key, defaultValue) {
+        }
         protected override void Write(string key, string value) {
             EditorPrefs.SetString(key, value);
         }
@@ -83,19 +85,6 @@ namespace Lunari.Tsuki.Editor.Preference {
         }
         public override void DrawField(GUIContent label) {
             Value = EditorGUILayout.TextField(label, Value);
-        }
-    }
-    public class EnumEditorPreference<T> : EditorPreference<T> where T : struct, Enum {
-
-        public EnumEditorPreference(string key, T defaultValue) : base(key, defaultValue) { }
-        protected override void Write(string key, T value) {
-            EditorPrefs.SetString(key, Enum.Format(typeof(T), value, "G"));
-        }
-        protected override T Read(string key) {
-            return Enum.TryParse(EditorPrefs.GetString(key), out T value) ? value : default;
-        }
-        public override void DrawField(GUIContent label) {
-            Value = (T) EditorGUILayout.EnumPopup(label, Value);
         }
     }
 }

@@ -1,0 +1,71 @@
+﻿name: Test Multiple Runtime Production Build
+
+on:
+  workflow_dispatch:
+    inputs:
+      buildOptions:
+        description: 'Build options (comma-separated, e.g. BuildScriptsOnly,StrictMode)'
+        required: false
+      scenesPath:
+        description: 'Scenes folder path'
+        required: false
+  push:
+    branches:
+      - master
+      - development
+
+env:
+  BUILD_METHOD: "Lunari.Tsuki.Editor.TsukiBuild.PerformTsukiBuild"
+  UNITY_VERSION: "2020.3.24f1"
+  SCENES_PATH: "Assets/Samples"
+  BUILD_OPTIONS: "BuildScriptsOnly,StrictMode"
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        include:
+          - os: windows-latest
+            buildTarget: StandaloneWindows64
+            runtime: mono
+          - os: windows-latest
+            buildTarget: StandaloneWindows64
+            runtime: il2cpp
+          - os: windows-latest
+            buildTarget: StandaloneWindows64
+            runtime: dotnet
+          - os: ubuntu-latest
+            buildTarget: StandaloneLinux64
+            runtime: mono
+          - os: ubuntu-latest
+            buildTarget: StandaloneLinux64
+            runtime: il2cpp
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+      - uses: actions/cache@v3
+        with:
+          # Library folder
+          path: "${{ runner.workspace }}/Library"
+          key: "Library-TsukiSuite-${{ runner.os }}-${{ env.UNITY_VERSION }}-${{ matrix.buildTarget }}-${{ matrix.runtime }}"
+          restore-keys: |
+            Library-TsukiSuite-
+            Library-
+      - name: Build Unity Project
+        uses: game-ci/unity-builder@v4
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+        with:
+          buildMethod: ${{ env.BUILD_METHOD }}
+          targetPlatform: ${{ matrix.buildTarget }}
+          unityVersion: ${{ env.UNITY_VERSION }}
+          customParameters: >
+            -scriptingBackend ${{ matrix.runtime }}
+            -build Builds/${{ matrix.buildTarget }}/${{ matrix.runtime }}
+            -buildOptions ${{ inputs.buildOptions || env.BUILD_OPTIONS }}
+            -scenesPath ${{ inputs.scenesPath  || env.SCENES_PATH }}

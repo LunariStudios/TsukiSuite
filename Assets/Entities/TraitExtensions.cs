@@ -6,8 +6,8 @@ namespace Lunari.Tsuki.Entities {
             return traits.GetTrait<T>() != null;
         }
 
-        public static bool Access<T>(this ITraits traits, out T trait, bool allowSubclass = false) where T : ITrait {
-            return (trait = traits.GetTrait<T>(allowSubclass)) != null;
+        public static bool Access<T>(this ITraits traits, out T trait) where T : ITrait {
+            return (trait = traits.GetTrait<T>()) != null;
         }
 
         public static string FindTraitLocation(ITrait trait) {

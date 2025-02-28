@@ -8,14 +8,13 @@ namespace Lunari.Tsuki.Entities {
     }
 
     public interface ITrait {
+        public Entity Owner { get; }
 
-        public Entity Owner {
-            get;
-        }
+        // ReSharper disable once InconsistentNaming
+        // Intentionally named like this to avoid conflicts with UnityEngine.Object.gameObject
+        GameObject gameObject { get; }
 
-        GameObject gameObject {
-            get;
-        }
+        public int Priority { get; }
 
         public TraitDescriptor TryClaim(Entity requisitor, ITrait[] traits, bool initialize = true);
 
@@ -36,7 +35,8 @@ namespace Lunari.Tsuki.Entities {
         /// </example>
         /// <param name="newOwner"></param>
         /// <returns></returns>
-        public static TraitDescriptor ExecuteClaim(this ITrait self, Entity requisitor, ITrait[] traits, bool initialize, out Entity newOwner) {
+        public static TraitDescriptor ExecuteClaim(this ITrait self, Entity requisitor, ITrait[] traits,
+            bool initialize, out Entity newOwner) {
             if (initialize && self.Owner != null) {
                 newOwner = self.Owner;
                 return null;
@@ -46,16 +46,20 @@ namespace Lunari.Tsuki.Entities {
             foreach (var trait in traits) {
                 claims.Include(trait);
             }
+
             self.Describe(claims);
             if (claims.Successful) {
                 newOwner = requisitor;
-            } else {
+            }
+            else {
                 newOwner = null;
             }
+
             return claims;
         }
 
-        public static bool TryClaim(this ITrait trait, Entity requisitor, ITrait[] traits, out TraitDescriptor descriptor, bool initialize = true) {
+        public static bool TryClaim(this ITrait trait, Entity requisitor, ITrait[] traits,
+            out TraitDescriptor descriptor, bool initialize = true) {
             var result = descriptor = trait.TryClaim(requisitor, traits, initialize);
             return result != null && result.Successful;
         }

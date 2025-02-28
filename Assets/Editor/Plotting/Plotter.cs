@@ -13,17 +13,9 @@ namespace Lunari.Tsuki.Editor.Plotting {
     }
     public class Plotter : PlotterBase {
         private List<Plot> plots;
-
-        public Plotter() {
-            plots = new List<Plot>();
-        }
-        public Plotter(Plot plot) : this() {
-            AddPlot(plot);
-        }
         public void AddPlot(Plot p) {
             plots.Add(p);
         }
-
         public sealed override void Plot(
             float height
         ) {

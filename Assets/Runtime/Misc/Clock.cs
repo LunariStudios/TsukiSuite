@@ -20,8 +20,13 @@ namespace Lunari.Tsuki.Misc {
         public void Reset() {
             currentTime = cooldown;
         }
+
         public bool Tick() {
-            var completed = (currentTime -= Time.deltaTime) <= 0;
+            return Tick(Time.deltaTime);
+        }
+
+        public bool Tick(float elapsedTime) {
+            var completed = (currentTime -= elapsedTime) <= 0;
             if (completed) {
                 currentTime = cooldown;
             }

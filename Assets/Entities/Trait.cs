@@ -1,7 +1,6 @@
 using UnityEngine;
+
 namespace Lunari.Tsuki.Entities {
-
-
     public abstract class Trait : MonoBehaviour, ITrait {
         private Entity owner;
 
@@ -9,6 +8,8 @@ namespace Lunari.Tsuki.Entities {
             get => owner;
             private set => owner = value;
         }
+
+        public virtual int Priority => 0;
 
         public TraitDescriptor TryClaim(Entity requisitor, ITrait[] traits, bool initialize = true) {
             return this.ExecuteClaim(requisitor, traits, initialize, out owner);
