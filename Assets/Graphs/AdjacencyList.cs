@@ -70,12 +70,13 @@ namespace Lunari.Tsuki.Graphs {
 
         public override E this[int @from, int to] {
             get {
-                var v = nodes[from];
-                if (v.outputs.TryGetValue(to, out var edge)) {
-                    return edge;
+                if (IsOutOfBounds(from))
+                {
+                    return default;
                 }
 
-                return default;
+                var v = nodes[from];
+                return v.outputs.GetValueOrDefault(to);
             }
         }
 
