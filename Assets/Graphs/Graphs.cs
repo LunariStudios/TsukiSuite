@@ -17,9 +17,19 @@ namespace Lunari.Tsuki.Graphs {
         public delegate void OnDiscoveredCallback<E>(int from, int to, E edge);
 
         /// <summary>
-        /// 
+        /// Called when a path is selected as part of the optimal route
         /// </summary>
         public delegate void OnSelectedCallback<E>(int from, int to, E edge);
+
+        /// <summary>
+        /// Called when a path is considered but rejected due to higher cost
+        /// </summary>
+        public delegate void OnRejectedCallback<E>(int from, int to, E edge, float currentCost, float newCost);
+
+        /// <summary>
+        /// Called when a path is filtered out by the EdgeFilter
+        /// </summary>
+        public delegate void OnFilteredCallback<E>(int from, int to, E edge);
 
         public delegate float WeightCalculator<E>(int from, int to, E edge);
 
@@ -27,6 +37,8 @@ namespace Lunari.Tsuki.Graphs {
             public AStarFilter<E> EdgeFilter;
             public OnDiscoveredCallback<E> OnVisit;
             public OnSelectedCallback<E> OnSelected;
+            public OnRejectedCallback<E> OnRejected;
+            public OnFilteredCallback<E> OnFiltered;
         }
     }
 
@@ -78,6 +90,17 @@ namespace Lunari.Tsuki.Graphs {
 
         public bool IsLast(int current) {
             return current == Indices.Length - 1;
+        }
+
+        public bool ContainsEdge(int fromIndex, int toIndex)
+        {
+            for (var i = 0; i < Indices.Length - 1; i++) {
+                if (Indices[i] == fromIndex && Indices[i + 1] == toIndex) {
+                    return true;
+                }
+            }
+
+            return false;
         }
     }
 

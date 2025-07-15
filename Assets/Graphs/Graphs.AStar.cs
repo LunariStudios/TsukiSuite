@@ -90,6 +90,7 @@ namespace Lunari.Tsuki.Graphs {
                     callbacks.OnVisit?.Invoke(i, neighborIndex, edge);
                     var found = callbacks.EdgeFilter?.Invoke(i, neighborIndex, edge);
                     if (!found.GetValueOrDefault(true)) {
+                        callbacks.OnFiltered?.Invoke(i, neighborIndex, edge);
                         continue;
                     }
 
@@ -103,6 +104,8 @@ namespace Lunari.Tsuki.Graphs {
                         if (!open.Contains(neighborIndex)) {
                             open.Enqueue(neighborIndex, neighborFScore);
                         }
+                    } else {
+                        callbacks.OnRejected?.Invoke(i, neighborIndex, edge, gScore[neighborIndex], attempt);
                     }
                 }
             }
