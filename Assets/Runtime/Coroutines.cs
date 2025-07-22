@@ -20,5 +20,20 @@ namespace Lunari.Tsuki {
         public static void Stop(this Coroutine coroutine, MonoBehaviour owner) {
             owner.StopCoroutine(coroutine);
         }
+
+        public static IEnumerator ExecuteThrottled(IEnumerator routine, int maxNumSteps)
+        {
+            int steps = 0;
+            while (routine.MoveNext())
+            {
+                yield return routine.Current;
+                steps++;
+                if (steps >= maxNumSteps)
+                {
+                    yield return null; // Yield to allow other operations
+                    steps = 0; // Reset step count
+                }
+            }
+        }
     }
 }
