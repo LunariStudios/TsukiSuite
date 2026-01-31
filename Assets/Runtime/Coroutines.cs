@@ -35,5 +35,26 @@ namespace Lunari.Tsuki {
                 }
             }
         }
+        public static IEnumerator RunConcurrently(params IEnumerator[] routines) {
+            var enumerators = new IEnumerator[routines.Length];
+            for (int i = 0; i < routines.Length; i++)
+            {
+                enumerators[i] = routines[i];
+            }
+
+            while (true)
+            {
+                bool allDone = true;
+                foreach (var enumerator in enumerators)
+                {
+                    if (enumerator.MoveNext())
+                    {
+                        allDone = false;
+                        yield return enumerator.Current;
+                    }
+                }
+                if (allDone) break;
+            }
+        }
     }
 }

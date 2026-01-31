@@ -29,7 +29,7 @@ namespace Lunari.Tsuki.Entities.Editor {
             return trait.PeekDescription(entity, allTraits);
         }
         public static TraitDescriptor PeekDescription(this ITrait trait, Entity entity, ITrait[] all) {
-            trait.TryClaim(entity, all, out var dependencies, false);
+            trait.TryClaim(entity, all, out var dependencies, true);
             return dependencies;
         }
         public static bool IsCurrentlySelected(Component trait) {

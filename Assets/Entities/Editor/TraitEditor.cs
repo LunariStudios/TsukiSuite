@@ -3,7 +3,7 @@ using Lunari.Tsuki.Scopes;
 using UnityEditor;
 using UnityEngine;
 namespace Lunari.Tsuki.Entities.Editor {
-    [CustomEditor(typeof(Trait), true)]
+   // [CustomEditor(typeof(Trait), true, isFallback = true)]
     public class TraitEditor : UnityEditor.Editor {
         public override void OnInspectorGUI() {
             using (new EditorGUILayout.VerticalScope(Styles.box)) {

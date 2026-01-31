@@ -5,6 +5,7 @@ using Lunari.Tsuki.Algorithm;
 using Lunari.Tsuki.Editor;
 using Lunari.Tsuki.Editor.Extenders;
 using Lunari.Tsuki.Entities.Problems;
+using Lunari.Tsuki.Scopes;
 using UnityEditor;
 using UnityEngine;
 using Object = UnityEngine.Object;
@@ -79,8 +80,16 @@ namespace Lunari.Tsuki.Entities.Editor {
             }
             problems = new List<Problem>();
             var allTraits = meta.AllTraits;
-            foreach (var trait in allTraits) {
-                problems.AddRange(trait.PeekDescription(entity, allTraits).Problems);
+            foreach (var trait in allTraits)
+            {
+                var descriptor = trait.PeekDescription(entity, allTraits);
+                if (descriptor == null)
+                {
+                    problems.Add(new Problem(trait, entity, "Trait description could not be generated."));
+                    
+                } else  {
+                    problems.AddRange(descriptor.Problems);
+                }
             }
             if (problems.IsEmpty()) {
                 return;
@@ -90,8 +99,12 @@ namespace Lunari.Tsuki.Entities.Editor {
                 EditorGUILayout.LabelField("Problems: ", EditorStyles.boldLabel);
                 foreach (var problem in problems) {
                     using (new EditorGUILayout.HorizontalScope(EditorStyles.helpBox)) {
-                        GUILayout.Label(new GUIContent(problem.Description, Icons.console_erroricon),
-                            ProblemStyle.Value);
+                        using (new EditorGUILayout.VerticalScope()) {
+                            GUILayout.Label(new GUIContent(problem.Description, Icons.console_erroricon), ProblemStyle.Value);
+                            using (new GUIEnabledScope(false)) {
+                                EditorGUILayout.ObjectField("Origin", (Object) problem.Requisitor, problem.Requisitor.GetType(), true);
+                            }
+                        }
                         var solutions = problem.Solutions;
                         using (new EditorGUILayout.VerticalScope()) {
                             foreach (var solution in solutions) {

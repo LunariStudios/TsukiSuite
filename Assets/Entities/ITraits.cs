@@ -39,10 +39,10 @@ namespace Lunari.Tsuki.Entities {
         /// <param name="newOwner"></param>
         /// <returns></returns>
         public static TraitDescriptor ExecuteClaim(this ITrait self, Entity requisitor, ITrait[] traits, bool initialize, out Entity newOwner) {
-            if (initialize && self.Owner != null) {
-                newOwner = self.Owner;
-                return null;
-            }
+            // if (initialize && self.Owner != null) {
+            //     newOwner = self.Owner;
+            //     return null;
+            // }
 
             var claims = new TraitDescriptor(requisitor, self, initialize);
             foreach (var trait in traits) {

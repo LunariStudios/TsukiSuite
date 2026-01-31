@@ -46,7 +46,8 @@ namespace Lunari.Tsuki.Entities {
             var b = descriptor.DependsOn(out eighth);
             return a && b;
         }
-        public static bool RequiresComponent<A>(this TraitDescriptor descriptor, out A first) where A : Component {
+        public static bool RequiresComponent<A>(this TraitDescriptor descriptor, out A first) where A : Component
+        {
             var found = descriptor.RequiresComponent<A>();
             if (descriptor.Successful) {
                 first = found;
